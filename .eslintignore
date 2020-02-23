@@ -1,0 +1,5 @@
+/*.js
+dist
+*.d.ts
+node_modules
+setupTests.ts
