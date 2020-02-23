@@ -82,10 +82,10 @@
     }
   },
   "lint-staged": {
-    "{src,test}/**/*.ts*": [
-      "npm run eslint -- --fix"
+    "packages/**/*.ts*": [
+      "yarn eslint -- --fix"
     ],
-    "{src,test}/**/*.{json,css,scss,md,js,jsx,ts,tsx}": [
+    "packages/**/*.{json,css,scss,md,js,jsx,ts,tsx}": [
       "prettier --write"
     ]
   },
