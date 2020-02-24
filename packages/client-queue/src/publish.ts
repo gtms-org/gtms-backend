@@ -5,12 +5,11 @@ import {
   IDeleteAccountQueueMsg,
   Queues,
 } from '@gtms/commons'
-
-const { QUEUE_HOST = 'localhost' } = process.env
+import config from 'config'
 
 export function publishOnChannel<T>(queueName: string, message: T) {
   return amqp
-    .connect(`amqp://${QUEUE_HOST}`)
+    .connect(`amqp://${config.get<string>('queueHost')}`)
     .then((conn: amqp.Connection) => {
       conn
         .createChannel()
@@ -18,9 +17,10 @@ export function publishOnChannel<T>(queueName: string, message: T) {
           await ch.assertQueue(queueName, {
             durable: true,
           })
-
           const jsonStr = JSON.stringify(message)
-          ch.sendToQueue(queueName, Buffer.from(jsonStr))
+          await ch.sendToQueue(queueName, Buffer.from(jsonStr), {
+            persistent: true,
+          })
 
           logger.log({
             level: 'info',
@@ -30,7 +30,7 @@ export function publishOnChannel<T>(queueName: string, message: T) {
           ch.close().catch(() => null)
         })
         .finally(() => {
-          conn.close()
+          setTimeout(() => conn.close(), 500)
         })
     })
     .catch(err => {

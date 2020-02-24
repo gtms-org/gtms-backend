@@ -10,7 +10,7 @@ import serializeCookie from '../helpers/cookies'
 import sendActivationEmail from '../helpers/sendActivationEmail'
 
 export default {
-  count(req: Request, res: Response, next: NextFunction): void {
+  count(_: Request, res: Response, next: NextFunction): void {
     userModel
       .estimatedDocumentCount({})
       .then((counter: number) => {

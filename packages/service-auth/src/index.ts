@@ -8,6 +8,7 @@ import {
   JWTMiddleware,
   errorMiddleware,
   traceIDMiddleware,
+  getAppInfoMiddleware
 } from '@gtms/lib-middlewares'
 import logger, { stream } from '@gtms/lib-logger'
 import facebookController from './controllers/facebook'
@@ -59,7 +60,9 @@ router.post(
 router.all('*', (req: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
 })
+app.disable('x-powered-by')
 app.use(traceIDMiddleware)
+app.use(getAppInfoMiddleware())
 app.use(cookieParser())
 app.use(
   morgan(

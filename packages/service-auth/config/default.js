@@ -2,7 +2,12 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-const { JWT_SECRET, JWT_REFRESH_TOKEN_SECRET, DB_HOST } = process.env
+const {
+  JWT_SECRET,
+  JWT_REFRESH_TOKEN_SECRET,
+  DB_HOST,
+  QUEUE_HOST,
+} = process.env
 
 module.exports = {
   secret: JWT_SECRET,
@@ -12,5 +17,6 @@ module.exports = {
   refreshTokenLife: 86400,
   dbHost: DB_HOST,
   dbName: 'auth',
-  serviceName: 'auth'
+  serviceName: 'auth',
+  queueHost: QUEUE_HOST,
 }

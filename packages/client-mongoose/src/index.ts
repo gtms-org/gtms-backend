@@ -2,6 +2,8 @@ import mongoose from 'mongoose'
 import config from 'config'
 import logger from '@gtms/lib-logger'
 
+const { NODE_ENV } = process.env
+
 mongoose.set('useCreateIndex', true)
 
 let dbCredentials = ''
@@ -12,9 +14,6 @@ if (config.has('dbUser') && config.has('dbPassword')) {
   )}@`
 }
 
-const mongoDbURL = `mongodb://${dbCredentials}${config.get<string>(
-  'dbHost'
-)}/${config.get<string>('dbName')}`
 const db = mongoose.connection
 db.on('error', err => {
   logger.log({
@@ -29,10 +28,25 @@ db.once('open', function() {
   })
 })
 
-mongoose.connect(mongoDbURL, {
+const mongooseOpts = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-})
+}
+
+if (NODE_ENV === 'test') {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { testDbHelper } = require('./TestDbHelper')
+
+  testDbHelper.getConnectionString().then((mongoDbURL: string) => {
+    mongoose.connect(mongoDbURL, mongooseOpts)
+  })
+} else {
+  const mongoDbURL = `mongodb://${dbCredentials}${config.get<string>(
+    'dbHost'
+  )}/${config.get<string>('dbName')}`
+  mongoose.connect(mongoDbURL, mongooseOpts)
+}
+
 mongoose.Promise = global.Promise
 
 export default mongoose
