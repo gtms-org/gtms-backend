@@ -207,7 +207,7 @@ describe('User controller', () => {
     expect(response.body).toHaveProperty('message')
   })
 
-  it ('Should not allow to login with invalid password', async () => {
+  it('Should not allow to login with invalid password', async () => {
     const fixtures = new Fixtures({
       dir: `${process.cwd()}/fixtures`,
       mute: true,

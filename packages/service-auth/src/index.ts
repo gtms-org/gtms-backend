@@ -8,7 +8,7 @@ import {
   JWTMiddleware,
   errorMiddleware,
   traceIDMiddleware,
-  getAppInfoMiddleware
+  getAppInfoMiddleware,
 } from '@gtms/lib-middlewares'
 import logger, { stream } from '@gtms/lib-logger'
 import facebookController from './controllers/facebook'
