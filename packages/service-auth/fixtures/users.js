@@ -3,7 +3,7 @@ const { ObjectID: ObjectId } = require('mongodb')
 
 module.exports = [
   {
-    _id: ObjectId(),
+    _id: ObjectId('5e53b8e368985486d4a50921'),
     countryCode: 'pl',
     languageCode: 'pl-pl',
     isBlocked: false,

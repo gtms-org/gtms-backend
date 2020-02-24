@@ -44,6 +44,7 @@ export default class TestDbHelper {
    */
   async cleanup() {
     const collections = await this.db.listCollections().toArray()
+
     return Promise.all(
       collections
         .map(({ name }) => name)

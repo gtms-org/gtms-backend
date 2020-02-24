@@ -97,6 +97,19 @@ export default {
           return
         }
 
+        // check if account was activated
+        if (user.isActive !== true) {
+          logger.log({
+            message: `Account ${req.body.email} is not yet activated, can not login`,
+            level: 'info',
+            traceId: res.get('x-traceid'),
+          })
+          res.status(403).json({
+            message: 'Account is not active',
+          })
+          return
+        }
+
         if (bcrypt.compareSync(req.body.password, user.password)) {
           authenticate(user, res.get('x-traceid')).then(data => {
             if (data) {
@@ -106,7 +119,6 @@ export default {
                 traceId: res.get('x-traceid'),
               })
               // set cookies
-
               res
                 .status(201)
                 .header(
@@ -148,15 +160,15 @@ export default {
   },
   refreshToken(req: Request, res: Response, next: NextFunction): void {
     refreshTokenModel
-      .findOne({ token: req.body.token })
+      .findOne({ token: req.body.token && req.body.token.trim() })
       .populate('user')
       .then(async (token: IRefreshToken | null) => {
         if (!token) {
-          res.status(401).json({ refreshToken: 'Token is invalid' })
+          res.status(401).json({ message: 'Token is invalid' })
 
           logger.log({
             message: `Someone tried to refresh token with invalid refreshToken (${req.body.token})`,
-            level: 'warning',
+            level: 'warn',
             traceId: res.get('x-traceid'),
           })
 
