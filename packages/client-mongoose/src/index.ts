@@ -35,7 +35,7 @@ const mongooseOpts = {
 
 if (NODE_ENV === 'test') {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { testDbHelper } = require('./TestDbHelper')
+  const { testDbHelper } = require('@gtms/lib-testing')
 
   testDbHelper.getConnectionString().then((mongoDbURL: string) => {
     mongoose.connect(mongoDbURL, mongooseOpts)

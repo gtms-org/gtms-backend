@@ -163,7 +163,7 @@ export default {
       .findOne({ token: req.body.token && req.body.token.trim() })
       .populate('user')
       .then(async (token: IRefreshToken | null) => {
-        if (!token) {
+        if (!token || token.user === null) {
           res.status(401).json({ message: 'Token is invalid' })
 
           logger.log({

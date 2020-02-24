@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { testDbHelper } from '@gtms/client-mongoose/src/TestDbHelper'
+import { testDbHelper } from '@gtms/lib-testing'
 
 beforeAll(async () => {
   await testDbHelper.start()

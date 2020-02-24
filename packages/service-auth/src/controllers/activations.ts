@@ -15,9 +15,9 @@ export default {
     ActivationCodeModel.findOneAndDelete({ code })
       .populate('owner')
       .then((activationCode: IActivationCode | null) => {
-        if (!activationCode) {
+        if (!activationCode || activationCode.owner === null) {
           logger.log({
-            level: 'warning',
+            level: 'warn',
             message: `User tried to activate account with not-existing code ${code}`,
             traceId: res.get('x-traceid'),
           })
@@ -28,7 +28,7 @@ export default {
           { _id: (activationCode.owner as IUser)._id },
           { isActive: true }
         )
-          .then(res => {
+          .then(() => {
             logger.log({
               level: 'info',
               message: `User ${(activationCode.owner as IUser)._id} (${

@@ -1,12 +1,12 @@
 {
-    "name": "@gtms/client-mongoose",
-    "version": "0.0.1",
-    "description": "",
-    "main": "src/index.ts",
-    "author": "Mariusz Kabała",
-    "license": "ISC",
-    "dependencies": {
-        "@gtms/lib-logger": "0.0.1"
-    }
+  "name": "@gtms/client-mongoose",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "author": "Mariusz Kabała",
+  "license": "ISC",
+  "dependencies": {
+    "@gtms/lib-logger": "0.0.1",
+    "@gtms/lib-testing": "0.0.1"
   }
-  
+}

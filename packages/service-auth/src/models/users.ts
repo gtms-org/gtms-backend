@@ -38,6 +38,13 @@ const UserSchema = new Schema(
       unique: true,
       trim: true,
       required: true,
+      validate: {
+        validator: (v: string) => {
+          const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+          return re.test(v)
+        },
+        message: props => `${props.value} is not a valid email address`,
+      },
     },
     password: {
       type: String,

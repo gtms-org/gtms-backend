@@ -3,30 +3,14 @@ import request from 'supertest'
 import amqp from 'amqplib'
 import config from 'config'
 import { Queues } from '@gtms/commons'
-import { testDbHelper } from '@gtms/client-mongoose/src/TestDbHelper'
-import Fixtures from 'node-mongodb-fixtures'
+import {
+  testDbHelper,
+  loadFixtures,
+  checkCommonResponseHeaders,
+} from '@gtms/lib-testing'
 import cookieParser from 'set-cookie-parser'
 
-function checkCommonResponseHeaders(header: { [key: string]: string }) {
-  expect(header).toHaveProperty('x-traceid')
-  expect(header).toHaveProperty('x-app')
-  expect(header).toHaveProperty('x-app-version')
-  expect(header).not.toHaveProperty('x-powered-by')
-}
-
-async function loadFixtures() {
-  const fixtures = new Fixtures({
-    dir: `${process.cwd()}/fixtures`,
-    mute: true,
-  })
-
-  await fixtures
-    .connect(await testDbHelper.getConnectionString())
-    .then(() => fixtures.load())
-    .then(() => fixtures.disconnect())
-}
-
-describe('User controller', () => {
+describe('Users controller', () => {
   const req = request(app)
 
   it('Should return amount of users', async () => {
@@ -120,10 +104,60 @@ describe('User controller', () => {
 
     // test if activation code was created for the new account
     const activationCodesLen = await testDbHelper
-      .getCollection('users')
+      .getCollection('activationcodes')
       .estimatedDocumentCount({ owner: dbUser._id })
 
     expect(activationCodesLen).toBe(1)
+  })
+
+  it('Should return validation errors when trying to register with invalid data', async () => {
+    const response = await req
+      .post('/users')
+      .send({
+        name: 'test',
+        surname: 'user',
+        email: 'loremIpsum',
+        phone: '+48 333-222-111',
+        countryCode: 'pl',
+        languageCode: 'pl-pl',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(400)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+
+    // test response body
+    expect(response.body).toHaveProperty('email')
+    expect(response.body).toHaveProperty('password')
+  })
+
+  it('Should return validation error when email address is already registred', async () => {
+    await loadFixtures()
+
+    const response = await req
+      .post('/users')
+      .send({
+        name: 'test',
+        surname: 'user',
+        email: 'test@dot.com',
+        phone: '+48 333-222-111',
+        password: 'change-me',
+        countryCode: 'pl',
+        languageCode: 'pl-pl',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(400)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+
+    // test response body
+    expect(response.body).toHaveProperty('email')
   })
 
   it('Should responde with traceid from request', async () => {

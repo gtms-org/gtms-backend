@@ -33,7 +33,7 @@ module.exports = [
     updatedAt: '2020-02-24T06:33:43.198Z',
   },
   {
-    _id: ObjectId(),
+    _id: ObjectId('5e53b8e368985486d4a50922'),
     countryCode: 'pl',
     languageCode: 'pl-pl',
     isBlocked: false,
