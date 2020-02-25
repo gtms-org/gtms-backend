@@ -1,6 +1,7 @@
 import mongoose, { HookNextFunction, Document, Schema } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 import bcrypt from 'bcrypt'
+import { validateEmailAddress } from '@gtms/commons'
 
 export interface IUser extends Document {
   name?: string
@@ -39,10 +40,7 @@ const UserSchema = new Schema(
       trim: true,
       required: true,
       validate: {
-        validator: (v: string) => {
-          const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-          return re.test(v)
-        },
+        validator: validateEmailAddress,
         message: props => `${props.value} is not a valid email address`,
       },
     },

@@ -5,6 +5,10 @@ import {
   loadFixtures,
   checkCommonResponseHeaders,
 } from '@gtms/lib-testing'
+import amqp from 'amqplib'
+import config from 'config'
+import { Queues } from '@gtms/commons'
+import { ObjectID } from 'mongodb'
 
 describe('Activations controller', () => {
   const req = request(app)
@@ -55,6 +59,135 @@ describe('Activations controller', () => {
 
     // test response status
     expect(response.status).toBe(404)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should generate code which will allow to change password', async done => {
+    await loadFixtures()
+
+    let traceid = ''
+    const getDoCheck = (conn: amqp.Connection) => async (msg: amqp.Message) => {
+      // test the message sent to the queue
+      const json = JSON.parse(msg.content.toString())
+
+      expect(json).toHaveProperty('type')
+      expect(json).toHaveProperty('data')
+      expect(json.data).toHaveProperty('traceId')
+      expect(json.data).toHaveProperty('html')
+      expect(json.data).toHaveProperty('text')
+      expect(json.data).toHaveProperty('to')
+      expect(json.type).toBe('email')
+      expect(json.data.to).toBe('test@dot.com')
+
+      // compare traceid from http response, with the one sent to queue
+      expect(json.data.traceId).toBe(traceid)
+
+      traceid = json.data.traceId
+      conn.close()
+
+      // confirm that a new activation code was saved in DB
+      const activations = await testDbHelper
+        .getCollection('activationcodes')
+        .find({ owner: new ObjectID('5e53b8e368985486d4a50921') })
+        .count()
+
+      expect(activations).toBe(1)
+
+      setTimeout(() => done(), 100)
+    }
+    // start listening for queue messages
+    await amqp
+      .connect(`amqp://${config.get<string>('queueHost')}`)
+      .then(async conn => {
+        await conn.createChannel().then(ch => {
+          const ok = ch.assertQueue(Queues.notifications, { durable: true })
+          ok.then(() => {
+            ch.prefetch(1)
+          }).then(() => {
+            ch.consume(Queues.notifications, getDoCheck(conn), {
+              noAck: true,
+            })
+          })
+        })
+      })
+
+    const response = await req
+      .post('/remind-password')
+      .send({
+        email: 'test@dot.com',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(200)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+
+    traceid = response.header['x-traceid']
+  })
+
+  it('Should return 404 when trying to change password for not existing user', async () => {
+    const response = await req
+      .post('/remind-password')
+      .send({
+        email: 'invalid@email.com',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(404)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should return 400 when trying to remind password with invalid data', async () => {
+    const response = await req
+      .post('/remind-password')
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(400)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+
+    // test response body
+    expect(response.body).toHaveProperty('message')
+  })
+
+  it('Should return 401 when trying to remind pass with blocked user', async () => {
+    await loadFixtures()
+
+    const response = await req
+      .post('/remind-password')
+      .send({
+        email: 'block@user.com',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(401)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should return 401 when trying to remind pass with not active user account', async () => {
+    await loadFixtures()
+
+    const response = await req
+      .post('/remind-password')
+      .send({
+        email: 'not@active.user.com',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(401)
 
     // test response headers
     checkCommonResponseHeaders(response.header)

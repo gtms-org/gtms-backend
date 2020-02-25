@@ -4,7 +4,11 @@ import UserModel, { IUser } from '../models/users'
 import logger from '@gtms/lib-logger'
 import sendRemindPassEmail from '../helpers/sendRemindPassEmail'
 import sendDeleteAccountEmail from '../helpers/sendDeleteAccountEmail'
-import { IAuthRequest, IDeleteAccountQueueMsg } from '@gtms/commons'
+import {
+  IAuthRequest,
+  IDeleteAccountQueueMsg,
+  validateEmailAddress,
+} from '@gtms/commons'
 import { publishToDeleteChannel } from '@gtms/client-queue'
 import FacebookProviderModel from '../models/facebookProvider'
 
@@ -61,9 +65,9 @@ export default {
   remindPassword(req: Request, res: Response, next: NextFunction): void {
     const { body } = req
 
-    if (!body.email || body.email === '') {
+    if (!body.email || body.email === '' || !validateEmailAddress(body.email)) {
       res.status(400).json({
-        email: 'Adres email is invalid',
+        message: 'Address email is invalid',
       })
       return
     }
@@ -74,8 +78,32 @@ export default {
           res.status(404).end()
 
           logger.log({
-            level: 'warning',
+            level: 'warn',
             message: `User tried to remind password for not exisiting email address: ${body.email}`,
+            traceId: res.get('x-traceid'),
+          })
+
+          return
+        }
+
+        if (user.isBlocked) {
+          res.status(401).end()
+
+          logger.log({
+            level: 'warn',
+            message: `User ${user.email} with blocked account tried to remind password`,
+            traceId: res.get('x-traceid'),
+          })
+
+          return
+        }
+
+        if (!user.isActive) {
+          res.status(401).end()
+
+          logger.log({
+            level: 'warn',
+            message: `User ${user.email} with not active account tried to remind password`,
             traceId: res.get('x-traceid'),
           })
 
