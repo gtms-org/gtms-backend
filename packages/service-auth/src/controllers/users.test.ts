@@ -64,7 +64,7 @@ describe('Users controller', () => {
         surname: 'user',
         email: 'test@dot.com',
         phone: '+48 333-222-111',
-        password: 'change-me',
+        password: 'superHardPass12345',
         countryCode: 'pl',
         languageCode: 'pl-pl',
       })

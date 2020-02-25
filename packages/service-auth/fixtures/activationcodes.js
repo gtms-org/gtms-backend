@@ -10,4 +10,8 @@ module.exports = [
     code: '3Fa1XWlbU0DhNnJrCEwcu79EKd7j7M8DFzxaJGWH2HTRZA6ANb',
     owner: ObjectId(),
   },
+  {
+    code: '5Fa1XWlbU0DhNnJrCEwcu79EKd7j7M8DFzxaJGWH2HTRZA6ANb',
+    owner: ObjectId('5e53b8e368985486d4a50923'),
+  },
 ]

@@ -8,6 +8,7 @@ import {
   IAuthRequest,
   IDeleteAccountQueueMsg,
   validateEmailAddress,
+  validatePassword,
 } from '@gtms/commons'
 import { publishToDeleteChannel } from '@gtms/client-queue'
 import FacebookProviderModel from '../models/facebookProvider'
@@ -125,19 +126,34 @@ export default {
       })
   },
   resetPassword(req: Request, res: Response, next: NextFunction): void {
-    const { body } = req
-    const { password, code } = body
+    const {
+      body: { password = '', code = '' },
+    } = req
+
+    if (!password || !validatePassword(password) || !code || code === '') {
+      logger.log({
+        level: 'warn',
+        message: `User tried to reset password with invalid payload: ${JSON.stringify(
+          req.body
+        )}`,
+        traceId: res.get('x-traceid'),
+      })
+      res.status(400).json({
+        message: 'Password or code is not valid',
+      })
+      return
+    }
 
     ActivationCodeModel.findOneAndDelete({
       code,
     })
       .populate('owner')
       .then((activationCode: IActivationCode | null) => {
-        if (!activationCode) {
+        if (!activationCode || activationCode.owner === null) {
           res.status(404).end()
 
           logger.log({
-            level: 'warning',
+            level: 'warn',
             message: `User tried to reset password with not-existing code ${code}`,
             traceId: res.get('x-traceid'),
           })
@@ -145,11 +161,10 @@ export default {
           return
         }
 
-        UserModel.updateOne(
-          { _id: (activationCode.owner as IUser)._id },
-          { password }
-        )
-          .then(res => {
+        ;(activationCode.owner as IUser).password = password
+        ;(activationCode.owner as IUser)
+          .save()
+          .then(() => {
             logger.log({
               level: 'info',
               message: `User ${(activationCode.owner as IUser)._id} (${
@@ -207,7 +222,7 @@ export default {
           })
 
           logger.log({
-            level: 'warning',
+            level: 'warn',
             message: `User tried to delete account with not-existing code ${code}`,
             traceId: res.get('x-traceid'),
           })
@@ -221,7 +236,7 @@ export default {
               })
 
               logger.log({
-                level: 'warning',
+                level: 'warn',
                 message: `User tried to delete not-existing account with code ${code}`,
                 traceId: res.get('x-traceid'),
               })

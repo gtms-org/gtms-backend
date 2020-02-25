@@ -38,7 +38,7 @@ describe('Activations controller', () => {
       .getCollection('activationcodes')
       .estimatedDocumentCount({})
 
-    expect(activationCodesLen).toBe(1)
+    expect(activationCodesLen).toBe(2)
   })
 
   it('Should return 404 when activation code is invalid', async () => {
@@ -191,5 +191,102 @@ describe('Activations controller', () => {
 
     // test response headers
     checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should change user password', async () => {
+    await loadFixtures()
+
+    const response = await req
+      .post('/reset-passord')
+      .send({
+        code: '5Fa1XWlbU0DhNnJrCEwcu79EKd7j7M8DFzxaJGWH2HTRZA6ANb',
+        password: 'newSuperGoodPass321',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(200)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+
+    // should be possible to login with the new password
+    const loginResponse = await req
+      .post('/authenticate')
+      .send({
+        email: 'test@geotags.com',
+        password: 'newSuperGoodPass321',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(loginResponse.status).toBe(201)
+  })
+
+  it('Should return 400 when trying to change password and new pass is invalid', async () => {
+    const response = await req
+      .post('/reset-passord')
+      .send({
+        code: '5Fa1XWlbU0DhNnJrCEwcu79EKd7j7M8DFzxaJGWH2HTRZA6ANb',
+        password: 'wrong-pass',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(400)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should return 400 when trying to change password and code is invalid', async () => {
+    const response = await req
+      .post('/reset-passord')
+      .send({
+        password: 'newSuperGoodPass321',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(400)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should return 404 when trying to reset pass and there is no user in db related to sent code', async () => {
+    const response = await req
+      .post('/reset-passord')
+      .send({
+        code: '3Fa1XWlbU0DhNnJrCEwcu79EKd7j7M8DFzxaJGWH2HTRZA6ANb',
+        password: 'newSuperGoodPass321',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(404)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should return 404 when trying to reset pass and code is not in the database', async () => {
+    const response = await req
+      .post('/reset-passord')
+      .send({
+        code: 'invalid-code',
+        password: 'newSuperGoodPass321',
+      })
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(404)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should generate delete account queue message', async () => {
+    // todo
   })
 })

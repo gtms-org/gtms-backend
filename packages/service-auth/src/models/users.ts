@@ -1,7 +1,7 @@
 import mongoose, { HookNextFunction, Document, Schema } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 import bcrypt from 'bcrypt'
-import { validateEmailAddress } from '@gtms/commons'
+import { validateEmailAddress, validatePassword } from '@gtms/commons'
 
 export interface IUser extends Document {
   name?: string
@@ -48,6 +48,10 @@ const UserSchema = new Schema(
       type: String,
       trim: true,
       required: true,
+      validate: {
+        validator: validatePassword,
+        message: `Password has to be at least 8 characters,containing at least one number, one lowercase and one uppercase letter`,
+      },
     },
     countryCode: {
       type: String,
@@ -85,7 +89,10 @@ const UserSchema = new Schema(
 UserSchema.plugin(uniqueValidator)
 
 UserSchema.pre<IUser>('save', function(next: HookNextFunction) {
-  this.password = bcrypt.hashSync(this.password, saltRounds)
+  if (this.isModified('password')) {
+    this.password = bcrypt.hashSync(this.password, saltRounds)
+  }
+
   next()
 })
 
