@@ -2,7 +2,7 @@ def branch = '';
 def changedJSON = '';
 
 pipeline {
-    agent { docker { image 'docker-registry.kabala.tech/node12-with-git:latest' } }
+    agent { docker { image 'docker-registry.kabala.tech/gtms-be-builder:latest' } }
 
     environment {
         app = ''
