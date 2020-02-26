@@ -5,8 +5,6 @@ import config from 'config'
 import requestAPI from '../helpers/requestAPI'
 import logger from '@gtms/lib-logger'
 
-const { USER_PROFILE_SERVICE } = process.env
-
 export function getJWTData(user: IUser, traceId: string): Promise<any> {
   return new Promise(async resolve => {
     const result: any = {
@@ -21,13 +19,14 @@ export function getJWTData(user: IUser, traceId: string): Promise<any> {
       isActive: user.isActive,
     }
 
-    if (
-      typeof USER_PROFILE_SERVICE === 'string' &&
-      USER_PROFILE_SERVICE !== ''
-    ) {
+    const userProfileService = config.get<string | undefined>(
+      'services.userProfile'
+    )
+
+    if (typeof userProfileService === 'string' && userProfileService !== '') {
       try {
         const profile = await requestAPI({
-          url: `http://${USER_PROFILE_SERVICE}/`,
+          url: `http://${userProfileService}/`,
           jwt: result,
           traceId,
         })

@@ -3,8 +3,7 @@ import activationCodeModel, { IActivationCode } from '../models/activationCode'
 import { publishToNotificationsChannel } from '@gtms/client-queue'
 import { NotificationQueueMessageType } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
-
-const { APP_DOMAIN } = process.env
+import config from 'config'
 
 export default function(user: IUser, traceId: string): void {
   activationCodeModel
@@ -12,7 +11,9 @@ export default function(user: IUser, traceId: string): void {
       owner: user,
     })
     .then(async (activationCode: IActivationCode) => {
-      const activationURL = `${APP_DOMAIN}/activate-account/${activationCode.code}`
+      const activationURL = `${config.get<string>(
+        'appDomain'
+      )}/activate-account/${activationCode.code}`
 
       try {
         await publishToNotificationsChannel({

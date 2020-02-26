@@ -22,6 +22,9 @@
             ]
         }
     },
+    "files": [
+        "packages/lib-testing/src/node-mongodb-fixtures.d.ts"
+    ],
     "include": [
         "packages/**/*"
     ]

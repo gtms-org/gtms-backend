@@ -7,6 +7,7 @@ const {
   JWT_REFRESH_TOKEN_SECRET,
   DB_HOST,
   QUEUE_HOST,
+  APP_DOMAIN,
 } = process.env
 
 module.exports = {
@@ -19,4 +20,8 @@ module.exports = {
   dbName: 'auth',
   serviceName: 'auth',
   queueHost: QUEUE_HOST,
+  appDomain: APP_DOMAIN,
+  services: {
+    userProfile: USER_PROFILE_SERVICE,
+  },
 }
