@@ -21,7 +21,7 @@
   "dependencies": {
     "@types/supertest": "^2.0.8",
     "amqplib": "^0.5.5",
-    "bcrypt": "^4.0.0",
+    "bcrypt": "3.0.8",
     "body-parser": "^1.19.0",
     "config": "^3.2.4",
     "cookie": "^0.4.0",
