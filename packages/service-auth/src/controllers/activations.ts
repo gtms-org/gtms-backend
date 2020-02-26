@@ -12,6 +12,7 @@ import {
 } from '@gtms/commons'
 import { publishToDeleteChannel } from '@gtms/client-queue'
 import FacebookProviderModel from '../models/facebookProvider'
+import RefreshTokenModel from '../models/refreshToken'
 
 export default {
   activateAccount(req: Request, res: Response, next: NextFunction): void {
@@ -194,14 +195,27 @@ export default {
         next(err)
       })
   },
-  generateDeleteAccountMail(req: IAuthRequest, res: Response): void {
+  generateDeleteAccountMail(
+    req: IAuthRequest,
+    res: Response,
+    next: NextFunction
+  ): void {
     ActivationCodeModel.create({
       owner: req.user.id,
-    }).then((activationCode: IActivationCode) => {
-      sendDeleteAccountEmail(activationCode, req.user, res.get('x-traceid'))
-
-      res.status(200).end()
     })
+      .then((activationCode: IActivationCode) => {
+        sendDeleteAccountEmail(activationCode, req.user, res.get('x-traceid'))
+
+        res.status(200).end()
+      })
+      .catch(err => {
+        logger.log({
+          level: 'error',
+          message: `Error during activation code creation for account deletion: ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+        next(err)
+      })
   },
   deleteAccount(req: IAuthRequest, res: Response, next: NextFunction): void {
     const { body } = req
@@ -217,15 +231,33 @@ export default {
     ActivationCodeModel.findOneAndDelete({ code })
       .then((activationCode: IActivationCode | null) => {
         if (!activationCode) {
-          res.status(404).json({
-            code: 'Code does not exist',
-          })
+          res
+            .status(404)
+            .json({
+              code: 'Code does not exist',
+            })
+            .end()
 
           logger.log({
             level: 'warn',
             message: `User tried to delete account with not-existing code ${code}`,
             traceId: res.get('x-traceid'),
           })
+          return
+        }
+
+        if (activationCode.owner.toString() !== req.user.id) {
+          res.status(401).end()
+
+          logger.log({
+            level: 'warn',
+            traceId: res.get('x-traceid'),
+            message: `User ${JSON.stringify(
+              req.user
+            )} tried to delete account using code that does not belongs to him (${code})`,
+          })
+
+          return
         }
 
         UserModel.findOneAndDelete({ _id: activationCode.owner })
@@ -248,6 +280,7 @@ export default {
 
             const msg: IDeleteAccountQueueMsg = {
               id: req.user.id,
+              traceId: res.get('x-traceid'),
             }
 
             publishToDeleteChannel(msg)
@@ -273,6 +306,22 @@ export default {
                 logger.log({
                   level: 'info',
                   message: `All activation codes related to user ${req.user.id} have been deleted`,
+                  traceId: res.get('x-traceid'),
+                })
+              })
+              .catch(err => {
+                logger.log({
+                  level: 'error',
+                  message: `Error during account deletion ${err}`,
+                  traceId: res.get('x-traceid'),
+                })
+              })
+
+            RefreshTokenModel.deleteMany({ user: req.user.id })
+              .then(() => {
+                logger.log({
+                  level: 'info',
+                  message: `All refresh tokens related to user ${req.user.id} have been deleted`,
                   traceId: res.get('x-traceid'),
                 })
               })

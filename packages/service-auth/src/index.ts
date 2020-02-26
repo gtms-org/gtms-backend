@@ -45,14 +45,14 @@ router.post('/remind-password', activationsController.remindPassword)
 
 router.post('/reset-passord', activationsController.resetPassword)
 
-router.get(
+router.delete(
   '/delete-account',
   JWTMiddleware,
   activationsController.generateDeleteAccountMail
 )
 
 router.post(
-  '/delete-account',
+  '/delete-account-confirm',
   JWTMiddleware,
   activationsController.deleteAccount
 )

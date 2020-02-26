@@ -16,4 +16,5 @@ export interface INotificationQueueMsg {
 
 export interface IDeleteAccountQueueMsg {
   id: string
+  traceId: string
 }

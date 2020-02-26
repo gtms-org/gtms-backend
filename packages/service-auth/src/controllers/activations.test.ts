@@ -36,9 +36,10 @@ describe('Activations controller', () => {
     // activation token should have been deleted
     const activationCodesLen = await testDbHelper
       .getCollection('activationcodes')
-      .estimatedDocumentCount({})
+      .find({ code: '4ERTdo8K9tthIBE11Vxgcm9P9MK17qbnBiSPbAV4vJaphwN5cz' })
+      .count()
 
-    expect(activationCodesLen).toBe(2)
+    expect(activationCodesLen).toBe(0)
   })
 
   it('Should return 404 when activation code is invalid', async () => {
@@ -84,7 +85,6 @@ describe('Activations controller', () => {
       // compare traceid from http response, with the one sent to queue
       expect(json.data.traceId).toBe(traceid)
 
-      traceid = json.data.traceId
       conn.close()
 
       // confirm that a new activation code was saved in DB
@@ -286,7 +286,181 @@ describe('Activations controller', () => {
     checkCommonResponseHeaders(response.header)
   })
 
-  it('Should generate delete account queue message', async () => {
-    // todo
+  it('Should generate delete account queue message', async done => {
+    await loadFixtures()
+
+    let traceid = ''
+    const getDoCheck = (conn: amqp.Connection) => async (msg: amqp.Message) => {
+      // test the message sent to the queue
+      const json = JSON.parse(msg.content.toString())
+
+      expect(json).toHaveProperty('type')
+      expect(json).toHaveProperty('data')
+      expect(json.data).toHaveProperty('traceId')
+      expect(json.data).toHaveProperty('html')
+      expect(json.data).toHaveProperty('text')
+      expect(json.data).toHaveProperty('to')
+      expect(json.type).toBe('email')
+      expect(json.data.to).toBe('test@test.com')
+
+      // compare traceid from http response, with the one sent to queue
+      expect(json.data.traceId).toBe(traceid)
+
+      conn.close()
+
+      setTimeout(() => done(), 100)
+    }
+    // start listening for queue messages
+    await amqp
+      .connect(`amqp://${config.get<string>('queueHost')}`)
+      .then(async conn => {
+        await conn.createChannel().then(ch => {
+          const ok = ch.assertQueue(Queues.notifications, { durable: true })
+          ok.then(() => {
+            ch.prefetch(1)
+          }).then(() => {
+            ch.consume(Queues.notifications, getDoCheck(conn), {
+              noAck: true,
+            })
+          })
+        })
+      })
+
+    const response = await req
+      .delete('/delete-account')
+      .set('Accept', 'application/json')
+      .set(
+        'x-access-token',
+        '{"id": "5e53b8e368985486d4a50921", "email": "test@test.com"}'
+      )
+
+    // test response status code
+    expect(response.status).toBe(200)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+
+    traceid = response.header['x-traceid']
+  })
+
+  it('Should return 401 from /delete-account because JWT is not in headers', async () => {
+    const response = await req
+      .delete('/delete-account')
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(401)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+  })
+
+  it('Should delete user account, and related records in DB', async done => {
+    await loadFixtures()
+
+    let traceid = ''
+    const getDoCheck = (conn: amqp.Connection) => async (msg: amqp.Message) => {
+      // test the message sent to the queue
+      const json = JSON.parse(msg.content.toString())
+
+      expect(json).toHaveProperty('id')
+      expect(json).toHaveProperty('traceId')
+      expect(json.id).toBe('5e53b8e368985486d4a50924')
+      expect(json.traceId).toBe(traceid)
+
+      conn.close()
+
+      //check if all related to deleted user records are not in DB anymore
+      expect(
+        await testDbHelper
+          .getCollection('activationcodes')
+          .find({ owner: new ObjectID('5e53b8e368985486d4a50924') })
+          .count()
+      ).toBe(0)
+
+      expect(
+        await testDbHelper
+          .getCollection('users')
+          .find({ email: 'delete@user.com' })
+          .count()
+      ).toBe(0)
+
+      expect(
+        await testDbHelper
+          .getCollection('facebookproviders')
+          .find({ user: new ObjectID('5e53b8e368985486d4a50924') })
+          .count()
+      ).toBe(0)
+
+      expect(
+        await testDbHelper
+          .getCollection('refreshtokens')
+          .find({ user: new ObjectID('5e53b8e368985486d4a50924') })
+          .count()
+      ).toBe(0)
+
+      setTimeout(() => done(), 100)
+    }
+    // start listening for queue messages
+    await amqp
+      .connect(`amqp://${config.get<string>('queueHost')}`)
+      .then(async conn => {
+        await conn.createChannel().then(ch => {
+          const ok = ch.assertQueue(Queues.deleteAccount, { durable: true })
+          ok.then(() => {
+            ch.prefetch(1)
+          }).then(() => {
+            ch.consume(Queues.deleteAccount, getDoCheck(conn), {
+              noAck: true,
+            })
+          })
+        })
+      })
+
+    const response = await req
+      .post('/delete-account-confirm')
+      .send({
+        code: 'lTAbJ3OBjnP0pgbraVpv39sViExr1tRNAtX0l6hoFLPkd8Wb8fCFk4EQnQ6Z',
+      })
+      .set('Accept', 'application/json')
+      .set(
+        'x-access-token',
+        '{"id": "5e53b8e368985486d4a50924", "email": "test@test.com"}'
+      )
+
+    // test response status code
+    expect(response.status).toBe(200)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
+
+    traceid = response.header['x-traceid']
+  })
+
+  it('Should return 401 when trying to delete account and code does not belongs to the JWT user', async () => {
+    await loadFixtures()
+
+    const response = await req
+      .post('/delete-account-confirm')
+      .send({
+        code: 'lTAbJ3OBjnP0pgbraVpv39sViExr1tRNAtX0l6hoFLPkd8Wb8fCFk4EQnQ6Z',
+      })
+      .set('Accept', 'application/json')
+      .set('x-access-token', '{"id": "fake-id", "email": "test@test.com"}')
+
+    // test response status code
+    expect(response.status).toBe(401)
+  })
+
+  it('Should return 401 from /delete-account-confirm because JWT is not in headers', async () => {
+    const response = await req
+      .post('/delete-account-confirm')
+      .set('Accept', 'application/json')
+
+    // test response status code
+    expect(response.status).toBe(401)
+
+    // test response headers
+    checkCommonResponseHeaders(response.header)
   })
 })
