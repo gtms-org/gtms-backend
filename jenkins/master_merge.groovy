@@ -66,7 +66,7 @@ pipeline {
         }
         stage ('Look for services to build and deploy') {
             steps {
-                scripts {
+                script {
                     def changed = sh returnStdout: true, script: "lerna changed --all --json"
                     StringBuilder services = new StringBuilder()
                     changedJSON = new groovy.json.JsonSlurperClassic().parseText(changed)
