@@ -90,7 +90,7 @@ pipeline {
             }
             steps {
                 script {
-                    sshagent(['github-ssh-rw-key']) {
+                    sshagent(['jenkins-ssh-key']) {
                         sh "git checkout ${branch}"
                         sh "git add yarn.lock"
                         sh "git commit -m 'chore: update lock file'"
