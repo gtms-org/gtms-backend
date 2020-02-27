@@ -60,8 +60,8 @@ pipeline {
         stage ('Build Containers') {
              steps {
                 script {
-                    def props = readJSON file: "packages/${serviceName}/package.json"
-                    def app = docker.build(props['name'].replace('@', '').replace('-', '').toLowerCase(), "-f packages/${it}/Dockerfile .")
+                    def props = readJSON file: "packages/${env.serviceName}/package.json"
+                    def app = docker.build(props['name'].replace('@', '').replace('-', '').toLowerCase(), "-f packages/${env.serviceName}/Dockerfile .")
                     
                     docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
                         app.push("v${props['version']}")
