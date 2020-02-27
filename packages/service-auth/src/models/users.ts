@@ -1,6 +1,6 @@
 import mongoose, { HookNextFunction, Document, Schema } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { validateEmailAddress, validatePassword } from '@gtms/commons'
 
 export interface IUser extends Document {
