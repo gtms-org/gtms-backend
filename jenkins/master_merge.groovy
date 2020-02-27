@@ -84,7 +84,7 @@ pipeline {
                         hasNewLock == '1'
                     }
                     expression {
-                        branch == 'master'
+                        branch == 'jenkins-jobs'
                     }
                 }
             }
@@ -94,7 +94,7 @@ pipeline {
                         sh "git checkout ${branch}"
                         sh "git add yarn.lock"
                         sh "git commit -m 'chore: update lock file'"
-                        sh "git push origin master"
+                        sh "git push origin ${branch}"
                     }
                 }
             }
