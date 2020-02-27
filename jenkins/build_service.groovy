@@ -57,38 +57,14 @@ pipeline {
                     ])
             }
         }
-        stage ('Install dependencies') {
-            steps {
+        stage ('Build Containers') {
+             steps {
                 script {
-                    sh "yarn install"
-                }
-            }
-        }
-        stage ('Look for services to build and deploy') {
-            steps {
-                script {
-                    def changed = sh returnStdout: true, script: "lerna changed --all --json"
-                    StringBuilder services = new StringBuilder()
-                    changedJSON = new groovy.json.JsonSlurperClassic().parseText(changed)
-
-                    println(changedJSON.toString())
-
-                    changedJSON.each{
-                        if (it.name.contains("@gtms/service-")) {
-                            services.append("${it.name},")
-                        }
-                    }
-
-                    println(services)
-                }
-            }
-        }
-        stage ('Release') {
-            steps {
-                script {
-                    sshagent(['jenkins-ssh-key']) {
-                        sh "git checkout ${branch}"
-                        sh "lerna version --no-commit-hooks"
+                    def props = readJSON file: "packages/${serviceName}/package.json"
+                    def app = docker.build(props['name'].replace('@', '').replace('-', '').toLowerCase(), "-f packages/${it}/Dockerfile .")
+                    
+                    docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
+                        app.push("v${props['version']}")
                     }
                 }
             }
