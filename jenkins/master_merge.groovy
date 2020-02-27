@@ -39,6 +39,8 @@ pipeline {
 
                     println "GIT branch to process: ${branch}"
                     manager.addShortText(branch, "white", "navy", "1px", "navy")
+
+                    sh "printenv"
                 }
             }
         }
@@ -70,16 +72,6 @@ pipeline {
                     def changed = sh returnStdout: true, script: "lerna changed --all --json"
                     StringBuilder services = new StringBuilder()
                     changedJSON = new groovy.json.JsonSlurperClassic().parseText(changed)
-
-                    println(changedJSON.toString())
-
-                    changedJSON.each{
-                        if (it.name.contains("@gtms/service-")) {
-                            services.append("${it.name},")
-                        }
-                    }
-
-                    println(services)
                 }
             }
         }
@@ -89,6 +81,20 @@ pipeline {
                     sshagent(['jenkins-ssh-key']) {
                         sh "git checkout ${branch}"
                         sh "lerna version --no-commit-hooks"
+                    }
+                }
+            }
+        }
+        stage ('Build services') {
+            steps {
+                script {
+                    changedJSON.each{
+                        if (it.name.contains("@gtms/service-")) {
+                            build job: '(HomeAutomation) Deploy', wait: false, parameters: [
+                                string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
+                                string(name: 'serviceName', value: it.location.replace("${env.WORKSPACE}/packages", "")),
+                            ]
+                        }
                     }
                 }
             }
