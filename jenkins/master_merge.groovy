@@ -1,5 +1,6 @@
 def branch = '';
 def changedJSON = '';
+def hasNewLock = '0';
 
 pipeline {
     agent { docker { image 'docker-registry.kabala.tech/gtms-be-builder:latest' } }
@@ -63,6 +64,38 @@ pipeline {
             steps {
                 script {
                     sh "yarn install"
+
+                    try {
+                        hasNewLock = sh (
+                            script: 'git status | grep -c yarn.lock',
+                            returnStdout: true,
+                            returnStatus: false
+                        ).trim()
+                    } catch (Exception e) {
+                        // ignore
+                    }
+                }
+            }
+        }
+        stage ('Update lock file') {
+            when {
+                allOf {
+                    expression {
+                        hasNewLock == '1'
+                    }
+                    expression {
+                        branch == 'master'
+                    }
+                }
+            }
+            steps {
+                script {
+                    sshagent(['github-ssh-rw-key']) {
+                        sh "git checkout ${branch}"
+                        sh "git add yarn.lock"
+                        sh "git commit -m 'chore: update lock file'"
+                        sh "git push origin master"
+                    }
                 }
             }
         }
