@@ -8,6 +8,8 @@ COPY . /app
 
 WORKDIR /app
 
+RUN yarn
+
 RUN yarn workspace @gtms/service-auth build
 
 FROM node:12.16.1-alpine3.10
