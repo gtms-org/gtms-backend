@@ -1,12 +1,9 @@
 import express, { Router, Request, Response } from 'express'
 import { stream } from '@gtms/lib-logger'
 import servicesConfigLoader from './lib/services'
-import {
-  traceIDMiddleware,
-  errorMiddleware,
-  getAppInfoMiddleware,
-} from '@gtms/lib-middlewares'
+import { traceIDMiddleware, errorMiddleware } from '@gtms/lib-middlewares'
 import readAuthFromCookie from './middlewares/readAuthFromCookie'
+import versionMiddleware from './middlewares/version'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 
@@ -24,7 +21,7 @@ async function start() {
   await servicesConfigLoader(router)
 
   app.use(traceIDMiddleware)
-  app.use(getAppInfoMiddleware())
+  app.use(versionMiddleware)
   app.use(readAuthFromCookie)
   app.disable('x-powered-by')
   app.use(
