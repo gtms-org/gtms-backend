@@ -1,6 +1,11 @@
-import { Request, Response } from 'express'
+import { Request, Response, NextFunction } from 'express'
 
-export const errorMiddleware = function(err: any, req: Request, res: Response) {
+export const errorMiddleware = function(
+  err: any,
+  req: Request,
+  res: Response,
+  _: NextFunction
+) {
   err.url = req.url
   err.status = err.status || 500
 

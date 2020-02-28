@@ -23,7 +23,7 @@ const localModules = [
 ]
 
 module.exports = {
-  entry: path.join(process.cwd(), './src/index.ts'),
+  entry: path.join(process.cwd(), './src/start.ts'),
   devtool: 'source-map',
   target: 'node',
   externals: [

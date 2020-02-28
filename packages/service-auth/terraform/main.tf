@@ -18,7 +18,8 @@ resource "docker_container" "service-auth" {
     "QUEUE_HOST=${var.queue_host}",
     "DB_HOST=service-auth-${var.env}-db",
     "USER_PROFILE_SERVICE=missing-for-now",
-    "VERSION=${var.tag}"
+    "VERSION=${var.tag}",
+    "PORT=80"
   ]
 }
 

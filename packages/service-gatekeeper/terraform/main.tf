@@ -40,6 +40,7 @@ resource "docker_container" "service-gatekeeper" {
     "RUN_ENV=${var.env}",
     "JWT_SECRET=${var.jwt_secret}",
     "VERSION=${var.tag}",
-    "AUTH_SERVICE_URL=service-auth-${var.env}"
+    "AUTH_SERVICE_URL=service-auth-${var.env}",
+    "PORT=80"
   ]
 }

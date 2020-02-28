@@ -10,12 +10,13 @@ const {
   APP_DOMAIN,
   USER_PROFILE_SERVICE,
   VERSION,
+  PORT,
 } = process.env
 
 module.exports = {
   secret: JWT_SECRET,
   refreshTokenSecret: JWT_REFRESH_TOKEN_SECRET,
-  port: 3333,
+  port: PORT,
   tokenLife: 900,
   refreshTokenLife: 86400,
   dbHost: DB_HOST,

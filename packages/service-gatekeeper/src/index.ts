@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from 'express'
-import logger, { stream } from '@gtms/lib-logger'
+import { stream } from '@gtms/lib-logger'
 import servicesConfigLoader from './lib/services'
 import {
   traceIDMiddleware,
@@ -12,14 +12,11 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 const router: Router = Router()
-const port = process.env.PORT || 3010
-let startTime: Date
 
 async function start() {
   app.use(cookieParser())
   router.get('/managment/heath', (_: Request, res: Response) => {
     res.status(200).json({
-      startTime,
       status: 'up',
     })
   })
@@ -29,6 +26,7 @@ async function start() {
   app.use(traceIDMiddleware)
   app.use(getAppInfoMiddleware())
   app.use(readAuthFromCookie)
+  app.disable('x-powered-by')
   app.use(
     morgan(
       (tokens, req, res) => {
@@ -47,16 +45,14 @@ async function start() {
     )
   )
   app.use('/v1', router)
-  app.use(errorMiddleware)
 
   router.all('*', (_: Request, res: Response) => {
     res.status(404).json({ status: 'not found' })
   })
 
-  app.listen(port, () => {
-    logger.info(`Gatekeeper started on port ${port}`)
-    startTime = new Date()
-  })
+  app.use(errorMiddleware)
 }
 
 start()
+
+export { app }
