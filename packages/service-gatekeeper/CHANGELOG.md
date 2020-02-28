@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.1.1...@gtms/service-gatekeeper@0.1.2) (2020-02-28)
+
+
+### Bug Fixes
+
+* master: do not read services config in runtime ([818c5c6](https://github.com/mariusz-kabala/gtms-backend/commit/818c5c69ac8649ab6c4c4476a3b9def74dee1aab))
+
+
+
+
+
 ## [0.1.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.1.0...@gtms/service-gatekeeper@0.1.1) (2020-02-28)
 
 
