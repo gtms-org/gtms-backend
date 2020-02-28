@@ -1,6 +1,6 @@
 resource "docker_container" "service-auth" {
   name  = "service-auth-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/openweather:${var.tag}"
+  image = "docker-registry.kabala.tech/gtms/serviceauth:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"
