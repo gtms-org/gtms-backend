@@ -8,6 +8,7 @@ const {
   DB_HOST,
   QUEUE_HOST,
   APP_DOMAIN,
+  USER_PROFILE_SERVICE,
 } = process.env
 
 module.exports = {

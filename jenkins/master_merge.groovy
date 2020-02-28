@@ -125,7 +125,9 @@ pipeline {
                         if (it.name.contains("@gtms/service-")) {
                             build job: '(GTMS Backend) Build service', wait: false, parameters: [
                                 string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
-                                string(name: 'serviceName', value: it.location.replace("${env.WORKSPACE}/packages", "")),
+                                string(name: 'serviceName', value: it.location.replace("${env.WORKSPACE}/packages/", "")),
+                                string(name: 'deploy', value: true)
+                                string(name: 'DEPLOY_ENVIRONMENT': 'qa-master')
                             ]
                         }
                     }

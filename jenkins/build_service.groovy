@@ -64,10 +64,27 @@ pipeline {
                 script {
                     def props = readJSON file: "packages/${env.serviceName}/package.json"
                     def app = docker.build(props['name'].replace('@', '').replace('-', '').toLowerCase(), "-f packages/${env.serviceName}/Dockerfile .")
+
+                    env.VERSION = "v${props['version']}" 
                     
                     docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
                         app.push("v${props['version']}")
                     }
+                }
+            }
+        }
+        stage ('Deply services') {
+            when {
+                environment name: 'deploy', value: true
+            }
+            steps {
+                script {
+                    build job: '(GTMS Backend) Deploy service', wait: false, parameters: [
+                        string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
+                        string(name: 'serviceName', value: env.serviceName),
+                        string(name: 'version', value: env.VERSION)
+                        string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
+                    ]
                 }
             }
         }
