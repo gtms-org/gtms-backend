@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.1.3...@gtms/service-gatekeeper@0.2.0) (2020-02-28)
+
+
+### Features
+
+* master: expose gk version in headers ([dd1066a](https://github.com/mariusz-kabala/gtms-backend/commit/dd1066a67355b868d67a38d6a56137292d405bc5))
+
+
+
+
+
 ## [0.1.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.1.2...@gtms/service-gatekeeper@0.1.3) (2020-02-28)
 
 

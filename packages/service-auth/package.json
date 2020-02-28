@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-auth",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "@gtms/client-queue": "0.2.0",
     "@gtms/commons": "0.2.0",
     "@gtms/lib-logger": "0.2.0",
-    "@gtms/lib-middlewares": "0.2.2",
+    "@gtms/lib-middlewares": "0.2.3",
     "@gtms/lib-testing": "0.0.3"
   },
   "author": "Mariusz Kabała",
