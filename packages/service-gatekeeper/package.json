@@ -1,0 +1,26 @@
+{
+  "name": "@gtms/service-gatekeeper",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "dev": "nodemon",
+    "build": "webpack --mode=production --config ../../webpack.config.js",
+    "start": "node dist"
+  },
+  "dependencies": {
+    "@gtms/commons": "0.1.0",
+    "@gtms/lib-logger": "0.1.0",
+    "@gtms/lib-middlewares": "0.1.0",
+    "@gtms/lib-testing": "0.0.2",
+    "express-http-proxy": "^1.6.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/express-http-proxy": "^1.5.12",
+    "@types/jsonwebtoken": "^8.3.7"
+  },
+  "author": "Mariusz Kabała",
+  "license": "ISC"
+}

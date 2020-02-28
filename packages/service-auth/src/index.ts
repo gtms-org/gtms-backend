@@ -57,7 +57,7 @@ router.post(
   activationsController.deleteAccount
 )
 
-router.all('*', (req: Request, res: Response) => {
+router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
 })
 app.disable('x-powered-by')

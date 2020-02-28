@@ -5,7 +5,7 @@
     "packages": ["packages/*"],
     "command": {
       "publish": {
-        "allowBranch": "jenkins-jobs",
+        "allowBranch": "master",
         "conventionalCommits": true,
         "message": "chore: Bump versions",
         "exact": true,
