@@ -100,7 +100,7 @@ pipeline {
                 }
             }
         }
-        stage ('Deploy auth') {
+        stage ('Deploy gatekeeper') {
             when {
                 environment name: 'SERVICE_NAME', value: 'service-gatekeeper'
             }
