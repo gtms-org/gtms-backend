@@ -1,4 +1,4 @@
-resource "docker_container" "service-auth-${var.env}" {
+resource "docker_container" "service-auth" {
   name  = "service-auth-${var.env}"
   image = "docker-registry.kabala.tech/gtms/openweather:${var.tag}"
   restart = "always"
@@ -20,7 +20,7 @@ resource "docker_container" "service-auth-${var.env}" {
   ]
 }
 
-resource "docker_container" "service-auth-${var.env}-db" {
+resource "docker_container" "service-auth-db" {
   name  = "service-auth-${var.env}-db"
   image = "mongo:4"
   restart = "always"
