@@ -84,7 +84,7 @@ pipeline {
                         hasNewLock == '1'
                     }
                     expression {
-                        branch == 'jenkins-jobs'
+                        branch == 'master'
                     }
                 }
             }
