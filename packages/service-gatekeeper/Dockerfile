@@ -18,6 +18,7 @@ WORKDIR /app
 
 COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/packages/service-gatekeeper/dist .
+COPY --from=build /app/packages/service-gatekeeper/config /app/config
 COPY --from=build /app/packages/service-gatekeeper/package.json /app/package.json
 
 RUN ls -la /app

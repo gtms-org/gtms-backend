@@ -9,6 +9,7 @@ const {
   QUEUE_HOST,
   APP_DOMAIN,
   USER_PROFILE_SERVICE,
+  VERSION,
 } = process.env
 
 module.exports = {
@@ -20,6 +21,7 @@ module.exports = {
   dbHost: DB_HOST,
   dbName: 'auth',
   serviceName: 'auth',
+  serviceVersion: VERSION,
   queueHost: QUEUE_HOST,
   appDomain: APP_DOMAIN,
   services: {
