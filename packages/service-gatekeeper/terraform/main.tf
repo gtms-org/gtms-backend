@@ -1,6 +1,6 @@
 resource "docker_container" "service-gatekeeper" {
   name  = "service-gatekeeper-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/gatekeeper:${var.tag}"
+  image = "docker-registry.kabala.tech/gtms/servicegatekeeper:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"
