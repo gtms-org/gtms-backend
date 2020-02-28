@@ -82,7 +82,7 @@ pipeline {
                     build job: '(GTMS Backend) Deploy service', wait: false, parameters: [
                         string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
                         string(name: 'serviceName', value: env.serviceName),
-                        string(name: 'version', value: env.VERSION)
+                        string(name: 'version', value: env.VERSION),
                         string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
                     ]
                 }
