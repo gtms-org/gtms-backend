@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { Router, Request } from 'express'
 import proxy from 'express-http-proxy'
-import { http } from './enums'
-import logger from './logger'
+import { http } from '@gtms/commons'
+import logger from '@gtms/lib-logger'
 import auth from '../middlewares/auth'
 import uuid from 'uuid'
 
@@ -22,7 +22,7 @@ const traceIdDecorator = (proxyReqOpts: any, srcReq: Request) => {
   return proxyReqOpts
 }
 
-const proxyOptions: any = {
+const proxyOptions: proxy.ProxyOptions = {
   proxyReqOptDecorator: traceIdDecorator,
   parseReqBody: false,
   reqAsBuffer: true,

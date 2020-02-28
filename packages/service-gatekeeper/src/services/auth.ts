@@ -1,4 +1,4 @@
-import { http } from '../lib/enums'
+import { http } from '@gtms/commons'
 
 export default {
   url: '/auth',
@@ -47,12 +47,12 @@ export default {
     },
     {
       path: '/delete-account',
-      method: http.POST,
+      method: http.DELETE,
       restricted: true,
     },
     {
-      path: '/delete-account',
-      method: http.GET,
+      path: '/delete-account-confirm',
+      method: http.POST,
       restricted: true,
     },
   ],
