@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-middlewares@0.2.0...@gtms/lib-middlewares@0.2.1) (2020-02-28)
+
+
+### Bug Fixes
+
+* master: use only config, do not use env vars directly ([00e5b89](https://github.com/mariusz-kabala/gtms-backend/commit/00e5b89d4ba2c562d058782e5abd23a0994cb7db))
+
+
+
+
+
 # 0.2.0 (2020-02-28)
 
 
