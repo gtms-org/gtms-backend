@@ -75,7 +75,7 @@ pipeline {
         }
         stage ('Deply services') {
             when {
-                environment name: 'deploy', value: true
+                environment name: 'deploy', value: 'true'
             }
             steps {
                 script {
