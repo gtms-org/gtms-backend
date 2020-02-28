@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.1.2...@gtms/service-gatekeeper@0.1.3) (2020-02-28)
+
+
+### Bug Fixes
+
+* master: fix onError middleware ([05c8396](https://github.com/mariusz-kabala/gtms-backend/commit/05c83966a2c98cb2be2769e90dcfb89771b84085))
+
+
+
+
+
 ## [0.1.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.1.1...@gtms/service-gatekeeper@0.1.2) (2020-02-28)
 
 
