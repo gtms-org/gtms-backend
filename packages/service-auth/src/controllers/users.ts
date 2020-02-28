@@ -1,7 +1,7 @@
 import userModel, { IUser } from '../models/users'
 import refreshTokenModel, { IRefreshToken } from '../models/refreshToken'
 import { Request, Response, NextFunction } from 'express'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import logger from '@gtms/lib-logger'
 import authenticate, { getJWTData } from '../helpers/authenticate'
