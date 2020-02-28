@@ -18,18 +18,22 @@ pipeline {
             when {
                 environment name: 'DEPLOY_ENVIRONMENT', value: 'qa-master'
             }
-            script {
-                env.JWT_SECRET = credentials('gtms-service-auth-qa-master-jwt-secrect')
-                env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-master-jwt-refresh-token-secrect')
+            steps {
+                script {
+                    env.JWT_SECRET = credentials('gtms-service-auth-qa-master-jwt-secrect')
+                    env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-master-jwt-refresh-token-secrect')
+                }
             }
         }
         stage ('Set qa-stable vars') {
             when {
                 environment name: 'DEPLOY_ENVIRONMENT', value: 'qa-stable'
             }
-            script {
-                env.JWT_SECRET = credentials('gtms-service-auth-qa-stable-jwt-secrect')
-                env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-stable-jwt-refresh-token-secrect')
+            steps {
+                script {
+                    env.JWT_SECRET = credentials('gtms-service-auth-qa-stable-jwt-secrect')
+                    env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-stable-jwt-refresh-token-secrect')
+                }
             }
         }
         stage ('prepare') {
