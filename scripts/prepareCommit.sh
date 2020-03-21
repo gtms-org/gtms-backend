@@ -4,7 +4,7 @@ GIT_DIR="$(git rev-parse --git-dir)"
 DESC="$GIT_DIR/COMMIT_EDITMSG"
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
 TRIMMED=$(echo "$BRANCH_NAME" | sed -e 's:^\([^-]*-[^-]*\)-.*:\1:' -e\ 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/')
-COMMIT_REGEXP="^(revert: )?(feat|fix|docs|style|refactor|perf|test|chore)(\(.+\))?: (.{1,50})"
+COMMIT_REGEXP="^(revert: )?(feat|fix|ci|docs|style|refactor|perf|test|chore)(\(.+\))?: (.{1,50})"
 MESSAGE="$(cat $DESC)"
 
 if [[ ! "$MESSAGE" =~ $COMMIT_REGEXP ]]; then
