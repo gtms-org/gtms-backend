@@ -27,7 +27,7 @@ router.get('/managment/heath', (_: Request, res: Response) => {
   })
 })
 
-router.post('/', groupsController.create)
+router.post('/', JWTMiddleware, groupsController.create)
 router.get('/', groupsController.list)
 
 router.all('*', (_: Request, res: Response) => {
@@ -37,7 +37,6 @@ router.all('*', (_: Request, res: Response) => {
 app.disable('x-powered-by')
 app.use(getAppInfoMiddleware())
 app.use(traceIDMiddleware)
-app.use(JWTMiddleware)
 app.use(
   morgan(
     (tokens, req, res) => {
