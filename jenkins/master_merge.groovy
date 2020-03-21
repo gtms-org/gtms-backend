@@ -115,7 +115,7 @@ pipeline {
                         sh "git checkout ${branch}"
                         try {
                             sh "lerna version --no-commit-hooks"
-                        } catch {
+                        } catch (e) {
                             currentBuild.result = 'SUCCESS'
                         }
                     }
