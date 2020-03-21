@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.2.0...@gtms/service-gatekeeper@0.3.0) (2020-03-21)
+
+
+### Features
+
+* GEOT-139: enable groups service in gatekeeper ([#6](https://github.com/mariusz-kabala/gtms-backend/issues/6)) ([10d15cb](https://github.com/mariusz-kabala/gtms-backend/commit/10d15cb06aee0ca97f7f3b6f7e123b33a068f5a9))
+
+
+
+
+
 # [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.1.3...@gtms/service-gatekeeper@0.2.0) (2020-02-28)
 
 
