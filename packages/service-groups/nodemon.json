@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "../**/src"],
+  "exec": "yarn workspace @gtms/service-groups build && yarn workspace @gtms/service-groups start",
+  "ext": "js ts"
+}

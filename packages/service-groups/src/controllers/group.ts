@@ -21,6 +21,7 @@ export default {
         res.status(201).json({
           id: group._id,
           name: group.name,
+          slug: group.slug,
           description: group.description,
           type: group.type,
           visibility: group.visibility,
