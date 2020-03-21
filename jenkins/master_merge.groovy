@@ -113,7 +113,11 @@ pipeline {
                 script {
                     sshagent(['jenkins-ssh-key']) {
                         sh "git checkout ${branch}"
-                        sh "lerna version --no-commit-hooks"
+                        try {
+                            sh "lerna version --no-commit-hooks"
+                        } catch {
+                            currentBuild.result = 'SUCCESS'
+                        }
                     }
                 }
             }
