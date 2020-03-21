@@ -102,9 +102,13 @@ pipeline {
         stage ('Look for services to build and deploy') {
             steps {
                 script {
-                    def changed = sh returnStdout: true, script: "lerna changed --all --json"
-                    StringBuilder services = new StringBuilder()
-                    changedJSON = new groovy.json.JsonSlurperClassic().parseText(changed)
+                    try {
+                        def changed = sh returnStdout: true, script: "lerna changed --all --json"
+                        StringBuilder services = new StringBuilder()
+                        changedJSON = new groovy.json.JsonSlurperClassic().parseText(changed)
+                    } catch (e) {
+                        currentBuild.result = 'SUCCESS'
+                    }
                 }
             }
         }
@@ -113,11 +117,7 @@ pipeline {
                 script {
                     sshagent(['jenkins-ssh-key']) {
                         sh "git checkout ${branch}"
-                        try {
-                            sh "lerna version --no-commit-hooks"
-                        } catch (e) {
-                            currentBuild.result = 'SUCCESS'
-                        }
+                        sh "lerna version --no-commit-hooks"
                     }
                 }
             }
