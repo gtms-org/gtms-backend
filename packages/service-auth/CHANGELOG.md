@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.2.3...@gtms/service-auth@0.3.0) (2020-03-21)
+
+
+### Features
+
+* GEOT-138: add groups service ([#4](https://github.com/mariusz-kabala/gtms-backend/issues/4)) ([f0595e2](https://github.com/mariusz-kabala/gtms-backend/commit/f0595e2139cb13eb6340944167a9521444df4c90))
+
+
+
+
+
 ## [0.2.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.2.2...@gtms/service-auth@0.2.3) (2020-02-28)
 
 **Note:** Version bump only for package @gtms/service-auth
