@@ -103,7 +103,7 @@ pipeline {
 
         stage ('Deploy groups') {
             when {
-                environment name: 'SERVICE_NAME', value: 'service-gatekeeper'
+                environment name: 'SERVICE_NAME', value: 'service-groups'
             }
              steps {
                 dir("packages/${env.SERVICE_NAME}/terraform") {
