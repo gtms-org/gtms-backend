@@ -2,7 +2,13 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-const { JWT_SECRET, AUTH_SERVICE_URL, VERSION, PORT } = process.env
+const {
+  JWT_SECRET,
+  AUTH_SERVICE_URL,
+  GROUPS_SERVICE_URL,
+  VERSION,
+  PORT,
+} = process.env
 
 module.exports = {
   secret: JWT_SECRET,
@@ -10,6 +16,7 @@ module.exports = {
   serviceVersion: VERSION,
   services: {
     auth: `http://${AUTH_SERVICE_URL}`,
+    groups: `http://${GROUPS_SERVICE_URL}`,
   },
   port: PORT,
 }
