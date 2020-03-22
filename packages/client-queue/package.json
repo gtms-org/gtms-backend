@@ -5,6 +5,9 @@
     "main": "src/index.ts",
     "author": "Mariusz Kabała",
     "license": "ISC",
+    "scripts": {
+        "test": "exit 0"
+    },
     "dependencies": {
         "@gtms/commons": "0.2.0",
         "@gtms/lib-logger": "0.2.0"

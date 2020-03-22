@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  gtms-testing-queue:
+    image: rabbitmq:3
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: test
+    environment:
+      NODE_ENV: test
+      DB_HOST: localhost 
+      QUEUE_HOST: gtms-testing-queue
+      APP_DOMAIN: testing
+      VERSION: dev
+    command: ["./scripts/wait-for-it.sh", "gtms-testing-queue:5672", "--", "yarn", "workspaces", "run", "test"]
+    links:
+      - gtms-testing-queue
