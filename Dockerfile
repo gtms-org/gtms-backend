@@ -13,3 +13,4 @@ COPY ./packages/service-groups/.env.testing /app/packages/service-groups/.env
 
 # install deps
 RUN yarn install
+RUN chmod +x /app/scripts/wait-for-it.sh
