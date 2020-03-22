@@ -1,0 +1,23 @@
+{
+  "name": "@gtms/service-notifications",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon",
+    "build": "webpack --mode=production --config ../../webpack.config.js",
+    "start": "node dist"
+  },
+  "dependencies": {
+    "@gtms/client-mongoose": "0.2.0",
+    "@gtms/client-queue": "0.2.0",
+    "@gtms/commons": "0.2.0",
+    "@gtms/lib-logger": "0.2.0",
+    "@gtms/lib-middlewares": "0.2.3",
+    "@gtms/lib-testing": "0.0.3",
+    "@sendgrid/mail": "^6.5.5"
+  },
+  "author": "Mariusz Kabała",
+  "license": "ISC"
+}
