@@ -62,7 +62,7 @@ pipeline {
         stage ('Run tests') {
              steps {
                 script {
-                    sh "docker-compose -f ./docker-compose-testing.yaml up"
+                    sh "docker-compose -f ./docker-compose-testing.yaml up --build app"
                 }
             }
         }
