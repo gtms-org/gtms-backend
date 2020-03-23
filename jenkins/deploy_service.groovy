@@ -99,6 +99,14 @@ pipeline {
                     }
                 }
             }
+            post {
+                success {
+                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sunny: *${env.SERVICE_NAME}* version: *${version}* Build succeeded - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
+                }
+                unsuccessful {
+                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sob: *${env.SERVICE_NAME}* version: *${version}* Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
+                }
+            }
         }
 
         stage ('Deploy groups') {
@@ -117,6 +125,14 @@ pipeline {
                     }
                 }
             }
+            post {
+                success {
+                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sunny: *${env.SERVICE_NAME}* version: *${version}* Build succeeded - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
+                }
+                unsuccessful {
+                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sob: *${env.SERVICE_NAME}* version: *${version}* Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
+                }
+            }
         }
 
         stage ('Deploy gatekeeper') {
@@ -133,6 +149,14 @@ pipeline {
                             sh "terraform apply -auto-approve deploy.plan"
                         }
                     }
+                }
+            }
+            post {
+                success {
+                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sunny: *${env.SERVICE_NAME}* version: *${version}* Build succeeded - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
+                }
+                unsuccessful {
+                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sob: *${env.SERVICE_NAME}* version: *${version}* Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
                 }
             }
         }
