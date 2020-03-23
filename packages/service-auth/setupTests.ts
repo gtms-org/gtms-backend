@@ -4,8 +4,9 @@ import { testDbHelper } from '@gtms/lib-testing'
 // jest.mock('@gtms/lib-logger', () => ({
 //   log: jest.fn(),
 // }))
-
+console.log(process.env)
 beforeAll(async () => {
+  console.log(process.env)
   await testDbHelper.start()
 })
 
