@@ -13,7 +13,7 @@ import {
 import logger, { stream } from '@gtms/lib-logger'
 import facebookController from './controllers/facebook'
 import activationsController from './controllers/activations'
-
+console.log(process.env)
 const app = express()
 const router: Router = Router()
 const startTime: Date = new Date()
