@@ -1,4 +1,3 @@
-import fs from 'fs'
 import path from 'path'
 import { Router, Request } from 'express'
 import proxy from 'express-http-proxy'
@@ -11,11 +10,6 @@ import services from '../services'
 const configurationDir = path.resolve(path.join(__dirname, '../services'))
 
 logger.debug(`Services config dir: ${configurationDir}`)
-
-const isJsFile = (file: string): boolean => {
-  const arr = file.split('.')
-  return arr[arr.length - 1] === 'js'
-}
 
 const traceIdDecorator = (proxyReqOpts: any, srcReq: Request) => {
   proxyReqOpts.headers['x-traceid'] = srcReq.header('x-traceid') || uuid()
@@ -31,7 +25,7 @@ const proxyOptions: proxy.ProxyOptions = {
 }
 
 export default (gatekeeperRouter: Router): Promise<void> =>
-  new Promise((resolve, reject) => {
+  new Promise(resolve => {
     for (const service of services) {
       const { url, provider, name, locations } = service
 
