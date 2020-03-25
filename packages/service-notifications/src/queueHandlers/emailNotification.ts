@@ -3,15 +3,6 @@ import logger from '@gtms/lib-logger'
 import { IEmailNotification } from '@gtms/commons'
 import config from 'config'
 
-export interface IEmailNotification {
-  to: string
-  from?: string
-  subject: string
-  text: string
-  html: string
-  traceId: string
-}
-
 sgMail.setApiKey(config.get<string>('sendgridApiKey'))
 
 export default async function(msg: IEmailNotification) {
