@@ -11,6 +11,7 @@ const RefreshTokenSchema = new Schema({
     type: String,
     trim: false,
     required: true,
+    index: true,
   },
   user: {
     type: Schema.Types.ObjectId,

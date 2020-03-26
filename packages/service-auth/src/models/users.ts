@@ -39,6 +39,7 @@ const UserSchema = new Schema(
       unique: true,
       trim: true,
       required: true,
+      index: true,
       validate: {
         validator: validateEmailAddress,
         message: props => `${props.value} is not a valid email address`,
