@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
-import groupsController from './controllers/group'
+import webPushSubscriptionsController from './controllers/webPushSubscriptions'
 import {
   JWTMiddleware,
   errorMiddleware,
@@ -25,8 +25,9 @@ router.get('/managment/heath', (_: Request, res: Response) => {
   })
 })
 
-router.post('/', JWTMiddleware, groupsController.create)
-router.get('/', groupsController.list)
+router.post('/web-push', webPushSubscriptionsController.create)
+router.delete('/web-push/:hash', webPushSubscriptionsController.deleteRecord)
+router.get('/web-push/:hash', webPushSubscriptionsController.checkIfExists)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
@@ -35,6 +36,7 @@ router.all('*', (_: Request, res: Response) => {
 app.disable('x-powered-by')
 app.use(getAppInfoMiddleware())
 app.use(traceIDMiddleware)
+app.use(JWTMiddleware)
 app.use(
   morgan(
     (tokens, req, res) => {
