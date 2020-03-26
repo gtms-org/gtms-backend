@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-notifications",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "@gtms/client-queue": "0.3.0",
     "@gtms/commons": "0.3.0",
     "@gtms/lib-logger": "0.3.0",
-    "@gtms/lib-middlewares": "0.3.0",
+    "@gtms/lib-middlewares": "0.4.0",
     "@gtms/lib-testing": "0.1.0",
     "@sendgrid/mail": "^6.5.5"
   },
