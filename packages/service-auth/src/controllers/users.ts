@@ -84,7 +84,7 @@ export default {
   authenticate(req: Request, res: Response, next: NextFunction): void {
     userModel
       .findOne({ email: req.body.email, isBlocked: false })
-      .then(async (user: IUser) => {
+      .then(async (user: IUser | null) => {
         if (!user) {
           logger.log({
             message: `Not existing user (${req.body.email})`,

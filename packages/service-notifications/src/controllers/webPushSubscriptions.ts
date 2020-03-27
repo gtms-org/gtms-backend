@@ -21,17 +21,24 @@ export default {
           traceId: res.get('x-traceid'),
         })
 
-        res.status(201)
+        res
+          .status(201)
+          .json({
+            hash: subscription.hash,
+          })
+          .end()
       })
       .catch(err => {
         if (err.name === 'ValidationError') {
-          res.status(400).json(err.errors)
-
           logger.log({
             message: `Validation error ${err}`,
             level: 'error',
             traceId: res.get('x-traceid'),
           })
+          res
+            .status(400)
+            .json(err.errors)
+            .end()
         } else {
           next(err)
 
@@ -50,28 +57,40 @@ export default {
       hash,
       owner: req.user.id,
     })
-      .then((subscription: IWebPushSubscription) => {
-        res.status(200).json({
-          hash: subscription.hash,
-          userAgent: subscription.userAgent,
-        })
+      .then((subscription: IWebPushSubscription | null) => {
+        if (!subscription) {
+          return res.status(404).end()
+        }
+
+        res
+          .status(200)
+          .json({
+            hash: subscription.hash,
+            userAgent: subscription.userAgent,
+          })
+          .end()
       })
       .catch(() => {
-        res.status(404)
+        res.status(404).end()
       })
   },
   deleteRecord(req: IAuthRequest, res: Response, next: NextFunction): void {
     const { hash } = req.params
 
-    WebPushSubscriptionModel.deleteOne({
+    WebPushSubscriptionModel.findOneAndDelete({
       hash,
       owner: req.user.id,
     })
-      .then(result => {
-        if (result.ok === 1) {
-          res.status(200)
+      .then((result: IWebPushSubscription | null) => {
+        if (result !== null) {
+          res.status(200).end()
+          logger.log({
+            message: `Subscription ${result.hash} (user id: ${result.owner}) has been removed from DB`,
+            level: 'info',
+            traceId: res.get('x-traceid'),
+          })
         } else {
-          res.status(404)
+          res.status(404).end()
         }
       })
       .catch(err => {

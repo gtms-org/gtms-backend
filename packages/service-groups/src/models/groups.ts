@@ -59,7 +59,7 @@ const GroupSchema = new Schema(
       required: false,
     },
     owner: {
-      type: String,
+      type: Schema.Types.ObjectId,
       required: true,
     },
   },

@@ -19,7 +19,10 @@ describe('Group controller', () => {
         visibility: 'public',
       })
       .set('Accept', 'application/json')
-      .set('x-access-token', '{"id": "fake-id", "email": "test@test.com"}')
+      .set(
+        'x-access-token',
+        '{"id": "5e53b8e368985486d4a50922", "email": "test@test.com"}'
+      )
 
     // test response status code
     expect(response.status).toBe(201)

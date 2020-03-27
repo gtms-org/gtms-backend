@@ -12,6 +12,7 @@ const ActivationCodeSchema = new Schema({
     type: String,
     required: false,
     unique: true,
+    index: true,
   },
   owner: {
     type: Schema.Types.ObjectId,

@@ -11,16 +11,17 @@ export interface IWebPushSubscription extends Document {
 
 const WebPushSubscriptionSchema = new Schema({
   owner: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
   },
   hash: {
     type: String,
-    required: true,
     unique: true,
+    index: true,
   },
   subscription: {
     type: String,
+    unique: true,
     required: true,
   },
   userAgent: {
@@ -34,7 +35,7 @@ WebPushSubscriptionSchema.plugin(uniqueValidator)
 WebPushSubscriptionSchema.pre<IWebPushSubscription>('save', function(
   next: HookNextFunction
 ) {
-  if (this.isModified('hash')) {
+  if (this.isModified('subscription')) {
     this.hash = crypto
       .createHash('md5')
       .update(JSON.stringify(this.subscription))
