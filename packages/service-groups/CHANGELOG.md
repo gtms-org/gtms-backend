@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.4.0...@gtms/service-groups@0.5.0) (2020-03-27)
+
+
+### Features
+
+* GEOT-164: add push notification subscriptions endpoints ([#24](https://github.com/mariusz-kabala/gtms-backend/issues/24)) ([773493f](https://github.com/mariusz-kabala/gtms-backend/commit/773493f7aee5a2e27fab6a3664acc3f2ead62590))
+
+
+
+
+
 # [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.3.0...@gtms/service-groups@0.4.0) (2020-03-26)
 
 
