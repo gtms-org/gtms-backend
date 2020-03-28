@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.2.0...@gtms/service-notifications@0.3.0) (2020-03-28)
+
+
+### Features
+
+* GEOT-146: start listening for queue messages ([#27](https://github.com/mariusz-kabala/gtms-backend/issues/27)) ([70be585](https://github.com/mariusz-kabala/gtms-backend/commit/70be585f92940e724dda073b23e247470825442f))
+
+
+
+
+
 # [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.1.0...@gtms/service-notifications@0.2.0) (2020-03-27)
 
 
