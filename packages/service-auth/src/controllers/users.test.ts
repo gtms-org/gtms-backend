@@ -38,7 +38,6 @@ describe('Users controller', () => {
       // compare traceid from http response, with the one sent to queue
       expect(json.data.traceId).toBe(traceid)
 
-      traceid = json.data.traceId
       conn.close()
       setTimeout(() => done(), 100)
     }
