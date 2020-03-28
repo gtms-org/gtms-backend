@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.5.0...@gtms/service-groups@0.6.0) (2020-03-28)
+
+
+### Features
+
+* GEOT-129: get and update endpoints for groups service ([#26](https://github.com/mariusz-kabala/gtms-backend/issues/26)) ([f32d1f0](https://github.com/mariusz-kabala/gtms-backend/commit/f32d1f0f2a2bfb05f9c1efe43453dda3372e87ca))
+
+
+
+
+
 # [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.4.0...@gtms/service-groups@0.5.0) (2020-03-27)
 
 

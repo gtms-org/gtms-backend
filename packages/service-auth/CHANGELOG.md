@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.6.0...@gtms/service-auth@0.6.1) (2020-03-28)
+
+
+### Bug Fixes
+
+* GEOT-112: unit tests and small fixes for FB controller ([#25](https://github.com/mariusz-kabala/gtms-backend/issues/25)) ([80f28e5](https://github.com/mariusz-kabala/gtms-backend/commit/80f28e5f2f2548370f6e95974bda20a1d5dd9666))
+
+
+
+
+
 # [0.6.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.5.0...@gtms/service-auth@0.6.0) (2020-03-27)
 
 
