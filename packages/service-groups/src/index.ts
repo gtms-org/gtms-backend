@@ -27,6 +27,8 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.post('/', JWTMiddleware, groupsController.create)
 router.get('/', groupsController.list)
+router.get('/:slug', groupsController.show)
+router.post('/:slug', JWTMiddleware, groupsController.update)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
