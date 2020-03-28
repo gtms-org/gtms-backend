@@ -87,7 +87,7 @@ export default {
       .then(async (user: IUser | null) => {
         if (!user) {
           logger.log({
-            message: `Not existing user (${req.body.email})`,
+            message: `Not existing user / or blocked tried to login (${req.body.email})`,
             level: 'info',
             traceId: res.get('x-traceid'),
           })
