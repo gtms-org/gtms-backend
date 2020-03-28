@@ -15,3 +15,5 @@ variable "DOCKER_REGISTRY_USERNAME" {}
 variable "SENDGRID_API_KEY" {}
 
 variable "emailAddress" {}
+
+variable "app_domain" {}
