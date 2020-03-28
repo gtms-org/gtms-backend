@@ -5460,10 +5460,10 @@ mongodb@3.5.3:
   optionalDependencies:
     saslprep "^1.0.0"
 
-mongodb@^3.2.7, mongodb@^3.5.2:
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.5.4.tgz#f7609cfa9f8c56c35e844b4216ddc3a1b1ec5bef"
-  integrity sha512-xGH41Ig4dkSH5ROGezkgDbsgt/v5zbNUwE3TcFsSbDc6Qn3Qil17dhLsESSDDPTiyFDCPJRpfd4887dtsPgKtA==
+mongodb@^3.2.7, mongodb@^3.5.5:
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.5.5.tgz#1334c3e5a384469ac7ef0dea69d59acc829a496a"
+  integrity sha512-GCjDxR3UOltDq00Zcpzql6dQo1sVry60OXJY3TDmFc2SWFY6c8Gn1Ardidc5jDirvJrx2GC3knGOImKphbSL3A==
   dependencies:
     bl "^2.2.0"
     bson "^1.1.1"
@@ -5671,13 +5671,13 @@ node-modules-regexp@^1.0.0:
   integrity sha1-jZ2+KJZKSsVxLpExZCEHxx6Q7EA=
 
 node-mongodb-fixtures@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/node-mongodb-fixtures/-/node-mongodb-fixtures-3.2.2.tgz#975056edd0ecfbfb6fce03a491e17dacec5a70fd"
-  integrity sha512-ewvhFL+Msy9NiYHJz2Gf+bnIRLxC9nUcMCAzsNiAvF7iOOncyn1a3CsN7DRy4bazwlc0WYrBaODuDYes1NnTeg==
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/node-mongodb-fixtures/-/node-mongodb-fixtures-3.2.3.tgz#c500ddc90f9219587915f27dde90e5e08e41da42"
+  integrity sha512-rpQ5pCEVK3s5XAbIlKnryCmuF6FBNfiFc0munNNTPHP2TnA383IBsUY8zqQynHD8/ZFspEii9+QfO8bD2vmhmg==
   dependencies:
     bluebird "^3.7.2"
     commander "^4.1.1"
-    mongodb "^3.5.2"
+    mongodb "^3.5.5"
 
 node-notifier@^5.4.2:
   version "5.4.3"
