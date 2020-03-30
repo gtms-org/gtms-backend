@@ -1,5 +1,5 @@
 {
   "watch": ["src", "../**/src"],
-  "exec": "yarn workspace @gtms/service-notifications build && yarn workspace @gtms/service-notifications start",
+  "exec": "yarn workspace @gtms/swagger build && yarn workspace @gtms/swagger start",
   "ext": "js ts"
 }
