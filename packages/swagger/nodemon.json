@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "../**/src"],
+  "exec": "yarn workspace @gtms/swagger build && yarn workspace @gtms/swagger start",
+  "ext": "js ts"
+}
