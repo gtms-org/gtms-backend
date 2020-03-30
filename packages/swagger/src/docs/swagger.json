@@ -1,0 +1,417 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Swagger GTMS"
+  },
+  "host": "master.geotags.pl",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "User login and registration service"
+    },
+    {
+      "name": "Groups",
+      "description": "Groups service"
+    },
+    {
+      "name": "Notifications",
+      "description": "Email and web push notifications service"
+    }
+  ],
+  "schemes": ["https"],
+  "paths": {
+    "/auth/users/count": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Returns the current number of registered users",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "counter": {
+                  "type": "number"
+                }
+              },
+              "example": {
+                "counter": 510
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/users": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register a new user",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "countryCode": {
+                  "type": "string"
+                },
+                "languageCode": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Validation errors",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/ValidationError"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/authenticate": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login into an account",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/JWT"
+            }
+          },
+          "401": {
+            "description": "Invalid email/password"
+          },
+          "403": {
+            "description": "Account is not active"
+          }
+        }
+      }
+    },
+    "/auth/refresh-token": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Refreshes access token",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accessToken": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Token is invalid"
+          }
+        }
+      }
+    },
+    "/auth/activate-account/{code}": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Actives user account",
+        "description": "",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Activation code"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Activation code not found"
+          }
+        }
+      }
+    },
+    "/auth/remind-password": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Generates remind password email",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email has been sent"
+          },
+          "400": {
+            "description": "Address email is invalid"
+          },
+          "404": {
+            "description": "Email not found in DB"
+          }
+        }
+      }
+    },
+    "/auth/reset-passord": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Resets user's password",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Payload is invalid"
+          },
+          "404": {
+            "description": "Code not found"
+          }
+        }
+      }
+    },
+    "/auth/delete-account": {
+      "delete": {
+        "tags": ["Auth"],
+        "summary": "Sends delete user account email",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/auth/delete-account-confirm": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Sends delete user account email",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account has been deleted"
+          },
+          "400": {
+            "description": "Code is invalid"
+          },
+          "401": {
+            "description": "Code does not belong to the current user"
+          },
+          "404": {
+            "description": "Code or account does not exist"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "format": "phone-number"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "languageCode": {
+          "type": "string"
+        }
+      }
+    },
+    "JWT": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "ValidationErrorProperty": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "ValidationError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/definitions/ValidationErrorProperty"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -8,7 +8,24 @@ export interface IWebPushSubscription extends Document {
   hash: string
   userAgent: string
 }
-
+/**
+ * @swagger
+ *  components:
+ *    schemas:
+ *       WebPushSubscription:
+ *         type: object
+ *         required:
+ *           - owner
+ *           - subscription
+ *           - userAgent
+ *         properties:
+ *           owner:
+ *             type: string
+ *           subscription:
+ *             type: string
+ *           userAgent:
+ *             type: string
+ */
 const WebPushSubscriptionSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
