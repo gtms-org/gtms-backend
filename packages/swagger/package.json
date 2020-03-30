@@ -1,6 +1,6 @@
 {
   "name": "@gtms/swagger",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "description": "Swagger API Project",
   "keywords": [],
@@ -8,12 +8,12 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
-    "swagger-ui-express": "^4.1.4",
-    "swagger-jsdoc": "^4.0.0"
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
-    "@types/swagger-ui-express": "^4.1.2",
-    "@types/swagger-jsdoc": "^3.0.2"
+    "@types/swagger-jsdoc": "^3.0.2",
+    "@types/swagger-ui-express": "^4.1.2"
   },
   "scripts": {
     "dev": "nodemon",
