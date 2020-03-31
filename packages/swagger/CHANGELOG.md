@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.3.1...@gtms/swagger@0.4.0) (2020-03-31)
+
+
+### Features
+
+* GEOT-186: add missing swagger documentation ([#31](https://github.com/mariusz-kabala/gtms-backend/issues/31)) ([b5f9946](https://github.com/mariusz-kabala/gtms-backend/commit/b5f99464f090d0241e4045f1d1f5beab9c148692))
+
+
+
+
+
 ## [0.3.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.3.0...@gtms/swagger@0.3.1) (2020-03-31)
 
 **Note:** Version bump only for package @gtms/swagger
