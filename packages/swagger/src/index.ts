@@ -7,7 +7,7 @@ app.disable('x-powered-by')
 app.use(bodyParser.json())
 
 app.use(
-  '/',
+  '/docs',
   swaggerUi.serve,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   swaggerUi.setup(require('./docs/swagger.json'), {

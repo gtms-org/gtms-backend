@@ -126,7 +126,7 @@ pipeline {
             steps {
                 script {
                     changedJSON.each{
-                        if (it.name.contains("@gtms/service-")) {
+                        if (it.name.contains("@gtms/service-") || it.name.contains("@gtms/swagger")) {
                             build job: '(GTMS Backend) Build service', wait: false, parameters: [
                                 string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
                                 string(name: 'serviceName', value: it.location.replace("${env.WORKSPACE}/packages/", "")),
