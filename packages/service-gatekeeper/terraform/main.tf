@@ -17,11 +17,6 @@ resource "docker_container" "service-gatekeeper" {
   }
 
   labels {
-    label = "traefik.backend"
-    value = "service-gatekeeper-${var.env}"
-  }
-
-  labels {
     label = "traefik.frontend.rule"
     value = "PathPrefixStrip:/api;Host:${var.app_domain}"
   }
