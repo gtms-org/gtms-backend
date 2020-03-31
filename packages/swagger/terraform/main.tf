@@ -18,7 +18,7 @@ resource "docker_container" "swagger" {
 
   labels {
     label = "traefik.frontend.rule"
-    value = "PathPrefixStrip:/docs;Host:${var.app_domain}"
+    value = "PathPrefix:/docs;Host:${var.app_domain}"
   }
 
   labels {
