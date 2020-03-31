@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.7.0...@gtms/service-gatekeeper@0.8.0) (2020-03-31)
+
+
+### Features
+
+* GEOT-183: swagger deployment ([#29](https://github.com/mariusz-kabala/gtms-backend/issues/29)) ([bb825eb](https://github.com/mariusz-kabala/gtms-backend/commit/bb825ebda23ff5004d4f16dd9d592e85b256f2d0))
+
+
+
+
+
 # [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.6.0...@gtms/service-gatekeeper@0.7.0) (2020-03-30)
 
 
