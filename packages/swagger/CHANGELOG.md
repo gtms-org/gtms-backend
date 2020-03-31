@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.2.0...@gtms/swagger@0.2.1) (2020-03-31)
+
+
+### Bug Fixes
+
+* master: enable swagger autodeployment ([3b5b562](https://github.com/mariusz-kabala/gtms-backend/commit/3b5b5621d9b9782025f8154f12c362cd0ba45ca1))
+
+
+
+
+
 # [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.1.0...@gtms/swagger@0.2.0) (2020-03-31)
 
 
