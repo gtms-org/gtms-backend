@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.4.0...@gtms/swagger@0.5.0) (2020-04-02)
+
+
+### Features
+
+* GEOT-191: add auth to swagger definitions ([#32](https://github.com/mariusz-kabala/gtms-backend/issues/32)) ([9f619e6](https://github.com/mariusz-kabala/gtms-backend/commit/9f619e6ba43c6356e8341a88d64f35f8aaa8b246))
+
+
+
+
+
 # [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.3.1...@gtms/swagger@0.4.0) (2020-03-31)
 
 
