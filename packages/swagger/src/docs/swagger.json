@@ -290,6 +290,11 @@
     },
     "/auth/delete-account": {
       "delete": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Auth"],
         "summary": "Sends delete user account email",
         "consumes": ["application/json"],
@@ -303,6 +308,11 @@
     },
     "/auth/delete-account-confirm": {
       "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Auth"],
         "summary": "Sends delete user account email",
         "consumes": ["application/json"],
@@ -340,6 +350,11 @@
     },
     "/group": {
       "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Groups"],
         "summary": "Creates a new group",
         "consumes": ["application/json"],
@@ -428,6 +443,11 @@
         }
       },
       "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Groups"],
         "summary": "Updates group data",
         "parameters": [
@@ -503,6 +523,11 @@
     },
     "/notifications/web-push": {
       "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Notifications"],
         "summary": "Creates a new web push subscription",
         "consumes": ["application/json"],
@@ -548,6 +573,11 @@
     },
     "/web-push/{hash}": {
       "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Notifications"],
         "summary": "Checks if subscription exists",
         "consumes": ["application/json"],
@@ -582,6 +612,11 @@
         }
       },
       "delete": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Notifications"],
         "summary": "Deletes subscription",
         "consumes": ["application/json"],
@@ -717,6 +752,13 @@
           "type": "string"
         }
       }
+    }
+  },
+  "securityDefinitions": {
+    "user_auth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-access-token"
     }
   }
 }
