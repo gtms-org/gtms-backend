@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-groups-es-indexer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,8 +12,8 @@
   "dependencies": {
     "@gtms/client-queue": "0.3.1",
     "@gtms/commons": "0.4.0",
-    "@gtms/lib-logger": "0.3.0",
-    "@gtms/lib-http-server": "0.0.1"
+    "@gtms/lib-http-server": "0.1.0",
+    "@gtms/lib-logger": "0.3.0"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"
