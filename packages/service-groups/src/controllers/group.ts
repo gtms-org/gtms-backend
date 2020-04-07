@@ -3,6 +3,12 @@ import GroupModel, { IGroup } from '../models/groups'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import slugify from '@sindresorhus/slugify'
+import { publishOnChannel } from '@gtms/client-queue'
+import {
+  Queues,
+  CreateUpdateGroupQueueMessageType,
+  IGroupQueueMsg,
+} from '@gtms/commons'
 
 const getSingleGroupResponse = (group: IGroup) => ({
   id: group._id,
@@ -38,6 +44,8 @@ export default {
           level: 'info',
           traceId: res.get('x-traceid'),
         })
+
+        return group
       })
       .catch(err => {
         if (err.name === 'ValidationError') {
@@ -53,6 +61,33 @@ export default {
 
           logger.log({
             message: `Request error ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+        }
+      })
+      .then(async (group?: IGroup) => {
+        if (!group) {
+          return
+        }
+
+        try {
+          await publishOnChannel<IGroupQueueMsg>(Queues.createUpdateGroup, {
+            type: CreateUpdateGroupQueueMessageType.create,
+            data: {
+              ...group.toObject(),
+              traceId: res.get('x-traceid'),
+            },
+          })
+
+          logger.log({
+            message: `Info about group ${group._id} (${group.name}) - creation - has been published to the queue`,
+            level: 'info',
+            traceId: res.get('x-traceid'),
+          })
+        } catch (err) {
+          logger.log({
+            message: `Can not publish message to the QUEUE: ${err}`,
             level: 'error',
             traceId: res.get('x-traceid'),
           })
@@ -148,5 +183,27 @@ export default {
     })
 
     res.status(200).json(getSingleGroupResponse(group))
+
+    try {
+      await publishOnChannel<IGroupQueueMsg>(Queues.createUpdateGroup, {
+        type: CreateUpdateGroupQueueMessageType.update,
+        data: {
+          ...group.toObject(),
+          traceId: res.get('x-traceid'),
+        },
+      })
+
+      logger.log({
+        message: `Info about group ${group._id} (${group.name}) - update - has been published to the queue`,
+        level: 'info',
+        traceId: res.get('x-traceid'),
+      })
+    } catch (err) {
+      logger.log({
+        message: `Can not publish message to the QUEUE: ${err}`,
+        level: 'error',
+        traceId: res.get('x-traceid'),
+      })
+    }
   },
 }
