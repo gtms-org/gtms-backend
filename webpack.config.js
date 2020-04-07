@@ -20,6 +20,7 @@ const localModules = [
   '@gtms/lib-middlewares',
   '@gtms/client-mongoose',
   '@gtms/client-queue',
+  '@gtms/lib-http-server',
 ]
 
 module.exports = {
