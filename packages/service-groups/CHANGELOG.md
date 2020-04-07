@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.6.0...@gtms/service-groups@0.7.0) (2020-04-07)
+
+
+### Features
+
+* GEOT-201: publish queue message when create or update group ([#40](https://github.com/mariusz-kabala/gtms-backend/issues/40)) ([4ad8e7e](https://github.com/mariusz-kabala/gtms-backend/commit/4ad8e7e9cf711c97ef335786702889c46db4efaa))
+
+
+
+
+
 # [0.6.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.5.0...@gtms/service-groups@0.6.0) (2020-03-28)
 
 
