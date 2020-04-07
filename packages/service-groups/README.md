@@ -6,6 +6,12 @@
 docker run -p 27017:27017 mongo
 ```
 
+## Run local Elastic Search instance
+
+```
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+```
+
 ## Run app in dev mode
 
 Before running the app locally please create local `.env` file, example can be find in `.env.example`

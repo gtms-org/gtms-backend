@@ -5,11 +5,53 @@ import {
   loadFixtures,
   checkCommonResponseHeaders,
 } from '@gtms/lib-testing'
+import amqp from 'amqplib'
+import { Queues } from '@gtms/commons'
+import config from 'config'
 
 describe('Group controller', () => {
   const req = request(app)
 
-  it('Should create a group', async () => {
+  it('Should create a group', async done => {
+    let traceid = ''
+    const getDoCheck = (conn: amqp.Connection) => (msg: amqp.Message) => {
+      // test the message sent to the queue
+      const json = JSON.parse(msg.content.toString())
+
+      expect(json).toHaveProperty('type')
+      expect(json).toHaveProperty('data')
+      expect(json.data).toHaveProperty('traceId')
+      expect(json.data).toHaveProperty('name')
+      expect(json.data).toHaveProperty('slug')
+      expect(json.data).toHaveProperty('type')
+      expect(json.data).toHaveProperty('visibility')
+      expect(json.data).toHaveProperty('tags')
+      expect(json.data).toHaveProperty('members')
+      expect(json.data).toHaveProperty('owner')
+
+      // compare traceid from http response, with the one sent to queue
+      expect(json.data.traceId).toBe(traceid)
+
+      conn.close()
+      setTimeout(() => done(), 100)
+    }
+
+    // start listening for queue messages
+    await amqp
+      .connect(`amqp://${config.get<string>('queueHost')}`)
+      .then(async conn => {
+        await conn.createChannel().then(ch => {
+          const ok = ch.assertQueue(Queues.createUpdateGroup, { durable: true })
+          ok.then(() => {
+            ch.prefetch(1)
+          }).then(() => {
+            ch.consume(Queues.createUpdateGroup, getDoCheck(conn), {
+              noAck: true,
+            })
+          })
+        })
+      })
+
     const response = await req
       .post('/')
       .send({
@@ -40,6 +82,8 @@ describe('Group controller', () => {
 
     // test response headers
     checkCommonResponseHeaders(response.header)
+
+    traceid = response.header['x-traceid']
 
     // test DB record
     const dbGroup = await testDbHelper
@@ -183,8 +227,47 @@ describe('Group controller', () => {
     checkCommonResponseHeaders(response.header)
   })
 
-  it('Should update group', async () => {
+  it('Should update group', async done => {
     await loadFixtures()
+
+    let traceid = ''
+    const getDoCheck = (conn: amqp.Connection) => (msg: amqp.Message) => {
+      // test the message sent to the queue
+      const json = JSON.parse(msg.content.toString())
+
+      expect(json).toHaveProperty('type')
+      expect(json).toHaveProperty('data')
+      expect(json.data).toHaveProperty('traceId')
+      expect(json.data).toHaveProperty('name')
+      expect(json.data).toHaveProperty('slug')
+      expect(json.data).toHaveProperty('type')
+      expect(json.data).toHaveProperty('visibility')
+      expect(json.data).toHaveProperty('tags')
+      expect(json.data).toHaveProperty('members')
+      expect(json.data).toHaveProperty('owner')
+
+      // compare traceid from http response, with the one sent to queue
+      expect(json.data.traceId).toBe(traceid)
+
+      conn.close()
+      setTimeout(() => done(), 100)
+    }
+
+    // start listening for queue messages
+    await amqp
+      .connect(`amqp://${config.get<string>('queueHost')}`)
+      .then(async conn => {
+        await conn.createChannel().then(ch => {
+          const ok = ch.assertQueue(Queues.createUpdateGroup, { durable: true })
+          ok.then(() => {
+            ch.prefetch(1)
+          }).then(() => {
+            ch.consume(Queues.createUpdateGroup, getDoCheck(conn), {
+              noAck: true,
+            })
+          })
+        })
+      })
 
     const response = await req
       .post('/opener')
@@ -202,6 +285,8 @@ describe('Group controller', () => {
 
     // test response headers
     checkCommonResponseHeaders(response.header)
+
+    traceid = response.header['x-traceid']
 
     // test db record
     const dbGroup = await testDbHelper
