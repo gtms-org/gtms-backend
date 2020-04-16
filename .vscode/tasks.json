@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Groups Service",
+            "type": "shell",
+            "command": "yarn workspace @gtms/service-groups build"
+        },
+        {
+            "label": "Build Auth Service",
+            "type": "shell",
+            "command": "yarn workspace @gtms/service-auth build"
+        },
+        {
+            "label": "Build Gatekeeper",
+            "type": "shell",
+            "command": "yarn workspace @gtms/service-gatekeeper build"
+        },
+        {
+            "label": "Build Groups ES Indexer Service",
+            "type": "shell",
+            "command": "yarn workspace @gtms/service-groups-es-indexer build"
+        },
+        {
+            "label": "Build Notifications Service",
+            "type": "shell",
+            "command": "yarn workspace @gtms/service-notifications build"
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Groups Service",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd":"${workspaceFolder}/packages/service-groups/",
+            "program": "${workspaceFolder}/packages/service-groups/src/start.ts",
+            "preLaunchTask": "Build Groups Service",
+            "outFiles": [
+                "${workspaceFolder}/packages/service-groups/dist/index.js"
+            ],
+            "sourceMaps": true,
+            "smartStep": true,
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Auth Service",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd":"${workspaceFolder}/packages/service-auth/",
+            "program": "${workspaceFolder}/packages/service-auth/src/start.ts",
+            "preLaunchTask": "Build Auth Service",
+            "outFiles": [
+                "${workspaceFolder}/packages/service-auth/dist/index.js"
+            ],
+            "sourceMaps": true,
+            "smartStep": true,
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Gatekeeper",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd":"${workspaceFolder}/packages/service-gatekeeper/",
+            "program": "${workspaceFolder}/packages/service-gatekeeper/src/start.ts",
+            "preLaunchTask": "Build Gatekeeper",
+            "outFiles": [
+                "${workspaceFolder}/packages/service-gatekeeper/dist/index.js"
+            ],
+            "sourceMaps": true,
+            "smartStep": true,
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Groups ES Indexer Service",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd":"${workspaceFolder}/packages/service-groups-es-indexer/",
+            "program": "${workspaceFolder}/packages/service-groups-es-indexer/src/start.ts",
+            "preLaunchTask": "Build Groups ES Indexer Service",
+            "outFiles": [
+                "${workspaceFolder}/packages/service-groups-es-indexer/dist/index.js"
+            ],
+            "sourceMaps": true,
+            "smartStep": true,
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Notifications Service",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd":"${workspaceFolder}/packages/service-notifications/",
+            "program": "${workspaceFolder}/packages/service-notifications/src/start.ts",
+            "preLaunchTask": "Build Notifications Service",
+            "outFiles": [
+                "${workspaceFolder}/packages/service-notifications/dist/index.js"
+            ],
+            "sourceMaps": true,
+            "smartStep": true,
+        }
+    ]
+}

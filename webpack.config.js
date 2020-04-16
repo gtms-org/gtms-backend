@@ -38,6 +38,7 @@ module.exports = {
     filename: 'index.js',
     library: 'index',
     libraryTarget: 'commonjs2',
+    devtoolModuleFilenameTemplate: '[absolute-resource-path]'
   },
   module: {
     rules: [
