@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-gatekeeper",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/commons": "0.4.0",
+    "@gtms/commons": "0.4.1",
     "@gtms/lib-logger": "0.3.0",
-    "@gtms/lib-middlewares": "0.4.1",
+    "@gtms/lib-middlewares": "0.4.2",
     "@gtms/lib-testing": "0.1.0",
     "express-http-proxy": "^1.6.0",
     "jsonwebtoken": "^8.5.1"
