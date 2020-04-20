@@ -3,6 +3,7 @@ export enum Queues {
   deleteAccount = 'deleteAccount',
   createUpdateGroup = 'createUpdateGroup',
   deleteGroup = 'deleteGroup',
+  createFile = 'createFile',
 }
 
 export enum NotificationQueueMessageType {
@@ -20,4 +21,18 @@ export enum http {
   GET = 'GET',
   PUT = 'PUT',
   DELETE = 'DELETE',
+}
+
+export enum FileTypes {
+  avatar = 'avatar',
+  groupLogo = 'groupLogo',
+  groupBg = 'groupBg',
+  userGallery = 'userGallery',
+}
+
+export enum FileStatus {
+  new = 'new',
+  uploaded = 'uploaded',
+  processing = 'processing',
+  ready = 'ready',
 }
