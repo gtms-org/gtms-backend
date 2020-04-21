@@ -10,12 +10,12 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-mongoose": "0.3.0",
-    "@gtms/client-queue": "0.3.1",
-    "@gtms/commons": "0.4.0",
-    "@gtms/lib-logger": "0.3.0",
-    "@gtms/lib-middlewares": "0.4.1",
-    "@gtms/lib-testing": "0.1.0",
+    "@gtms/client-mongoose": "*",
+    "@gtms/client-queue": "*",
+    "@gtms/commons": "*",
+    "@gtms/lib-logger": "*",
+    "@gtms/lib-middlewares": "*",
+    "@gtms/lib-testing": "*",
     "mongoose-paginate": "^5.0.3",
     "express-fileupload": "1.1.7-alpha.3",
     "aws-sdk": "2.658.0"
