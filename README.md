@@ -110,7 +110,7 @@ processMsg(msg)
     })
 ```
 
-also your job is to send message to retry message exchanger is processing fails, example implementation of `sendMsgToRetry` function:
+also your job is to send message to retry message exchanger if processing fails. Example implementation of `sendMsgToRetry` function:
 
 ```
 import { getTTLExchangeName } from '@gtms/client-queue'
