@@ -2,13 +2,45 @@ import amqp from 'amqplib'
 import config from 'config'
 import logger from '@gtms/lib-logger'
 import { Queues, IFileQueueMsg } from '@gtms/commons'
+import {
+  setupRetriesPolicy,
+  IRetryPolicy,
+  getTTLExchangeName,
+} from '@gtms/client-queue'
+
+const retryPolicy: IRetryPolicy = {
+  queue: Queues.createFile,
+  retries: [
+    {
+      name: '30s',
+      ttl: 30000,
+    },
+    {
+      name: '10m',
+      ttl: 600000,
+    },
+    {
+      name: '1h',
+      ttl: 3600000,
+    },
+    {
+      name: '8h',
+      ttl: 28800000,
+    },
+    {
+      name: '24h',
+      ttl: 86400000,
+    },
+    {
+      name: '48h',
+      ttl: 172800000,
+    },
+  ],
+}
 
 function processMsg(msg: amqp.Message) {
-
-  console.log('NEW MESSAGE', JSON.parse(msg.content.toString()))
-
-  return new Promise((resolve, reject) => {
-    reject('testing dead letter queue')
+  return new Promise((_resolve, reject) => {
+    reject('testing dead letter queue: ' + msg.content.toString())
   })
 }
 
@@ -34,7 +66,7 @@ function sendMsgToRetry({
 }) {
   const { attempt, content, traceId } = getAttemptAndUpdatedContent(msg)
 
-  if (attempt > 3) {
+  if (attempt > 6) {
     logger.log({
       level: 'error',
       message: `Could not process message ${content.toString()} / channel: ${
@@ -45,51 +77,14 @@ function sendMsgToRetry({
     return
   }
 
-  channel.publish('TTL-FILES', `retry-${attempt}`, content, {
-    persistent: true,
-  })
-}
-
-function assertExchanges(channel: amqp.Channel) {
-  return Promise.all([
-    channel.assertExchange('TTL-FILES', 'direct', { durable: true }),
-    channel.assertExchange('DLX-FILES', 'fanout', { durable: true }),
-  ]).then(() => channel)
-}
-
-function assertQueues(channel: amqp.Channel) {
-  return Promise.all([
-    channel.assertQueue('files-retry-1-30s', {
-      durable: true,
-      deadLetterExchange: 'DLX-FILES',
-      messageTtl: 30000,
-    }),
-    channel.assertQueue('files-retry-2-10m', {
-      durable: true,
-      deadLetterExchange: 'DLX-FILES',
-      messageTtl: 600000,
-    }),
-    channel.assertQueue('files-retry-3-48h', {
-      durable: true,
-      deadLetterExchange: 'DLX-FILES',
-      messageTtl: 195840000,
-    }),
-  ]).then(() => channel)
-}
-
-function bindExchangesToQueues(channel: amqp.Channel) {
-  return Promise.all([
-    channel.bindQueue('files-retry-1-30s', 'TTL-FILES', 'retry-1'),
-    channel.bindQueue('files-retry-2-10m', 'TTL-FILES', 'retry-2'),
-    channel.bindQueue('files-retry-3-48h', 'TTL-FILES', 'retry-3'),
-    channel.bindQueue(Queues.createFile, 'DLX-FILES', '')
-  ])
-}
-
-function setupRetriesPolicy(channel: amqp.Channel) {
-  return assertExchanges(channel)
-    .then(assertQueues)
-    .then(bindExchangesToQueues)
+  channel.publish(
+    getTTLExchangeName(Queues.createFile),
+    `retry-${attempt}`,
+    content,
+    {
+      persistent: true,
+    }
+  )
 }
 
 let queueConnection: amqp.Connection
@@ -103,7 +98,7 @@ export async function listenToFilesQueue() {
 
         const ok = ch.assertQueue(Queues.createFile, { durable: true })
         ok.then(async () => {
-          await setupRetriesPolicy(ch)
+          await setupRetriesPolicy(ch, retryPolicy)
           ch.prefetch(1)
         }).then(() => {
           ch.consume(

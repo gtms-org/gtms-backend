@@ -8,10 +8,17 @@ export interface IRetryPolicy {
   }[]
 }
 
+export const getTTLExchangeName = (queueName: string) => `TTL-${queueName}`
+export const getDLXExchangeName = (queueName: string) => `DLX-${queueName}`
+
 function assertExchanges(channel: amqp.Channel, queueName: string) {
   return Promise.all([
-    channel.assertExchange(`TTL-${queueName}`, 'direct', { durable: true }),
-    channel.assertExchange(`DLX-${queueName}`, 'fanout', { durable: true }),
+    channel.assertExchange(getTTLExchangeName(queueName), 'direct', {
+      durable: true,
+    }),
+    channel.assertExchange(getDLXExchangeName(queueName), 'fanout', {
+      durable: true,
+    }),
   ]).then(() => channel)
 }
 
@@ -22,7 +29,7 @@ function assertQueues(channel: amqp.Channel, policy: IRetryPolicy) {
     retries.map((r, index) =>
       channel.assertQueue(`${queue}-retry-${index + 1}-${r.name}`, {
         durable: true,
-        deadLetterExchange: `DLX-${queue}`,
+        deadLetterExchange: getDLXExchangeName(queue),
         messageTtl: r.ttl,
       })
     )
@@ -35,11 +42,11 @@ function bindExchangesToQueues(channel: amqp.Channel, policy: IRetryPolicy) {
     ...retries.map((r, index) =>
       channel.bindQueue(
         `${queue}-retry-${index + 1}-${r.name}`,
-        `TTL-${queue}`,
+        getTTLExchangeName(queue),
         `retry-${index + 1}`
       )
     ),
-    channel.bindQueue(queue, `DLX-${queue}`, ''),
+    channel.bindQueue(queue, getDLXExchangeName(queue), ''),
   ])
 }
 

@@ -5,15 +5,16 @@ import {
   Queues,
   CreateUpdateGroupQueueMessageType,
   IGroupQueueMsg,
-  GROUPS_INDEX
+  GROUPS_INDEX,
 } from '@gtms/commons'
-import {
-  Client,
-  RequestParams
-} from '@elastic/elasticsearch'
+import { Client, RequestParams } from '@elastic/elasticsearch'
 import bodyParser from 'body-parser'
 
-const client: Client = new Client({ node: `http://${config.get<string>('esHost')}:${config.get<number>('esPort')}` })
+const client: Client = new Client({
+  node: `http://${config.get<string>('esHost')}:${config.get<number>(
+    'esPort'
+  )}`,
+})
 
 function processMsg(msg: amqp.Message) {
   const jsonMessage: IGroupQueueMsg = JSON.parse(msg.content.toString())
@@ -28,10 +29,10 @@ function processMsg(msg: amqp.Message) {
     case CreateUpdateGroupQueueMessageType.create: {
       const dataToIndex: RequestParams.Index = {
         index: GROUPS_INDEX,
-        body: jsonMessage.data
+        body: jsonMessage.data,
       }
 
-     client.index(dataToIndex).then(response => {
+      client.index(dataToIndex).then(response => {
         logger.log({
           level: 'info',
           message: `Elasticserach indexed ${dataToIndex}: ${response}`,
@@ -48,7 +49,7 @@ function processMsg(msg: amqp.Message) {
         level: 'error',
         message: `Not supported message in the queue ${
           Queues.createUpdateGroup
-          } - ${msg.content.toString()}`,
+        } - ${msg.content.toString()}`,
         traceid: jsonMessage.data?.traceId,
       })
       break

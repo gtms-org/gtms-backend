@@ -54,3 +54,101 @@ yarn workspace @gtms/service-ADD_NAME_HERE start
 ```
 Remember: you have to build it first
 
+# Queue
+
+Package `@gtms/client-queue` exposes common functions to create a queue with retry policy. The policy is describe on the flow diagram below:
+
+![flow](https://raw.githubusercontent.com/gtms-org/gtms-backend/master/docs/queue-flow.png 'Queue Flow')
+
+You have to describe your required policy according to this interface:
+
+```
+interface IRetryPolicy {
+  queue: string
+  retries: {
+    name: string
+    ttl: number
+  }[]
+}
+```
+
+than, after you created a new channel you need to apply the policy:
+
+```
+const ok = ch.assertQueue('exampleQueue', { durable: true })
+        ok.then(async () => {
+          await setupRetriesPolicy(ch, retryPolicy)
+          ch.prefetch(1)
+        })
+```
+
+it is crucial to setup queue with `noAct: false`
+
+```
+ch.consume(
+    'exampleQueue',
+    msgHandlerFunction,
+    {
+        noAck: false,
+    }
+)
+```
+
+this means that you have to inform RabbitMQ that message has been processed (successfully or not), for example it can be done like this:
+
+```
+processMsg(msg)
+    .catch(err => {
+        sendMsgToRetry({
+            msg,
+            channel: ch,
+            reasonOfFail: err,
+        })
+    })
+    .finally(() => {
+        ch.ack(msg)
+    })
+```
+
+also your job is to send message to retry message exchanger is processing fails, example implementation of `sendMsgToRetry` function:
+
+```
+import { getTTLExchangeName } from '@gtms/client-queue'
+
+function getAttemptAndUpdatedContent(msg: amqp.ConsumeMessage) {
+  const content = JSON.parse(msg.content.toString())
+  content.tryAttempt = ++content.tryAttempt || 1
+
+  return {
+    attempt: content.tryAttempt,
+    content: Buffer.from(JSON.stringify(content)),
+    traceId: content.data?.traceId,
+  }
+}
+
+function sendMsgToRetry({
+  msg,
+  channel,
+  reasonOfFail,
+}: {
+  msg: amqp.ConsumeMessage
+  channel: amqp.Channel
+  reasonOfFail: Error | string
+}) {
+  const maxRetry = 3
+  const { attempt, content, traceId } = getAttemptAndUpdatedContent(msg)
+
+  if (attempt > maxRetry) {
+    return
+  }
+
+  channel.publish(
+    getTTLExchangeName('exampleQueue'),
+    `retry-${attempt}`,
+    content,
+    {
+      persistent: true,
+    }
+  )
+}
+```
