@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.4.1...@gtms/commons@0.5.0) (2020-04-23)
+
+
+### Features
+
+* GEOT-215: add file service ([#47](https://github.com/mariusz-kabala/gtms-backend/issues/47)) ([8181d17](https://github.com/mariusz-kabala/gtms-backend/commit/8181d1782bc919a9814e17b1acdce3f63977a0fa))
+
+
+
+
+
 ## [0.4.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.4.0...@gtms/commons@0.4.1) (2020-04-18)
 
 **Note:** Version bump only for package @gtms/commons
