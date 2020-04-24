@@ -41,6 +41,7 @@ export function getCreateFileAction(fileType: FileTypes) {
           Bucket: config.get<string>('s3Bucket'),
           Key: `${file._id}-${fileToUpload.name}`,
           Body: fileToUpload.data,
+          ACL: 'public-read',
         }
 
         s3Client.upload(params, async (err: Error | null, data: any) => {
@@ -93,7 +94,9 @@ export function getCreateFileAction(fileType: FileTypes) {
             })
 
             logger.log({
-              message: `Info about file ${file.toJSON()}) - creation - has been published to the queue`,
+              message: `Info about file ${JSON.stringify(
+                file.toJSON()
+              )}) - creation - has been published to the queue`,
               level: 'info',
               traceId: res.get('x-traceid'),
             })

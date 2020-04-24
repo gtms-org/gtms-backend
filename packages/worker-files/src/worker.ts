@@ -1,12 +1,13 @@
 import amqp from 'amqplib'
 import config from 'config'
 import logger from '@gtms/lib-logger'
-import { Queues, IFileQueueMsg } from '@gtms/commons'
+import { Queues, IFileQueueMsg, FileStatus } from '@gtms/commons'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
   getTTLExchangeName,
 } from '@gtms/client-queue'
+import { processFile, FileOperation } from './processFile'
 
 const retryPolicy: IRetryPolicy = {
   queue: Queues.createFile,
@@ -39,8 +40,78 @@ const retryPolicy: IRetryPolicy = {
 }
 
 function processMsg(msg: amqp.Message) {
-  return new Promise((_resolve, reject) => {
-    reject('testing dead letter queue: ' + msg.content.toString())
+  return new Promise(async (resolve, reject) => {
+    let jsonMsg: IFileQueueMsg
+
+    try {
+      jsonMsg = JSON.parse(msg.content.toString())
+    } catch (err) {
+      logger.log({
+        level: 'error',
+        message: `Can not parse ${
+          Queues.createFile
+        } queue message: ${msg.content.toString()} / error: ${err}`,
+      })
+      return reject(`can not parse json`)
+    }
+
+    const { data: { fileType, status, files, traceId } = {} } = jsonMsg
+
+    logger.log({
+      level: 'info',
+      message: `New message in ${
+        Queues.createFile
+      } queue : ${msg.content.toString()}`,
+      traceId,
+    })
+
+    if (status !== FileStatus.uploaded) {
+      logger.log({
+        level: 'warn',
+        message: `File ${msg.content.toString()} has incorrect status, wont be process`,
+        traceId,
+      })
+
+      return resolve()
+    }
+
+    const operations = config.get<FileOperation[][] | undefined>(
+      `files.${fileType}`
+    )
+
+    if (!operations) {
+      logger.log({
+        level: 'error',
+        message: `No configuration for file type ${fileType}; file ${msg.content.toString()} can not be process`,
+        traceId,
+      })
+
+      return reject(`no configuration`)
+    }
+
+    try {
+      await Promise.all(
+        files.map(file => processFile(fileType, file.url, operations))
+      )
+
+      // @todo need to sync DB here somehow
+
+      logger.log({
+        level: 'info',
+        message: `File ${msg.content.toString()} successfully processed`,
+        traceId,
+      })
+
+      resolve()
+    } catch (err) {
+      logger.log({
+        level: 'error',
+        message: `File ${msg.content.toString()} can not be process, error: ${err}`,
+        traceId,
+      })
+
+      reject('processing error')
+    }
   })
 }
 

@@ -1,13 +1,29 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 require('dotenv').config()
 
-const { QUEUE_HOST, VERSION, PORT } = process.env
+const {
+  QUEUE_HOST,
+  VERSION,
+  PORT,
+  BUCKET_GROUP_LOGO,
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_REGION,
+  AWS_ENDPOINT,
+} = process.env
 
 module.exports = {
   port: PORT,
   queueHost: QUEUE_HOST,
-  serviceName: 'groups-es-indexer',
+  serviceName: 'worker-files',
   serviceVersion: VERSION,
+  awsAccessKeyId: AWS_ACCESS_KEY_ID,
+  awsSecretAccessKey: AWS_SECRET_ACCESS_KEY,
+  awsRegion: AWS_REGION,
+  awsEndpoint: AWS_ENDPOINT,
+  buckets: {
+    groupLogo: BUCKET_GROUP_LOGO,
+  },
   files: {
     groupLogo: [
       [
