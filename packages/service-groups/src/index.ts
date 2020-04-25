@@ -27,6 +27,8 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.post('/', JWTMiddleware, groupsController.create)
 router.get('/', groupsController.list)
+router.get('/:slug/join', JWTMiddleware, groupsController.joinGroup)
+router.get('/:slug/leave', JWTMiddleware, groupsController.leaveGroup)
 router.get('/:slug', groupsController.show)
 router.post('/:slug', JWTMiddleware, groupsController.update)
 

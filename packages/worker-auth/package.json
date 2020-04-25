@@ -1,0 +1,20 @@
+{
+  "name": "@gtms/worker-auth",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon",
+    "build": "webpack --mode=production --config ../../webpack.config.js",
+    "start": "node dist"
+  },
+  "dependencies": {
+    "@gtms/client-queue": "0.4.0",
+    "@gtms/commons": "0.5.0",
+    "@gtms/lib-http-server": "*",
+    "@gtms/lib-logger": "*"
+  },
+  "author": "Mariusz Kabała",
+  "license": "ISC"
+}
