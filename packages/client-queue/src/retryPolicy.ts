@@ -25,15 +25,16 @@ function assertExchanges(channel: amqp.Channel, queueName: string) {
 function assertQueues(channel: amqp.Channel, policy: IRetryPolicy) {
   const { queue, retries } = policy
 
-  return Promise.all(
-    retries.map((r, index) =>
+  return Promise.all([
+    channel.assertQueue(queue, { durable: true }),
+    ...retries.map((r, index) =>
       channel.assertQueue(`${queue}-retry-${index + 1}-${r.name}`, {
         durable: true,
         deadLetterExchange: getDLXExchangeName(queue),
         messageTtl: r.ttl,
       })
-    )
-  )
+    ),
+  ])
 }
 
 function bindExchangesToQueues(channel: amqp.Channel, policy: IRetryPolicy) {
