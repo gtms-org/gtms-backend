@@ -1,4 +1,5 @@
 import amqp from 'amqplib'
+import logger from '@gtms/lib-logger'
 
 export interface IRetryPolicy {
   queue: string
@@ -51,6 +52,17 @@ function bindExchangesToQueues(channel: amqp.Channel, policy: IRetryPolicy) {
   ])
 }
 
+function getAttemptAndUpdatedContent(msg: amqp.ConsumeMessage) {
+  const content = JSON.parse(msg.content.toString())
+  content.tryAttempt = ++content.tryAttempt || 1
+
+  return {
+    attempt: content.tryAttempt,
+    content: Buffer.from(JSON.stringify(content)),
+    traceId: content.data?.traceId,
+  }
+}
+
 export function setupRetriesPolicy(
   channel: amqp.Channel,
   policy: IRetryPolicy
@@ -58,4 +70,38 @@ export function setupRetriesPolicy(
   return assertExchanges(channel, policy.queue)
     .then(() => assertQueues(channel, policy))
     .then(() => bindExchangesToQueues(channel, policy))
+}
+
+export function getSendMsgToRetryFunc(policy: IRetryPolicy) {
+  return ({
+    msg,
+    channel,
+    reasonOfFail,
+  }: {
+    msg: amqp.ConsumeMessage
+    channel: amqp.Channel
+    reasonOfFail: Error | string
+  }) => {
+    const { attempt, content, traceId } = getAttemptAndUpdatedContent(msg)
+
+    if (attempt > policy.retries.length) {
+      logger.log({
+        level: 'error',
+        message: `Could not process message ${content.toString()} / channel: ${
+          policy.queue
+        } / error: ${reasonOfFail}`,
+        traceId,
+      })
+      return
+    }
+
+    channel.publish(
+      getTTLExchangeName(policy.queue),
+      `retry-${attempt}`,
+      content,
+      {
+        persistent: true,
+      }
+    )
+  }
 }

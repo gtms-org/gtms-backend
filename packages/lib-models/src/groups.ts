@@ -2,6 +2,7 @@ import mongoose, { Document, Schema, HookNextFunction } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 import mongoosePaginate from 'mongoose-paginate'
 import slugify from '@sindresorhus/slugify'
+import { FileStatus } from '@gtms/commons'
 
 export interface IGroup extends Document {
   name: string
@@ -9,7 +10,14 @@ export interface IGroup extends Document {
   description?: string
   type: 'public' | 'private'
   visibility: 'public' | 'private'
-  avatar?: string
+  avatar?: {
+    status: FileStatus
+    files: string[]
+  }
+  bg?: {
+    status: FileStatus
+    files: string[]
+  }
   tags?: string[]
   members?: string[]
   owner: string
@@ -47,8 +55,20 @@ const GroupSchema = new Schema(
       required: true,
     },
     avatar: {
-      type: String,
-      required: false,
+      status: {
+        type: String,
+      },
+      files: {
+        type: [String],
+      },
+    },
+    bg: {
+      status: {
+        type: String,
+      },
+      files: {
+        type: [String],
+      },
     },
     tags: {
       type: [String],
@@ -79,4 +99,4 @@ GroupSchema.pre<IGroup>('save', function(next: HookNextFunction) {
   next()
 })
 
-export default mongoose.model<IGroup>('Group', GroupSchema)
+export const GroupModel = mongoose.model<IGroup>('Group', GroupSchema)

@@ -1,11 +1,17 @@
 import amqp from 'amqplib'
 import config from 'config'
 import logger from '@gtms/lib-logger'
-import { Queues, IFileQueueMsg, FileStatus } from '@gtms/commons'
+import {
+  Queues,
+  IFileQueueMsg,
+  FileStatus,
+  FILES_QUEUE_MAPPER,
+} from '@gtms/commons'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
-  getTTLExchangeName,
+  getSendMsgToRetryFunc,
+  publishOnChannel,
 } from '@gtms/client-queue'
 import { processFile, FileOperation } from './processFile'
 
@@ -39,6 +45,8 @@ const retryPolicy: IRetryPolicy = {
   ],
 }
 
+const sendMsgToRetry = getSendMsgToRetryFunc(retryPolicy)
+
 function processMsg(msg: amqp.Message) {
   return new Promise(async (resolve, reject) => {
     let jsonMsg: IFileQueueMsg
@@ -55,7 +63,9 @@ function processMsg(msg: amqp.Message) {
       return reject(`can not parse json`)
     }
 
-    const { data: { fileType, status, files, traceId } = {} } = jsonMsg
+    const {
+      data: { fileType, status, files, traceId, relatedRecord, owner } = {},
+    } = jsonMsg
 
     logger.log({
       level: 'info',
@@ -90,17 +100,36 @@ function processMsg(msg: amqp.Message) {
     }
 
     try {
-      await Promise.all(
+      const result: string[][] = await Promise.all(
         files.map(file => processFile(fileType, file.url, operations))
       )
-
-      // @todo need to sync DB here somehow
 
       logger.log({
         level: 'info',
         message: `File ${msg.content.toString()} successfully processed`,
         traceId,
       })
+
+      try {
+        await publishOnChannel<IFileQueueMsg>(FILES_QUEUE_MAPPER[fileType], {
+          data: {
+            files: result.flat().map(f => ({ url: f })),
+            traceId,
+            status: FileStatus.ready,
+            relatedRecord,
+            fileType,
+            owner,
+          },
+        })
+      } catch (err) {
+        logger.log({
+          level: 'error',
+          message: `Can not publish message about processed files: ${err}`,
+          traceId,
+        })
+
+        return reject('publish failed')
+      }
 
       resolve()
     } catch (err) {
@@ -113,49 +142,6 @@ function processMsg(msg: amqp.Message) {
       reject('processing error')
     }
   })
-}
-
-function getAttemptAndUpdatedContent(msg: amqp.ConsumeMessage) {
-  const content = JSON.parse(msg.content.toString())
-  content.tryAttempt = ++content.tryAttempt || 1
-
-  return {
-    attempt: content.tryAttempt,
-    content: Buffer.from(JSON.stringify(content)),
-    traceId: content.data?.traceId,
-  }
-}
-
-function sendMsgToRetry({
-  msg,
-  channel,
-  reasonOfFail,
-}: {
-  msg: amqp.ConsumeMessage
-  channel: amqp.Channel
-  reasonOfFail: Error | string
-}) {
-  const { attempt, content, traceId } = getAttemptAndUpdatedContent(msg)
-
-  if (attempt > 6) {
-    logger.log({
-      level: 'error',
-      message: `Could not process message ${content.toString()} / channel: ${
-        Queues.createFile
-      } / error: ${reasonOfFail}`,
-      traceId,
-    })
-    return
-  }
-
-  channel.publish(
-    getTTLExchangeName(Queues.createFile),
-    `retry-${attempt}`,
-    content,
-    {
-      persistent: true,
-    }
-  )
 }
 
 let queueConnection: amqp.Connection

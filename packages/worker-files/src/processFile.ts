@@ -84,7 +84,7 @@ export async function processFile(
   type: string,
   fileUrl: string,
   operations: FileOperation[][]
-) {
+): Promise<string[]> {
   const fileBuffer = await fetchImage(fileUrl)
   const filename = getFilename(fileUrl)
 

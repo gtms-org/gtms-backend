@@ -1,7 +1,6 @@
 import { FileTypes, FileStatus } from '../enums'
 
 export interface IFileQueueMsg {
-  // this should be in sync with file model from @gtms/service-files
   data: {
     title?: string
     fileType: FileTypes
