@@ -1,12 +1,11 @@
 import { FileTypes, FileStatus, IAuthRequest } from '@gtms/commons'
 import { Response, NextFunction } from 'express'
-import FileModel, { IFile } from '../models/files'
 import logger from '@gtms/lib-logger'
 import { UploadedFile } from 'express-fileupload'
 import AWS from 'aws-sdk'
 import config from 'config'
 import { publishOnChannel } from '@gtms/client-queue'
-import { Queues, IFileQueueMsg } from '@gtms/commons'
+import { FILES_QUEUE_MAPPER, IFileQueueMsg } from '@gtms/commons'
 
 AWS.config.update({
   accessKeyId: config.get<string>('awsAccessKeyId'),
@@ -27,106 +26,70 @@ export function getCreateFileAction(fileType: FileTypes) {
     }
     const { body } = req
 
-    FileModel.create({
-      fileType,
-      owner: req.user.id,
-      title: body.title,
-      relatedRecord: body.relatedRecord,
-      status: FileStatus.new,
-    })
-      .then((file: IFile) => {
-        const fileToUpload = req.files.file as UploadedFile
+    if (!body.relatedRecord) {
+      return res
+        .status(400)
+        .json({
+          relatedRecord: 'required',
+        })
+        .end()
+    }
 
-        const params = {
-          Bucket: config.get<string>('s3Bucket'),
-          Key: `${file._id}-${fileToUpload.name}`,
-          Body: fileToUpload.data,
-          ACL: 'public-read',
-        }
+    const fileToUpload = req.files.file as UploadedFile
 
-        s3Client.upload(params, async (err: Error | null, data: any) => {
-          if (err) {
-            logger.log({
-              level: 'error',
-              message: `Error during s3 upload: ${err} / file: ${file.toJSON()}`,
-            })
-            try {
-              await FileModel.deleteOne({ _id: file._id })
-            } catch (dbErr) {
-              logger.log({
-                level: 'error',
-                message: `Can not delete ${file.toJSON()} file record. Error: ${dbErr}`,
-                traceId: res.get('x-traceid'),
-              })
-              return next(dbErr)
-            }
-            return next(err)
-          }
+    const params = {
+      Bucket: config.get<string>('s3Bucket'),
+      Key: `${new Date().getTime()}-${fileToUpload.name}`,
+      Body: fileToUpload.data,
+      ACL: 'public-read',
+    }
 
-          file.status = FileStatus.uploaded
-          file.files = [
+    s3Client.upload(params, async (err: Error | null, data: any) => {
+      if (err) {
+        logger.log({
+          level: 'error',
+          message: `Error during s3 upload: ${err}`,
+        })
+
+        return next(err)
+      }
+
+      // publish info about new file on queue
+      try {
+        const file = {
+          relatedRecord: body.relatedRecord,
+          status: FileStatus.uploaded,
+          fileType,
+          owner: req.user.id,
+          files: [
             {
               url: data.Location,
             },
-          ]
-
-          try {
-            await file.save()
-          } catch (err) {
-            logger.log({
-              level: 'error',
-              message: `Database error during file record update: ${file.toJSON()} / Error: ${err}`,
-              traceId: res.get('x-traceid'),
-            })
-
-            return next(err)
-          }
-
-          res.status(201).end()
-
-          // publish info about new file on queue
-          try {
-            await publishOnChannel<IFileQueueMsg>(Queues.createFile, {
-              data: {
-                ...file.toObject(),
-                traceId: res.get('x-traceid'),
-              },
-            })
-
-            logger.log({
-              message: `Info about file ${JSON.stringify(
-                file.toJSON()
-              )}) - creation - has been published to the queue`,
-              level: 'info',
-              traceId: res.get('x-traceid'),
-            })
-          } catch (err) {
-            logger.log({
-              message: `Can not publish message to the QUEUE: ${err}`,
-              level: 'error',
-              traceId: res.get('x-traceid'),
-            })
-          }
-        })
-      })
-      .catch(err => {
-        if (err.name === 'ValidationError') {
-          res.status(400).json(err.errors)
-
-          logger.log({
-            message: `Validation error ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-        } else {
-          next(err)
-
-          logger.log({
-            message: `Request error ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
+          ],
+          traceId: res.get('x-traceid'),
         }
-      })
+        await publishOnChannel<IFileQueueMsg>(FILES_QUEUE_MAPPER[fileType], {
+          data: file,
+        })
+
+        res.status(201).end()
+
+        logger.log({
+          message: `Info about file ${JSON.stringify(
+            file
+          )}) - creation - has been published to the queue`,
+          level: 'info',
+          traceId: res.get('x-traceid'),
+        })
+      } catch (err) {
+        logger.log({
+          message: `Can not publish message to the QUEUE: ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      }
+    })
   }
 }

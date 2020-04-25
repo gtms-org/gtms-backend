@@ -5,7 +5,7 @@ import { Queues, NotificationQueueMessageType } from '@gtms/commons'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
-  getTTLExchangeName,
+  getSendMsgToRetryFunc,
 } from '@gtms/client-queue'
 import { sendEmail } from './email'
 
@@ -39,48 +39,7 @@ const retryPolicy: IRetryPolicy = {
   ],
 }
 
-function getAttemptAndUpdatedContent(msg: amqp.ConsumeMessage) {
-  const content = JSON.parse(msg.content.toString())
-  content.tryAttempt = ++content.tryAttempt || 1
-
-  return {
-    attempt: content.tryAttempt,
-    content: Buffer.from(JSON.stringify(content)),
-    traceId: content.data?.traceId,
-  }
-}
-
-function sendMsgToRetry({
-  msg,
-  channel,
-  reasonOfFail,
-}: {
-  msg: amqp.ConsumeMessage
-  channel: amqp.Channel
-  reasonOfFail: Error | string
-}) {
-  const { attempt, content, traceId } = getAttemptAndUpdatedContent(msg)
-
-  if (attempt > 6) {
-    logger.log({
-      level: 'error',
-      message: `Could not process message ${content.toString()} / channel: ${
-        Queues.notifications
-      } / error: ${reasonOfFail}`,
-      traceId,
-    })
-    return
-  }
-
-  channel.publish(
-    getTTLExchangeName(Queues.notifications),
-    `retry-${attempt}`,
-    content,
-    {
-      persistent: true,
-    }
-  )
-}
+const sendMsgToRetry = getSendMsgToRetryFunc(retryPolicy)
 
 function processMsg(msg: amqp.Message) {
   return new Promise((resolve, reject) => {

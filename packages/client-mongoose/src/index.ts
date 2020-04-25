@@ -31,6 +31,7 @@ db.once('open', function() {
 const mongooseOpts = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 }
 
 if (NODE_ENV === 'test') {

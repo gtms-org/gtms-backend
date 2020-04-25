@@ -5,7 +5,6 @@ const {
   AWS_SECRET_ACCESS_KEY,
   AWS_REGION,
   PORT,
-  DB_HOST,
   VERSION,
   QUEUE_HOST,
   S3_BUCKET,
@@ -14,8 +13,6 @@ const {
 
 module.exports = {
   port: PORT,
-  dbHost: DB_HOST,
-  dbName: 'files',
   serviceName: 'files',
   serviceVersion: VERSION,
   queueHost: QUEUE_HOST,

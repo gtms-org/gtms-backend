@@ -4,6 +4,8 @@ export enum Queues {
   createUpdateGroup = 'createUpdateGroup',
   deleteGroup = 'deleteGroup',
   createFile = 'createFile',
+  updateGroupFiles = 'updateGroupFiles',
+  updateUserFiles = 'updateUserFiles',
 }
 
 export enum NotificationQueueMessageType {

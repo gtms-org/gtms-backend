@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express'
-import GroupModel, { IGroup } from '../models/groups'
+import { GroupModel, IGroup } from '@gtms/lib-models'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import slugify from '@sindresorhus/slugify'
@@ -31,9 +31,8 @@ export default {
       description: body.description,
       type: body.type,
       visibility: body.visibility,
-      avatar: body.avatar,
       tags: body.tags,
-      members: body.members,
+      members: [req.user.id],
       owner: req.user.id,
     })
       .then((group: IGroup) => {
@@ -125,7 +124,7 @@ export default {
       group = await GroupModel.findOne({ slug })
     } catch (err) {
       logger.log({
-        message: `Request error ${err}`,
+        message: `Database error ${err}`,
         level: 'error',
         traceId: res.get('x-traceid'),
       })
