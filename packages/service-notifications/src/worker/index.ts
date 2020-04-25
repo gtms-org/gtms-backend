@@ -30,7 +30,7 @@ const retryPolicy: IRetryPolicy = {
     },
     {
       name: '8h',
-      ttl: 8800000,
+      ttl: 28800000,
     },
     {
       name: '16h',
