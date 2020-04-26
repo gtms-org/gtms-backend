@@ -61,6 +61,7 @@ function processMsg(msg: amqp.Message) {
         logger.log({
           level: 'info',
           message: `Elasticserach updated group ${dataToUpdate}: ${response}`,
+          traceid: jsonMessage.data?.traceId
         })
       })
       return
