@@ -40,10 +40,31 @@ function processMsg(msg: amqp.Message) {
       })
       return
     }
-    case CreateUpdateGroupQueueMessageType.update:
-      // todo
+    case CreateUpdateGroupQueueMessageType.update: {
+      const dataToUpdate: RequestParams.UpdateByQuery = {
+        index: GROUPS_INDEX,
+        refresh: true,
+        body: {
+          script: {
+            inline: "for (i in params.keySet()) { ctx._source[i] = params.get(i);}",
+            lang: "painless",
+              params: jsonMessage.data
+          },
+          query: {
+            match: {
+              slug: jsonMessage.data.slug
+            }
+          }
+        }
+      }
+      client.updateByQuery(dataToUpdate).then(response => {
+        logger.log({
+          level: 'info',
+          message: `Elasticserach updated group ${dataToUpdate}: ${response}`,
+        })
+      })
       return
-
+    }
     default:
       logger.log({
         level: 'error',
