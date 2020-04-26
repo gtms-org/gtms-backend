@@ -11,12 +11,13 @@
     "show:env": "node test.js"
   },
   "dependencies": {
-    "@gtms/client-mongoose": "0.3.0",
-    "@gtms/client-queue": "0.4.0",
-    "@gtms/commons": "0.5.0",
-    "@gtms/lib-logger": "0.3.0",
-    "@gtms/lib-middlewares": "0.4.3",
-    "@gtms/lib-testing": "0.1.0"
+    "@gtms/client-mongoose": "*",
+    "@gtms/client-queue": "*",
+    "@gtms/commons": "*",
+    "@gtms/lib-logger": "*",
+    "@gtms/lib-middlewares": "*",
+    "@gtms/lib-testing": "*",
+    "@gtms/lib-models": "*"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

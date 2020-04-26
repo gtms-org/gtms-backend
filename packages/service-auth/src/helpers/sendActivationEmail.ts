@@ -1,15 +1,13 @@
-import { IUser } from '../models/users'
-import activationCodeModel, { IActivationCode } from '../models/activationCode'
+import { IUser, ActivationCodeModel, IActivationCode } from '@gtms/lib-models'
 import { publishToNotificationsChannel } from '@gtms/client-queue'
 import { NotificationQueueMessageType } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import config from 'config'
 
 export default function(user: IUser, traceId: string): void {
-  activationCodeModel
-    .create({
-      owner: user,
-    })
+  ActivationCodeModel.create({
+    owner: user,
+  })
     .then(async (activationCode: IActivationCode) => {
       const activationURL = `${config.get<string>(
         'appDomain'

@@ -1,11 +1,20 @@
 import amqp from 'amqplib'
-import { Queues, IUserUpdateMsg, UserUpdateTypes } from '@gtms/commons'
+import {
+  Queues,
+  IUserUpdateMsg,
+  UserUpdateTypes,
+  IUserJoinedGroupMsg,
+  IUserLeftGroupMsg,
+  IUserGotGroupAdminRights,
+  IUserLostGroupAdminRights,
+} from '@gtms/commons'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
   getSendMsgToRetryFunc,
 } from '@gtms/client-queue'
 import logger from '@gtms/lib-logger'
+import { UserModel, IUser } from '@gtms/lib-models'
 
 const retryPolicy: IRetryPolicy = {
   queue: Queues.userUpdate,
@@ -36,16 +45,230 @@ const retryPolicy: IRetryPolicy = {
 const sendMsgToRetry = getSendMsgToRetryFunc(retryPolicy)
 
 const processJoinedGroupMsg = (msg: IUserJoinedGroupMsg) =>
-  new Promise((resolve, reject) => {})
+  new Promise(async (resolve, reject) => {
+    const { data: { group, user, traceId } = {} } = msg
+
+    let userObj: IUser | null
+
+    try {
+      userObj = await UserModel.findOne({ _id: user })
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    const groups: string[] = userObj.groupsMember
+
+    if (groups.includes(group)) {
+      // user is already a group member
+
+      logger.log({
+        level: 'warn',
+        message: `User ${user} already belongs to group ${group}, skipping adding operation`,
+        traceId,
+      })
+
+      return resolve()
+    }
+
+    groups.push(group)
+
+    userObj.groupsMember = groups
+
+    try {
+      await userObj.save()
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    logger.log({
+      level: 'info',
+      message: `User ${user} has been added to group ${group}`,
+      traceId,
+    })
+
+    resolve()
+  })
 
 const processLeftGroupMsg = (msg: IUserLeftGroupMsg) =>
-  new Promise((resolve, reject) => {})
+  new Promise(async (resolve, reject) => {
+    const { data: { group, user, traceId } = {} } = msg
+
+    let userObj: IUser | null
+
+    try {
+      userObj = await UserModel.findOne({ _id: user })
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    const groups: string[] = userObj.groupsMember
+    const index = groups.findIndex(g => g === group)
+
+    if (index === -1) {
+      // user does not belong to the group
+      logger.log({
+        level: 'warn',
+        message: `User ${user} does not belong to group ${group}, skipping removal operation`,
+        traceId,
+      })
+      return resolve()
+    }
+
+    groups.splice(index, 1)
+
+    userObj.groupsMember = groups
+
+    try {
+      await userObj.save()
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    logger.log({
+      level: 'info',
+      message: `User ${user} has been removed from group ${group}`,
+      traceId,
+    })
+
+    resolve()
+  })
 
 const processGotGroupAdminRightsMsg = (msg: IUserGotGroupAdminRights) =>
-  new Promise((resolve, reject) => {})
+  new Promise(async (resolve, reject) => {
+    const { data: { group, user, traceId } = {} } = msg
+
+    let userObj: IUser | null
+
+    try {
+      userObj = await UserModel.findOne({ _id: user })
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    const groups: string[] = userObj.groupsAdmin
+
+    if (groups.includes(group)) {
+      // user is already a group's admin
+
+      logger.log({
+        level: 'warn',
+        message: `User ${user} is already group's ${group} admin, skipping adding operation`,
+        traceId,
+      })
+
+      return resolve()
+    }
+
+    groups.push(group)
+
+    userObj.groupsAdmin = groups
+
+    try {
+      await userObj.save()
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    logger.log({
+      level: 'info',
+      message: `User ${user} has been added to group ${group} as admin`,
+      traceId,
+    })
+
+    resolve()
+  })
 
 const processLostGroupAdminRightsMsg = (msg: IUserLostGroupAdminRights) =>
-  new Promise((resolve, reject) => {})
+  new Promise(async (resolve, reject) => {
+    const { data: { group, user, traceId } = {} } = msg
+
+    let userObj: IUser | null
+
+    try {
+      userObj = await UserModel.findOne({ _id: user })
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    const groups: string[] = userObj.groupsAdmin
+    const index = groups.findIndex(g => g === group)
+
+    if (index === -1) {
+      // user is not group's admin
+      logger.log({
+        level: 'warn',
+        message: `User ${user} is not admin in group ${group}, skipping removal operation`,
+        traceId,
+      })
+      return resolve()
+    }
+
+    groups.splice(index, 1)
+
+    userObj.groupsAdmin = groups
+
+    try {
+      await userObj.save()
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    logger.log({
+      level: 'info',
+      message: `User ${user} lost admin rights from group ${group}`,
+      traceId,
+    })
+
+    resolve()
+  })
 
 const processMsg = (msg: amqp.Message) => {
   let jsonMsg: IUserUpdateMsg
@@ -56,7 +279,7 @@ const processMsg = (msg: amqp.Message) => {
     logger.log({
       level: 'error',
       message: `Can not parse ${
-        Queues.updateGroupFiles
+        Queues.userUpdate
       } queue message: ${msg.content.toString()} / error: ${err}`,
     })
     return Promise.reject(`can not parse json`)
@@ -74,6 +297,9 @@ const processMsg = (msg: amqp.Message) => {
 
     case UserUpdateTypes.lostGroupAdminRights:
       return processLostGroupAdminRightsMsg(jsonMsg)
+
+    default:
+      return Promise.reject(`Message type ${jsonMsg.type} is not supported`)
   }
 }
 

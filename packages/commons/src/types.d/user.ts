@@ -3,7 +3,8 @@ import { UserUpdateTypes } from '../enums'
 export interface IUserJoinedGroupMsg {
   type: UserUpdateTypes.joinedGroup
   data: {
-    id: string
+    group: string
+    user: string
     traceId: string
   }
 }
@@ -11,7 +12,8 @@ export interface IUserJoinedGroupMsg {
 export interface IUserLeftGroupMsg {
   type: UserUpdateTypes.leftGroup
   data: {
-    id: string
+    group: string
+    user: string
     traceId: string
   }
 }
@@ -19,7 +21,8 @@ export interface IUserLeftGroupMsg {
 export interface IUserGotGroupAdminRights {
   type: UserUpdateTypes.gotGroupAdminRights
   data: {
-    id: string
+    group: string
+    user: string
     traceId: string
   }
 }
@@ -27,7 +30,8 @@ export interface IUserGotGroupAdminRights {
 export interface IUserLostGroupAdminRights {
   type: UserUpdateTypes.lostGroupAdminRights
   data: {
-    id: string
+    group: string
+    user: string
     traceId: string
   }
 }

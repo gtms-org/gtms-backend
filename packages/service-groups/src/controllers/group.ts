@@ -263,7 +263,8 @@ export default {
       await publishOnChannel<IUserJoinedGroupMsg>(Queues.userUpdate, {
         type: UserUpdateTypes.joinedGroup,
         data: {
-          id: group._id,
+          group: group._id,
+          user: req.user.id,
           traceId: res.get('x-traceid'),
         },
       })
@@ -292,7 +293,7 @@ export default {
       return next(err)
     }
 
-    if (!group || !Array.isArray(group.members))  {
+    if (!group || !Array.isArray(group.members)) {
       return res.status(404).end()
     }
 
@@ -326,7 +327,8 @@ export default {
       await publishOnChannel<IUserLeftGroupMsg>(Queues.userUpdate, {
         type: UserUpdateTypes.leftGroup,
         data: {
-          id: group._id,
+          group: group._id,
+          user: req.user.id,
           traceId: res.get('x-traceid'),
         },
       })

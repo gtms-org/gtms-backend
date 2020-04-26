@@ -1,5 +1,9 @@
-import userModel, { IUser } from '../models/users'
-import refreshTokenModel, { IRefreshToken } from '../models/refreshToken'
+import {
+  IUser,
+  UserModel,
+  RefreshTokenModel,
+  IRefreshToken,
+} from '@gtms/lib-models'
 import { Request, Response, NextFunction } from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
@@ -11,8 +15,7 @@ import sendActivationEmail from '../helpers/sendActivationEmail'
 
 export default {
   count(_: Request, res: Response, next: NextFunction): void {
-    userModel
-      .estimatedDocumentCount({})
+    UserModel.estimatedDocumentCount({})
       .then((counter: number) => {
         res.status(200).json({ counter })
       })
@@ -22,16 +25,15 @@ export default {
   },
   create(req: Request, res: Response, next: NextFunction): void {
     const { body } = req
-    userModel
-      .create({
-        name: body.name,
-        surname: body.surname,
-        email: body.email,
-        phone: body.phone,
-        password: body.password,
-        countryCode: body.countryCode,
-        languageCode: body.languageCode,
-      })
+    UserModel.create({
+      name: body.name,
+      surname: body.surname,
+      email: body.email,
+      phone: body.phone,
+      password: body.password,
+      countryCode: body.countryCode,
+      languageCode: body.languageCode,
+    })
       .then((user: IUser) => {
         const {
           _id,
@@ -82,8 +84,7 @@ export default {
       })
   },
   authenticate(req: Request, res: Response, next: NextFunction): void {
-    userModel
-      .findOne({ email: req.body.email, isBlocked: false })
+    UserModel.findOne({ email: req.body.email, isBlocked: false })
       .then(async (user: IUser | null) => {
         if (!user) {
           logger.log({
@@ -159,8 +160,9 @@ export default {
       })
   },
   refreshToken(req: Request, res: Response, next: NextFunction): void {
-    refreshTokenModel
-      .findOne({ token: req.body.token && req.body.token.trim() })
+    RefreshTokenModel.findOne({
+      token: req.body.token && req.body.token.trim(),
+    })
       .populate('user')
       .then(async (token: IRefreshToken | null) => {
         if (!token || token.user === null) {

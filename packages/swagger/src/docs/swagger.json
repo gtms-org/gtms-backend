@@ -417,6 +417,59 @@
         }
       }
     },
+    "/group/{slug}/join": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Allow user to join a group",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "User has no rights to join the group"
+          },
+          "404": {
+            "description": "Group does not exist in db"
+          }
+        }
+      }
+    },
+    "/group/{slug}/leave": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Allow user to leave a group",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Group does not exist in db"
+          }
+        }
+      }
+    },
     "/group/{slug}": {
       "get": {
         "tags": ["Groups"],

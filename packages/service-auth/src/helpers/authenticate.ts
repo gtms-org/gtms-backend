@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { IUser } from '../models/users'
-import refreshTokenModel from '../models/refreshToken'
+import { IUser, RefreshTokenModel } from '@gtms/lib-models'
 import config from 'config'
 import requestAPI from '../helpers/requestAPI'
 import logger from '@gtms/lib-logger'
@@ -59,7 +58,7 @@ export default async function(user: IUser, traceId: string) {
   )
 
   try {
-    await refreshTokenModel.create({
+    await RefreshTokenModel.create({
       token: refreshToken,
       user: user._id,
     })

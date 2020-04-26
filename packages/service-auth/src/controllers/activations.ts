@@ -1,6 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
-import ActivationCodeModel, { IActivationCode } from '../models/activationCode'
-import UserModel, { IUser } from '../models/users'
+import {
+  ActivationCodeModel,
+  IActivationCode,
+  UserModel,
+  IUser,
+  FacebookProviderModel,
+  RefreshTokenModel,
+} from '@gtms/lib-models'
 import logger from '@gtms/lib-logger'
 import sendRemindPassEmail from '../helpers/sendRemindPassEmail'
 import sendDeleteAccountEmail from '../helpers/sendDeleteAccountEmail'
@@ -11,8 +17,6 @@ import {
   validatePassword,
 } from '@gtms/commons'
 import { publishToDeleteChannel } from '@gtms/client-queue'
-import FacebookProviderModel from '../models/facebookProvider'
-import RefreshTokenModel from '../models/refreshToken'
 
 export default {
   activateAccount(req: Request, res: Response, next: NextFunction): void {

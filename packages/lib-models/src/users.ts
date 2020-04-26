@@ -14,6 +14,8 @@ export interface IUser extends Document {
   isBlocked: boolean
   isActive: boolean
   roles: string[]
+  groupsMember: string[]
+  groupsAdmin: string[]
 }
 
 const saltRounds = 10
@@ -81,6 +83,16 @@ const UserSchema = new Schema(
       required: false,
       default: [],
     },
+    groupsMember: {
+      type: [Schema.Types.ObjectId],
+      required: false,
+      default: [],
+    },
+    groupsAdmin: {
+      type: [Schema.Types.ObjectId],
+      required: false,
+      default: [],
+    },
   },
   {
     timestamps: true,
@@ -97,4 +109,4 @@ UserSchema.pre<IUser>('save', function(next: HookNextFunction) {
   next()
 })
 
-export default mongoose.model<IUser>('User', UserSchema)
+export const UserModel = mongoose.model<IUser>('User', UserSchema)
