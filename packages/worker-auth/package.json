@@ -1,22 +1,19 @@
 {
-  "name": "@gtms/service-auth",
-  "version": "0.7.3",
+  "name": "@gtms/worker-auth",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest --runInBand --maxConcurrency=1",
+    "test": "jest",
     "dev": "nodemon",
     "build": "webpack --mode=production --config ../../webpack.config.js",
-    "start": "node dist",
-    "show:env": "node test.js"
+    "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-mongoose": "*",
     "@gtms/client-queue": "*",
     "@gtms/commons": "*",
+    "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-middlewares": "*",
-    "@gtms/lib-testing": "*",
     "@gtms/lib-models": "*"
   },
   "author": "Mariusz Kabała",

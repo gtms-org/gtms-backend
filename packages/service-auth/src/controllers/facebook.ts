@@ -1,10 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import fetch from 'node-fetch'
 import { URLSearchParams } from 'url'
-import FacebookProviderModel, {
+import {
   IFacebookProvider,
-} from '../models/facebookProvider'
-import UserModel, { IUser } from '../models/users'
+  FacebookProviderModel,
+  UserModel,
+  IUser,
+} from '@gtms/lib-models'
 import crypto from 'crypto'
 import logger from '@gtms/lib-logger'
 import authenticate from '../helpers/authenticate'

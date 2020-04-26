@@ -1,5 +1,5 @@
 import logger from '@gtms/lib-logger'
-import { IActivationCode } from '../models/activationCode'
+import { IActivationCode } from '@gtms/lib-models'
 import { publishToNotificationsChannel } from '@gtms/client-queue'
 import { NotificationQueueMessageType } from '@gtms/commons'
 import config from 'config'

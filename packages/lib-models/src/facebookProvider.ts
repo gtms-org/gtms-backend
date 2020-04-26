@@ -32,7 +32,7 @@ const FacebookProviderSchema = new Schema({
 
 FacebookProviderSchema.plugin(findOrCreate)
 
-export default mongoose.model<IFacebookProvider>(
+export const FacebookProviderModel = mongoose.model<IFacebookProvider>(
   'FacebookProvider',
   FacebookProviderSchema
 )

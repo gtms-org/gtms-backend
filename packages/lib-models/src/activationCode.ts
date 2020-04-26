@@ -41,7 +41,7 @@ ActivationCodeSchema.pre<IActivationCode>('save', function(
   next()
 })
 
-export default mongoose.model<IActivationCode>(
+export const ActivationCodeModel = mongoose.model<IActivationCode>(
   'ActivationCode',
   ActivationCodeSchema
 )

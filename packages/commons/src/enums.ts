@@ -6,6 +6,7 @@ export enum Queues {
   createFile = 'createFile',
   updateGroupFiles = 'updateGroupFiles',
   updateUserFiles = 'updateUserFiles',
+  userUpdate = 'userUpdate',
 }
 
 export enum NotificationQueueMessageType {
@@ -37,4 +38,11 @@ export enum FileStatus {
   uploaded = 'uploaded',
   processing = 'processing',
   ready = 'ready',
+}
+
+export enum UserUpdateTypes {
+  joinedGroup = 'joinedGroup',
+  leftGroup = 'leftGroup',
+  gotGroupAdminRights = 'gotGroupAdminRights',
+  lostGroupAdminRights = 'lostGroupAdminRights',
 }
