@@ -7,6 +7,8 @@ const {
   PORT,
   BUCKET_GROUP_LOGO,
   BUCKET_AVATAR,
+  BUCKET_GROUP_BG,
+  BUCKET_USER_GALLERY,
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
   AWS_REGION,
@@ -25,6 +27,8 @@ module.exports = {
   buckets: {
     groupLogo: BUCKET_GROUP_LOGO,
     avatar: BUCKET_AVATAR,
+    userGallery: BUCKET_USER_GALLERY,
+    groupBg: BUCKET_GROUP_BG,
   },
   files: {
     groupLogo: [
