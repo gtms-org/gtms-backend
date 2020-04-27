@@ -6,6 +6,7 @@ const {
   VERSION,
   PORT,
   BUCKET_GROUP_LOGO,
+  BUCKET_AVATAR,
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
   AWS_REGION,
@@ -23,6 +24,7 @@ module.exports = {
   awsEndpoint: AWS_ENDPOINT,
   buckets: {
     groupLogo: BUCKET_GROUP_LOGO,
+    avatar: BUCKET_AVATAR,
   },
   files: {
     groupLogo: [

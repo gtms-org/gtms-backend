@@ -141,7 +141,7 @@ const processNewUpload = (payload: IFileQueueMsg) => {
       return resolve()
     }
 
-    UserModel.findOne(owner)
+    UserModel.findOne({ _id: owner })
       .then((user: IUser | null) => {
         if (!user) {
           logger.log({
@@ -211,7 +211,7 @@ const processReadyFiles = (msg: IFileQueueMsg) =>
       data: { files, traceId, status, fileType, extra, owner } = {},
     } = msg
 
-    UserModel.findOne(owner).then((user: IUser | null) => {
+    UserModel.findOne({ _id: owner }).then((user: IUser | null) => {
       if (!user) {
         logger.log({
           level: 'error',
@@ -264,7 +264,7 @@ const processMsg = (msg: amqp.Message) => {
     logger.log({
       level: 'error',
       message: `Can not parse ${
-        Queues.updateGroupFiles
+        Queues.updateUserFiles
       } queue message: ${msg.content.toString()} / error: ${err}`,
     })
     return Promise.reject(`can not parse json`)
