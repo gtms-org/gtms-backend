@@ -42,23 +42,84 @@ const getUpdatePayload = ({
   fileType,
   status,
   user,
+  extra,
+  traceId,
 }: {
   files: string[]
   fileType: FileTypes
   status: FileStatus
   user: IUser
-}) => {
+  extra?: {
+    id: string
+  }
+  traceId: string
+}): {
+  extra?: {
+    id: string
+  }
+  update: any
+} => {
   switch (fileType) {
     case FileTypes.avatar:
       return {
-        avatar: {
-          status,
-          files,
+        extra: undefined,
+        update: {
+          avatar: {
+            status,
+            files,
+          },
         },
       }
 
     case FileTypes.userGallery:
-      break
+      const gallery = user.gallery || []
+
+      if (extra) {
+        const index = gallery.findIndex(file => {
+          return file.id === extra.id
+        })
+
+        if (index === -1) {
+          logger.log({
+            level: 'error',
+            message: `Can not find file ${
+              extra.id
+            } in user gallery, can not update user in DB, user record: ${JSON.stringify(
+              user.toObject()
+            )}`,
+            traceId,
+          })
+        } else {
+          gallery[index] = {
+            status,
+            files,
+            id: extra.id,
+          }
+        }
+        return {
+          extra: undefined,
+          update: {
+            gallery,
+          },
+        }
+      } else {
+        const id = `${new Date().getTime()}-${gallery.length + 1}`
+        gallery.push({
+          status,
+          files,
+          id,
+        })
+
+        return {
+          extra: { id },
+          update: {
+            gallery: [...gallery],
+          },
+        }
+      }
+
+    default:
+      throw new Error(`File ${fileType} is not supported`)
   }
 }
 
@@ -68,17 +129,20 @@ const processNewUpload = (payload: IFileQueueMsg) => {
       data: { relatedRecord, owner, traceId, files, fileType, status } = {},
     } = payload
 
-    UserModel.findOneAndUpdate(
-      {
-        _id: relatedRecord,
-        owner,
-      },
-      getUpdatePayload({ files: files.map(f => f.url), fileType, status }),
-      {
-        upsert: false,
-      }
-    )
-      .then(async (user: IUser | null) => {
+    if (relatedRecord !== owner) {
+      logger.log({
+        level: 'error',
+        message: `Someone tried to upload files for not his user account, payload: ${JSON.stringify(
+          payload
+        )}`,
+        traceId,
+      })
+
+      return resolve()
+    }
+
+    UserModel.findOne(owner)
+      .then((user: IUser | null) => {
         if (!user) {
           logger.log({
             level: 'error',
@@ -87,22 +151,47 @@ const processNewUpload = (payload: IFileQueueMsg) => {
             )}`,
             traceId,
           })
+
           return resolve()
         }
 
-        try {
-          await publishOnChannel(Queues.createFile, payload)
-        } catch (err) {
-          logger.log({
-            level: 'error',
-            message: `Can not publish message to ${
-              Queues.createFile
-            } queue, payload: ${JSON.stringify(payload)}, error: ${err}`,
-            traceId,
-          })
-        }
+        const { extra, update } = getUpdatePayload({
+          files: files.map(f => f.url),
+          fileType,
+          status,
+          user,
+          traceId,
+        })
 
-        resolve()
+        UserModel.findOneAndUpdate({ _id: relatedRecord }, update, {
+          upsert: false,
+        })
+          .then(async () => {
+            payload.data.extra = extra
+
+            try {
+              await publishOnChannel(Queues.createFile, payload)
+            } catch (err) {
+              logger.log({
+                level: 'error',
+                message: `Can not publish message to ${
+                  Queues.createFile
+                } queue, payload: ${JSON.stringify(payload)}, error: ${err}`,
+                traceId,
+              })
+            }
+
+            resolve()
+          })
+          .catch(err => {
+            logger.log({
+              level: 'error',
+              message: `Database error: ${err}`,
+              traceId,
+            })
+
+            reject('database error')
+          })
       })
       .catch(err => {
         logger.log({
@@ -114,6 +203,14 @@ const processNewUpload = (payload: IFileQueueMsg) => {
         reject('database error')
       })
   })
+}
+
+const processReadyFiles = (msg: IFileQueueMsg) => {
+  const {
+    data: { files, traceId, status, relatedRecord, fileType, extra } = {},
+  } = msg
+
+  let payload
 }
 
 const processMsg = (msg: amqp.Message) => {

@@ -64,7 +64,15 @@ function processMsg(msg: amqp.Message) {
     }
 
     const {
-      data: { fileType, status, files, traceId, relatedRecord, owner } = {},
+      data: {
+        fileType,
+        status,
+        files,
+        traceId,
+        relatedRecord,
+        owner,
+        extra,
+      } = {},
     } = jsonMsg
 
     logger.log({
@@ -119,6 +127,7 @@ function processMsg(msg: amqp.Message) {
             relatedRecord,
             fileType,
             owner,
+            extra,
           },
         })
       } catch (err) {

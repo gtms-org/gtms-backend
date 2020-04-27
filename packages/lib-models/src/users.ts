@@ -1,7 +1,11 @@
 import mongoose, { HookNextFunction, Document, Schema } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 import bcrypt from 'bcryptjs'
-import { validateEmailAddress, validatePassword } from '@gtms/commons'
+import {
+  validateEmailAddress,
+  validatePassword,
+  FileStatus,
+} from '@gtms/commons'
 
 export interface IUser extends Document {
   name?: string
@@ -16,6 +20,15 @@ export interface IUser extends Document {
   roles: string[]
   groupsMember: string[]
   groupsAdmin: string[]
+  avatar?: {
+    status: FileStatus
+    files: string[]
+  }
+  gallery?: {
+    status: FileStatus
+    id?: string
+    files: string[]
+  }[]
 }
 
 const saltRounds = 10
@@ -93,6 +106,24 @@ const UserSchema = new Schema(
       required: false,
       default: [],
     },
+    avatar: {
+      status: {
+        type: String,
+      },
+      files: {
+        type: [String],
+      },
+    },
+    gallery: [
+      {
+        status: {
+          type: String,
+        },
+        files: {
+          type: [String],
+        },
+      },
+    ],
   },
   {
     timestamps: true,
