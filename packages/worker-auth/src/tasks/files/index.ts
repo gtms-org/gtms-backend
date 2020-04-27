@@ -205,13 +205,55 @@ const processNewUpload = (payload: IFileQueueMsg) => {
   })
 }
 
-const processReadyFiles = (msg: IFileQueueMsg) => {
-  const {
-    data: { files, traceId, status, relatedRecord, fileType, extra } = {},
-  } = msg
+const processReadyFiles = (msg: IFileQueueMsg) =>
+  new Promise((resolve, reject) => {
+    const {
+      data: { files, traceId, status, fileType, extra, owner } = {},
+    } = msg
 
-  let payload
-}
+    UserModel.findOne(owner).then((user: IUser | null) => {
+      if (!user) {
+        logger.log({
+          level: 'error',
+          message: `Someone tried to upload files to not existing user, payload: ${JSON.stringify(
+            msg
+          )}`,
+          traceId,
+        })
+
+        return resolve()
+      }
+
+      let payload
+
+      try {
+        payload = getUpdatePayload({
+          files: files.map(f => f.url),
+          fileType,
+          status,
+          traceId,
+          extra,
+          user,
+        })
+      } catch (err) {
+        return reject(err)
+      }
+
+      UserModel.findOneAndUpdate({ _id: owner }, payload.update, {
+        upsert: false,
+      })
+        .then(resolve)
+        .catch(err => {
+          logger.log({
+            level: 'error',
+            message: `Database error: ${err}`,
+            traceId,
+          })
+
+          reject('database error')
+        })
+    })
+  })
 
 const processMsg = (msg: amqp.Message) => {
   let jsonMsg: IFileQueueMsg

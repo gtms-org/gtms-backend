@@ -75,5 +75,169 @@ module.exports = {
         },
       ],
     ],
+    avatar: [
+      [
+        {
+          operation: 'resize',
+          size: [1300, 1300],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '1300x1300',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '1300x1300',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [800, 800],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '800x800',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '800x800',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [200, 200],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '200x200',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '200x200',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [50, 50],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '50x50',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '50x50',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [35, 35],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '35x35',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '35x35',
+        },
+      ],
+    ],
+    userGallery: [
+      [
+        {
+          operation: 'resize',
+          size: [1300, 1300],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '1300x1300',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '1300x1300',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [800, 800],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '800x800',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '800x800',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [200, 200],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '200x200',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '200x200',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [50, 50],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '50x50',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '50x50',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [35, 35],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '35x35',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '35x35',
+        },
+      ],
+    ],
   },
 }
