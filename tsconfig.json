@@ -23,7 +23,8 @@
         }
     },
     "files": [
-        "packages/lib-testing/src/node-mongodb-fixtures.d.ts"
+        "packages/lib-testing/src/node-mongodb-fixtures.d.ts",
+        "packages/lib-models/src/types/findorcreate.d.ts"
     ],
     "include": [
         "packages/**/*"

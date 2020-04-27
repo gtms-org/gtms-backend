@@ -46,22 +46,23 @@ function processMsg(msg: amqp.Message) {
         refresh: true,
         body: {
           script: {
-            inline: "for (i in params.keySet()) { ctx._source[i] = params.get(i);}",
-            lang: "painless",
-              params: jsonMessage.data
+            inline:
+              'for (i in params.keySet()) { ctx._source[i] = params.get(i);}',
+            lang: 'painless',
+            params: jsonMessage.data,
           },
           query: {
             match: {
-              slug: jsonMessage.data.slug
-            }
-          }
-        }
+              slug: jsonMessage.data.slug,
+            },
+          },
+        },
       }
       client.updateByQuery(dataToUpdate).then(response => {
         logger.log({
           level: 'info',
           message: `Elasticserach updated group ${dataToUpdate}: ${response}`,
-          traceid: jsonMessage.data?.traceId
+          traceid: jsonMessage.data?.traceId,
         })
       })
       return

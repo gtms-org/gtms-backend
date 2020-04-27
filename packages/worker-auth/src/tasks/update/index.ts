@@ -297,9 +297,6 @@ const processMsg = (msg: amqp.Message) => {
 
     case UserUpdateTypes.lostGroupAdminRights:
       return processLostGroupAdminRightsMsg(jsonMsg)
-
-    default:
-      return Promise.reject(`Message type ${jsonMsg.type} is not supported`)
   }
 }
 

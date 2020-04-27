@@ -12,6 +12,7 @@ export interface IFileQueueMsg {
       width?: number
       height?: number
     }[]
+    extra?: any
     owner: string
     traceId: string
   }
