@@ -5,10 +5,14 @@ services:
     ports:
       - 5672:5672
       - 8080:15672
+    volumes:
+      - ./devFiles/rabbitmq-data/:/var/lib/rabbitmq/
   gtms-dev-mongo:
     image: mongo
     ports:
       - 27017:27017
+    volumes:
+      - ./devFiles/mongo-data/:/data/db
   gtms-dev-mongo-express:
     image: mongo-express
     environment:
