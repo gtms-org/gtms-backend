@@ -181,6 +181,14 @@ const processNewUpload = (payload: IFileQueueMsg) => {
               })
             }
 
+            logger.log({
+              level: 'info',
+              message: `User record has been updated with new file info ${JSON.stringify(
+                payload
+              )}`,
+              traceId,
+            })
+
             resolve()
           })
           .catch(err => {
@@ -242,7 +250,16 @@ const processReadyFiles = (msg: IFileQueueMsg) =>
       UserModel.findOneAndUpdate({ _id: owner }, payload.update, {
         upsert: false,
       })
-        .then(resolve)
+        .then(() => {
+          logger.log({
+            level: 'info',
+            message: `User record has been updated with new file info ${JSON.stringify(
+              msg
+            )}`,
+            traceId,
+          })
+          resolve()
+        })
         .catch(err => {
           logger.log({
             level: 'error',
