@@ -32,6 +32,8 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.get('/users/count', usersController.count)
 router.post('/users', usersController.create)
+router.post('/me', JWTMiddleware, usersController.updateAccount)
+router.get('/me', JWTMiddleware, usersController.getAccount)
 
 router.post('/authenticate', usersController.authenticate)
 

@@ -1,5 +1,6 @@
 export * from './notifications'
 export * from './requests'
-export * from './groups'
+export * from './elasticSearch'
 export * from './files'
 export * from './user'
+export * from './serializers'

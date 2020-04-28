@@ -3,6 +3,7 @@ import {
   UserModel,
   RefreshTokenModel,
   IRefreshToken,
+  serializeUser,
 } from '@gtms/lib-models'
 import { Request, Response, NextFunction } from 'express'
 import bcrypt from 'bcryptjs'
@@ -12,6 +13,7 @@ import authenticate, { getJWTData } from '../helpers/authenticate'
 import config from 'config'
 import serializeCookie from '../helpers/cookies'
 import sendActivationEmail from '../helpers/sendActivationEmail'
+import { IAuthRequest } from '@gtms/commons'
 
 export default {
   count(_: Request, res: Response, next: NextFunction): void {
@@ -35,15 +37,7 @@ export default {
       languageCode: body.languageCode,
     })
       .then((user: IUser) => {
-        const {
-          _id,
-          name,
-          surname,
-          email,
-          phone,
-          countryCode,
-          languageCode,
-        } = user
+        const { name, surname, email } = user
 
         logger.log({
           message: `New user with email ${email} and name ${name ||
@@ -52,15 +46,7 @@ export default {
           traceId: res.get('x-traceid'),
         })
 
-        res.status(201).json({
-          id: _id,
-          name,
-          surname,
-          email,
-          phone,
-          countryCode,
-          languageCode,
-        })
+        res.status(201).json(serializeUser(user))
 
         sendActivationEmail(user, res.get('x-traceid'))
       })
@@ -206,6 +192,108 @@ export default {
         })
       })
       .catch((err: Error) => {
+        next(err)
+      })
+  },
+  updateAccount(req: IAuthRequest, res: Response, next: NextFunction) {
+    UserModel.findById(req.user.id)
+      .then(async (user: IUser | null) => {
+        if (!user) {
+          logger.log({
+            message: `Someone tried to update not existing user account ${req.user.id} ${req.user.email}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          return res.status(404).end()
+        }
+
+        ;[
+          'name',
+          'surname',
+          'email',
+          'phone',
+          'countryCode',
+          'languageCode',
+          'tags',
+        ].forEach(
+          (
+            field:
+              | 'name'
+              | 'surname'
+              | 'email'
+              | 'phone'
+              | 'countryCode'
+              | 'languageCode'
+              | 'tags'
+          ) => {
+            if (req.body[field]) {
+              user[field] = req.body[field]
+            }
+          }
+        )
+
+        try {
+          user.save()
+
+          logger.log({
+            level: 'info',
+            message: `Account ${user._id} (${user.email}) has been updated`,
+            traceId: res.get('x-traceid'),
+          })
+
+          res.status(200).json(serializeUser(user))
+        } catch (err) {
+          if (err.name === 'ValidationError') {
+            logger.log({
+              message: `Validation error ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+            res.status(400).json(err.errors)
+          } else {
+            next(err)
+
+            logger.log({
+              message: `Request error ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+          }
+        }
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      })
+  },
+  getAccount(req: IAuthRequest, res: Response, next: NextFunction) {
+    UserModel.findById(req.user.id)
+      .then(async (user: IUser | null) => {
+        if (!user) {
+          logger.log({
+            message: `Someone tried to get information about not existing user account ${req.user.id} ${req.user.email}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          return res.status(404).end()
+        }
+
+        res.status(200).json(serializeUser(user))
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
         next(err)
       })
   },

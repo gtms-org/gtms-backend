@@ -1,5 +1,2 @@
-export * from './groups'
-export * from './activationCode'
-export * from './facebookProvider'
-export * from './refreshToken'
-export * from './users'
+export * from './models'
+export * from './serializers'

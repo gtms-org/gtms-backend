@@ -1,7 +1,7 @@
 export enum Queues {
   notifications = 'notifications',
   deleteAccount = 'deleteAccount',
-  createUpdateGroup = 'createUpdateGroup',
+  updateESIndex = 'updateESIndex',
   deleteGroup = 'deleteGroup',
   createFile = 'createFile',
   updateGroupFiles = 'updateGroupFiles',
@@ -14,9 +14,16 @@ export enum NotificationQueueMessageType {
   webPush = 'webPush',
 }
 
-export enum CreateUpdateGroupQueueMessageType {
+export enum ESIndexUpdateType {
   create = 'create',
   update = 'update',
+  delete = 'delete',
+}
+
+export enum ESIndexUpdateRecord {
+  user = 'user',
+  group = 'group',
+  post = 'post',
 }
 
 export enum http {
@@ -45,4 +52,8 @@ export enum UserUpdateTypes {
   leftGroup = 'leftGroup',
   gotGroupAdminRights = 'gotGroupAdminRights',
   lostGroupAdminRights = 'lostGroupAdminRights',
+}
+
+export enum Indicies {
+  GROUPS_INDEX = 'groups',
 }

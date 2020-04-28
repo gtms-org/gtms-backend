@@ -1,8 +1,8 @@
 import { register, route } from '@gtms/lib-http-server'
 import http, { IncomingMessage, ServerResponse } from 'http'
-import { listenToGroupsQueue } from './worker'
+import { startWorker } from './worker'
 
-listenToGroupsQueue()
+startWorker()
 
 register('/managment/heath', (_: IncomingMessage, res: ServerResponse) => {
   res.writeHead(200, { 'Content-Type': 'application/json' })

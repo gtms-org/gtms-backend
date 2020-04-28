@@ -29,6 +29,7 @@ export interface IUser extends Document {
     id?: string
     files: string[]
   }[]
+  tags: string[]
 }
 
 const saltRounds = 10
@@ -124,6 +125,11 @@ const UserSchema = new Schema(
         },
       },
     ],
+    tags: {
+      type: [String],
+      required: false,
+      default: [],
+    },
   },
   {
     timestamps: true,
