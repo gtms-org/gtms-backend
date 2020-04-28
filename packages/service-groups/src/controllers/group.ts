@@ -1,13 +1,15 @@
 import { Response, NextFunction } from 'express'
-import { GroupModel, IGroup } from '@gtms/lib-models'
+import { GroupModel, IGroup, serializeGroup } from '@gtms/lib-models'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import slugify from '@sindresorhus/slugify'
 import { publishOnChannel } from '@gtms/client-queue'
 import {
   Queues,
-  CreateUpdateGroupQueueMessageType,
-  IGroupQueueMsg,
+  IESGroupCreateMsg,
+  IESGroupUpdateMsg,
+  ESIndexUpdateType,
+  ESIndexUpdateRecord,
   IUserJoinedGroupMsg,
   IUserLeftGroupMsg,
   UserUpdateTypes,
@@ -74,10 +76,11 @@ export default {
         }
 
         try {
-          await publishOnChannel<IGroupQueueMsg>(Queues.createUpdateGroup, {
-            type: CreateUpdateGroupQueueMessageType.create,
+          await publishOnChannel<IESGroupCreateMsg>(Queues.updateESIndex, {
+            type: ESIndexUpdateType.create,
+            record: ESIndexUpdateRecord.group,
             data: {
-              ...group.toObject(),
+              ...serializeGroup(group),
               traceId: res.get('x-traceid'),
             },
           })
@@ -187,10 +190,11 @@ export default {
     res.status(200).json(getSingleGroupResponse(group))
 
     try {
-      await publishOnChannel<IGroupQueueMsg>(Queues.createUpdateGroup, {
-        type: CreateUpdateGroupQueueMessageType.update,
+      await publishOnChannel<IESGroupUpdateMsg>(Queues.updateESIndex, {
+        type: ESIndexUpdateType.update,
+        record: ESIndexUpdateRecord.group,
         data: {
-          ...group.toObject(),
+          ...serializeGroup(group),
           traceId: res.get('x-traceid'),
         },
       })
