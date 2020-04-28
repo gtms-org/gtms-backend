@@ -348,6 +348,88 @@
         }
       }
     },
+    "/auth/me": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns info about current user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "description": "Successful operation"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns info about current user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "countryCode": {
+                  "type": "string"
+                },
+                "languageCode": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account has been updated"
+          },
+          "400": {
+            "description": "Payload has errors"
+          },
+          "401": {
+            "description": "JWT token in header is invalid"
+          },
+          "404": {
+            "description": "JTW user does not exist in DB"
+          }
+        }
+      }
+    },
     "/group": {
       "post": {
         "security": [
@@ -720,6 +802,18 @@
         },
         "languageCode": {
           "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -745,7 +839,18 @@
           "type": "string"
         },
         "avatar": {
-          "type": "string"
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         },
         "tags": {
           "type": "array",
