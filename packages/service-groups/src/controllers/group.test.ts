@@ -41,11 +41,11 @@ describe('Group controller', () => {
       .connect(`amqp://${config.get<string>('queueHost')}`)
       .then(async conn => {
         await conn.createChannel().then(ch => {
-          const ok = ch.assertQueue(Queues.createUpdateGroup, { durable: true })
+          const ok = ch.assertQueue(Queues.updateESIndex, { durable: true })
           ok.then(() => {
             ch.prefetch(1)
           }).then(() => {
-            ch.consume(Queues.createUpdateGroup, getDoCheck(conn), {
+            ch.consume(Queues.updateESIndex, getDoCheck(conn), {
               noAck: true,
             })
           })
@@ -258,11 +258,11 @@ describe('Group controller', () => {
       .connect(`amqp://${config.get<string>('queueHost')}`)
       .then(async conn => {
         await conn.createChannel().then(ch => {
-          const ok = ch.assertQueue(Queues.createUpdateGroup, { durable: true })
+          const ok = ch.assertQueue(Queues.updateESIndex, { durable: true })
           ok.then(() => {
             ch.prefetch(1)
           }).then(() => {
-            ch.consume(Queues.createUpdateGroup, getDoCheck(conn), {
+            ch.consume(Queues.updateESIndex, getDoCheck(conn), {
               noAck: true,
             })
           })
