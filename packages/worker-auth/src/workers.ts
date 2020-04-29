@@ -1,7 +1,10 @@
 import amqp from 'amqplib'
 import config from 'config'
-import logger from '@gtms/lib-logger'
 import { initUpdateTask, initFilesTask } from './tasks'
+import {
+  onQueueConnectionError,
+  setConnectionErrorsHandlers,
+} from '@gtms/client-queue'
 
 let queueConnection: amqp.Connection
 
@@ -9,6 +12,8 @@ export async function startWorkers() {
   await amqp
     .connect(`amqp://${config.get<string>('queueHost')}`)
     .then(async conn => {
+      setConnectionErrorsHandlers(conn)
+
       await conn.createChannel().then(ch => {
         queueConnection = conn
 
@@ -17,14 +22,7 @@ export async function startWorkers() {
         initFilesTask(ch)
       })
     })
-    .catch(err => {
-      logger.log({
-        message: `Can not connect to queue, ${err}`,
-        level: 'error',
-      })
-
-      process.exit(1)
-    })
+    .catch(onQueueConnectionError)
 }
 
 export function closeConnection() {

@@ -12,6 +12,8 @@ import {
   IRetryPolicy,
   getSendMsgToRetryFunc,
   publishOnChannel,
+  onQueueConnectionError,
+  setConnectionErrorsHandlers,
 } from '@gtms/client-queue'
 import { processFile, FileOperation } from './processFile'
 
@@ -162,6 +164,8 @@ export async function listenToFilesQueue() {
       await conn.createChannel().then(ch => {
         queueConnection = conn
 
+        setConnectionErrorsHandlers(conn)
+
         const ok = ch.assertQueue(Queues.createFile, { durable: true })
         ok.then(async () => {
           await setupRetriesPolicy(ch, retryPolicy)
@@ -198,6 +202,7 @@ export async function listenToFilesQueue() {
         })
       })
     })
+    .catch(onQueueConnectionError)
 }
 
 export function closeConnection() {
