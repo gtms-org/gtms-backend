@@ -1,0 +1,21 @@
+{
+  "name": "@gtms/gatekeeper-public",
+  "version": "0.8.5",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "exit 0",
+    "dev": "nodemon",
+    "build": "webpack --mode=production --config ../../webpack.config.js",
+    "start": "node dist"
+  },
+  "dependencies": {
+    "@gtms/commons": "*",
+    "@gtms/lib-logger": "*",
+    "@gtms/lib-gatekeeper": "*",
+    "@gtms/lib-middlewares": "*",
+    "@gtms/lib-testing": "*"
+  },
+  "author": "Mariusz Kabała",
+  "license": "ISC"
+}

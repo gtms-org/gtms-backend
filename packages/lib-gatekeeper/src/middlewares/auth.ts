@@ -5,7 +5,11 @@ import logger from '@gtms/lib-logger'
 
 const { SECRET } = process.env
 
-export default (req: Request, res: Response, next: NextFunction) => {
+export const authMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const token = req.headers['x-access-token']
 
   if (!token) {

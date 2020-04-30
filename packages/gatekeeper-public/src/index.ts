@@ -1,11 +1,14 @@
 import express, { Router, Request, Response } from 'express'
 import { stream } from '@gtms/lib-logger'
-import servicesConfigLoader from './lib/services'
-import { traceIDMiddleware, errorMiddleware } from '@gtms/lib-middlewares'
-import readAuthFromCookie from './middlewares/readAuthFromCookie'
-import versionMiddleware from './middlewares/version'
+import { traceIDMiddleware } from '@gtms/lib-middlewares'
+import {
+  initRouter,
+  readAuthFromCookieMiddleware,
+  versionMiddleware,
+} from '@gtms/lib-gatekeeper'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
+import services from './services'
 
 const app = express()
 const router: Router = Router()
@@ -18,11 +21,11 @@ async function start() {
     })
   })
 
-  await servicesConfigLoader(router)
+  initRouter(router, services)
 
   app.use(traceIDMiddleware)
   app.use(versionMiddleware)
-  app.use(readAuthFromCookie)
+  app.use(readAuthFromCookieMiddleware)
   app.disable('x-powered-by')
   app.use(
     morgan(
@@ -46,8 +49,6 @@ async function start() {
   router.all('*', (_: Request, res: Response) => {
     res.status(404).json({ status: 'not found' })
   })
-
-  app.use(errorMiddleware)
 }
 
 start()
