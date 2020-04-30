@@ -1,10 +1,11 @@
 import amqp from 'amqplib'
 import config from 'config'
-import logger from '@gtms/lib-logger'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
   getSendMsgToRetryFunc,
+  onQueueConnectionError,
+  setConnectionErrorsHandlers,
 } from '@gtms/client-queue'
 import { Queues } from '@gtms/commons'
 import { processMsg } from './tasks'
@@ -41,6 +42,8 @@ export async function startWorker() {
     .then(async conn => {
       await conn.createChannel().then(ch => {
         queueConnection = conn
+
+        setConnectionErrorsHandlers(conn)
 
         const ok = ch.assertQueue(Queues.updateESIndex, { durable: true })
 
@@ -79,14 +82,7 @@ export async function startWorker() {
         })
       })
     })
-    .catch(err => {
-      logger.log({
-        message: `Can not connect to queue, ${err}`,
-        level: 'error',
-      })
-
-      process.exit(1)
-    })
+    .catch(onQueueConnectionError)
 }
 
 export function closeConnection() {
