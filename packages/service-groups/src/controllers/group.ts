@@ -15,18 +15,6 @@ import {
   UserUpdateTypes,
 } from '@gtms/commons'
 
-const getSingleGroupResponse = (group: IGroup) => ({
-  id: group._id,
-  name: group.name,
-  slug: group.slug,
-  description: group.description,
-  type: group.type,
-  visibility: group.visibility,
-  avatar: group.avatar,
-  tags: group.tags,
-  members: group.members,
-})
-
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
     const { body } = req
@@ -41,7 +29,7 @@ export default {
       owner: req.user.id,
     })
       .then((group: IGroup) => {
-        res.status(201).json(getSingleGroupResponse(group))
+        res.status(201).json(serializeGroup(group))
 
         logger.log({
           message: `New group ${group.name} (${group._id}) has been created`,
@@ -142,7 +130,7 @@ export default {
       return res.status(404).end()
     }
 
-    res.status(200).json(getSingleGroupResponse(group))
+    res.status(200).json(serializeGroup(group))
   },
   async update(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
@@ -151,20 +139,30 @@ export default {
     } = req
 
     let group: IGroup | null
+    const payload: {
+      name?: string
+      description?: string
+      type?: string
+      visibility?: string
+      tags?: string[]
+      slug?: string
+    } = {}
+    ;['name', 'description', 'type', 'visibility', 'tags'].forEach(
+      (field: 'name' | 'description' | 'type' | 'visibility' | 'tags') => {
+        if (typeof body[field] !== 'undefined') {
+          payload[field] = body[field]
+        }
+      }
+    )
 
-    // cleanup request params
-    delete body.owner
-    delete body.members
-    delete body.tags
-
-    if (body.name) {
-      body.slug = slugify(body.name)
+    if (payload.name) {
+      payload.slug = slugify(payload.name)
     }
 
     try {
       group = await GroupModel.findOneAndUpdate(
         { slug, owner: req.user.id },
-        body,
+        payload,
         { new: true }
       )
     } catch (err) {
@@ -187,7 +185,7 @@ export default {
       traceId: res.get('x-traceid'),
     })
 
-    res.status(200).json(getSingleGroupResponse(group))
+    res.status(200).json(serializeGroup(group))
 
     try {
       await publishOnChannel<IESGroupUpdateMsg>(Queues.updateESIndex, {
