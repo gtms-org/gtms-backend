@@ -10,5 +10,3 @@ export const versionMiddleware = (
 
   next()
 }
-
-export default versionMiddleware

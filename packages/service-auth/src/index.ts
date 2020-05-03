@@ -13,6 +13,7 @@ import {
 import logger, { stream } from '@gtms/lib-logger'
 import facebookController from './controllers/facebook'
 import activationsController from './controllers/activations'
+import findController from './controllers/find'
 
 const app = express()
 const router: Router = Router()
@@ -58,6 +59,8 @@ router.post(
   JWTMiddleware,
   activationsController.deleteAccount
 )
+
+router.post('/users/find-by-ids', findController.findByIds)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

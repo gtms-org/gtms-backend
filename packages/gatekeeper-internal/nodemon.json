@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "../**/src"],
+  "exec": "yarn workspace @gtms/gatekeeper-internal build && yarn workspace @gtms/gatekeeper-internal start",
+  "ext": "js ts"
+}

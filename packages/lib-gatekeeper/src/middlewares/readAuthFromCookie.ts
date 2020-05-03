@@ -1,6 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
 
-export default (req: Request, res: Response, next: NextFunction) => {
+export const readAuthFromCookieMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { accessToken } = req.cookies
 
   if (accessToken && !req.headers['x-access-token']) {

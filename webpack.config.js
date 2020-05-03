@@ -19,6 +19,8 @@ const localModules = [
   '@gtms/lib-logger',
   '@gtms/lib-middlewares',
   '@gtms/lib-models',
+  '@gtms/lib-gatekeeper',
+  '@gtms/lib-api',
   '@gtms/client-mongoose',
   '@gtms/client-queue',
   '@gtms/lib-http-server',
