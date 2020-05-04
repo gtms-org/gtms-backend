@@ -241,7 +241,7 @@ export default {
     }
 
     // publish info about tags update (if any)
-    if (Array.isArray(body.tags) && body.tags > 0) {
+    if (Array.isArray(body.tags) && body.tags.length > 0) {
       try {
         await publishOnChannel<ITagsUpdateMsg>(Queues.updateTags, {
           recordType: RecordType.group,
@@ -409,7 +409,7 @@ export default {
           return res.status(404).end()
         }
 
-        if (record.owner === user) {
+        if (record.owner + '' === user) {
           return res.status(200).end()
         }
 

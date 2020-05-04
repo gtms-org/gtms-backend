@@ -14,6 +14,31 @@ export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
     const { body } = req
 
+    const errors: string[] = []
+    ;['tag', 'group', 'description'].forEach(field => {
+      if (!body[field]) {
+        errors.push(field)
+      }
+    })
+
+    if (errors.length > 0) {
+      return res.status(400).json(
+        errors.reduce((response: any, error) => {
+          response[error] = {
+            message: `Field ${error} is required`,
+            name: 'required',
+            properties: {
+              message: `Field ${error} is required`,
+              type: 'required',
+              path: error,
+            },
+          }
+
+          return response
+        }, {})
+      )
+    }
+
     Promise.all([
       TagModel.findOne({ name: body.tag }),
       hasGroupAdminRights(req.user.id, body.group, {

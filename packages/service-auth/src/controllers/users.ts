@@ -268,7 +268,7 @@ export default {
         if (Array.isArray(req.body.tags) && req.body.tags.length > 0) {
           try {
             await publishOnChannel<ITagsUpdateMsg>(Queues.updateTags, {
-              recordType: RecordType.group,
+              recordType: RecordType.member,
               data: {
                 tags: user.tags,
                 traceId: res.get('x-traceid'),

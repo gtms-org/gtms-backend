@@ -61,6 +61,14 @@ function processMsg(msg: amqp.Message) {
 
     const { recordType, data: { tags, traceId, owner } = {} } = jsonMsg
 
+    logger.log({
+      message: `New message on ${
+        Queues.updateTags
+      } queue: ${msg.content.toString()}`,
+      level: 'info',
+      traceId,
+    })
+
     TagModel.find({
       name: {
         $in: tags,
@@ -68,8 +76,9 @@ function processMsg(msg: amqp.Message) {
     })
       .then((dbTags: ITag[]) => {
         const existing = dbTags.map(t => t.name)
+
         const dbOperations = tags.map(t => {
-          if (existing.includes(t)) {
+          if (!existing.includes(t)) {
             return {
               insertOne: {
                 document: {

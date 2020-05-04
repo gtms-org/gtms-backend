@@ -21,7 +21,7 @@ export default {
 
     TagModel.find({
       name: {
-        $regex: `*${query}*`,
+        $regex: `${query}.*`,
       },
     })
       .limit(limit)

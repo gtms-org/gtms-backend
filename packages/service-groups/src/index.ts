@@ -28,14 +28,15 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.post('/', JWTMiddleware, groupsController.create)
 router.get('/', groupsController.list)
+
+router.get('/check-admin-rights', groupsController.hasAdminAccess)
+
 router.get('/:slug/join', JWTMiddleware, groupsController.joinGroup)
 router.get('/:slug/leave', JWTMiddleware, groupsController.leaveGroup)
 router.get('/:slug', groupsController.show)
 router.post('/:slug', JWTMiddleware, groupsController.update)
 
 router.get('/:slug/members', membersController.list)
-
-router.get('/check-admin-rights', groupsController.hasAdminAccess)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
