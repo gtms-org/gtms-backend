@@ -75,7 +75,7 @@ const GroupSchema = new Schema(
       required: false,
     },
     members: {
-      type: [String],
+      type: [Schema.Types.ObjectId],
       required: false,
     },
     owner: {

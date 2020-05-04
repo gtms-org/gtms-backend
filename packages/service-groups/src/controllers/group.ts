@@ -1,4 +1,4 @@
-import { Response, NextFunction } from 'express'
+import { Response, Request, NextFunction } from 'express'
 import { GroupModel, IGroup, serializeGroup } from '@gtms/lib-models'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
@@ -341,5 +341,32 @@ export default {
         traceId: res.get('x-traceid'),
       })
     }
+  },
+  hasAdminAccess(req: Request, res: Response, next: NextFunction) {
+    const { user, group } = req.query
+
+    GroupModel.findOne({
+      _id: group,
+    })
+      .then((record: IGroup | null) => {
+        if (!record) {
+          return res.status(404).end()
+        }
+
+        if (record.owner === user) {
+          return res.status(200).end()
+        }
+
+        res.status(401).end()
+      })
+      .catch(err => {
+        next(err)
+
+        logger.log({
+          level: 'error',
+          message: `Database error: ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+      })
   },
 }
