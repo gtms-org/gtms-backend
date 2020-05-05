@@ -1,7 +1,12 @@
 def branch = '';
 
 pipeline {
-    agent { docker { image 'docker-registry.kabala.tech/alpine-terraform:latest' } }
+    agent { 
+        docker { 
+            image 'docker-registry.kabala.tech/alpine-terraform:latest' 
+            args '-v /var/run/docker.sock:/var/run/docker.sock:rw,z'
+        } 
+    }
 
     environment {
         CI = 'true'
