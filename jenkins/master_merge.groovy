@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        branch = env.GIT_LOCAL_BRANCH
+                        branch = env.ghprbActualCommit
                         branch = branch ?: env.GIT_BRANCH
                         if (branch == 'detached') {
                             branch = ''
