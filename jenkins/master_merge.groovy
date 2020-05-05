@@ -10,6 +10,7 @@ pipeline {
         CI = 'true'
         GIT_SSH_COMMAND = "ssh -o StrictHostKeyChecking=no"
         GH_TOKEN = credentials('jenkins-github-accesstoken')
+        HOME = '.'
     }
 
     stages {
@@ -17,12 +18,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        branch = env.GIT_LOCAL_BRANCH
+                        branch = env.ghprbActualCommit
                         branch = branch ?: env.GIT_BRANCH
                         if (branch == 'detached') {
                             branch = ''
                         }
-                        branch = branch ?: env.ghprbActualCommit
                     } catch (e) {
                         println "GIT BRANCH not detected"
                     }
