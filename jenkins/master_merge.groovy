@@ -10,6 +10,7 @@ pipeline {
         CI = 'true'
         GIT_SSH_COMMAND = "ssh -o StrictHostKeyChecking=no"
         GH_TOKEN = credentials('jenkins-github-accesstoken')
+        HOME = '.'
     }
 
     stages {
