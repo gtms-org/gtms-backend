@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.8.0...@gtms/service-auth@0.8.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* master: allow to spec db name ([3db53d8](https://github.com/mariusz-kabala/gtms-backend/commit/3db53d8f6afb63a905cf72d67a1237ce2bf885ae))
+
+
+
+
+
 # [0.8.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.7.3...@gtms/service-auth@0.8.0) (2020-05-05)
 
 
