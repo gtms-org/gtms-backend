@@ -1,8 +1,4 @@
-FROM node:12.16.1-alpine3.10 AS build
-
-ARG GIT_HASH
-
-ENV GIT_HASH ${GIT_HASH}
+FROM node:12.16.3-alpine3.10 AS build
 
 COPY . /app
 
@@ -12,7 +8,7 @@ RUN yarn
 
 RUN yarn workspace @gtms/service-notifications build
 
-FROM node:12.16.1-alpine3.10
+FROM node:12.16.3-alpine3.10
 
 WORKDIR /app
 

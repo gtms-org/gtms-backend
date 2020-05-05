@@ -1,4 +1,4 @@
-FROM node:12.16.1-alpine3.10 AS build
+FROM node:12.16.3-alpine3.10 AS build
 
 ARG GIT_HASH
 
@@ -10,16 +10,16 @@ WORKDIR /app
 
 RUN yarn
 
-RUN yarn workspace @gtms/service-gatekeeper build
+RUN yarn workspace @gtms/gatekeeper-public build
 
-FROM node:12.16.1-alpine3.10
+FROM node:12.16.3-alpine3.10
 
 WORKDIR /app
 
 COPY --from=build /app/node_modules /app/node_modules
-COPY --from=build /app/packages/service-gatekeeper/dist .
-COPY --from=build /app/packages/service-gatekeeper/config /app/config
-COPY --from=build /app/packages/service-gatekeeper/package.json /app/package.json
+COPY --from=build /app/packages/gatekeeper-public/dist .
+COPY --from=build /app/packages/gatekeeper-public/config /app/config
+COPY --from=build /app/packages/gatekeeper-public/package.json /app/package.json
 
 RUN ls -la /app
 

@@ -6,16 +6,16 @@ WORKDIR /app
 
 RUN yarn
 
-RUN yarn workspace @gtms/service-groups build
+RUN yarn workspace @gtms/worker-auth build
 
 FROM node:12.16.3-alpine3.10
 
 WORKDIR /app
 
 COPY --from=build /app/node_modules /app/node_modules
-COPY --from=build /app/packages/service-groups/dist .
-COPY --from=build /app/packages/service-groups/config /app/config
-COPY --from=build /app/packages/service-groups/package.json /app/package.json
+COPY --from=build /app/packages/worker-auth/dist .
+COPY --from=build /app/packages/worker-auth/config /app/config
+COPY --from=build /app/packages/worker-auth/package.json /app/package.json
 
 ENV PORT 80
 ENV NODE_ENV "production"
