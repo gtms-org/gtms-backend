@@ -19,6 +19,10 @@
     {
       "name": "Notifications",
       "description": "Email and web push notifications service"
+    },
+    {
+      "name": "Tags",
+      "description": "Tags service"
     }
   ],
   "schemes": ["https"],
@@ -656,6 +660,41 @@
         }
       }
     },
+    "/group/check-admin-rights": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Checks if user has right to modify group",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "User's id"
+          },
+          {
+            "name": "group",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Group's id"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User has admin rights"
+          },
+          "401": {
+            "description": "User does not have admin rights"
+          },
+          "404": {
+            "description": "Group does not exist in db"
+          }
+        }
+      }
+    },
     "/notifications/web-push": {
       "post": {
         "security": [
@@ -774,6 +813,94 @@
           }
         }
       }
+    },
+    "/tags/find": {
+      "get": {
+        "tags": ["Tags"],
+        "summary": "Allow to find tags by name",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Term to search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Query param is missing"
+          }
+        }
+      }
+    },
+    "/tags/promoted": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Tags"],
+        "summary": "Creates a new promoted tag for a group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "group": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/PromotedTag"
+            }
+          },
+          "400": {
+            "description": "Validation errors",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/ValidationError"
+              }
+            }
+          },
+          "401": {
+            "description": "User does not have group's admin rights"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -862,6 +989,37 @@
           "type": "array",
           "items": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "PromotedTag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number"
+        },
+        "logo": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           }
         }
       }

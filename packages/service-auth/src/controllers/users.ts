@@ -13,7 +13,8 @@ import authenticate, { getJWTData } from '../helpers/authenticate'
 import config from 'config'
 import serializeCookie from '../helpers/cookies'
 import sendActivationEmail from '../helpers/sendActivationEmail'
-import { IAuthRequest } from '@gtms/commons'
+import { IAuthRequest, ITagsUpdateMsg, RecordType, Queues } from '@gtms/commons'
+import { publishOnChannel } from '@gtms/client-queue'
 
 export default {
   count(_: Request, res: Response, next: NextFunction): void {
@@ -250,12 +251,39 @@ export default {
               level: 'error',
               traceId: res.get('x-traceid'),
             })
-            res.status(400).json(err.errors)
+            return res.status(400).json(err.errors)
           } else {
             next(err)
 
             logger.log({
               message: `Request error ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+            return
+          }
+        }
+
+        // publish info about tags used with user's account
+        if (Array.isArray(req.body.tags) && req.body.tags.length > 0) {
+          try {
+            await publishOnChannel<ITagsUpdateMsg>(Queues.updateTags, {
+              recordType: RecordType.member,
+              data: {
+                tags: user.tags,
+                traceId: res.get('x-traceid'),
+                owner: user._id,
+              },
+            })
+
+            logger.log({
+              message: `User's tags list has been published to the queue`,
+              level: 'info',
+              traceId: res.get('x-traceid'),
+            })
+          } catch (err) {
+            logger.log({
+              message: `Can not publish message to the QUEUE: ${err}`,
               level: 'error',
               traceId: res.get('x-traceid'),
             })

@@ -1,4 +1,4 @@
-import { Response, NextFunction } from 'express'
+import { Response, Request, NextFunction } from 'express'
 import { GroupModel, IGroup, serializeGroup } from '@gtms/lib-models'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
@@ -13,6 +13,8 @@ import {
   IUserJoinedGroupMsg,
   IUserLeftGroupMsg,
   UserUpdateTypes,
+  ITagsUpdateMsg,
+  RecordType,
 } from '@gtms/commons'
 
 export default {
@@ -63,6 +65,7 @@ export default {
           return
         }
 
+        // publish info about new group
         try {
           await publishOnChannel<IESGroupCreateMsg>(Queues.updateESIndex, {
             type: ESIndexUpdateType.create,
@@ -84,6 +87,32 @@ export default {
             level: 'error',
             traceId: res.get('x-traceid'),
           })
+        }
+
+        // publish info about group tags (if any)
+        if (Array.isArray(group.tags) && group.tags.length > 0) {
+          try {
+            await publishOnChannel<ITagsUpdateMsg>(Queues.updateTags, {
+              recordType: RecordType.group,
+              data: {
+                tags: group.tags,
+                traceId: res.get('x-traceid'),
+                owner: group.owner,
+              },
+            })
+
+            logger.log({
+              message: `Group's tags list has been published to the queue`,
+              level: 'info',
+              traceId: res.get('x-traceid'),
+            })
+          } catch (err) {
+            logger.log({
+              message: `Can not publish message to the QUEUE: ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+          }
         }
       })
   },
@@ -187,6 +216,7 @@ export default {
 
     res.status(200).json(serializeGroup(group))
 
+    // publish info about group's update
     try {
       await publishOnChannel<IESGroupUpdateMsg>(Queues.updateESIndex, {
         type: ESIndexUpdateType.update,
@@ -208,6 +238,32 @@ export default {
         level: 'error',
         traceId: res.get('x-traceid'),
       })
+    }
+
+    // publish info about tags update (if any)
+    if (Array.isArray(body.tags) && body.tags.length > 0) {
+      try {
+        await publishOnChannel<ITagsUpdateMsg>(Queues.updateTags, {
+          recordType: RecordType.group,
+          data: {
+            tags: group.tags,
+            traceId: res.get('x-traceid'),
+            owner: group.owner,
+          },
+        })
+
+        logger.log({
+          message: `Group's tags list has been published to the queue`,
+          level: 'info',
+          traceId: res.get('x-traceid'),
+        })
+      } catch (err) {
+        logger.log({
+          message: `Can not publish message to the QUEUE: ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+      }
     }
   },
   async joinGroup(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -341,5 +397,32 @@ export default {
         traceId: res.get('x-traceid'),
       })
     }
+  },
+  hasAdminAccess(req: Request, res: Response, next: NextFunction) {
+    const { user, group } = req.query
+
+    GroupModel.findOne({
+      _id: group,
+    })
+      .then((record: IGroup | null) => {
+        if (!record) {
+          return res.status(404).end()
+        }
+
+        if (record.owner + '' === user) {
+          return res.status(200).end()
+        }
+
+        res.status(401).end()
+      })
+      .catch(err => {
+        next(err)
+
+        logger.log({
+          level: 'error',
+          message: `Database error: ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+      })
   },
 }

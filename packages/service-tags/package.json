@@ -1,0 +1,19 @@
+{
+  "name": "@gtms/service-tags",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon",
+    "build": "webpack --mode=production --config ../../webpack.config.js",
+    "start": "node dist"
+  },
+  "dependencies": {
+    "@gtms/lib-api": "*",
+    "@gtms/lib-models": "*",
+    "@gtms/lib-logger": "*",
+    "@gtms/commons": "*"
+  },
+  "author": "Mariusz Kabała",
+  "license": "ISC"
+}

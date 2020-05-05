@@ -3,14 +3,14 @@ import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
-import groupsController from './controllers/group'
-import membersController from './controllers/members'
 import {
   JWTMiddleware,
   errorMiddleware,
   traceIDMiddleware,
   getAppInfoMiddleware,
 } from '@gtms/lib-middlewares'
+import tagsController from './controllers/tags'
+import promotedController from './controllers/promoted'
 
 const app = express()
 const router: Router = Router()
@@ -26,17 +26,8 @@ router.get('/managment/heath', (_: Request, res: Response) => {
   })
 })
 
-router.post('/', JWTMiddleware, groupsController.create)
-router.get('/', groupsController.list)
-
-router.get('/check-admin-rights', groupsController.hasAdminAccess)
-
-router.get('/:slug/join', JWTMiddleware, groupsController.joinGroup)
-router.get('/:slug/leave', JWTMiddleware, groupsController.leaveGroup)
-router.get('/:slug', groupsController.show)
-router.post('/:slug', JWTMiddleware, groupsController.update)
-
-router.get('/:slug/members', membersController.list)
+router.get('/find', tagsController.find)
+router.post('/promoted', JWTMiddleware, promotedController.create)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

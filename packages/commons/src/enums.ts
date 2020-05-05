@@ -7,6 +7,7 @@ export enum Queues {
   updateGroupFiles = 'updateGroupFiles',
   updateUserFiles = 'updateUserFiles',
   userUpdate = 'userUpdate',
+  updateTags = 'updateTags',
 }
 
 export enum NotificationQueueMessageType {
@@ -56,4 +57,10 @@ export enum UserUpdateTypes {
 
 export enum Indicies {
   GROUPS_INDEX = 'groups',
+}
+
+export enum RecordType {
+  member = 'member',
+  group = 'group',
+  post = 'post',
 }

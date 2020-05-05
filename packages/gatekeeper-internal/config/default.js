@@ -6,6 +6,7 @@ const {
   GROUPS_SERVICE_URL,
   AUTH_SERVICE_KEY,
   GROUPS_SERVICE_KEY,
+  TAGS_SERVICE_KEY,
   VERSION,
   PORT,
 } = process.env
@@ -20,6 +21,7 @@ module.exports = {
   appKeys: {
     auth: AUTH_SERVICE_KEY,
     groups: GROUPS_SERVICE_KEY,
+    tags: TAGS_SERVICE_KEY,
   },
   port: PORT,
 }
