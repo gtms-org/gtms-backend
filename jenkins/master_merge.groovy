@@ -63,7 +63,7 @@ pipeline {
         stage ('Install dependencies') {
             steps {
                 script {
-                    sh "yarn install --unsafe-perm"
+                    sh "yarn install"
 
                     try {
                         hasNewLock = sh (
