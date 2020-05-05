@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.5.3...@gtms/swagger@0.6.0) (2020-05-05)
+
+
+### Features
+
+* GEOT-200: refactor ES worker ([#67](https://github.com/mariusz-kabala/gtms-backend/issues/67)) ([c7e0331](https://github.com/mariusz-kabala/gtms-backend/commit/c7e033134afe2054e7d704cd90a687a9b405aeb4))
+* GEOT-222: allow user to join or leave a group ([#62](https://github.com/mariusz-kabala/gtms-backend/issues/62)) ([1cac918](https://github.com/mariusz-kabala/gtms-backend/commit/1cac918587077492d0dddfc0fe874f08dec91500))
+* GEOT-238: add tags service and worker ([#73](https://github.com/mariusz-kabala/gtms-backend/issues/73)) ([b314132](https://github.com/mariusz-kabala/gtms-backend/commit/b314132f9f36eab82a7ccf077cf6a278cb3df633))
+
+
+
+
+
 ## [0.5.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.5.2...@gtms/swagger@0.5.3) (2020-04-23)
 
 **Note:** Version bump only for package @gtms/swagger

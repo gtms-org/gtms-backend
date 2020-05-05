@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.4.3...@gtms/service-notifications@0.5.0) (2020-05-05)
+
+
+### Features
+
+* GEOT-216: add retry policy to notification queue ([#60](https://github.com/mariusz-kabala/gtms-backend/issues/60)) ([13587de](https://github.com/mariusz-kabala/gtms-backend/commit/13587de95c9e704936c6b2d08e4609ee4a2bf46b))
+* GEOT-216: new, better file processing flow ([#61](https://github.com/mariusz-kabala/gtms-backend/issues/61)) ([52f378d](https://github.com/mariusz-kabala/gtms-backend/commit/52f378d26468fdb1bf3c8c6553e9b70ec43c609b))
+
+
+
+
+
 ## [0.4.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.4.2...@gtms/service-notifications@0.4.3) (2020-04-23)
 
 **Note:** Version bump only for package @gtms/service-notifications

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.9.0 (2020-05-05)
+
+
+### Features
+
+* GEOT-235: add internal gatekeeper ([#71](https://github.com/mariusz-kabala/gtms-backend/issues/71)) ([109096e](https://github.com/mariusz-kabala/gtms-backend/commit/109096e31e7bfa633dab1f0358a085e1922c4884))
+
+
+
+
+
 ## [0.8.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.8.4...@gtms/service-gatekeeper@0.8.5) (2020-04-23)
 
 **Note:** Version bump only for package @gtms/service-gatekeeper
