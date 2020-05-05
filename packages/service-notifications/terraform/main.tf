@@ -13,25 +13,10 @@ resource "docker_container" "service-notifications" {
 
   env = [
     "QUEUE_HOST=${var.queue_host}",
-    "DB_HOST=service-notifications-${var.env}-db",
+    "DB_HOST=mongo-${var.env}-db",
     "VERSION=${var.tag}",
     "PORT=80",
     "SENDGRID_API_KEY=${var.SENDGRID_API_KEY}",
     "ADDRESS_EMAIL=${var.emailAddress}",
   ]
-}
-
-resource "docker_container" "service-notifications-db" {
-  name  = "service-notifications-${var.env}-db"
-  image = "mongo:4"
-  restart = "always"
-
-  networks_advanced {
-      name = "kabala-net"
-  }
-
-  volumes {
-    host_path      = "${var.mount_point}/${var.env}/service-notifications-db"
-    container_path = "/data/db"
-  }
 }
