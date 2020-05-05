@@ -17,3 +17,5 @@ variable "SENDGRID_API_KEY" {}
 variable "emailAddress" {}
 
 variable "app_domain" {}
+
+variable "db_name" {}

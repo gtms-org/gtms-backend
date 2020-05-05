@@ -17,6 +17,7 @@ resource "docker_container" "service-auth" {
     "APP_DOMAIN=${var.app_domain}",
     "QUEUE_HOST=${var.queue_host}",
     "DB_HOST=mongo-${var.env}-db",
+    "DB_NAME=${var.db_name}",
     "USER_PROFILE_SERVICE=missing-for-now",
     "VERSION=${var.tag}",
     "PORT=80"

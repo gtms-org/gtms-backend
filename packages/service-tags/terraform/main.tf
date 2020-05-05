@@ -14,6 +14,7 @@ resource "docker_container" "service-tags" {
   env = [
     "QUEUE_HOST=${var.queue_host}",
     "DB_HOST=mongo-${var.env}-db",
+    "DB_NAME=${var.db_name}",
     "VERSION=${var.tag}",
     "PORT=80",
     "APP_KEY=${var.APP_KEY}",

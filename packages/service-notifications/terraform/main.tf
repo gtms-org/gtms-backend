@@ -14,6 +14,7 @@ resource "docker_container" "service-notifications" {
   env = [
     "QUEUE_HOST=${var.queue_host}",
     "DB_HOST=mongo-${var.env}-db",
+    "DB_NAME=${var.db_name}",
     "VERSION=${var.tag}",
     "PORT=80",
     "SENDGRID_API_KEY=${var.SENDGRID_API_KEY}",

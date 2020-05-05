@@ -11,3 +11,5 @@ variable "DOCKER_REGISTRY_PASSWORD" {}
 variable "DOCKER_REGISTRY_USERNAME" {}
 
 variable "APP_KEY" {}
+
+variable "db_name" {}
