@@ -22,7 +22,6 @@ pipeline {
                         if (branch == 'detached') {
                             branch = ''
                         }
-                        branch = branch ?: env.ghprbActualCommit
                     } catch (e) {
                         println "GIT BRANCH not detected"
                     }
