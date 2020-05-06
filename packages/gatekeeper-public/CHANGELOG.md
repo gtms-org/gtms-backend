@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.10.0...@gtms/gatekeeper-public@0.10.1) (2020-05-06)
+
+
+### Bug Fixes
+
+* master: proper terraform config for public gatekeeper ([895e848](https://github.com/mariusz-kabala/gtms-backend/commit/895e84865545e8852c4ed015f5b2eeee4528a6e5))
+
+
+
+
+
 # [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.9.0...@gtms/gatekeeper-public@0.10.0) (2020-05-06)
 
 
