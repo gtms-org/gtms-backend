@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.9.0...@gtms/gatekeeper-public@0.10.0) (2020-05-06)
+
+
+### Features
+
+* master: enable /me service auth endpoint, enable tags serv ([2960f40](https://github.com/mariusz-kabala/gtms-backend/commit/2960f40101b9f38df6ba73890cb243075dabb407))
+
+
+
+
+
 # 0.9.0 (2020-05-05)
 
 
