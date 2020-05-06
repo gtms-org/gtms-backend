@@ -1,6 +1,6 @@
-resource "docker_container" "service-gatekeeper" {
-  name  = "service-gatekeeper-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/servicegatekeeper:${var.tag}"
+resource "docker_container" "gatekeeper-public" {
+  name  = "gatekeeper-public-${var.env}"
+  image = "docker-registry.kabala.tech/gtms/gatekeeperpublic:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"
@@ -13,7 +13,7 @@ resource "docker_container" "service-gatekeeper" {
 
   labels {
     label = "traefik.backend"
-    value = "service-gatekeeper-${var.env}"
+    value = "gatekeeper-public-${var.env}"
   }
 
   labels {
