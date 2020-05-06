@@ -56,5 +56,15 @@ export default {
       method: http.POST,
       restricted: true,
     },
+    {
+      path: '/me',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/me',
+      method: http.GET,
+      restricted: true,
+    },
   ],
 }

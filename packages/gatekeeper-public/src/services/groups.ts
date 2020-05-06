@@ -16,5 +16,25 @@ export default {
       method: http.GET,
       restricted: false,
     },
+    {
+      path: '/:slug/join',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/:slug/leave',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/:slug',
+      method: http.GET,
+      restricted: false,
+    },
+    {
+      path: '/:slug',
+      method: http.POST,
+      restricted: true,
+    },
   ],
 }
