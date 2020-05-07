@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.8.2...@gtms/service-auth@0.8.3) (2020-05-07)
+
+
+### Bug Fixes
+
+* master: set proper cookie exp time (auth service) ([90b789e](https://github.com/mariusz-kabala/gtms-backend/commit/90b789ed1943cc77e4bd84907ebfde941f402fc8))
+
+
+
+
+
 ## [0.8.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.8.1...@gtms/service-auth@0.8.2) (2020-05-06)
 
 **Note:** Version bump only for package @gtms/service-auth
