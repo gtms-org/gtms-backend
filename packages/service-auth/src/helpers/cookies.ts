@@ -1,6 +1,6 @@
 import cookie from 'cookie'
 
-export default (key: string, value: string | number | object, hrs: number) => {
+export default (key: string, value: string | number | object, sec: number) => {
   if ('number' === typeof value) {
     value = value.toString()
   }
@@ -10,7 +10,7 @@ export default (key: string, value: string | number | object, hrs: number) => {
   }
 
   return cookie.serialize(key, value, {
-    expires: new Date(Date.now() + 1000 * 60 * hrs),
+    expires: new Date(Date.now() + 1000 * sec * 60),
     httpOnly: false,
     path: '/',
   })
