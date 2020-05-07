@@ -2,8 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
 import logger from '@gtms/lib-logger'
-
-const { SECRET } = process.env
+import config from 'config'
 
 export const authMiddleware = (
   req: Request,
@@ -21,18 +20,22 @@ export const authMiddleware = (
     return next(createError(401, 'Access token is invalid'))
   }
 
-  jwt.verify(token as string, SECRET, (err: Error, decoded: any) => {
-    if (err) {
-      logger.log({
-        level: 'info',
-        message: `Token in headers present, but token verification failed, access denied (${err})`,
-        traceId: res.get('x-traceid'),
-      })
-      return next(createError(401, 'Access token is invalid'))
+  jwt.verify(
+    token as string,
+    config.get<string>('secret'),
+    (err: Error, decoded: any) => {
+      if (err) {
+        logger.log({
+          level: 'info',
+          message: `Token in headers present, but token verification failed, access denied (${err})`,
+          traceId: res.get('x-traceid'),
+        })
+        return next(createError(401, 'Access token is invalid'))
+      }
+
+      req.headers['x-access-token'] = JSON.stringify(decoded)
+
+      next()
     }
-
-    req.headers['x-access-token'] = JSON.stringify(decoded)
-
-    next()
-  })
+  )
 }
