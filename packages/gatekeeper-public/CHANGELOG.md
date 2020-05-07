@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.10.3...@gtms/gatekeeper-public@0.11.0) (2020-05-07)
+
+
+### Features
+
+* master: enable tags service in public GK ([8371127](https://github.com/mariusz-kabala/gtms-backend/commit/8371127da8dd2a82f7f8242ce32bc48319dca9f8))
+
+
+
+
+
 ## [0.10.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.10.2...@gtms/gatekeeper-public@0.10.3) (2020-05-07)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
