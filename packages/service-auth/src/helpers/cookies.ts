@@ -10,7 +10,7 @@ export default (key: string, value: string | number | object, sec: number) => {
   }
 
   return cookie.serialize(key, value, {
-    expires: new Date(Date.now() + 1000 * sec * 60),
+    expires: new Date(Date.now() + 1000 * sec),
     httpOnly: false,
     path: '/',
   })
