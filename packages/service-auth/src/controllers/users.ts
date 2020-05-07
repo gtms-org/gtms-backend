@@ -168,7 +168,7 @@ export default {
           await getJWTData(token.user as IUser, res.get('x-traceid')),
           config.get<string>('secret'),
           {
-            expiresIn: config.get<string>('tokenLife'),
+            expiresIn: config.get<number>('tokenLife'),
           }
         )
 

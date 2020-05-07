@@ -9,7 +9,7 @@ export default {
     {
       path: '/find',
       method: http.GET,
-      restricted: true,
+      restricted: false,
     },
     {
       path: '/promoted',
