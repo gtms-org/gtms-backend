@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.2.0...@gtms/lib-gatekeeper@0.2.1) (2020-05-07)
+
+
+### Bug Fixes
+
+* master: take jwt secret from config ([29c34c4](https://github.com/mariusz-kabala/gtms-backend/commit/29c34c4434376167c4de942aede252e6b9fcabed))
+
+
+
+
+
 # [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.1.0...@gtms/lib-gatekeeper@0.2.0) (2020-05-07)
 
 
