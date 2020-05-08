@@ -313,7 +313,12 @@ export default {
           return res.status(404).end()
         }
 
-        res.status(200).json(serializeUser(user))
+        res.status(200).json({
+          ...serializeUser(user),
+          groupsMember: user.groupsMember,
+          groupsAdmin: user.groupsAdmin,
+          groupsOwner: user.groupsOwner,
+        })
       })
       .catch(err => {
         logger.log({
