@@ -41,6 +41,64 @@ export function publishOnChannel<T>(queueName: string, message: T) {
     })
 }
 
+export function publishMultiple(
+  traceId: string,
+  ...messages: { queue: string; message: any }[]
+) {
+  return amqp
+    .connect(`amqp://${config.get<string>('queueHost')}`)
+    .then((conn: amqp.Connection) => {
+      Promise.all(
+        messages.map(
+          msg =>
+            new Promise((resolve, reject) => {
+              conn.createChannel().then(async (ch: amqp.Channel) => {
+                try {
+                  await ch.assertQueue(msg.queue, {
+                    durable: true,
+                  })
+
+                  const jsonStr = JSON.stringify(msg.message)
+
+                  await ch.sendToQueue(msg.queue, Buffer.from(jsonStr), {
+                    persistent: true,
+                  })
+
+                  logger.log({
+                    level: 'info',
+                    message: `Message ${jsonStr} has been sent to channel queue ${msg.queue}`,
+                    traceId,
+                  })
+
+                  ch.close().catch(() => null)
+
+                  resolve()
+                } catch (err) {
+                  reject(err)
+                }
+              })
+            })
+        )
+      )
+        .catch(err => {
+          logger.log({
+            level: 'error',
+            message: `Can not publish message into queue: ${err}`,
+            traceId,
+          })
+        })
+        .finally(() => {
+          setTimeout(() => conn.close(), 500)
+        })
+    })
+    .catch(err => {
+      logger.log({
+        level: 'error',
+        message: `Can not create QUEUE CHANNEL ${err}`,
+      })
+    })
+}
+
 export function publishToDeleteChannel(
   message: IDeleteAccountQueueMsg
 ): Promise<void> {

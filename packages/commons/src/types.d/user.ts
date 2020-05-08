@@ -18,6 +18,24 @@ export interface IUserLeftGroupMsg {
   }
 }
 
+export interface IUserCreatedGroupMsg {
+  type: UserUpdateTypes.createdGroup
+  data: {
+    group: string
+    user: string
+    traceId: string
+  }
+}
+
+export interface IUserDeletedGroupMsg {
+  type: UserUpdateTypes.deletedGroup
+  data: {
+    group: string
+    user: string
+    traceId: string
+  }
+}
+
 export interface IUserGotGroupAdminRights {
   type: UserUpdateTypes.gotGroupAdminRights
   data: {
@@ -41,3 +59,5 @@ export type IUserUpdateMsg =
   | IUserLeftGroupMsg
   | IUserGotGroupAdminRights
   | IUserLostGroupAdminRights
+  | IUserCreatedGroupMsg
+  | IUserDeletedGroupMsg

@@ -20,6 +20,7 @@ export interface IUser extends Document {
   roles: string[]
   groupsMember: string[]
   groupsAdmin: string[]
+  groupsOwner: string[]
   avatar?: {
     status: FileStatus
     files: string[]
@@ -103,6 +104,11 @@ const UserSchema = new Schema(
       default: [],
     },
     groupsAdmin: {
+      type: [Schema.Types.ObjectId],
+      required: false,
+      default: [],
+    },
+    groupsOwner: {
       type: [Schema.Types.ObjectId],
       required: false,
       default: [],

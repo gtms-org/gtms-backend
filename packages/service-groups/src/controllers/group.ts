@@ -3,10 +3,9 @@ import { GroupModel, IGroup, serializeGroup } from '@gtms/lib-models'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import slugify from '@sindresorhus/slugify'
-import { publishOnChannel } from '@gtms/client-queue'
+import { publishOnChannel, publishMultiple } from '@gtms/client-queue'
 import {
   Queues,
-  IESGroupCreateMsg,
   IESGroupUpdateMsg,
   ESIndexUpdateType,
   ESIndexUpdateRecord,
@@ -65,55 +64,46 @@ export default {
           return
         }
 
-        // publish info about new group
-        try {
-          await publishOnChannel<IESGroupCreateMsg>(Queues.updateESIndex, {
-            type: ESIndexUpdateType.create,
-            record: ESIndexUpdateRecord.group,
-            data: {
-              ...serializeGroup(group),
-              traceId: res.get('x-traceid'),
+        const queueMessages: { queue: string; message: any }[] = [
+          {
+            queue: Queues.updateESIndex,
+            message: {
+              type: ESIndexUpdateType.create,
+              record: ESIndexUpdateRecord.group,
+              data: {
+                ...serializeGroup(group),
+                traceId: res.get('x-traceid'),
+              },
             },
-          })
+          },
+          {
+            queue: Queues.userUpdate,
+            message: {
+              type: UserUpdateTypes.createdGroup,
+              data: {
+                group: group._id,
+                user: req.user.id,
+                traceId: res.get('x-traceid'),
+              },
+            },
+          },
+        ]
 
-          logger.log({
-            message: `Info about group ${group._id} (${group.name}) - creation - has been published to the queue`,
-            level: 'info',
-            traceId: res.get('x-traceid'),
-          })
-        } catch (err) {
-          logger.log({
-            message: `Can not publish message to the QUEUE: ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-        }
-
-        // publish info about group tags (if any)
         if (Array.isArray(group.tags) && group.tags.length > 0) {
-          try {
-            await publishOnChannel<ITagsUpdateMsg>(Queues.updateTags, {
+          queueMessages.push({
+            queue: Queues.updateTags,
+            message: {
               recordType: RecordType.group,
               data: {
                 tags: group.tags,
                 traceId: res.get('x-traceid'),
                 owner: group.owner,
               },
-            })
-
-            logger.log({
-              message: `Group's tags list has been published to the queue`,
-              level: 'info',
-              traceId: res.get('x-traceid'),
-            })
-          } catch (err) {
-            logger.log({
-              message: `Can not publish message to the QUEUE: ${err}`,
-              level: 'error',
-              traceId: res.get('x-traceid'),
-            })
-          }
+            },
+          })
         }
+
+        publishMultiple(res.get('x-traceid'), ...queueMessages)
       })
   },
   list(req: IAuthRequest, res: Response, next: NextFunction) {

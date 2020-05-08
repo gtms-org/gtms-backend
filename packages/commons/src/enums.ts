@@ -51,6 +51,8 @@ export enum FileStatus {
 export enum UserUpdateTypes {
   joinedGroup = 'joinedGroup',
   leftGroup = 'leftGroup',
+  createdGroup = 'createdGroup',
+  deletedGroup = 'deletedGroup',
   gotGroupAdminRights = 'gotGroupAdminRights',
   lostGroupAdminRights = 'lostGroupAdminRights',
 }
