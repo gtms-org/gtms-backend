@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.12.0...@gtms/gatekeeper-public@0.12.1) (2020-05-08)
+
+
+### Bug Fixes
+
+* master: add setup for file service in GK ([34e59f9](https://github.com/mariusz-kabala/gtms-backend/commit/34e59f90a238634ebd9e3cd0946f835a79c0224d))
+
+
+
+
+
 # [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.11.1...@gtms/gatekeeper-public@0.12.0) (2020-05-08)
 
 
