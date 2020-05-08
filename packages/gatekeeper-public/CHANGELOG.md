@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.11.0...@gtms/gatekeeper-public@0.11.1) (2020-05-07)
+
+
+### Bug Fixes
+
+* master: small GK adjustments ([5444cb7](https://github.com/mariusz-kabala/gtms-backend/commit/5444cb753d74fd68d4e8851502de70c2c06ee4ff))
+
+
+
+
+
 # [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.10.3...@gtms/gatekeeper-public@0.11.0) (2020-05-07)
 
 
