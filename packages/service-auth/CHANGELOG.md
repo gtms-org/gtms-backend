@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.8.7...@gtms/service-auth@0.9.0) (2020-05-08)
+
+
+### Features
+
+* master: exampose extra data from /me endpoint ([08717d7](https://github.com/mariusz-kabala/gtms-backend/commit/08717d795fecdb360ff1be90dd5bd34d828b787b))
+
+
+
+
+
 ## [0.8.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.8.6...@gtms/service-auth@0.8.7) (2020-05-08)
 
 **Note:** Version bump only for package @gtms/service-auth
