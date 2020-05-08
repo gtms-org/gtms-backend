@@ -7,6 +7,7 @@ const {
   AUTH_SERVICE_URL,
   GROUPS_SERVICE_URL,
   TAGS_SERVICE_URL,
+  FILES_SERVICE_URL,
   VERSION,
   PORT,
 } = process.env
@@ -19,6 +20,7 @@ module.exports = {
     auth: `http://${AUTH_SERVICE_URL}`,
     groups: `http://${GROUPS_SERVICE_URL}`,
     tags: `http://${TAGS_SERVICE_URL}`,
+    files: `http://${FILES_SERVICE_URL}`,
   },
   port: PORT,
 }
