@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.2.0...@gtms/worker-files@0.2.1) (2020-05-08)
+
+
+### Bug Fixes
+
+* master: apply public-read ACL to s3 files ([7f8da51](https://github.com/mariusz-kabala/gtms-backend/commit/7f8da51e4080ddd3056ce2f23014fdf4903eb399))
+
+
+
+
+
 # [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.1.0...@gtms/worker-files@0.2.0) (2020-05-05)
 
 
