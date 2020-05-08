@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.11.1...@gtms/gatekeeper-public@0.12.0) (2020-05-08)
+
+
+### Features
+
+* master: expose File servide endpoints in GK ([ca06403](https://github.com/mariusz-kabala/gtms-backend/commit/ca06403db0f762f9760b2d74ccb2ebdf8b1e830b))
+
+
+
+
+
 ## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.11.0...@gtms/gatekeeper-public@0.11.1) (2020-05-07)
 
 
