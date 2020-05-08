@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.6.0...@gtms/commons@0.7.0) (2020-05-08)
+
+
+### Features
+
+* master: publish info about group creation into the queue ([385bc54](https://github.com/mariusz-kabala/gtms-backend/commit/385bc547820dd82946db0f5abf77b95a9cc843ca))
+
+
+
+
+
 # [0.6.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.5.0...@gtms/commons@0.6.0) (2020-05-05)
 
 

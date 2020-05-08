@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.8.2...@gtms/service-groups@0.9.0) (2020-05-08)
+
+
+### Features
+
+* master: publish info about group creation into the queue ([385bc54](https://github.com/mariusz-kabala/gtms-backend/commit/385bc547820dd82946db0f5abf77b95a9cc843ca))
+
+
+
+
+
 ## [0.8.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.8.1...@gtms/service-groups@0.8.2) (2020-05-06)
 
 **Note:** Version bump only for package @gtms/service-groups
