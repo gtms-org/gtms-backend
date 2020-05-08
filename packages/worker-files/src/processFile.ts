@@ -46,6 +46,7 @@ const uploadImage = (type: string, fileName: string, file: Buffer) =>
       Bucket: config.get<string>(`buckets.${type}`),
       Key: fileName,
       Body: file,
+      ACL: 'public-read',
     }
     s3Client.upload(
       params,
