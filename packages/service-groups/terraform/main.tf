@@ -17,6 +17,7 @@ resource "docker_container" "service-groups" {
     "DB_HOST=mongo-${var.env}-db",
     "DB_NAME=${var.db_name}",
     "VERSION=${var.tag}",
+    "APP_KEY=${var.APP_KEY}",
     "PORT=80"
   ]
 }

@@ -20,6 +20,7 @@ resource "docker_container" "service-auth" {
     "DB_NAME=${var.db_name}",
     "USER_PROFILE_SERVICE=missing-for-now",
     "VERSION=${var.tag}",
+    "APP_KEY=${var.APP_KEY}",
     "PORT=80"
   ]
 }

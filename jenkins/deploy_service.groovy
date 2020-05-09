@@ -105,7 +105,7 @@ pipeline {
                         docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
                             sh "terraform init"
                             sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
-                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"jwt_secret=${JWT_SECRET}\" -var=\"jwt_refresh_token_secret=${JWT_REFRESH_TOKEN_SECRET}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
+                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"APP_KEY=${SERVICE_AUTH_APP_KEY}\" -var=\"tag=${version}\" -var=\"jwt_secret=${JWT_SECRET}\" -var=\"jwt_refresh_token_secret=${JWT_REFRESH_TOKEN_SECRET}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
                             sh "terraform apply -auto-approve deploy.plan"
                         }
                     }
@@ -131,7 +131,7 @@ pipeline {
                         docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
                             sh "terraform init"
                             sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
-                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
+                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"APP_KEY=${SERVICE_GROUPS_APP_KEY}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
                             sh "terraform apply -auto-approve deploy.plan"
                         }
                     }

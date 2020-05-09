@@ -5,6 +5,7 @@ import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
 import groupsController from './controllers/group'
 import membersController from './controllers/members'
+import findController from './controllers/find'
 import {
   JWTMiddleware,
   errorMiddleware,
@@ -30,6 +31,7 @@ router.post('/', JWTMiddleware, groupsController.create)
 router.get('/', groupsController.list)
 
 router.get('/check-admin-rights', groupsController.hasAdminAccess)
+router.post('/find-by-ids', findController.findByIds)
 
 router.get('/:slug/join', JWTMiddleware, groupsController.joinGroup)
 router.get('/:slug/leave', JWTMiddleware, groupsController.leaveGroup)

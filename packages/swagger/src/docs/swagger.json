@@ -352,6 +352,50 @@
         }
       }
     },
+    "/auth/me/groups": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns groups that somehow belongs to the user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "admin": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Group"
+                  }
+                },
+                "member": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Group"
+                  }
+                },
+                "owner": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Group"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User does not exist"
+          }
+        }
+      }
+    },
     "/auth/me": {
       "get": {
         "security": [
@@ -369,6 +413,9 @@
               "$ref": "#/definitions/User"
             },
             "description": "Successful operation"
+          },
+          "404": {
+            "description": "User does not exist"
           }
         }
       },

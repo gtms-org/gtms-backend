@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.9.1...@gtms/service-auth@0.10.0) (2020-05-09)
+
+
+### Features
+
+* master: set auth cookies after FB login, process FB avatar ([b912912](https://github.com/mariusz-kabala/gtms-backend/commit/b912912862f8a33ee1f1dce0debb47baef03c1f0))
+
+
+
+
+
 ## [0.9.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.9.0...@gtms/service-auth@0.9.1) (2020-05-09)
 
 
