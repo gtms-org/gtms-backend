@@ -11,6 +11,10 @@ import crypto from 'crypto'
 import logger from '@gtms/lib-logger'
 import authenticate from '../helpers/authenticate'
 import sendActivationEmail from '../helpers/sendActivationEmail'
+import { publishOnChannel } from '@gtms/client-queue'
+import { IFileQueueMsg, Queues, FileTypes, FileStatus } from '@gtms/commons'
+import serializeCookie from '../helpers/cookies'
+import config from 'config'
 
 export default async function(req: Request, res: Response, next: NextFunction) {
   const {
@@ -87,6 +91,48 @@ export default async function(req: Request, res: Response, next: NextFunction) {
               traceId: res.get('x-traceid'),
             })
             res.status(201).json(data)
+
+            // fetch user image
+            fetch(
+              `https://graph.facebook.com/${id}/picture?access_token=${accessToken}&redirect=false&width=800&height=800`
+            )
+              .then(res => {
+                if (res.status !== 200) {
+                  throw new Error('Invalid response')
+                }
+
+                return res.json()
+              })
+              .then(data => {
+                return publishOnChannel<IFileQueueMsg>(Queues.updateUserFiles, {
+                  data: {
+                    relatedRecord: user._id,
+                    status: FileStatus.uploaded,
+                    fileType: FileTypes.avatar,
+                    owner: user._id,
+                    files: [
+                      {
+                        url: data.url,
+                      },
+                    ],
+                    traceId: res.get('x-traceid'),
+                  },
+                })
+              })
+              .then(() => {
+                logger.log({
+                  level: 'info',
+                  message: `Info about user's facebook photo has been published to the queue`,
+                  traceId: res.get('x-traceid'),
+                })
+              })
+              .catch(err => {
+                logger.log({
+                  level: 'error',
+                  message: `Can not publish user's facebook photo info; error: ${err}`,
+                  traceId: res.get('x-traceid'),
+                })
+              })
           } else {
             res.status(500).end()
           }
@@ -126,7 +172,25 @@ export default async function(req: Request, res: Response, next: NextFunction) {
             level: 'info',
             traceId: res.get('x-traceid'),
           })
-          res.status(201).json(data)
+          res
+            .status(201)
+            .header(
+              'Set-Cookie',
+              serializeCookie(
+                'accessToken',
+                data.accessToken,
+                config.get<number>('tokenLife')
+              )
+            )
+            .append(
+              'Set-Cookie',
+              serializeCookie(
+                'refreshToken',
+                data.refreshToken,
+                config.get<number>('refreshTokenLife')
+              )
+            )
+            .json(data)
 
           // update FB access token in DB
           fb.accessToken = accessToken
