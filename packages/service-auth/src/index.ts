@@ -2,7 +2,6 @@ import express, { Router, Request, Response } from 'express'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
-import usersController from './controllers/users'
 import mongoose from '@gtms/client-mongoose'
 import {
   JWTMiddleware,
@@ -11,9 +10,11 @@ import {
   getAppInfoMiddleware,
 } from '@gtms/lib-middlewares'
 import logger, { stream } from '@gtms/lib-logger'
+import usersController from './controllers/users'
 import facebookController from './controllers/facebook'
 import activationsController from './controllers/activations'
 import findController from './controllers/find'
+import meController from './controllers/me'
 
 const app = express()
 const router: Router = Router()
@@ -33,8 +34,9 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.get('/users/count', usersController.count)
 router.post('/users', usersController.create)
-router.post('/me', JWTMiddleware, usersController.updateAccount)
-router.get('/me', JWTMiddleware, usersController.getAccount)
+router.post('/me', JWTMiddleware, meController.updateAccount)
+router.get('/me', JWTMiddleware, meController.getAccount)
+router.get('/me/groups', JWTMiddleware, meController.getGroups)
 
 router.post('/authenticate', usersController.authenticate)
 
