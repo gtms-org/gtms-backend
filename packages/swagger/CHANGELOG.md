@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.6.1...@gtms/swagger@0.7.0) (2020-05-09)
+
+
+### Features
+
+* GEOT-241: expose /me/groups endpoint ([#77](https://github.com/mariusz-kabala/gtms-backend/issues/77)) ([1b29303](https://github.com/mariusz-kabala/gtms-backend/commit/1b29303b24758cf7e06c1f4b40156d467f4602d8))
+
+
+
+
+
 ## [0.6.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.6.0...@gtms/swagger@0.6.1) (2020-05-08)
 
 **Note:** Version bump only for package @gtms/swagger

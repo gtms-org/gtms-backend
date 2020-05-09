@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.10.0...@gtms/service-auth@0.11.0) (2020-05-09)
+
+
+### Bug Fixes
+
+* master: delete old refresh-tokens after user login ([6ecf4b1](https://github.com/mariusz-kabala/gtms-backend/commit/6ecf4b15cb8fa2b80341d53bca77b88f8a01cc28))
+
+
+### Features
+
+* GEOT-241: expose /me/groups endpoint ([#77](https://github.com/mariusz-kabala/gtms-backend/issues/77)) ([1b29303](https://github.com/mariusz-kabala/gtms-backend/commit/1b29303b24758cf7e06c1f4b40156d467f4602d8))
+
+
+
+
+
 # [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.9.1...@gtms/service-auth@0.10.0) (2020-05-09)
 
 
