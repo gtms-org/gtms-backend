@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.9.0...@gtms/service-auth@0.9.1) (2020-05-09)
+
+
+### Bug Fixes
+
+* master: refresh FB access token after user login ([e49547c](https://github.com/mariusz-kabala/gtms-backend/commit/e49547c7a4d7d2374a1f43dfbcea4ca096dae9f0))
+
+
+
+
+
 # [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.8.7...@gtms/service-auth@0.9.0) (2020-05-08)
 
 
