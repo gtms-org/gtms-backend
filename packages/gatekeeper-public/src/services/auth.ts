@@ -57,6 +57,11 @@ export default {
       restricted: true,
     },
     {
+      path: '/me/groups',
+      method: http.GET,
+      restricted: true,
+    },
+    {
       path: '/me',
       method: http.POST,
       restricted: true,

@@ -10,5 +10,9 @@ export default {
       path: '/check-admin-rights',
       method: http.GET,
     },
+    {
+      path: '/find-by-ids',
+      method: http.POST,
+    },
   ],
 }

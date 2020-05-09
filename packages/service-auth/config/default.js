@@ -11,6 +11,7 @@ const {
   USER_PROFILE_SERVICE,
   VERSION,
   PORT,
+  APP_KEY,
 } = process.env
 
 module.exports = {
@@ -28,4 +29,5 @@ module.exports = {
   services: {
     userProfile: USER_PROFILE_SERVICE,
   },
+  appKey: APP_KEY,
 }
