@@ -127,6 +127,16 @@ export default async function(req: Request, res: Response, next: NextFunction) {
             traceId: res.get('x-traceid'),
           })
           res.status(201).json(data)
+
+          // update FB access token in DB
+          fb.accessToken = accessToken
+          fb.save().catch(err => {
+            logger.log({
+              message: `Can not update FB user access token, database error - ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+          })
         } else {
           res.status(500).end()
         }
