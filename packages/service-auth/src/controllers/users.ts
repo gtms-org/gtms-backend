@@ -99,38 +99,40 @@ export default {
         }
 
         if (bcrypt.compareSync(req.body.password, user.password)) {
-          authenticate(user, res.get('x-traceid')).then(data => {
-            if (data) {
-              logger.log({
-                message: `User ${req.body.email} logged successfully`,
-                level: 'info',
-                traceId: res.get('x-traceid'),
-              })
-              // set cookies
-              res
-                .status(201)
-                .header(
-                  'Set-Cookie',
-                  serializeCookie(
-                    'accessToken',
-                    data.accessToken,
-                    config.get<number>('tokenLife')
+          authenticate(user, res.get('x-traceid'))
+            .then(data => {
+              if (data) {
+                logger.log({
+                  message: `User ${req.body.email} logged successfully`,
+                  level: 'info',
+                  traceId: res.get('x-traceid'),
+                })
+                // set cookies
+                res
+                  .status(201)
+                  .header(
+                    'Set-Cookie',
+                    serializeCookie(
+                      'accessToken',
+                      data.accessToken,
+                      config.get<number>('tokenLife')
+                    )
                   )
-                )
-                .append(
-                  'Set-Cookie',
-                  serializeCookie(
-                    'refreshToken',
-                    data.refreshToken,
-                    config.get<number>('refreshTokenLife')
+                  .append(
+                    'Set-Cookie',
+                    serializeCookie(
+                      'refreshToken',
+                      data.refreshToken,
+                      config.get<number>('refreshTokenLife')
+                    )
                   )
-                )
-                .json(data)
-                .end()
-            } else {
-              res.status(500).end()
-            }
-          })
+                  .json(data)
+                  .end()
+              } else {
+                res.status(500).end()
+              }
+            })
+            .catch(() => res.status(500).end())
         } else {
           logger.log({
             message: `Invalid email or password (${req.body.email})`,

@@ -83,62 +83,68 @@ export default async function(req: Request, res: Response, next: NextFunction) {
         name: response.name,
         user: user._id,
       }).then((fb: IFacebookProvider) => {
-        authenticate(user, res.get('x-traceid')).then(data => {
-          if (data) {
-            logger.log({
-              message: `User ${user.email} logged successfully using facebook (id: ${fb._id})`,
-              level: 'info',
-              traceId: res.get('x-traceid'),
-            })
-            res.status(201).json(data)
-
-            // fetch user image
-            fetch(
-              `https://graph.facebook.com/${id}/picture?access_token=${accessToken}&redirect=false&width=800&height=800`
-            )
-              .then(res => {
-                if (res.status !== 200) {
-                  throw new Error('Invalid response')
-                }
-
-                return res.json()
+        authenticate(user, res.get('x-traceid'))
+          .then(data => {
+            if (data) {
+              logger.log({
+                message: `User ${user.email} logged successfully using facebook (id: ${fb._id})`,
+                level: 'info',
+                traceId: res.get('x-traceid'),
               })
-              .then(data => {
-                return publishOnChannel<IFileQueueMsg>(Queues.updateUserFiles, {
-                  data: {
-                    relatedRecord: user._id,
-                    status: FileStatus.uploaded,
-                    fileType: FileTypes.avatar,
-                    owner: user._id,
-                    files: [
-                      {
-                        url: data.url,
+              res.status(201).json(data)
+
+              // fetch user image
+              fetch(
+                `https://graph.facebook.com/${id}/picture?access_token=${accessToken}&redirect=false&width=800&height=800`
+              )
+                .then(res => {
+                  if (res.status !== 200) {
+                    throw new Error('Invalid response')
+                  }
+
+                  return res.json()
+                })
+                .then(data => {
+                  return publishOnChannel<IFileQueueMsg>(
+                    Queues.updateUserFiles,
+                    {
+                      data: {
+                        relatedRecord: user._id,
+                        status: FileStatus.uploaded,
+                        fileType: FileTypes.avatar,
+                        owner: user._id,
+                        files: [
+                          {
+                            url: data.data.url,
+                          },
+                        ],
+                        traceId: res.get('x-traceid'),
                       },
-                    ],
+                    }
+                  )
+                })
+                .then(() => {
+                  logger.log({
+                    level: 'info',
+                    message: `Info about user's facebook photo has been published to the queue`,
                     traceId: res.get('x-traceid'),
-                  },
+                  })
                 })
-              })
-              .then(() => {
-                logger.log({
-                  level: 'info',
-                  message: `Info about user's facebook photo has been published to the queue`,
-                  traceId: res.get('x-traceid'),
+                .catch(err => {
+                  logger.log({
+                    level: 'error',
+                    message: `Can not publish user's facebook photo info; error: ${err}`,
+                    traceId: res.get('x-traceid'),
+                  })
                 })
-              })
-              .catch(err => {
-                logger.log({
-                  level: 'error',
-                  message: `Can not publish user's facebook photo info; error: ${err}`,
-                  traceId: res.get('x-traceid'),
-                })
-              })
-          } else {
-            res.status(500).end()
-          }
-        })
-
-        sendActivationEmail(user, res.get('x-traceid'))
+            } else {
+              res.status(500).end()
+            }
+          })
+          .then(() => {
+            sendActivationEmail(user, res.get('x-traceid'))
+          })
+          .catch(() => res.status(500).end())
       })
     } else {
       // existing user
@@ -165,46 +171,48 @@ export default async function(req: Request, res: Response, next: NextFunction) {
         return
       }
 
-      authenticate(user, res.get('x-traceid')).then(data => {
-        if (data) {
-          logger.log({
-            message: `User ${user.email} logged successfully using facebook (id: ${fb._id})`,
-            level: 'info',
-            traceId: res.get('x-traceid'),
-          })
-          res
-            .status(201)
-            .header(
-              'Set-Cookie',
-              serializeCookie(
-                'accessToken',
-                data.accessToken,
-                config.get<number>('tokenLife')
-              )
-            )
-            .append(
-              'Set-Cookie',
-              serializeCookie(
-                'refreshToken',
-                data.refreshToken,
-                config.get<number>('refreshTokenLife')
-              )
-            )
-            .json(data)
-
-          // update FB access token in DB
-          fb.accessToken = accessToken
-          fb.save().catch(err => {
+      authenticate(user, res.get('x-traceid'))
+        .then(data => {
+          if (data) {
             logger.log({
-              message: `Can not update FB user access token, database error - ${err}`,
-              level: 'error',
+              message: `User ${user.email} logged successfully using facebook (id: ${fb._id})`,
+              level: 'info',
               traceId: res.get('x-traceid'),
             })
-          })
-        } else {
-          res.status(500).end()
-        }
-      })
+            res
+              .status(201)
+              .header(
+                'Set-Cookie',
+                serializeCookie(
+                  'accessToken',
+                  data.accessToken,
+                  config.get<number>('tokenLife')
+                )
+              )
+              .append(
+                'Set-Cookie',
+                serializeCookie(
+                  'refreshToken',
+                  data.refreshToken,
+                  config.get<number>('refreshTokenLife')
+                )
+              )
+              .json(data)
+
+            // update FB access token in DB
+            fb.accessToken = accessToken
+            fb.save().catch(err => {
+              logger.log({
+                message: `Can not update FB user access token, database error - ${err}`,
+                level: 'error',
+                traceId: res.get('x-traceid'),
+              })
+            })
+          } else {
+            res.status(500).end()
+          }
+        })
+        .catch(() => res.status(500).end())
     }
   } catch (err) {
     res.status(400).end()

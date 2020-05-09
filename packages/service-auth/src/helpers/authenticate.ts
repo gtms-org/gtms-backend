@@ -58,6 +58,20 @@ export default async function(user: IUser, traceId: string) {
   )
 
   try {
+    await RefreshTokenModel.deleteMany({
+      user: user._id,
+    })
+  } catch (err) {
+    logger.log({
+      level: 'error',
+      message: `Can not delete user's old tokens ${err}`,
+      traceId,
+    })
+
+    throw err
+  }
+
+  try {
     await RefreshTokenModel.create({
       token: refreshToken,
       user: user._id,
@@ -73,6 +87,6 @@ export default async function(user: IUser, traceId: string) {
       message: `Error during refresh token creation ${err}`,
       traceId,
     })
-    return
+    throw err
   }
 }
