@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.1...@gtms/service-auth@0.11.2) (2020-05-10)
+
+
+### Bug Fixes
+
+* master: return empty response from /me/groups when user ha ([1292fa2](https://github.com/mariusz-kabala/gtms-backend/commit/1292fa295dbdcf5278cf1ffc2fbc36326dc6af6d))
+
+
+
+
+
 ## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.0...@gtms/service-auth@0.11.1) (2020-05-10)
 
 
