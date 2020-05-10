@@ -141,54 +141,74 @@ export default {
         next(err)
       })
   },
-  getGroups(req: IAuthRequest, res: Response, next: NextFunction) {
-    UserModel.findById(req.user.id).then(async (user: IUser | null) => {
-      if (!user) {
+  getGroups(req: IAuthRequest, res: Response) {
+    UserModel.findById(req.user.id)
+      .then(async (user: IUser | null) => {
+        if (!user) {
+          logger.log({
+            message: `Someone tried to get information about not existing user account ${req.user.id} ${req.user.email}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          return res.status(404).end()
+        }
+
+        const groupIds = user.groupsMember || []
+
+        if (Array.isArray(user.groupsAdmin) && user.groupsAdmin.length > 0) {
+          groupIds.push(
+            ...user.groupsAdmin.filter(id => !groupIds.includes(id))
+          )
+        }
+
+        if (Array.isArray(user.groupsOwner) && user.groupsOwner.length > 0) {
+          groupIds.push(
+            ...user.groupsOwner.filter(id => !groupIds.includes(id))
+          )
+        }
+
+        if (groupIds.length > 0) {
+          try {
+            const groups: { id: string }[] = await findGroupsByIds(groupIds, {
+              traceId: res.get('x-traceid'),
+              appKey: config.get<string>('appKey'),
+            })
+
+            const findGroup = (id: string) =>
+              groups.find(group => group.id === id)
+            const filterGroups = (group?: { id: string }) => group !== undefined
+
+            res.status(200).json({
+              admin: user.groupsAdmin.map(findGroup).filter(filterGroups),
+              member: user.groupsMember.map(findGroup).filter(filterGroups),
+              owner: user.groupsOwner.map(findGroup).filter(filterGroups),
+            })
+          } catch (err) {
+            res.status(500).end()
+
+            logger.log({
+              level: 'error',
+              message: `Can not fetch groups info: ${err}`,
+              traceId: res.get('x-traceid'),
+            })
+          }
+        } else {
+          res.status(200).json({
+            admin: [],
+            member: [],
+            owner: [],
+          })
+        }
+      })
+      .catch(err => {
         logger.log({
-          message: `Someone tried to get information about not existing user account ${req.user.id} ${req.user.email}`,
           level: 'error',
+          message: `Database error: ${err}`,
           traceId: res.get('x-traceid'),
         })
 
-        return res.status(404).end()
-      }
-
-      const groupIds = user.groupsMember || []
-
-      if (Array.isArray(user.groupsAdmin) && user.groupsAdmin.length > 0) {
-        groupIds.push(...user.groupsAdmin.filter(id => !groupIds.includes(id)))
-      }
-
-      if (Array.isArray(user.groupsOwner) && user.groupsOwner.length > 0) {
-        groupIds.push(...user.groupsOwner.filter(id => !groupIds.includes(id)))
-      }
-
-      if (groupIds.length > 0) {
-        try {
-          const groups: { id: string }[] = await findGroupsByIds(groupIds, {
-            traceId: res.get('x-traceid'),
-            appKey: config.get<string>('appKey'),
-          })
-
-          const findGroup = (id: string) =>
-            groups.find(group => group.id === id)
-          const filterGroups = (group?: { id: string }) => group !== undefined
-
-          res.status(200).json({
-            admin: user.groupsAdmin.map(findGroup).filter(filterGroups),
-            member: user.groupsMember.map(findGroup).filter(filterGroups),
-            owner: user.groupsOwner.map(findGroup).filter(filterGroups),
-          })
-        } catch (err) {
-          res.status(500).end()
-
-          logger.log({
-            level: 'error',
-            message: `Can not fetch groups info: ${err}`,
-            traceId: res.get('x-traceid'),
-          })
-        }
-      }
-    })
+        res.status(500).end()
+      })
   },
 }
