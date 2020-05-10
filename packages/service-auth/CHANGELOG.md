@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.0...@gtms/service-auth@0.11.1) (2020-05-10)
+
+
+### Bug Fixes
+
+* master: expose avatar in JWT ([0d9fc21](https://github.com/mariusz-kabala/gtms-backend/commit/0d9fc21a162a48206f808e85974035b3a5f23f64))
+
+
+
+
+
 # [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.10.0...@gtms/service-auth@0.11.0) (2020-05-09)
 
 
