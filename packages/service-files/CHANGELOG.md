@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.2.1...@gtms/service-files@0.2.2) (2020-05-10)
+
+
+### Bug Fixes
+
+* master: povide internal GK setup to services ([bc3f41b](https://github.com/mariusz-kabala/gtms-backend/commit/bc3f41be0a108aed13d382dbed4fb86a853b922d))
+
+
+
+
+
 ## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.2.0...@gtms/service-files@0.2.1) (2020-05-08)
 
 **Note:** Version bump only for package @gtms/service-files

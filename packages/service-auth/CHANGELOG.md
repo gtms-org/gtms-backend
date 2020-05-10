@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.2...@gtms/service-auth@0.11.3) (2020-05-10)
+
+
+### Bug Fixes
+
+* master: povide internal GK setup to services ([bc3f41b](https://github.com/mariusz-kabala/gtms-backend/commit/bc3f41be0a108aed13d382dbed4fb86a853b922d))
+
+
+
+
+
 ## [0.11.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.1...@gtms/service-auth@0.11.2) (2020-05-10)
 
 

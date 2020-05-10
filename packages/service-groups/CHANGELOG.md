@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.10.0...@gtms/service-groups@0.10.1) (2020-05-10)
+
+
+### Bug Fixes
+
+* master: povide internal GK setup to services ([bc3f41b](https://github.com/mariusz-kabala/gtms-backend/commit/bc3f41be0a108aed13d382dbed4fb86a853b922d))
+
+
+
+
+
 # [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.9.0...@gtms/service-groups@0.10.0) (2020-05-09)
 
 
