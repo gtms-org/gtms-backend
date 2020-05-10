@@ -12,6 +12,7 @@ const {
   VERSION,
   PORT,
   APP_KEY,
+  INTERNAL_GATEKEEPER,
 } = process.env
 
 module.exports = {
@@ -30,4 +31,5 @@ module.exports = {
     userProfile: USER_PROFILE_SERVICE,
   },
   appKey: APP_KEY,
+  internalGatekeeper: INTERNAL_GATEKEEPER,
 }

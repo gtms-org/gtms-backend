@@ -21,6 +21,7 @@ resource "docker_container" "service-auth" {
     "USER_PROFILE_SERVICE=missing-for-now",
     "VERSION=${var.tag}",
     "APP_KEY=${var.APP_KEY}",
-    "PORT=80"
+    "PORT=80",
+    "INTERNAL_GATEKEEPER=http://service-gatekeeper-internal-${var.env}/v1"
   ]
 }

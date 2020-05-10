@@ -9,6 +9,7 @@ const {
   QUEUE_HOST,
   S3_BUCKET,
   AWS_ENDPOINT,
+  INTERNAL_GATEKEEPER,
 } = process.env
 
 module.exports = {
@@ -21,4 +22,5 @@ module.exports = {
   awsRegion: AWS_REGION,
   awsEndpoint: AWS_ENDPOINT,
   s3Bucket: S3_BUCKET,
+  internalGatekeeper: INTERNAL_GATEKEEPER,
 }
