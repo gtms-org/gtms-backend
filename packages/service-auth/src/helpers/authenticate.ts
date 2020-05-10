@@ -16,6 +16,8 @@ export function getJWTData(user: IUser, traceId: string): Promise<any> {
       languageCode: user.languageCode,
       roles: user.roles,
       isActive: user.isActive,
+      isBlocked: user.isBlocked,
+      avatar: user.avatar,
     }
 
     const userProfileService = config.get<string | undefined>(
