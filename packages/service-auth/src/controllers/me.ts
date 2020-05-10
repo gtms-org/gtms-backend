@@ -154,17 +154,17 @@ export default {
           return res.status(404).end()
         }
 
-        const groupIds = user.groupsMember || []
+        const groupIds = [...(user.groupsMember || [])]
 
         if (Array.isArray(user.groupsAdmin) && user.groupsAdmin.length > 0) {
           groupIds.push(
-            ...user.groupsAdmin.filter(id => !groupIds.includes(id))
+            ...[...user.groupsAdmin].filter(id => !groupIds.includes(id))
           )
         }
 
         if (Array.isArray(user.groupsOwner) && user.groupsOwner.length > 0) {
           groupIds.push(
-            ...user.groupsOwner.filter(id => !groupIds.includes(id))
+            ...[...user.groupsOwner].filter(id => !groupIds.includes(id))
           )
         }
 
@@ -176,7 +176,7 @@ export default {
             })
 
             const findGroup = (id: string) =>
-              groups.find(group => group.id === id)
+              groups.find(group => group.id === id + '')
             const filterGroups = (group?: { id: string }) => group !== undefined
 
             res.status(200).json({
