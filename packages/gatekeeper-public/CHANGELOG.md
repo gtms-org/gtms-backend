@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.13.0...@gtms/gatekeeper-public@0.13.1) (2020-05-11)
+
+
+### Bug Fixes
+
+* master: send fixed response in case of invalid JWT ([13b68eb](https://github.com/mariusz-kabala/gtms-backend/commit/13b68eb058922d22b95e4872974275aa5134e9e2))
+
+
+
+
+
 # [0.13.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.12.2...@gtms/gatekeeper-public@0.13.0) (2020-05-09)
 
 
