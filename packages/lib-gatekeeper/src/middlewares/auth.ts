@@ -17,7 +17,10 @@ export const authMiddleware = (
       message: 'No token in header, access denied',
       traceId: res.get('x-traceid'),
     })
-    return next(createError(401, 'Access token is invalid'))
+    return res
+      .status(401)
+      .send('Access token is invalid')
+      .end()
   }
 
   jwt.verify(
@@ -30,7 +33,10 @@ export const authMiddleware = (
           message: `Token in headers present, but token verification failed, access denied (${err})`,
           traceId: res.get('x-traceid'),
         })
-        return next(createError(401, 'Access token is invalid'))
+        return res
+          .status(401)
+          .send('Access token is invalid')
+          .end()
       }
 
       req.headers['x-access-token'] = JSON.stringify(decoded)
