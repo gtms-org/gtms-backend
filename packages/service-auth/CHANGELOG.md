@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.4...@gtms/service-auth@0.11.5) (2020-05-12)
+
+
+### Bug Fixes
+
+* master: drop user data from refresh token ([3086482](https://github.com/mariusz-kabala/gtms-backend/commit/30864824d2c53ef31d634101e24ec1e0c28bec24))
+
+
+
+
+
 ## [0.11.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.3...@gtms/service-auth@0.11.4) (2020-05-10)
 
 
