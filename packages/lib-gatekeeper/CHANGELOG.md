@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.2.2...@gtms/lib-gatekeeper@0.2.3) (2020-05-11)
+
+
+### Bug Fixes
+
+* master: send fixed response in case of invalid JWT ([13b68eb](https://github.com/mariusz-kabala/gtms-backend/commit/13b68eb058922d22b95e4872974275aa5134e9e2))
+
+
+
+
+
 ## [0.2.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.2.1...@gtms/lib-gatekeeper@0.2.2) (2020-05-08)
 
 **Note:** Version bump only for package @gtms/lib-gatekeeper
