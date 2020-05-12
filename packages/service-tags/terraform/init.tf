@@ -11,7 +11,7 @@ provider "docker" {
 terraform {
   backend "s3" {
     bucket = "kabalatech-terraform"
-    key    = "gtms-service-notifications.tfstate"
+    key    = "gtms-service-tags.tfstate"
     region = "nl-ams"
     endpoint = "s3.nl-ams.scw.cloud"
     skip_credentials_validation = true
