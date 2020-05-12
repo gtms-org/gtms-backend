@@ -54,9 +54,11 @@ export default async function(user: IUser, traceId: string) {
   })
 
   const refreshToken = jwt.sign(
-    userData,
+    { id: user._id },
     config.get<string>('refreshTokenSecret'),
-    { expiresIn: config.get<string>('refreshTokenLife') }
+    {
+      expiresIn: config.get<string>('refreshTokenLife'),
+    }
   )
 
   try {
