@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.3.2...@gtms/lib-models@0.3.3) (2020-05-13)
+
+
+### Bug Fixes
+
+* master: expose avatar in user serializer ([8e0bbd4](https://github.com/mariusz-kabala/gtms-backend/commit/8e0bbd41ef0936ad369ca8e15a202a19fc92cd83))
+
+
+
+
+
 ## [0.3.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.3.1...@gtms/lib-models@0.3.2) (2020-05-13)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.7.0...@gtms/commons@0.7.1) (2020-05-13)
+
+
+### Bug Fixes
+
+* master: expose avatar in user serializer ([8e0bbd4](https://github.com/mariusz-kabala/gtms-backend/commit/8e0bbd41ef0936ad369ca8e15a202a19fc92cd83))
+
+
+
+
+
 # [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.6.0...@gtms/commons@0.7.0) (2020-05-08)
 
 
