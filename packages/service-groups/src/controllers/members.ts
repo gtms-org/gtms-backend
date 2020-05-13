@@ -8,7 +8,20 @@ import logger from '@gtms/lib-logger'
 export default {
   list(req: Request, res: Response, next: NextFunction) {
     const { slug } = req.params
-    const { start = 0, limit = 25 } = req.query
+    let limit = parseInt(req.query.limit || 25, 10)
+    let offset = parseInt(req.query.offset || 0, 10)
+
+    if (!Number.isInteger(limit)) {
+      limit = 25
+    }
+
+    if (!Number.isInteger(offset)) {
+      offset = 0
+    }
+
+    if (limit > 50) {
+      limit = 50
+    }
 
     GroupModel.findOne(
       {
@@ -16,7 +29,7 @@ export default {
       },
       {
         members: {
-          $slice: [start, limit],
+          $slice: [offset, limit],
         },
       }
     )

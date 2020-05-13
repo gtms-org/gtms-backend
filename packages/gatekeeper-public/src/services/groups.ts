@@ -27,6 +27,11 @@ export default {
       restricted: true,
     },
     {
+      path: '/:slug/members',
+      method: http.GET,
+      restricted: false,
+    },
+    {
       path: '/:slug',
       method: http.GET,
       restricted: false,
