@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.11.0...@gtms/service-groups@0.11.1) (2020-05-13)
+
+
+### Bug Fixes
+
+* master: move paginate dep to proper package ([4ee6ad8](https://github.com/mariusz-kabala/gtms-backend/commit/4ee6ad847270ac4adfdc103431c75b540c35209a))
+
+
+
+
+
 # [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.10.3...@gtms/service-groups@0.11.0) (2020-05-13)
 
 
