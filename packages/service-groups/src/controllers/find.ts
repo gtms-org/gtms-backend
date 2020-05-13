@@ -31,4 +31,43 @@ export default {
         next(err)
       })
   },
+  list(req: Request, res: Response, next: NextFunction) {
+    let limit = parseInt(req.query.limit || 25, 10)
+    let offset = parseInt(req.query.offset || 0, 10)
+
+    if (!Number.isInteger(limit)) {
+      limit = 25
+    }
+
+    if (!Number.isInteger(offset)) {
+      offset = 0
+    }
+
+    if (limit > 50) {
+      limit = 50
+    }
+
+    GroupModel.paginate(
+      { type: 'public' },
+      {
+        offset,
+        limit,
+      },
+      (err, result) => {
+        if (err) {
+          logger.log({
+            message: `Database error ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          return next(err)
+        }
+        res.status(200).json({
+          ...result,
+          docs: result.docs.map((group: IGroup) => serializeGroup(group)),
+        })
+      }
+    )
+  },
 }

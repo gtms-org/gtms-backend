@@ -106,28 +106,6 @@ export default {
         publishMultiple(res.get('x-traceid'), ...queueMessages)
       })
   },
-  list(req: IAuthRequest, res: Response, next: NextFunction) {
-    const { pagination = { limit: 25, page: 1 } } = req.query
-
-    if (pagination.limit > 50) {
-      return res.status(400).json({
-        pagination: 'Limit can not be bigger than 50',
-      })
-    }
-
-    GroupModel.paginate({ type: 'public' }, pagination, (err, result) => {
-      if (err) {
-        logger.log({
-          message: `Request error ${err}`,
-          level: 'error',
-          traceId: res.get('x-traceid'),
-        })
-
-        return next(err)
-      }
-      res.status(200).json(result)
-    })
-  },
   async show(req: IAuthRequest, res: Response, next: NextFunction) {
     const { slug } = req.params
 

@@ -34,6 +34,7 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.get('/users/count', usersController.count)
 router.post('/users', usersController.create)
+router.get('/users', findController.list)
 router.post('/me', JWTMiddleware, meController.updateAccount)
 router.get('/me', JWTMiddleware, meController.getAccount)
 router.get('/me/groups', JWTMiddleware, meController.getGroups)
