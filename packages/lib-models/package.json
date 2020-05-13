@@ -6,7 +6,11 @@
   "author": "Mariusz Kabała",
   "license": "ISC",
   "dependencies": {
-    "@gtms/commons": "0.7.0"
+    "@gtms/commons": "0.7.0",
+    "mongoose-paginate": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/mongoose-paginate": "^5.0.8"
   },
   "scripts": {
     "test": "exit 0"

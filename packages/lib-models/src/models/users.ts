@@ -1,5 +1,6 @@
 import mongoose, { HookNextFunction, Document, Schema } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
+import mongoosePaginate from 'mongoose-paginate'
 import bcrypt from 'bcryptjs'
 import {
   validateEmailAddress,
@@ -149,6 +150,7 @@ const UserSchema = new Schema(
 )
 
 UserSchema.plugin(uniqueValidator)
+UserSchema.plugin(mongoosePaginate)
 
 UserSchema.pre<IUser>('save', function(next: HookNextFunction) {
   if (this.isModified('password')) {
