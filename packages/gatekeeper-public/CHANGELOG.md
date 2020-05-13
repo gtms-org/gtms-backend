@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.14.0...@gtms/gatekeeper-public@0.15.0) (2020-05-13)
+
+
+### Features
+
+* GEOT-253: expose recent users, recent groups ([#83](https://github.com/mariusz-kabala/gtms-backend/issues/83)) ([353d01e](https://github.com/mariusz-kabala/gtms-backend/commit/353d01e15665284fdeb4a457477b09083823f2e4))
+
+
+
+
+
 # [0.14.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.13.3...@gtms/gatekeeper-public@0.14.0) (2020-05-13)
 
 

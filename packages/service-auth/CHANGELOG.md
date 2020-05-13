@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.12.1...@gtms/service-auth@0.13.0) (2020-05-13)
+
+
+### Features
+
+* GEOT-253: expose recent users, recent groups ([#83](https://github.com/mariusz-kabala/gtms-backend/issues/83)) ([353d01e](https://github.com/mariusz-kabala/gtms-backend/commit/353d01e15665284fdeb4a457477b09083823f2e4))
+
+
+
+
+
 ## [0.12.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.12.0...@gtms/service-auth@0.12.1) (2020-05-13)
 
 **Note:** Version bump only for package @gtms/service-auth
