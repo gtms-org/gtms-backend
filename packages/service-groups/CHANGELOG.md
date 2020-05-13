@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.11.1...@gtms/service-groups@0.11.2) (2020-05-13)
+
+
+### Bug Fixes
+
+* master: filter groups by visibility not type ([263163e](https://github.com/mariusz-kabala/gtms-backend/commit/263163ea43032533b4916695f40db8e097fc4c7e))
+
+
+
+
+
 ## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.11.0...@gtms/service-groups@0.11.1) (2020-05-13)
 
 
