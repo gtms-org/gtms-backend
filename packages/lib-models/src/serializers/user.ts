@@ -7,6 +7,7 @@ export function serializeUser(user: IUser): ISerializedUser {
     name: user.name,
     surname: user.surname,
     email: user.email,
+    avatar: user.avatar,
     phone: user.phone,
     countryCode: user.countryCode,
     languageCode: user.languageCode,

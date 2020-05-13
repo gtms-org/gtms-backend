@@ -1,3 +1,5 @@
+import { FileStatus } from '../../enums'
+
 export interface ISerializedUser {
   id: string
   name?: string
@@ -8,4 +10,8 @@ export interface ISerializedUser {
   languageCode: string
   tags: string[]
   roles: string[]
+  avatar?: {
+    status: FileStatus
+    files: string[]
+  }
 }
