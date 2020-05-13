@@ -38,6 +38,9 @@ router.post('/me', JWTMiddleware, meController.updateAccount)
 router.get('/me', JWTMiddleware, meController.getAccount)
 router.get('/me/groups', JWTMiddleware, meController.getGroups)
 
+router.get('/me/favs/groups', JWTMiddleware, meController.getFavGroups)
+router.post('/me/favs/groups', JWTMiddleware, meController.updateFavGroups)
+
 router.post('/authenticate', usersController.authenticate)
 
 router.post('/refresh-token', usersController.refreshToken)

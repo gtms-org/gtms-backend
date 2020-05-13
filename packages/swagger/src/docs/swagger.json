@@ -396,6 +396,68 @@
         }
       }
     },
+    "/auth/me/favs/groups": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns favs user's groups",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          },
+          "404": {
+            "description": "User does not exist"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Updates favs user's groups",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Body payload is invalid"
+          },
+          "404": {
+            "description": "User does not exist"
+          }
+        }
+      }
+    },
     "/auth/me": {
       "get": {
         "security": [

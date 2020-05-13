@@ -211,4 +211,86 @@ export default {
         res.status(500).end()
       })
   },
+  getFavGroups(req: IAuthRequest, res: Response) {
+    UserModel.findById(req.user.id)
+      .then(async (user: IUser | null) => {
+        if (!user) {
+          logger.log({
+            message: `Someone tried to get information about not existing user account ${req.user.id} ${req.user.email}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          return res.status(404).end()
+        }
+
+        if (Array.isArray(user.groupsFavs) && user.groupsFavs.length > 0) {
+          try {
+            const groups: { id: string }[] = await findGroupsByIds(
+              user.groupsFavs,
+              {
+                traceId: res.get('x-traceid'),
+                appKey: config.get<string>('appKey'),
+              }
+            )
+
+            res.status(200).json(groups)
+          } catch (err) {
+            res.status(500).end()
+
+            logger.log({
+              level: 'error',
+              message: `Can not fetch groups info: ${err}`,
+              traceId: res.get('x-traceid'),
+            })
+          }
+        } else {
+          res.status(200).json([])
+        }
+      })
+      .catch(err => {
+        logger.log({
+          level: 'error',
+          message: `Database error: ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+
+        res.status(500).end()
+      })
+  },
+  async updateFavGroups(req: IAuthRequest, res: Response) {
+    if (!Array.isArray(req.body.groups)) {
+      return res.status(400).end()
+    }
+
+    const groups = req.body.groups.filter((g: unknown) => typeof g === 'string')
+
+    if (groups.length === 0) {
+      return res.status(400).end()
+    }
+
+    UserModel.findByIdAndUpdate(
+      {
+        _id: req.user.id,
+      },
+      {
+        groupsFavs: groups,
+      }
+    )
+      .then((user: IUser | null) => {
+        if (!user) {
+          return res.status(400).end()
+        }
+        res.status(200).end()
+      })
+      .catch(err => {
+        logger.log({
+          level: 'error',
+          message: `Database error: ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+
+        res.status(500).end()
+      })
+  },
 }
