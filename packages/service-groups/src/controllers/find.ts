@@ -48,7 +48,7 @@ export default {
     }
 
     GroupModel.paginate(
-      { type: 'public' },
+      { visibility: 'public' },
       {
         offset,
         limit,
