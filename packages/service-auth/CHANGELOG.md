@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.5...@gtms/service-auth@0.12.0) (2020-05-13)
+
+
+### Features
+
+* GEOT-242: add favs groups get and update endpoints ([#78](https://github.com/mariusz-kabala/gtms-backend/issues/78)) ([63ac356](https://github.com/mariusz-kabala/gtms-backend/commit/63ac356a06eea31a2ff8a5bc4dc678928bf287ae))
+
+
+
+
+
 ## [0.11.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.11.4...@gtms/service-auth@0.11.5) (2020-05-12)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.2.0...@gtms/lib-models@0.3.0) (2020-05-13)
+
+
+### Features
+
+* GEOT-242: add favs groups get and update endpoints ([#78](https://github.com/mariusz-kabala/gtms-backend/issues/78)) ([63ac356](https://github.com/mariusz-kabala/gtms-backend/commit/63ac356a06eea31a2ff8a5bc4dc678928bf287ae))
+
+
+
+
+
 # [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.1.0...@gtms/lib-models@0.2.0) (2020-05-08)
 
 
