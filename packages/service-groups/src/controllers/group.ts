@@ -345,7 +345,7 @@ export default {
       return res.status(404).end()
     }
 
-    const index = group.members.findIndex(m => m === req.user.id)
+    const index = group.members.findIndex(m => `${m}` === req.user.id)
 
     if (index === -1) {
       return res.status(404).end()

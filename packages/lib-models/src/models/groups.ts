@@ -48,11 +48,11 @@ const GroupSchema = new Schema(
     },
     type: {
       type: String,
-      required: true,
+      default: 'public',
     },
     visibility: {
       type: String,
-      required: true,
+      default: 'public',
     },
     avatar: {
       status: {
