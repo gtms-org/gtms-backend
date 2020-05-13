@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.3.0...@gtms/lib-models@0.3.1) (2020-05-13)
+
+
+### Bug Fixes
+
+* GEOT-250: fixes in join / leave group flow ([#80](https://github.com/mariusz-kabala/gtms-backend/issues/80)) ([8713fdb](https://github.com/mariusz-kabala/gtms-backend/commit/8713fdb970b53f6c101710b0afafc55d1e956bf9))
+
+
+
+
+
 # [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.2.0...@gtms/lib-models@0.3.0) (2020-05-13)
 
 

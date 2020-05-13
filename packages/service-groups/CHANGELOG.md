@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.10.2...@gtms/service-groups@0.10.3) (2020-05-13)
+
+
+### Bug Fixes
+
+* GEOT-250: fixes in join / leave group flow ([#80](https://github.com/mariusz-kabala/gtms-backend/issues/80)) ([8713fdb](https://github.com/mariusz-kabala/gtms-backend/commit/8713fdb970b53f6c101710b0afafc55d1e956bf9))
+
+
+
+
+
 ## [0.10.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.10.1...@gtms/service-groups@0.10.2) (2020-05-13)
 
 **Note:** Version bump only for package @gtms/service-groups
