@@ -53,7 +53,7 @@ export default {
           next(err)
 
           logger.log({
-            message: `Request error ${err}`,
+            message: `Database error ${err}`,
             level: 'error',
             traceId: res.get('x-traceid'),
           })

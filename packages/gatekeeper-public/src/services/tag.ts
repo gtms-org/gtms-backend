@@ -12,6 +12,21 @@ export default {
       restricted: false,
     },
     {
+      path: '/promoted/group/:id',
+      method: http.PUT,
+      restricted: true,
+    },
+    {
+      path: '/promoted/:id',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/promoted/:id',
+      method: http.DELETE,
+      restricted: true,
+    },
+    {
       path: '/promoted',
       method: http.POST,
       restricted: true,

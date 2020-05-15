@@ -27,6 +27,9 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 })
 
 router.get('/find', tagsController.find)
+router.put('/promoted/group/:id', JWTMiddleware, promotedController.batchUpdate)
+router.post('/promoted/:id', JWTMiddleware, promotedController.update)
+router.delete('/promoted/:id', JWTMiddleware, promotedController.deleteGroupTag)
 router.post('/promoted', JWTMiddleware, promotedController.create)
 
 router.all('*', (_: Request, res: Response) => {
