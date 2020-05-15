@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.1.10...@gtms/service-tags@0.2.0) (2020-05-15)
+
+
+### Features
+
+* GEOT-256: update, delete and bulk update promoted tags endpo ([#85](https://github.com/mariusz-kabala/gtms-backend/issues/85)) ([5651e4c](https://github.com/mariusz-kabala/gtms-backend/commit/5651e4c2447d905688a470213928bf524793b3b8))
+
+
+
+
+
 ## [0.1.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.1.9...@gtms/service-tags@0.1.10) (2020-05-13)
 
 **Note:** Version bump only for package @gtms/service-tags
