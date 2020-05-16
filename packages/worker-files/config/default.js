@@ -9,6 +9,7 @@ const {
   BUCKET_AVATAR,
   BUCKET_GROUP_BG,
   BUCKET_USER_GALLERY,
+  BUCKET_GROUP_TAG_LOGO,
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
   AWS_REGION,
@@ -29,9 +30,17 @@ module.exports = {
     avatar: BUCKET_AVATAR,
     userGallery: BUCKET_USER_GALLERY,
     groupBg: BUCKET_GROUP_BG,
+    groupTagLogo: BUCKET_GROUP_TAG_LOGO,
   },
   files: {
     groupLogo: [
+      [
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: 'origin',
+        },
+      ],
       [
         {
           operation: 'resize',
@@ -82,6 +91,13 @@ module.exports = {
       ],
     ],
     avatar: [
+      [
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: 'origin',
+        },
+      ],
       [
         {
           operation: 'resize',
@@ -166,6 +182,13 @@ module.exports = {
     userGallery: [
       [
         {
+          operation: 'save',
+          fileType: 'jpg',
+          name: 'origin',
+        },
+      ],
+      [
+        {
           operation: 'resize',
           size: [1300, 1300],
         },
@@ -194,6 +217,63 @@ module.exports = {
           operation: 'save',
           fileType: 'webp',
           name: '800x800',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [200, 200],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '200x200',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '200x200',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [50, 50],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '50x50',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '50x50',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [35, 35],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '35x35',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '35x35',
+        },
+      ],
+    ],
+    groupTagLogo: [
+      [
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: 'origin',
         },
       ],
       [

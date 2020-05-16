@@ -1,16 +1,18 @@
 import amqp from 'amqplib'
-import { GroupModel, IGroup } from '@gtms/lib-models'
-import logger from '@gtms/lib-logger'
-import { Queues, IFileQueueMsg, FileStatus, FileTypes } from '@gtms/commons'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
   getSendMsgToRetryFunc,
   publishOnChannel,
 } from '@gtms/client-queue'
+import { GroupTagModel, IGroupTag } from '@gtms/lib-models'
+import { Queues, IFileQueueMsg, FileStatus } from '@gtms/commons'
+import { hasGroupAdminRights } from '@gtms/lib-api'
+import config from 'config'
+import logger from '@gtms/lib-logger'
 
 const retryPolicy: IRetryPolicy = {
-  queue: Queues.updateGroupFiles,
+  queue: Queues.updateGroupTagFiles,
   retries: [
     {
       name: '30s',
@@ -37,61 +39,56 @@ const retryPolicy: IRetryPolicy = {
 
 const sendMsgToRetry = getSendMsgToRetryFunc(retryPolicy)
 
-const getUpdatePayload = ({
-  files,
-  fileType,
-  status,
-}: {
-  files: string[]
-  fileType: FileTypes
-  status: FileStatus
-}) => {
-  switch (fileType) {
-    case FileTypes.groupLogo:
-      return {
-        avatar: {
-          status,
-          files,
-        },
-      }
-    case FileTypes.groupBg:
-      return {
-        bg: {
-          status,
-          files,
-        },
-      }
-    default:
-      throw new Error(`File ${fileType} is not supported`)
-  }
-}
-
 const processNewUpload = (payload: IFileQueueMsg) => {
   return new Promise(async (resolve, reject) => {
     const {
       data: { relatedRecord, owner, traceId, files, fileType, status } = {},
     } = payload
 
-    GroupModel.findOneAndUpdate(
-      {
-        _id: relatedRecord,
-        owner,
-      },
-      getUpdatePayload({ files: files.map(f => f.url), fileType, status }),
-      {
-        upsert: false,
-      }
-    )
-      .then(async (group: IGroup | null) => {
-        if (!group) {
+    let groupTag: IGroupTag | null
+
+    try {
+      groupTag = await GroupTagModel.findById(relatedRecord)
+    } catch (err) {
+      logger.log({
+        level: 'error',
+        message: `Database error: ${err}`,
+        traceId,
+      })
+
+      return reject('database error')
+    }
+
+    if (groupTag === null) {
+      logger.log({
+        level: 'warn',
+        message: `GroupTag record for file ${fileType} not found in DB, skipping processing`,
+        traceId,
+      })
+
+      return resolve()
+    }
+
+    hasGroupAdminRights(owner, `${groupTag.group}`, {
+      traceId,
+      appKey: config.get<string>('appKey'),
+    })
+      .then(async () => {
+        groupTag.logo = {
+          status,
+          files: files.map(f => f.url),
+        }
+
+        try {
+          groupTag.save()
+        } catch (err) {
           logger.log({
             level: 'error',
-            message: `Someone tried to upload files to not existing group, payload: ${JSON.stringify(
-              payload
-            )}`,
+            message: `Database error: ${err}`,
             traceId,
           })
-          return resolve()
+
+          return reject('database error')
         }
 
         try {
@@ -108,14 +105,14 @@ const processNewUpload = (payload: IFileQueueMsg) => {
 
         resolve()
       })
-      .catch(err => {
+      .catch(() => {
         logger.log({
-          level: 'error',
-          message: `Database error: ${err}`,
+          level: 'warn',
+          message: `User ${owner} does not have right to upload files for groupTag ${relatedRecord}, skipping processing`,
           traceId,
         })
 
-        reject('database error')
+        resolve()
       })
   })
 }
@@ -126,38 +123,31 @@ const processReadyFiles = (msg: IFileQueueMsg) => {
       data: { files, traceId, status, relatedRecord, fileType } = {},
     } = msg
 
-    let payload
-
-    try {
-      payload = getUpdatePayload({
-        files: files.map(f => f.url),
-        fileType,
-        status,
-      })
-    } catch (err) {
-      return reject(err)
-    }
-
-    GroupModel.findOneAndUpdate(
+    GroupTagModel.findOneAndUpdate(
       {
         _id: relatedRecord,
       },
-      payload,
+      {
+        logo: {
+          status,
+          files: files.map(f => f.url),
+        },
+      },
       {
         upsert: false,
       }
     )
-      .then((group: IGroup | null) => {
-        if (group) {
+      .then((groupTag: IGroupTag | null) => {
+        if (groupTag) {
           logger.log({
             level: 'info',
-            message: `Group ${relatedRecord} has been updated with ${fileType} files`,
+            message: `GroupTag ${relatedRecord} has been updated with ${fileType} files`,
             traceId,
           })
         } else {
           logger.log({
             level: 'error',
-            message: `Can not update files for group ${relatedRecord} - record does not exist`,
+            message: `Can not update files for groupTag ${relatedRecord} - record does not exist`,
             traceId,
           })
         }
@@ -185,7 +175,7 @@ const processMsg = (msg: amqp.Message) => {
     logger.log({
       level: 'error',
       message: `Can not parse ${
-        Queues.updateGroupFiles
+        Queues.updateGroupTagFiles
       } queue message: ${msg.content.toString()} / error: ${err}`,
     })
     return Promise.reject(`can not parse json`)
@@ -207,14 +197,14 @@ const processMsg = (msg: amqp.Message) => {
 }
 
 export function initFilesTask(ch: amqp.Channel) {
-  const ok = ch.assertQueue(Queues.updateGroupFiles, { durable: true })
+  const ok = ch.assertQueue(Queues.updateGroupTagFiles, { durable: true })
 
   ok.then(async () => {
     await setupRetriesPolicy(ch, retryPolicy)
     ch.prefetch(1)
   }).then(() => {
     ch.consume(
-      Queues.updateGroupFiles,
+      Queues.updateGroupTagFiles,
       msg => {
         if (msg.fields.redelivered) {
           return sendMsgToRetry({

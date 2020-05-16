@@ -2,7 +2,7 @@ import express, { Router, Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import fileUpload from 'express-fileupload'
 import morgan from 'morgan'
-import logger, { stream } from '@gtms/lib-logger'
+import { stream } from '@gtms/lib-logger'
 import { getCreateFileAction } from './controllers/files'
 import {
   JWTMiddleware,
@@ -25,6 +25,7 @@ router.post('/groups/logo', getCreateFileAction(FileTypes.groupLogo))
 router.post('/groups/bg', getCreateFileAction(FileTypes.groupBg))
 router.post('/avatars', getCreateFileAction(FileTypes.avatar))
 router.post('/gallery', getCreateFileAction(FileTypes.userGallery))
+router.post('/tags/promoted', getCreateFileAction(FileTypes.groupTagLogo))
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
