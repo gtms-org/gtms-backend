@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.2.4...@gtms/worker-files@0.3.0) (2020-05-16)
+
+
+### Features
+
+* GEOT-257 group tags logo ([#86](https://github.com/mariusz-kabala/gtms-backend/issues/86)) ([b7409ca](https://github.com/mariusz-kabala/gtms-backend/commit/b7409ca33646c580717332765d63af9cd53025ed))
+
+
+
+
+
 ## [0.2.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.2.3...@gtms/worker-files@0.2.4) (2020-05-15)
 
 **Note:** Version bump only for package @gtms/worker-files
