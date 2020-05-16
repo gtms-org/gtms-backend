@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.2.1...@gtms/service-tags@0.3.0) (2020-05-16)
+
+
+### Features
+
+* master: get promoted tags endpoint ([21ec8c0](https://github.com/mariusz-kabala/gtms-backend/commit/21ec8c04eb5cd496abecc708bd8430d7e48955a7))
+
+
+
+
+
 ## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.2.0...@gtms/service-tags@0.2.1) (2020-05-16)
 
 **Note:** Version bump only for package @gtms/service-tags
