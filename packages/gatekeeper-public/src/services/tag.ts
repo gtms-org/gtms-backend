@@ -17,6 +17,11 @@ export default {
       restricted: true,
     },
     {
+      path: '/promoted/group/:id',
+      method: http.GET,
+      restricted: false,
+    },
+    {
       path: '/promoted/:id',
       method: http.POST,
       restricted: true,

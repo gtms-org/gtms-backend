@@ -240,7 +240,7 @@ export default {
         res.status(403).end()
       })
   },
-  async batchUpdate(req: IAuthRequest, res: Response, next: NextFunction) {
+  async batchUpdate(req: IAuthRequest, res: Response) {
     const { id } = req.params
     const { body } = req
 
@@ -308,6 +308,28 @@ export default {
           traceId: res.get('x-traceid'),
         })
         res.status(403).end()
+      })
+  },
+  async getGroupTags(req: IAuthRequest, res: Response, next: NextFunction) {
+    const { id } = req.params
+
+    GroupTagModel.find({
+      group: id,
+    })
+      .sort({
+        order: 'asc',
+      })
+      .then((results: IGroupTag[]) => {
+        res.status(200).json(results.map(r => serializeGroupTag(r)))
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error: ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
       })
   },
 }
