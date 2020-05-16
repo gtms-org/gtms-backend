@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.13.4...@gtms/service-auth@0.13.5) (2020-05-16)
+
+**Note:** Version bump only for package @gtms/service-auth
+
+
+
+
+
 ## [0.13.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.13.3...@gtms/service-auth@0.13.4) (2020-05-16)
 
 **Note:** Version bump only for package @gtms/service-auth
