@@ -61,6 +61,14 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
           )
           break
 
+        case http.PUT:
+          serviceRouter.put(
+            location.path,
+            middlewares,
+            proxy(`${provider}${location.path}`, proxyOptions)
+          )
+          break
+
         default:
           throw new Error('Invalid or not supported http method')
       }
