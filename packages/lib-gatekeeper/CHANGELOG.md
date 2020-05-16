@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.2.10...@gtms/lib-gatekeeper@0.3.0) (2020-05-16)
+
+
+### Features
+
+* master: support PUT requests in GK ([e4d5e5a](https://github.com/mariusz-kabala/gtms-backend/commit/e4d5e5a60849f2d0b2f292160a480bede45bbfed))
+
+
+
+
+
 ## [0.2.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.2.9...@gtms/lib-gatekeeper@0.2.10) (2020-05-16)
 
 **Note:** Version bump only for package @gtms/lib-gatekeeper

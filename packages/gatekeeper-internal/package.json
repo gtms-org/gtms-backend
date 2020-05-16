@@ -1,6 +1,6 @@
 {
   "name": "@gtms/gatekeeper-internal",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@gtms/commons": "0.9.2",
-    "@gtms/lib-gatekeeper": "0.2.10",
+    "@gtms/lib-gatekeeper": "0.3.0",
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.10"
   },
