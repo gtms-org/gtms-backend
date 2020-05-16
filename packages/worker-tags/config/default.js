@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config()
 
-const { QUEUE_HOST, VERSION, PORT, DB_HOST } = process.env
+const { QUEUE_HOST, VERSION, PORT, DB_HOST, APP_KEY } = process.env
 
 module.exports = {
   port: PORT,
@@ -10,4 +10,5 @@ module.exports = {
   serviceVersion: VERSION,
   dbHost: DB_HOST,
   dbName: 'tags',
+  appKey: APP_KEY,
 }

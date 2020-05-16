@@ -13,3 +13,5 @@ variable "AUTH_SERVICE_KEY" {}
 variable "GROUPS_SERVICE_KEY" {}
 
 variable "TAGS_SERVICE_KEY" {}
+
+variable "TAGS_WORKER_KEY" {}
