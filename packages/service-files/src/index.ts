@@ -23,7 +23,7 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.post('/groups/logo', getCreateFileAction(FileTypes.groupLogo))
 router.post('/groups/bg', getCreateFileAction(FileTypes.groupBg))
-router.post('/avatars', getCreateFileAction(FileTypes.avatar))
+router.post('/avatar', getCreateFileAction(FileTypes.avatar))
 router.post('/gallery', getCreateFileAction(FileTypes.userGallery))
 router.post('/tags/promoted', getCreateFileAction(FileTypes.groupTagLogo))
 

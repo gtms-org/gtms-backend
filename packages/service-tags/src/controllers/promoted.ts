@@ -174,7 +174,10 @@ export default {
         try {
           groupTag.save()
 
-          res.status(200).end()
+          res
+            .status(200)
+            .json(serializeGroupTag(groupTag))
+            .end()
         } catch (err) {
           logger.log({
             message: `Database error: ${err}`,

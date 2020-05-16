@@ -17,12 +17,17 @@ export default {
       restricted: true,
     },
     {
-      path: '/avatars',
+      path: '/avatar',
       method: http.POST,
       restricted: true,
     },
     {
       path: '/gallery',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/tags/promoted',
       method: http.POST,
       restricted: true,
     },

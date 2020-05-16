@@ -23,6 +23,10 @@
     {
       "name": "Tags",
       "description": "Tags service"
+    },
+    {
+      "name": "Files",
+      "description": "Files service"
     }
   ],
   "schemes": ["https"],
@@ -1005,8 +1009,378 @@
               }
             }
           },
-          "401": {
+          "403": {
             "description": "User does not have group's admin rights"
+          }
+        }
+      }
+    },
+    "/tags/promoted/group/{id}": {
+      "put": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Tags"],
+        "summary": "Bulk update group's promoted tags",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Group's id"
+          },
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "tag": {
+                        "type": "string"
+                      },
+                      "group": {
+                        "type": "string"
+                      },
+                      "order": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "$ref": "#/definitions/PromotedTag"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Tags"],
+        "summary": "Returns promoted tags for a group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Group's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PromotedTag"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/promoted/{id}": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Tags"],
+        "summary": "Updates promoted tag",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Tag's id"
+          },
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "descripiotn": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/PromotedTag"
+            }
+          },
+          "400": {
+            "description": "Validation errors",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/ValidationError"
+              }
+            }
+          },
+          "403": {
+            "description": "User does not have rights to update record"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Tags"],
+        "summary": "Deletes promoted tag",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Tag's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "User does not have rights to delete record"
+          },
+          "404": {
+            "description": "Group tag does not exist"
+          }
+        }
+      }
+    },
+    "/files/groups/logo": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Files"],
+        "summary": "Uploads group's logo",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "file",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "relatedRecord",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid payload"
+          }
+        }
+      }
+    },
+    "/files/groups/bg": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Files"],
+        "summary": "Uploads group's background",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "file",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "relatedRecord",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid payload"
+          }
+        }
+      }
+    },
+    "/files/avatar": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Files"],
+        "summary": "Uploads user's avatar",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "file",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "relatedRecord",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid payload"
+          }
+        }
+      }
+    },
+    "/files/gallery": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Files"],
+        "summary": "Uploads user's gallery image",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "file",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "relatedRecord",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid payload"
+          }
+        }
+      }
+    },
+    "/files/tags/promoted": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Files"],
+        "summary": "Uploads promoted tag's logo",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "file",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "relatedRecord",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid payload"
           }
         }
       }
