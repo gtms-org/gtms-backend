@@ -8,6 +8,7 @@ export enum Queues {
   updateUserFiles = 'updateUserFiles',
   userUpdate = 'userUpdate',
   updateTags = 'updateTags',
+  updateGroupTagFiles = 'updateGroupTagFiles',
 }
 
 export enum NotificationQueueMessageType {
@@ -39,6 +40,7 @@ export enum FileTypes {
   groupLogo = 'groupLogo',
   groupBg = 'groupBg',
   userGallery = 'userGallery',
+  groupTagLogo = 'groupTagLogo',
 }
 
 export enum FileStatus {

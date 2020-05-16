@@ -7,4 +7,5 @@ export const FILES_QUEUE_MAPPER: {
   [FileTypes.groupBg]: Queues.updateGroupFiles,
   [FileTypes.avatar]: Queues.updateUserFiles,
   [FileTypes.userGallery]: Queues.updateUserFiles,
+  [FileTypes.groupTagLogo]: Queues.updateGroupTagFiles,
 }

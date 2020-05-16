@@ -7,6 +7,7 @@ const {
   AUTH_SERVICE_KEY,
   GROUPS_SERVICE_KEY,
   TAGS_SERVICE_KEY,
+  TAGS_WORKER_KEY,
   VERSION,
   PORT,
 } = process.env
@@ -22,6 +23,7 @@ module.exports = {
     auth: AUTH_SERVICE_KEY,
     groups: GROUPS_SERVICE_KEY,
     tags: TAGS_SERVICE_KEY,
+    tagsWorker: TAGS_WORKER_KEY,
   },
   port: PORT,
 }
