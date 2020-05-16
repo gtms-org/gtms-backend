@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-notifications",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@gtms/client-mongoose": "0.4.0",
-    "@gtms/client-queue": "0.6.4",
-    "@gtms/commons": "0.9.1",
+    "@gtms/client-queue": "0.6.5",
+    "@gtms/commons": "0.9.2",
     "@gtms/lib-logger": "0.3.0",
-    "@gtms/lib-middlewares": "0.4.9",
+    "@gtms/lib-middlewares": "0.4.10",
     "@gtms/lib-testing": "0.1.0",
     "@sendgrid/mail": "^6.5.5"
   },
