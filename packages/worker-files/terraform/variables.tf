@@ -25,3 +25,6 @@ variable "BUCKET_GROUP_BG" {}
 variable "BUCKET_AVATAR" {}
 
 variable "BUCKET_USER_GALLERY" {}
+
+variable "BUCKET_GROUP_TAG_LOGO" {}
+
