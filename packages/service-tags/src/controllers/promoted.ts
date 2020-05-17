@@ -319,6 +319,7 @@ export default {
     GroupTagModel.find({
       group: id,
     })
+      .populate('tag')
       .sort({
         order: 'asc',
       })
