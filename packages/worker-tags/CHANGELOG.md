@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.2.3...@gtms/worker-tags@0.2.4) (2020-05-17)
+
+
+### Bug Fixes
+
+* master: set internal GK in config ([c4f3596](https://github.com/mariusz-kabala/gtms-backend/commit/c4f3596e95ecf2f6c7e60fac0617dfcc3db4135f))
+
+
+
+
+
 ## [0.2.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.2.2...@gtms/worker-tags@0.2.3) (2020-05-17)
 
 
