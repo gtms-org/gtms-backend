@@ -62,7 +62,7 @@ const processNewUpload = (payload: IFileQueueMsg) => {
     if (groupTag === null) {
       logger.log({
         level: 'warn',
-        message: `GroupTag record for file ${fileType} not found in DB, skipping processing`,
+        message: `GroupTag record ${relatedRecord} for file ${fileType} not found in DB, skipping processing`,
         traceId,
       })
 
