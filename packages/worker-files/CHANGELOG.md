@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.3.2...@gtms/worker-files@0.3.3) (2020-05-17)
+
+
+### Bug Fixes
+
+* master: pass env var BUCKET_GROUP_TAG_LOGO ([4997b94](https://github.com/mariusz-kabala/gtms-backend/commit/4997b9441e7d5a2d3869206c71adf8ae2abde9c0))
+
+
+
+
+
 ## [0.3.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.3.1...@gtms/worker-files@0.3.2) (2020-05-16)
 
 **Note:** Version bump only for package @gtms/worker-files
