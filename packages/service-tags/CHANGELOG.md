@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.4.0...@gtms/service-tags@0.4.1) (2020-05-17)
+
+
+### Bug Fixes
+
+* master: populate tag in promoted group tags query ([e2ff41f](https://github.com/mariusz-kabala/gtms-backend/commit/e2ff41f990a218b7b142cbbeaec949483771c534))
+
+
+
+
+
 # [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.3.0...@gtms/service-tags@0.4.0) (2020-05-16)
 
 
