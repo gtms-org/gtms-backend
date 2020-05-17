@@ -224,6 +224,8 @@ export default {
       .then(async () => {
         try {
           await groupTag.remove()
+
+          res.status(200).end()
         } catch (err) {
           logger.log({
             message: `Database error: ${err}`,
