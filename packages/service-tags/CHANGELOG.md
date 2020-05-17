@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.4.1...@gtms/service-tags@0.4.2) (2020-05-17)
+
+
+### Bug Fixes
+
+* master: return 200 in case of success when deleting promot ([87ebe75](https://github.com/mariusz-kabala/gtms-backend/commit/87ebe752df702602b4049519c9d04ba9705c5a91))
+
+
+
+
+
 ## [0.4.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.4.0...@gtms/service-tags@0.4.1) (2020-05-17)
 
 
