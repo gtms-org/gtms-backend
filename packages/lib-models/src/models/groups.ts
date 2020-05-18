@@ -19,7 +19,7 @@ export interface IGroup extends Document {
     files: string[]
   }
   tags?: string[]
-  members?: string[]
+  admins?: string[]
   owner: string
 }
 
@@ -48,10 +48,12 @@ const GroupSchema = new Schema(
     },
     type: {
       type: String,
+      enum: ['public', 'private'],
       default: 'public',
     },
     visibility: {
       type: String,
+      enum: ['public', 'private'],
       default: 'public',
     },
     avatar: {
@@ -74,9 +76,10 @@ const GroupSchema = new Schema(
       type: [String],
       required: false,
     },
-    members: {
+    admins: {
       type: [Schema.Types.ObjectId],
       required: false,
+      default: [],
     },
     owner: {
       type: Schema.Types.ObjectId,

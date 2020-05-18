@@ -11,7 +11,6 @@ export function serializeGroup(group: IGroup): ISerializedGroup {
     visibility: group.visibility,
     avatar: group.avatar,
     tags: group.tags,
-    members: group.members,
     owner: group.owner,
   }
 }

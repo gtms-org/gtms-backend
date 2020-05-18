@@ -52,6 +52,9 @@ export default {
       {
         offset,
         limit,
+        sort: {
+          createdAt: 'desc',
+        },
       },
       (err, result) => {
         if (err) {

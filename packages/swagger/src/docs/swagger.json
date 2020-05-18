@@ -114,6 +114,54 @@
             }
           }
         }
+      },
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Returns list of users",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/auth/authenticate": {
@@ -614,10 +662,69 @@
             }
           }
         }
+      },
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns public groups list, sorted by creation date",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Group"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/group/{slug}/join": {
       "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Groups"],
         "summary": "Allow user to join a group",
         "parameters": [
@@ -632,10 +739,13 @@
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful operation"
           },
           "400": {
+            "description": "User is already a group member"
+          },
+          "403": {
             "description": "User has no rights to join the group"
           },
           "404": {
@@ -646,6 +756,11 @@
     },
     "/group/{slug}/leave": {
       "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "tags": ["Groups"],
         "summary": "Allow user to leave a group",
         "parameters": [
@@ -662,6 +777,9 @@
         "responses": {
           "200": {
             "description": "Successful operation"
+          },
+          "400": {
+            "description": "User is not group's member, can not leave"
           },
           "404": {
             "description": "Group does not exist in db"
@@ -769,6 +887,62 @@
           },
           "404": {
             "description": "Group does not exist or user has no permission to change it"
+          }
+        }
+      }
+    },
+    "/group/{slug}/members": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns paginated list of group's members",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1463,12 +1637,6 @@
           }
         },
         "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "members": {
           "type": "array",
           "items": {
             "type": "string"

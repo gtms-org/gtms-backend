@@ -12,6 +12,5 @@ export interface ISerializedGroup {
     files: string[]
   }
   tags?: string[]
-  members?: string[]
   owner: string
 }
