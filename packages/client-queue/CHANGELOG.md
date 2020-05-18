@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-queue@0.6.5...@gtms/client-queue@0.6.6) (2020-05-18)
+
+
+### Bug Fixes
+
+* master: ack on redelivered messages ([25daa59](https://github.com/mariusz-kabala/gtms-backend/commit/25daa599397e978eb83bfb0b420dcc4ecd249165))
+
+
+
+
+
 ## [0.6.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-queue@0.6.4...@gtms/client-queue@0.6.5) (2020-05-16)
 
 **Note:** Version bump only for package @gtms/client-queue

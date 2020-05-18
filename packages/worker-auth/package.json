@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-auth",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-queue": "0.6.5",
+    "@gtms/client-queue": "0.6.6",
     "@gtms/commons": "0.9.2",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
