@@ -171,6 +171,10 @@ export async function listenToFilesQueue() {
           await setupRetriesPolicy(ch, retryPolicy)
           ch.prefetch(1)
         }).then(() => {
+          logger.log({
+            level: 'info',
+            message: `Starting to consume queue ${Queues.createFile}`,
+          })
           ch.consume(
             Queues.createFile,
             msg => {
