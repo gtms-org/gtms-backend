@@ -179,6 +179,10 @@ export async function listenToFilesQueue() {
             Queues.createFile,
             msg => {
               if (msg.fields.redelivered) {
+                logger.log({
+                  level: 'info',
+                  message: 'Redelivered message, sending to retry',
+                })
                 return sendMsgToRetry({
                   msg,
                   channel: ch,
