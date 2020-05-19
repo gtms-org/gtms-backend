@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.9.2...@gtms/commons@0.9.3) (2020-05-19)
+
+
+### Bug Fixes
+
+* various fixes ([#88](https://github.com/mariusz-kabala/gtms-backend/issues/88)) ([665cf76](https://github.com/mariusz-kabala/gtms-backend/commit/665cf76294692961d5c8ab437fe930e8eaa31856))
+
+
+
+
+
 ## [0.9.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.9.1...@gtms/commons@0.9.2) (2020-05-16)
 
 **Note:** Version bump only for package @gtms/commons

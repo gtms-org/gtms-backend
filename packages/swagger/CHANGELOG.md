@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.9.0...@gtms/swagger@0.9.1) (2020-05-19)
+
+
+### Bug Fixes
+
+* various fixes ([#88](https://github.com/mariusz-kabala/gtms-backend/issues/88)) ([665cf76](https://github.com/mariusz-kabala/gtms-backend/commit/665cf76294692961d5c8ab437fe930e8eaa31856))
+
+
+
+
+
 # [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.8.4...@gtms/swagger@0.9.0) (2020-05-16)
 
 
