@@ -9,8 +9,6 @@ import {
   IESGroupUpdateMsg,
   ESIndexUpdateType,
   ESIndexUpdateRecord,
-  IUserJoinedGroupMsg,
-  IUserLeftGroupMsg,
   UserUpdateTypes,
   ITagsUpdateMsg,
   RecordType,
@@ -234,138 +232,6 @@ export default {
       }
     }
   },
-  async joinGroup(req: IAuthRequest, res: Response, next: NextFunction) {
-    const { slug } = req.params
-
-    let group: IGroup | null
-
-    try {
-      group = await GroupModel.findOne({ slug })
-    } catch (err) {
-      logger.log({
-        message: `Database error ${err}`,
-        level: 'error',
-        traceId: res.get('x-traceid'),
-      })
-
-      return next(err)
-    }
-
-    if (!group) {
-      return res.status(404).end()
-    }
-
-    if (group.type !== 'public') {
-      return res.status(400).end()
-    }
-
-    const members = group.members || []
-
-    members.push(req.user.id)
-
-    group.members = [...members]
-
-    try {
-      await group.save()
-    } catch (err) {
-      logger.log({
-        message: `Database error ${err}`,
-        level: 'error',
-        traceId: res.get('x-traceid'),
-      })
-
-      return next(err)
-    }
-
-    res.status(200).end()
-
-    logger.log({
-      message: `User ${req.user.id} (${req.user.email}) joined group ${group._id} (${group.name})`,
-      level: 'info',
-      traceId: res.get('x-traceid'),
-    })
-
-    try {
-      await publishOnChannel<IUserJoinedGroupMsg>(Queues.userUpdate, {
-        type: UserUpdateTypes.joinedGroup,
-        data: {
-          group: group._id,
-          user: req.user.id,
-          traceId: res.get('x-traceid'),
-        },
-      })
-    } catch (err) {
-      logger.log({
-        message: `Can not publish message to the QUEUE: ${err}`,
-        level: 'error',
-        traceId: res.get('x-traceid'),
-      })
-    }
-  },
-  async leaveGroup(req: IAuthRequest, res: Response, next: NextFunction) {
-    const { slug } = req.params
-
-    let group: IGroup | null
-
-    try {
-      group = await GroupModel.findOne({ slug })
-    } catch (err) {
-      logger.log({
-        message: `Database error ${err}`,
-        level: 'error',
-        traceId: res.get('x-traceid'),
-      })
-
-      return next(err)
-    }
-
-    if (!group || !Array.isArray(group.members)) {
-      return res.status(404).end()
-    }
-
-    const index = group.members.findIndex(m => `${m}` === req.user.id)
-
-    if (index === -1) {
-      return res.status(404).end()
-    }
-
-    const members = [...group.members]
-
-    members.splice(index, 1)
-
-    group.members = members
-
-    try {
-      await group.save()
-    } catch (err) {
-      logger.log({
-        message: `Database error ${err}`,
-        level: 'error',
-        traceId: res.get('x-traceid'),
-      })
-
-      return next(err)
-    }
-
-    res.status(200).end()
-
-    try {
-      await publishOnChannel<IUserLeftGroupMsg>(Queues.userUpdate, {
-        type: UserUpdateTypes.leftGroup,
-        data: {
-          group: group._id,
-          user: req.user.id,
-          traceId: res.get('x-traceid'),
-        },
-      })
-    } catch (err) {
-      logger.log({
-        message: `Can not publish message to the QUEUE: ${err}`,
-        level: 'error',
-        traceId: res.get('x-traceid'),
-      })
-    }
-  },
   hasAdminAccess(req: Request, res: Response, next: NextFunction) {
     const { user, group } = req.query
 
@@ -378,6 +244,10 @@ export default {
         }
 
         if (record.owner + '' === user) {
+          return res.status(200).end()
+        }
+
+        if (Array.isArray(record.admins) && record.admins.includes(user)) {
           return res.status(200).end()
         }
 

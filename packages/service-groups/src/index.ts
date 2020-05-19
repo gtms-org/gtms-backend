@@ -33,8 +33,8 @@ router.get('/', findController.list)
 router.get('/check-admin-rights', groupsController.hasAdminAccess)
 router.post('/find-by-ids', findController.findByIds)
 
-router.get('/:slug/join', JWTMiddleware, groupsController.joinGroup)
-router.get('/:slug/leave', JWTMiddleware, groupsController.leaveGroup)
+router.get('/:slug/join', JWTMiddleware, membersController.joinGroup)
+router.get('/:slug/leave', JWTMiddleware, membersController.leaveGroup)
 router.get('/:slug', groupsController.show)
 router.post('/:slug', JWTMiddleware, groupsController.update)
 
