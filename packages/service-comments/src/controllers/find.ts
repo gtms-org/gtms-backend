@@ -41,6 +41,65 @@ export default {
     const { id } = req.params
     const { limit, offset } = getPaginationParams(req)
 
-    CommentModel.paginate({ parent: id })
+    CommentModel.paginate(
+      { parent: id },
+      {
+        offset,
+        limit,
+        sort: {
+          createdAt: 'desc',
+        },
+      },
+      (err, result) => {
+        if (err) {
+          logger.log({
+            message: `Database error ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          return next(err)
+        }
+
+        res.status(200).json({
+          ...result,
+          docs: result.docs.map((comment: IComment) =>
+            serializeComment(comment)
+          ),
+        })
+      }
+    )
+  },
+  myComments(req: IAuthRequest, res: Response, next: NextFunction) {
+    const { limit, offset } = getPaginationParams(req)
+
+    CommentModel.paginate(
+      { owner: req.user.id },
+      {
+        offset,
+        limit,
+        sort: {
+          createdAt: 'desc',
+        },
+      },
+      (err, result) => {
+        if (err) {
+          logger.log({
+            message: `Database error ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          return next(err)
+        }
+
+        res.status(200).json({
+          ...result,
+          docs: result.docs.map((comment: IComment) =>
+            serializeComment(comment)
+          ),
+        })
+      }
+    )
   },
 }

@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
 import postsController from './controllers/post'
+import findController from './controllers/find'
 
 import {
   JWTMiddleware,
@@ -27,6 +28,9 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 })
 
 // routes
+router.get('/group/:id', findController.groupPosts)
+router.get('/user/:id', findController.userPosts)
+router.get('/my', findController.myPosts)
 
 router.post('/', JWTMiddleware, postsController.create)
 router.get('/:id', postsController.show)
