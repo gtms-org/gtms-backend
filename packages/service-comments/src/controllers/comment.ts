@@ -1,44 +1,34 @@
-import { Request, Response, NextFunction } from 'express'
+import { Response, NextFunction } from 'express'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
-import { PostModel, IPost, serializePost } from '@gtms/lib-models'
+import { CommentModel, IComment, serializeComment } from '@gtms/lib-models'
 import { publishMultiple } from '@gtms/client-queue'
 import { Queues, RecordType } from '@gtms/commons'
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
-      body: { group, text, tags = [] },
+      body: { post, text, parent, tags },
     } = req
 
-    if (typeof group !== 'string' || group === '') {
-      return res.status(403).end()
-    }
-
-    if (
-      !req.user.groupsMember.includes(group) &&
-      !req.user.groupsAdmin.includes(group) &&
-      !req.user.groupsOwner.includes(group)
-    ) {
-      return res.status(403).end()
-    }
-
-    PostModel.create({
-      group,
+    // check somehow if user can add
+    CommentModel.create({
+      post,
       text,
+      parent,
       tags,
       owner: req.user.id,
     })
-      .then((post: IPost) => {
-        res.status(201).json(serializePost(post))
+      .then((comment: IComment) => {
+        res.status(201).json(serializeComment(comment))
 
         logger.log({
-          message: `New post created by ${req.user.email} for group ${group} has been added`,
+          message: `New comment to post ${comment.post} created by ${req.user.email} has been added`,
           level: 'info',
           traceId: res.get('x-traceid'),
         })
 
-        return post
+        return comment
       })
       .catch(err => {
         if (err.name === 'ValidationError') {
@@ -59,22 +49,18 @@ export default {
           })
         }
       })
-      .then(async (post?: IPost) => {
-        if (!post) {
-          return
-        }
-
+      .then((comment: IComment) => {
         const queueMessages: { queue: string; message: any }[] = []
 
-        if (Array.isArray(post.tags) && post.tags.length > 0) {
+        if (Array.isArray(comment.tags) && comment.tags.length > 0) {
           queueMessages.push({
             queue: Queues.updateTags,
             message: {
-              recordType: RecordType.post,
+              recordType: RecordType.comment,
               data: {
-                tags: post.tags,
+                tags: comment.tags,
                 traceId: res.get('x-traceid'),
-                owner: post.owner,
+                owner: comment.owner,
               },
             },
           })
@@ -91,13 +77,13 @@ export default {
       owner: req.user.id,
     }
 
-    PostModel.findOne(query)
-      .then((post: IPost) => {
-        if (!post) {
+    CommentModel.findOne(query)
+      .then((comment: IComment) => {
+        if (!comment) {
           return res.status(404).end()
         }
 
-        const createdAt = new Date(post.createdAt)
+        const createdAt = new Date(comment.createdAt)
         const now = new Date()
 
         if (now.getTime() - createdAt.getTime() > 900000) {
@@ -115,34 +101,38 @@ export default {
           }
         })
 
-        PostModel.findOneAndUpdate(query, payload, { new: true })
-          .then((post: IPost | null) => {
-            if (!post) {
+        CommentModel.findOneAndUpdate(query, payload, { new: true })
+          .then((comment: IComment | null) => {
+            if (!comment) {
               return res.status(404).end()
             }
 
             logger.log({
-              message: `Post ${post._id} has been updated`,
+              message: `Comment ${comment._id} has been updated`,
               level: 'info',
               traceId: res.get('x-traceid'),
             })
 
-            res.status(200).json(serializePost(post))
+            res.status(200).json(serializeComment(comment))
 
-            return post
+            return comment
           })
-          .then((post: IPost) => {
+          .then((comment?: IComment) => {
+            if (!comment) {
+              return
+            }
+
             const queueMessages: { queue: string; message: any }[] = []
 
-            if (Array.isArray(post.tags) && post.tags.length > 0) {
+            if (Array.isArray(comment.tags) && comment.tags.length > 0) {
               queueMessages.push({
                 queue: Queues.updateTags,
                 message: {
-                  recordType: RecordType.post,
+                  recordType: RecordType.comment,
                   data: {
-                    tags: post.tags,
+                    tags: comment.tags,
                     traceId: res.get('x-traceid'),
-                    owner: post.owner,
+                    owner: comment.owner,
                   },
                 },
               })
@@ -169,27 +159,6 @@ export default {
               })
             }
           })
-      })
-      .catch(err => {
-        next(err)
-
-        logger.log({
-          level: 'error',
-          message: `Database error: ${err}`,
-          traceId: res.get('x-traceid'),
-        })
-      })
-  },
-  show(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params
-
-    PostModel.findById(id)
-      .then((post: IPost | null) => {
-        if (!post) {
-          return res.status(404).end()
-        }
-
-        res.status(200).json(serializePost(post))
       })
       .catch(err => {
         next(err)

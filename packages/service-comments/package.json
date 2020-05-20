@@ -1,0 +1,24 @@
+{
+  "name": "@gtms/service-comments",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon",
+    "build": "webpack --mode=production --config ../../webpack.config.js",
+    "start": "node dist"
+  },
+  "dependencies": {
+    "@gtms/client-mongoose": "0.4.0",
+    "@gtms/client-queue": "0.6.7",
+    "@gtms/commons": "0.9.3",
+    "@gtms/lib-api": "0.2.6",
+    "@gtms/lib-logger": "*",
+    "@gtms/lib-middlewares": "0.4.11",
+    "@gtms/lib-models": "0.3.8",
+    "@gtms/lib-testing": "*"
+  },
+  "author": "Mariusz Kabała",
+  "license": "ISC"
+}

@@ -9,5 +9,8 @@ export interface IAuthRequest extends Request {
     countryCode: string
     languageCode: string
     roles: string[]
+    groupsMember: string[]
+    groupsAdmin: string[]
+    groupsOwner: string[]
   }
 }

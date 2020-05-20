@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import createError from 'http-errors'
 import { IUser, UserModel, serializeUser } from '@gtms/lib-models'
+import { getPaginationParams } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 
 export default {
@@ -32,20 +33,7 @@ export default {
       })
   },
   list(req: Request, res: Response, next: NextFunction) {
-    let limit = parseInt(req.query.limit || 25, 10)
-    let offset = parseInt(req.query.offset || 0, 10)
-
-    if (!Number.isInteger(limit)) {
-      limit = 25
-    }
-
-    if (!Number.isInteger(offset)) {
-      offset = 0
-    }
-
-    if (limit > 50) {
-      limit = 50
-    }
+    const { limit, offset } = getPaginationParams(req)
 
     UserModel.paginate(
       { isActive: true },

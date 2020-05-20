@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
-import postsController from './controllers/post'
+import CommentsController from './controllers/comment'
 
 import {
   JWTMiddleware,
@@ -27,10 +27,8 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 })
 
 // routes
-
-router.post('/', JWTMiddleware, postsController.create)
-router.get('/:id', postsController.show)
-router.post('/:id', JWTMiddleware, postsController.update)
+router.post('/:id', JWTMiddleware, CommentsController.update)
+router.post('/', JWTMiddleware, CommentsController.create)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

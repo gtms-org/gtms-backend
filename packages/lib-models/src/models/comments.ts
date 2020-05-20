@@ -13,6 +13,8 @@ export interface IComment extends Document {
   parent?: IComment
   tags: string[]
   owner: string
+  createdAt: string
+  updatedAt: string
 }
 
 const CommentSchema = new Schema(
@@ -24,8 +26,8 @@ const CommentSchema = new Schema(
     lastSubComments: [
       {
         owner: String,
-        createdAt: String,
-        updatedAt: String,
+        createdAt: Date,
+        updatedAt: Date,
         text: String,
       },
     ],

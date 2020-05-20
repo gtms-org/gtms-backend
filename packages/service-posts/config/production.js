@@ -1,4 +1,3 @@
 module.exports = {
-    dbName: process.env.DB_NAME || 'posts',
-  }
-  
+  dbName: process.env.DB_NAME || 'posts',
+}
