@@ -8,6 +8,8 @@ export interface IPost extends Document {
   owner: string
   commentsCounter: number
   application: string
+  createdAt: string
+  updatedAt: string
 }
 
 const PostSchema = new Schema(
