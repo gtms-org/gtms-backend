@@ -12,5 +12,7 @@ export function serializeGroup(group: IGroup): ISerializedGroup {
     avatar: group.avatar,
     tags: group.tags,
     owner: group.owner,
+    postsCounter: group.postsCounter,
+    membersCounter: group.membersCounter,
   }
 }

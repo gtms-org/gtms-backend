@@ -13,4 +13,6 @@ export interface ISerializedGroup {
   }
   tags?: string[]
   owner: string
+  postsCounter: number
+  membersCounter: number
 }

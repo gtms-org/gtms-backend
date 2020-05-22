@@ -7,6 +7,7 @@ export enum Queues {
   updateGroupFiles = 'updateGroupFiles',
   updateUserFiles = 'updateUserFiles',
   userUpdate = 'userUpdate',
+  groupUpdate = 'groupUpdate',
   updateTags = 'updateTags',
   updateGroupTagFiles = 'updateGroupTagFiles',
 }
@@ -57,6 +58,13 @@ export enum UserUpdateTypes {
   deletedGroup = 'deletedGroup',
   gotGroupAdminRights = 'gotGroupAdminRights',
   lostGroupAdminRights = 'lostGroupAdminRights',
+  increasePostsCounter = 'increasePostsCounter',
+  descreasePostsCounter = 'descreasePostsCounter',
+}
+
+export enum GroupUpdateTypes {
+  increasePostsCounter = 'increasePostsCounter',
+  descreasePostsCounter = 'descreasePostsCounter',
 }
 
 export enum Indicies {

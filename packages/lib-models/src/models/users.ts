@@ -33,6 +33,7 @@ export interface IUser extends Document {
     files: string[]
   }[]
   tags: string[]
+  postsCounter: number
 }
 
 const saltRounds = 10
@@ -142,6 +143,11 @@ const UserSchema = new Schema(
       type: [String],
       required: false,
       default: [],
+    },
+    postsCounter: {
+      type: Number,
+      required: false,
+      default: 0,
     },
   },
   {

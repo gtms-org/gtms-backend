@@ -13,5 +13,6 @@ export function serializeUser(user: IUser): ISerializedUser {
     languageCode: user.languageCode,
     tags: user.tags || [],
     roles: user.roles || [],
+    postsCounter: user.postsCounter || 0,
   }
 }
