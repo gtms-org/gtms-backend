@@ -21,6 +21,8 @@ export interface IGroup extends Document {
   tags?: string[]
   admins?: string[]
   owner: string
+  postsCounter: number
+  membersCounter: number
 }
 
 const GroupSchema = new Schema(
@@ -84,6 +86,16 @@ const GroupSchema = new Schema(
     owner: {
       type: Schema.Types.ObjectId,
       required: true,
+    },
+    membersCounter: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    postsCounter: {
+      type: Number,
+      required: false,
+      default: 0,
     },
   },
   {

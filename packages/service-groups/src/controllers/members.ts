@@ -139,10 +139,18 @@ export default {
           return res.status(400).end()
         }
 
-        GroupMemberModel.create({
-          user: req.user.id,
-          group: group.id,
-        })
+        Promise.all([
+          GroupModel.updateOne(
+            {
+              _id: group._id,
+            },
+            { $inc: { membersCounter: 1 } }
+          ),
+          GroupMemberModel.create({
+            user: req.user.id,
+            group: group.id,
+          }),
+        ])
           .then(async () => {
             res.status(201).end()
 
@@ -210,11 +218,19 @@ export default {
       return res.status(404).end()
     }
 
-    GroupMemberModel.deleteOne({
-      group: group._id,
-      user: req.user.id,
-    })
-      .then(async ({ deletedCount }) => {
+    Promise.all([
+      GroupModel.updateOne(
+        {
+          _id: group._id,
+        },
+        { $inc: { membersCounter: -1 } }
+      ),
+      GroupMemberModel.deleteOne({
+        group: group._id,
+        user: req.user.id,
+      }),
+    ])
+      .then(async ([, { deletedCount }]) => {
         if (deletedCount > 0) {
           res.status(200).end()
 

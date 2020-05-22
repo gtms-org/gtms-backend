@@ -1,9 +1,14 @@
 import { Request, Response, NextFunction } from 'express'
-import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { PostModel, IPost, serializePost } from '@gtms/lib-models'
 import { publishMultiple } from '@gtms/client-queue'
-import { Queues, RecordType } from '@gtms/commons'
+import {
+  Queues,
+  RecordType,
+  GroupUpdateTypes,
+  IAuthRequest,
+  UserUpdateTypes,
+} from '@gtms/commons'
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -64,7 +69,28 @@ export default {
           return
         }
 
-        const queueMessages: { queue: string; message: any }[] = []
+        const queueMessages: { queue: string; message: any }[] = [
+          {
+            queue: Queues.groupUpdate,
+            message: {
+              type: GroupUpdateTypes.increasePostsCounter,
+              data: {
+                group: post.group,
+                traceId: res.get('x-traceid'),
+              },
+            },
+          },
+          {
+            queue: Queues.userUpdate,
+            message: {
+              type: UserUpdateTypes.increasePostsCounter,
+              data: {
+                user: post.owner,
+                traceId: res.get('x-traceid'),
+              },
+            },
+          },
+        ]
 
         if (Array.isArray(post.tags) && post.tags.length > 0) {
           queueMessages.push({

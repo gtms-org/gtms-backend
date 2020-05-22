@@ -14,4 +14,5 @@ export interface ISerializedUser {
     status: FileStatus
     files: string[]
   }
+  postsCounter: number
 }

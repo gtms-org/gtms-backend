@@ -2,8 +2,8 @@ import { Response, NextFunction } from 'express'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { CommentModel, IComment, serializeComment } from '@gtms/lib-models'
-import { publishMultiple } from '@gtms/client-queue'
-import { Queues, RecordType } from '@gtms/commons'
+import { publishMultiple, publishOnChannel } from '@gtms/client-queue'
+import { Queues, RecordType, ITagsUpdateMsg } from '@gtms/commons'
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -49,24 +49,25 @@ export default {
           })
         }
       })
-      .then((comment: IComment) => {
-        const queueMessages: { queue: string; message: any }[] = []
-
+      .then(async (comment: IComment) => {
         if (Array.isArray(comment.tags) && comment.tags.length > 0) {
-          queueMessages.push({
-            queue: Queues.updateTags,
-            message: {
+          try {
+            await publishOnChannel<ITagsUpdateMsg>(Queues.updateTags, {
               recordType: RecordType.comment,
               data: {
                 tags: comment.tags,
                 traceId: res.get('x-traceid'),
                 owner: comment.owner,
               },
-            },
-          })
+            })
+          } catch (err) {
+            logger.log({
+              level: 'error',
+              message: `Can not publish message to ${Queues.updateTags}: ${err}`,
+              traceId: res.get('x-traceid'),
+            })
+          }
         }
-
-        publishMultiple(res.get('x-traceid'), ...queueMessages)
       })
   },
   update(req: IAuthRequest, res: Response, next: NextFunction) {

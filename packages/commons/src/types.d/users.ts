@@ -54,6 +54,22 @@ export interface IUserLostGroupAdminRights {
   }
 }
 
+export interface IIncreaseUserPostsCounterMsg {
+  type: UserUpdateTypes.increasePostsCounter
+  data: {
+    user: string
+    traceId: string
+  }
+}
+
+export interface IDescreaseUserPostsCounterMsg {
+  type: UserUpdateTypes.descreasePostsCounter
+  data: {
+    user: string
+    traceId: string
+  }
+}
+
 export type IUserUpdateMsg =
   | IUserJoinedGroupMsg
   | IUserLeftGroupMsg
@@ -61,3 +77,5 @@ export type IUserUpdateMsg =
   | IUserLostGroupAdminRights
   | IUserCreatedGroupMsg
   | IUserDeletedGroupMsg
+  | IIncreaseUserPostsCounterMsg
+  | IDescreaseUserPostsCounterMsg
