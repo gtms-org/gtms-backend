@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.2.5...@gtms/worker-groups@0.3.0) (2020-05-22)
+
+
+### Features
+
+* add worksers for new services ([#97](https://github.com/mariusz-kabala/gtms-backend/issues/97)) ([d7ecd84](https://github.com/mariusz-kabala/gtms-backend/commit/d7ecd845e23fa68d7d40b9f5b2d436e111184457))
+
+
+
+
+
 ## [0.2.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.2.4...@gtms/worker-groups@0.2.5) (2020-05-22)
 
 **Note:** Version bump only for package @gtms/worker-groups

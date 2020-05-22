@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.4.0...@gtms/lib-models@0.5.0) (2020-05-22)
+
+
+### Features
+
+* add worksers for new services ([#97](https://github.com/mariusz-kabala/gtms-backend/issues/97)) ([d7ecd84](https://github.com/mariusz-kabala/gtms-backend/commit/d7ecd845e23fa68d7d40b9f5b2d436e111184457))
+
+
+
+
+
 # [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.3.8...@gtms/lib-models@0.4.0) (2020-05-22)
 
 

@@ -1,12 +1,12 @@
 {
   "name": "@gtms/lib-api",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "",
   "main": "src/index.ts",
   "author": "Mariusz Kabała",
   "license": "ISC",
   "dependencies": {
-    "@gtms/commons": "0.10.0"
+    "@gtms/commons": "0.11.0"
   },
   "scripts": {
     "test": "exit 0"
