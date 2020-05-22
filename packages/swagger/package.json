@@ -1,6 +1,6 @@
 {
   "name": "@gtms/swagger",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "private": true,
   "description": "Swagger API Project",
   "keywords": [],
@@ -8,7 +8,7 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
-    "@gtms/lib-middlewares": "0.4.11",
+    "@gtms/lib-middlewares": "0.4.12",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4"
   },
