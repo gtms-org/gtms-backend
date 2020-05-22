@@ -67,4 +67,5 @@ export enum RecordType {
   member = 'member',
   group = 'group',
   post = 'post',
+  comment = 'comment',
 }

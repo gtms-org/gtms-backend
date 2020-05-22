@@ -15,3 +15,8 @@ variable "GROUPS_SERVICE_KEY" {}
 variable "TAGS_SERVICE_KEY" {}
 
 variable "TAGS_WORKER_KEY" {}
+
+variable "POSTS_SERVICE_KEY" {}
+
+variable "COMMENTS_SERVICE_KEY" {}
+

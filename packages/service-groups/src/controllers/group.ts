@@ -161,6 +161,7 @@ export default {
         { new: true }
       )
     } catch (err) {
+      // todo: support validation errors here
       logger.log({
         message: `Request error ${err}`,
         level: 'error',
@@ -175,7 +176,7 @@ export default {
     }
 
     logger.log({
-      message: `Group ${group.name} (${group._id}_ has been updated`,
+      message: `Group ${group.name} (${group._id}) has been updated`,
       level: 'info',
       traceId: res.get('x-traceid'),
     })

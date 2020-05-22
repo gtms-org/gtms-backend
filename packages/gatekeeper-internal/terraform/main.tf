@@ -19,6 +19,8 @@ resource "docker_container" "service-gatekeeper-internal" {
     "GROUPS_SERVICE_KEY=${var.GROUPS_SERVICE_KEY}",
     "TAGS_SERVICE_KEY=${var.TAGS_SERVICE_KEY}",
     "TAGS_WORKER_KEY=${var.TAGS_WORKER_KEY}",
+    "COMMENTS_SERVICE_KEY=${var.COMMENTS_SERVICE_KEY}",
+    "POSTS_SERVICE_KEY=${var.POSTS_SERVICE_KEY}",
     "PORT=80"
   ]
 }
