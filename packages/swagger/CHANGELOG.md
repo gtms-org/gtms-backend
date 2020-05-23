@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.10.1...@gtms/swagger@0.10.2) (2020-05-23)
+
+
+### Bug Fixes
+
+* master: fixes in post service swagger definitions ([cbad1ff](https://github.com/mariusz-kabala/gtms-backend/commit/cbad1ffe1700a3390c4a062c84b83ffcf208e6d7))
+
+
+
+
+
 ## [0.10.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.10.0...@gtms/swagger@0.10.1) (2020-05-22)
 
 **Note:** Version bump only for package @gtms/swagger
