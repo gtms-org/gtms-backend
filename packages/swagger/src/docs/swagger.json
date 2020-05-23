@@ -1669,6 +1669,11 @@
       },
       "post": {
         "tags": ["Posts"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "summary": "Updates a post",
         "consumes": ["application/json"],
         "produces": ["application/json"],
@@ -1840,6 +1845,11 @@
     "/posts/my": {
       "get": {
         "tags": ["Posts"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
         "summary": "Returns current user's posts",
         "consumes": ["application/json"],
         "produces": ["application/json"],
