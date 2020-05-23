@@ -1,7 +1,19 @@
 import { Request, Response, NextFunction } from 'express'
-import { PostModel, IPost, serializePost } from '@gtms/lib-models'
-import { IAuthRequest, getPaginationParams } from '@gtms/commons'
+import {
+  PostModel,
+  IPost,
+  serializePost,
+  serializePostWithUser,
+} from '@gtms/lib-models'
+import {
+  IAuthRequest,
+  getPaginationParams,
+  getUniqueValues,
+  arrayToHash,
+} from '@gtms/commons'
+import { findMembersByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
+import config from 'config'
 
 export default {
   groupPosts(req: Request, res: Response, next: NextFunction) {
@@ -24,14 +36,32 @@ export default {
             level: 'error',
             traceId: res.get('x-traceid'),
           })
-
           return next(err)
         }
 
-        res.status(200).json({
-          ...result,
-          docs: result.docs.map((post: IPost) => serializePost(post)),
+        findMembersByIds(getUniqueValues(result.docs, 'owner'), {
+          traceId: res.get('x-traceid'),
+          appKey: config.get<string>('appKey'),
         })
+          .then(members => {
+            const membersHash = arrayToHash(members, 'id')
+
+            res.status(200).json({
+              ...result,
+              docs: result.docs.map((post: IPost) =>
+                serializePostWithUser(post, membersHash)
+              ),
+            })
+          })
+          .catch(err => {
+            logger.log({
+              message: `Can not fetch user info ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+
+            res.status(500).end()
+          })
       }
     )
   },

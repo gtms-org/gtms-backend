@@ -1,5 +1,6 @@
 import { IPost } from '../models/posts'
 import { ISerializedPost } from '@gtms/commons'
+import { IUser } from '../models/users'
 
 export function serializePost(post: IPost): ISerializedPost {
   return {
@@ -11,4 +12,17 @@ export function serializePost(post: IPost): ISerializedPost {
     createdAt: post.createdAt,
     updatedAt: post.updatedAt,
   }
+}
+
+export function serializePostWithUser(
+  post: IPost,
+  members: { [id: string]: IUser }
+) {
+  const result: any = serializePost(post)
+
+  if (members[post.owner]) {
+    result.owner = members[post.owner]
+  }
+
+  return result
 }
