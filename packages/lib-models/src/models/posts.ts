@@ -17,6 +17,7 @@ const PostSchema = new Schema(
     group: {
       type: Schema.Types.ObjectId,
       required: true,
+      index: true,
     },
     text: {
       type: String,
@@ -30,6 +31,7 @@ const PostSchema = new Schema(
     owner: {
       type: Schema.Types.ObjectId,
       required: true,
+      index: true,
     },
     commentsCounter: {
       type: Number,

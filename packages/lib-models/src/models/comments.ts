@@ -22,6 +22,7 @@ const CommentSchema = new Schema(
     post: {
       type: Schema.Types.ObjectId,
       required: true,
+      index: true,
     },
     lastSubComments: [
       {
@@ -48,6 +49,7 @@ const CommentSchema = new Schema(
     owner: {
       type: Schema.Types.ObjectId,
       required: true,
+      index: true,
     },
   },
   {
