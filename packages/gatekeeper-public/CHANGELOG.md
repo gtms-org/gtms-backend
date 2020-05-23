@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.18.4...@gtms/gatekeeper-public@0.19.0) (2020-05-23)
+
+
+### Bug Fixes
+
+* master: add new config to index ([1f39f9a](https://github.com/mariusz-kabala/gtms-backend/commit/1f39f9abb5c59eaadaa1c0472d4f9ec1802ce34f))
+
+
+### Features
+
+* master: expose endpoint from comments and post services in ([789f02f](https://github.com/mariusz-kabala/gtms-backend/commit/789f02fdc12c6099c45c837998c36f17369d641f))
+
+
+
+
+
 ## [0.18.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.18.3...@gtms/gatekeeper-public@0.18.4) (2020-05-22)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
