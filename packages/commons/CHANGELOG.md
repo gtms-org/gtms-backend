@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.11.0...@gtms/commons@0.12.0) (2020-05-23)
+
+
+### Features
+
+* master: return user info with posts list" ([6942e05](https://github.com/mariusz-kabala/gtms-backend/commit/6942e057b50bd4a6bbd4c0f35418490259f5f3e6))
+
+
+
+
+
 # [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.10.0...@gtms/commons@0.11.0) (2020-05-22)
 
 

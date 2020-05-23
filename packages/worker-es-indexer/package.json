@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-es-indexer",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "7.6.0",
-    "@gtms/client-queue": "0.6.9",
-    "@gtms/commons": "0.11.0",
+    "@gtms/client-queue": "0.6.10",
+    "@gtms/commons": "0.12.0",
     "@gtms/lib-http-server": "0.1.0",
     "@gtms/lib-logger": "0.3.0"
   },

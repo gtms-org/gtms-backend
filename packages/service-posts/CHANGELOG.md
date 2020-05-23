@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.2.1...@gtms/service-posts@0.3.0) (2020-05-23)
+
+
+### Features
+
+* master: return user info with posts list" ([6942e05](https://github.com/mariusz-kabala/gtms-backend/commit/6942e057b50bd4a6bbd4c0f35418490259f5f3e6))
+
+
+
+
+
 ## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.2.0...@gtms/service-posts@0.2.1) (2020-05-23)
 
 **Note:** Version bump only for package @gtms/service-posts
