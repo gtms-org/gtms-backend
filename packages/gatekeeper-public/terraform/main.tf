@@ -39,6 +39,8 @@ resource "docker_container" "gatekeeper-public" {
     "GROUPS_SERVICE_URL=service-groups-${var.env}",
     "TAGS_SERVICE_URL=service-tags-${var.env}",
     "FILES_SERVICE_URL=service-files-${var.env}",
+    "POSTS_SERVICE_URL=service-posts-${var.env}",
+    "COMMENTS_SERVICE_URL=service-comments-${var.env}",
     "PORT=80"
   ]
 }

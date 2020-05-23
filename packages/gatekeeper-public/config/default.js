@@ -8,6 +8,8 @@ const {
   GROUPS_SERVICE_URL,
   TAGS_SERVICE_URL,
   FILES_SERVICE_URL,
+  POSTS_SERVICE_URL,
+  COMMENTS_SERVICE_URL,
   VERSION,
   PORT,
 } = process.env
@@ -21,6 +23,8 @@ module.exports = {
     groups: `http://${GROUPS_SERVICE_URL}`,
     tags: `http://${TAGS_SERVICE_URL}`,
     files: `http://${FILES_SERVICE_URL}`,
+    posts: `http://${POSTS_SERVICE_URL}`,
+    comments: `https://${COMMENTS_SERVICE_URL}`,
   },
   port: PORT,
 }
