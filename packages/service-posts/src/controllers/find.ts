@@ -14,6 +14,7 @@ import {
 import { findMembersByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
 import config from 'config'
+import { ObjectID } from 'mongodb'
 
 export default {
   groupPosts(req: Request, res: Response, next: NextFunction) {
@@ -21,7 +22,7 @@ export default {
     const { limit, offset } = getPaginationParams(req)
 
     PostModel.paginate(
-      { group: id },
+      { group: new ObjectID(id) },
       {
         offset,
         limit,
@@ -70,7 +71,7 @@ export default {
     const { limit, offset } = getPaginationParams(req)
 
     PostModel.paginate(
-      { owner: id },
+      { owner: new ObjectID(id) },
       {
         offset,
         limit,
@@ -100,7 +101,7 @@ export default {
     const { limit, offset } = getPaginationParams(req)
 
     PostModel.paginate(
-      { group: req.user.id },
+      { owner: new ObjectID(req.user.id) },
       {
         offset,
         limit,

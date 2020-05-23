@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { IAuthRequest, getPaginationParams } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { CommentModel, IComment, serializeComment } from '@gtms/lib-models'
+import { ObjectID } from 'mongodb'
 
 export default {
   postComments(req: Request, res: Response, next: NextFunction) {
@@ -9,7 +10,7 @@ export default {
     const { limit, offset } = getPaginationParams(req)
 
     CommentModel.paginate(
-      { post: id },
+      { post: new ObjectID(id) },
       {
         offset,
         limit,
@@ -42,7 +43,7 @@ export default {
     const { limit, offset } = getPaginationParams(req)
 
     CommentModel.paginate(
-      { parent: id },
+      { parent: new ObjectID(id) },
       {
         offset,
         limit,
@@ -74,7 +75,7 @@ export default {
     const { limit, offset } = getPaginationParams(req)
 
     CommentModel.paginate(
-      { owner: req.user.id },
+      { owner: new ObjectID(req.user.id) },
       {
         offset,
         limit,
