@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.5.0...@gtms/lib-models@0.5.1) (2020-05-23)
+
+
+### Bug Fixes
+
+* master: add indexes to post and comment model ([088ba3c](https://github.com/mariusz-kabala/gtms-backend/commit/088ba3cd5f6cfa77e787c395f0025e621cb9d56f))
+
+
+
+
+
 # [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.4.0...@gtms/lib-models@0.5.0) (2020-05-22)
 
 
