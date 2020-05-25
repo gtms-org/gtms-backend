@@ -489,6 +489,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/consul@^0.23.34":
+  version "0.23.34"
+  resolved "https://registry.yarnpkg.com/@types/consul/-/consul-0.23.34.tgz#d43eb0c2486f34aa51c49472f03014ccfd10e1ce"
+  integrity sha512-8h+W+TPuqhXQD/dYj3hThy2qQAFRGSe5NKTJ3c9Xd8/OceNEyYG1ys+BAT2OlEWRpsvqbL6H9LRhoHij3vECIg==
+  dependencies:
+    "@types/node" "*"
+
 "@types/cookie-parser@^1.4.1":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@types/cookie-parser/-/cookie-parser-1.4.2.tgz#e4d5c5ffda82b80672a88a4281aaceefb1bd9df5"
@@ -2194,6 +2201,13 @@ constants-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
   integrity sha1-wguW2MYXdIqvHBYCF2DNJ/y4y3U=
+
+consul@^0.37.0:
+  version "0.37.0"
+  resolved "https://registry.yarnpkg.com/consul/-/consul-0.37.0.tgz#915964253160719181b62b124137b40c453f3465"
+  integrity sha512-8V5hUcKK0osd8lShVFEgcYAGaJZmJIYq+sBy/5i4isyJ3Ud159V1PGT2eEvfib7Tu0c9kJ7Uesicc7KEnqj0yA==
+  dependencies:
+    papi "^0.29.0"
 
 container-info@^1.0.1:
   version "1.0.1"
@@ -6322,6 +6336,11 @@ pako@~1.0.5:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
+
+papi@^0.29.0:
+  version "0.29.1"
+  resolved "https://registry.yarnpkg.com/papi/-/papi-0.29.1.tgz#7373e2c527f5117d61fd2a0e6c6b1dd72bf7f180"
+  integrity sha512-Y9ipSMfWuuVFO3zY9PlxOmEg+bQ7CeJ28sa9/a0veYNynLf9fwjR3+3fld5otEy7okUaEOUuCHVH62MyTmACXQ==
 
 parallel-transform@^1.1.0:
   version "1.2.0"

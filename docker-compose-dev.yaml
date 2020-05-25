@@ -20,6 +20,20 @@ services:
       - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
     ports:
       - 8081:8081
+  gtms-dev-consul-1:
+    image: consul
+    ports:
+      - "8400:8400"
+      - "8500:8500"
+      - "8600:8600"
+      - "8600:8600/udp"
+    command: "agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0"
+    environment:
+      CONSUL_LOCAL_CONFIG: '{"connect": { "enabled": true }}'
+  gtms-dev-consul-2:
+    image: consul
+    command: agent -retry-join gtms-dev-consul-1
+  
 volumes:
   queue-data:
   mongo-data:
