@@ -7,7 +7,7 @@ import {
   IGroup,
 } from '@gtms/lib-models'
 import createError from 'http-errors'
-import { findMembersByIds } from '@gtms/lib-api'
+import { findUsersByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
 import { publishOnChannel } from '@gtms/client-queue'
 import {
@@ -69,17 +69,17 @@ export default {
               return res.status(200).json(result)
             }
 
-            findMembersByIds(
+            findUsersByIds(
               docs.map(value => value.user),
               {
                 traceId: res.get('x-traceid'),
                 appKey: config.get<string>('appKey'),
               }
             )
-              .then(members =>
+              .then(users =>
                 res.status(200).json({
                   ...result,
-                  docs: members,
+                  docs: users,
                 })
               )
               .catch(err => {

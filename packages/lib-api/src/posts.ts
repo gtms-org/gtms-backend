@@ -1,16 +1,16 @@
 import fetch from 'node-fetch'
 import { makeUrl } from './commons'
-import { ISerializedUser } from '@gtms/commons'
+import { ISerializedPost } from '@gtms/commons'
 
-export const findUsersByIds = (
+export const findPostsByIds = (
   ids: string[],
   options: {
     traceId: string
     appKey: string
   }
-): Promise<ISerializedUser[]> => {
+): Promise<ISerializedPost[]> => {
   const { traceId, appKey } = options
-  return fetch(makeUrl('auth/users/find-by-ids'), {
+  return fetch(makeUrl('posts/find-by-ids'), {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',

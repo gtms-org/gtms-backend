@@ -15,6 +15,7 @@ import facebookController from './controllers/facebook'
 import activationsController from './controllers/activations'
 import findController from './controllers/find'
 import meController from './controllers/me'
+import favController from './controllers/favs'
 
 const app = express()
 const router: Router = Router()
@@ -35,12 +36,14 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 router.get('/users/count', usersController.count)
 router.post('/users', usersController.create)
 router.get('/users', findController.list)
+
+router.get('/me/groups', JWTMiddleware, meController.getGroups)
 router.post('/me', JWTMiddleware, meController.updateAccount)
 router.get('/me', JWTMiddleware, meController.getAccount)
-router.get('/me/groups', JWTMiddleware, meController.getGroups)
 
-router.get('/me/favs/groups', JWTMiddleware, meController.getFavGroups)
-router.post('/me/favs/groups', JWTMiddleware, meController.updateFavGroups)
+router.get('/me/favs/groups', JWTMiddleware, favController.getMyFavGroups)
+router.get('/me/favs/users', JWTMiddleware, favController.getMyFavUsers)
+router.get('/me/favs/posts', JWTMiddleware, favController.getMyFavUsers)
 
 router.post('/authenticate', usersController.authenticate)
 
@@ -53,6 +56,19 @@ router.get('/activate-account/:code', activationsController.activateAccount)
 router.post('/remind-password', activationsController.remindPassword)
 
 router.post('/reset-passord', activationsController.resetPassword)
+
+router.get('/favs/groups/user/:id', favController.getUserFavGroups)
+router.get('/favs/users/user/:id', favController.getUserFavUsers)
+router.get('/favs/posts/user/:id', favController.getUserFavPosts)
+
+router.delete('/favs/groups/:id', JWTMiddleware, favController.removeFavGroup)
+router.post('/favs/groups', JWTMiddleware, favController.addFavGroup)
+
+router.delete('/favs/posts/:id', JWTMiddleware, favController.removeFavPost)
+router.post('/favs/posts', JWTMiddleware, favController.addFavPost)
+
+router.delete('/favs/users/:id', JWTMiddleware, favController.addFavUser)
+router.post('/favs/users', JWTMiddleware, favController.addFavUser)
 
 router.delete(
   '/delete-account',
