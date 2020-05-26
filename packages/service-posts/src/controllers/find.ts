@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
+import createError from 'http-errors'
 import {
   PostModel,
   IPost,
@@ -11,7 +12,7 @@ import {
   getUniqueValues,
   arrayToHash,
 } from '@gtms/commons'
-import { findMembersByIds } from '@gtms/lib-api'
+import { findUsersByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
 import config from 'config'
 import { ObjectID } from 'mongodb'
@@ -40,17 +41,17 @@ export default {
           return next(err)
         }
 
-        findMembersByIds(getUniqueValues(result.docs, 'owner'), {
+        findUsersByIds(getUniqueValues(result.docs, 'owner'), {
           traceId: res.get('x-traceid'),
           appKey: config.get<string>('appKey'),
         })
-          .then(members => {
-            const membersHash = arrayToHash(members, 'id')
+          .then(users => {
+            const usersHash = arrayToHash(users, 'id')
 
             res.status(200).json({
               ...result,
               docs: result.docs.map((post: IPost) =>
-                serializePostWithUser(post, membersHash)
+                serializePostWithUser(post, usersHash)
               ),
             })
           })
@@ -126,5 +127,35 @@ export default {
         })
       }
     )
+  },
+  findByIds(req: Request, res: Response, next: NextFunction) {
+    const {
+      body: { ids },
+    } = req
+    const { groups = false } = req.query
+
+    if (!Array.isArray(ids)) {
+      return next(createError(400, 'ids param has to be an array'))
+    }
+
+    PostModel.find({
+      _id: {
+        $in: ids,
+      },
+    })
+      .then((posts: IPost[]) => {
+        if (!groups) {
+          return res.status(200).json(posts.map(post => serializePost(post)))
+        }
+      })
+      .catch(err => {
+        logger.log({
+          message: `Request error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      })
   },
 }
