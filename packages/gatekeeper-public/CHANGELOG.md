@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.19.1...@gtms/gatekeeper-public@0.20.0) (2020-05-26)
+
+
+### Features
+
+* GEOT-266: add favs endpoints ([#98](https://github.com/mariusz-kabala/gtms-backend/issues/98)) ([b296aff](https://github.com/mariusz-kabala/gtms-backend/commit/b296aff2f4b87ad9a590b14975424930fd22292f))
+
+
+
+
+
 ## [0.19.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.19.0...@gtms/gatekeeper-public@0.19.1) (2020-05-23)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
