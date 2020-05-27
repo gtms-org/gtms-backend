@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.16.0...@gtms/service-groups@0.16.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* master: typo fix in admins controller path ([455207e](https://github.com/mariusz-kabala/gtms-backend/commit/455207e3edad693d4ee0d25c539b424fdd04fbbf))
+
+
+
+
+
 # [0.16.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.15.0...@gtms/service-groups@0.16.0) (2020-05-27)
 
 
