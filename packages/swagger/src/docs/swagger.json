@@ -1090,7 +1090,7 @@
         }
       }
     },
-    "/group": {
+    "/groups": {
       "post": {
         "security": [
           {
@@ -1213,7 +1213,7 @@
         }
       }
     },
-    "/group/{slug}/join": {
+    "/groups/{slug}/join": {
       "get": {
         "security": [
           {
@@ -1249,7 +1249,7 @@
         }
       }
     },
-    "/group/{slug}/leave": {
+    "/groups/{slug}/leave": {
       "get": {
         "security": [
           {
@@ -1282,7 +1282,7 @@
         }
       }
     },
-    "/group/{slug}": {
+    "/groups/{slug}": {
       "get": {
         "tags": ["Groups"],
         "summary": "Returns group data",
@@ -1386,7 +1386,7 @@
         }
       }
     },
-    "/group/{slug}/members": {
+    "/groups/{slug}/members": {
       "get": {
         "tags": ["Groups"],
         "summary": "Returns paginated list of group's members",
@@ -1438,11 +1438,135 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Group not found"
           }
         }
       }
     },
-    "/group/check-admin-rights": {
+    "/groups/{slug}/admins": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns list of group's admins",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Groups"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Adds a new group's admin",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "403": {
+            "description": "Current user is not group's owner"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      }
+    },
+    "/groups/{slug}/admins/{user}": {
+      "delete": {
+        "tags": ["Groups"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Adds a new group's admin",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User's id"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "403": {
+            "description": "Current user is not group's owner"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      }
+    },
+    "/groups/check-admin-rights": {
       "get": {
         "tags": ["Groups"],
         "summary": "Checks if user has right to modify group",
@@ -1477,7 +1601,7 @@
         }
       }
     },
-    "/group/find-by-ids": {
+    "/groups/find-by-ids": {
       "post": {
         "tags": ["Groups"],
         "summary": "Returns groups by ids",

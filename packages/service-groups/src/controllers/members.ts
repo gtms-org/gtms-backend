@@ -16,25 +16,13 @@ import {
   IUserLeftGroupMsg,
   UserUpdateTypes,
   IAuthRequest,
+  getPaginationParams,
 } from '@gtms/commons'
 
 export default {
   list(req: Request, res: Response, next: NextFunction) {
     const { slug } = req.params
-    let limit = parseInt(req.query.limit || 25, 10)
-    let offset = parseInt(req.query.offset || 0, 10)
-
-    if (!Number.isInteger(limit)) {
-      limit = 25
-    }
-
-    if (!Number.isInteger(offset)) {
-      offset = 0
-    }
-
-    if (limit > 50) {
-      limit = 50
-    }
+    const { limit, offset } = getPaginationParams(req)
 
     GroupModel.findOne({
       slug,
