@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.20.0...@gtms/gatekeeper-public@0.21.0) (2020-05-27)
+
+
+### Features
+
+* GEOT-267: add group admins endpoints ([#99](https://github.com/mariusz-kabala/gtms-backend/issues/99)) ([9348b2c](https://github.com/mariusz-kabala/gtms-backend/commit/9348b2c3244ce4f487e42a0029c23d309d30b8ac))
+
+
+
+
+
 # [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.19.1...@gtms/gatekeeper-public@0.20.0) (2020-05-26)
 
 
