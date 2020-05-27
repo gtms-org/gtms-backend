@@ -6,6 +6,7 @@ import mongoose from '@gtms/client-mongoose'
 import groupsController from './controllers/group'
 import membersController from './controllers/members'
 import findController from './controllers/find'
+import adminController from './controllers/admin'
 import {
   JWTMiddleware,
   errorMiddleware,
@@ -39,6 +40,9 @@ router.get('/:slug', groupsController.show)
 router.post('/:slug', JWTMiddleware, groupsController.update)
 
 router.get('/:slug/members', membersController.list)
+router.get('/:slug/admins', adminController.list)
+router.post('/:slug/admins', JWTMiddleware, adminController.addAdmin)
+router.delete('/:slug/admins/:user', JWTMiddleware, adminController.removeAdmin)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

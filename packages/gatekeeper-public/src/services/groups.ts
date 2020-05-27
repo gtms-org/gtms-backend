@@ -32,6 +32,21 @@ export default {
       restricted: false,
     },
     {
+      path: '/:slug/admins',
+      method: http.GET,
+      restricted: false,
+    },
+    {
+      path: '/:slug/admins',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/:slug/admins/:user',
+      method: http.DELETE,
+      restricted: true,
+    },
+    {
       path: '/:slug',
       method: http.GET,
       restricted: false,
