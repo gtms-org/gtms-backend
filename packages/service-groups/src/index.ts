@@ -6,7 +6,7 @@ import mongoose from '@gtms/client-mongoose'
 import groupsController from './controllers/group'
 import membersController from './controllers/members'
 import findController from './controllers/find'
-import adminController from './controllers/admin'
+import adminController from './controllers/admins'
 import {
   JWTMiddleware,
   errorMiddleware,
