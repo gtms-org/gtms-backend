@@ -2904,6 +2904,23 @@
           "items": {
             "type": "string"
           }
+        },
+        "avatar": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "postsCounter": {
+          "type": "number"
         }
       }
     },
@@ -2947,6 +2964,15 @@
           "items": {
             "type": "string"
           }
+        },
+        "owner": {
+          "type": "string"
+        },
+        "postsCounter": {
+          "type": "number"
+        },
+        "membersCounter": {
+          "type": "number"
         }
       }
     },
