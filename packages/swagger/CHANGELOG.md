@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.12.0...@gtms/swagger@0.12.1) (2020-05-28)
+
+
+### Bug Fixes
+
+* master: adjust models in swagger ([261a38f](https://github.com/mariusz-kabala/gtms-backend/commit/261a38f897aa77cb705ab8f352739c18de5788a9))
+
+
+
+
+
 # [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.11.0...@gtms/swagger@0.12.0) (2020-05-27)
 
 
