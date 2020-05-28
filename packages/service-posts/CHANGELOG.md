@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.4.0...@gtms/service-posts@0.4.1) (2020-05-28)
+
+
+### Bug Fixes
+
+* master: allow to return group info together with post from ([7ff2005](https://github.com/mariusz-kabala/gtms-backend/commit/7ff200541dcf4c820cab25d6433a7dce6d61730f))
+
+
+
+
+
 # [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.3.1...@gtms/service-posts@0.4.0) (2020-05-26)
 
 
