@@ -2566,6 +2566,13 @@
                 }
               }
             }
+          },
+          {
+            "in": "query",
+            "description": "Defines if together with post group info should be returned",
+            "name": "groups",
+            "type": "boolean",
+            "required": false
           }
         ],
         "responses": {
