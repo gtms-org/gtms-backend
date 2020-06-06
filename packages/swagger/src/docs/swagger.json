@@ -1163,13 +1163,6 @@
         "summary": "Returns public groups list, sorted by creation date",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Unique group's slug"
-          },
-          {
             "name": "limit",
             "in": "query",
             "required": false,
@@ -1531,7 +1524,7 @@
             "user_auth": []
           }
         ],
-        "summary": "Adds a new group's admin",
+        "summary": "Deletes group's admin",
         "parameters": [
           {
             "name": "slug",
@@ -1634,6 +1627,169 @@
                 "$ref": "#/definitions/Group"
               }
             }
+          }
+        }
+      }
+    },
+    "/groups/{slug}/invitations": {
+      "post": {
+        "tags": ["Groups"],
+        "summary": "Creates a new inviatation or request to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns list of invitations to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          },
+          "403": {
+            "description": "User is not group's owner or group's admin"
+          },
+          "404": {
+            "description": "Group does not exist"
+          }
+        }
+      }
+    },
+    "/groups/{slug}/requests": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns list of requests to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          },
+          "403": {
+            "description": "User is not group's owner or group's admin"
+          },
+          "404": {
+            "description": "Group does not exist"
+          }
+        }
+      }
+    },
+    "/groups/invitations/my": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns list of requests and invitations to groups for current user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/invitations/{id}": {
+      "delete": {
+        "tags": ["Groups"],
+        "summary": "Deletes group's inviatation/request by id",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Invitation's id"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "User is not group's owner, group's admin and invitation owner"
+          },
+          "404": {
+            "description": "Group does not exist"
           }
         }
       }
