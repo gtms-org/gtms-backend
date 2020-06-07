@@ -1438,6 +1438,49 @@
         }
       }
     },
+    "/groups/{slug}/members/{user}": {
+      "delete": {
+        "tags": ["Groups"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Deletes group's member",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User's id"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "403": {
+            "description": "Current user is not group's owner or admin"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      }
+    },
     "/groups/{slug}/admins": {
       "get": {
         "tags": ["Groups"],
@@ -1634,7 +1677,7 @@
     "/groups/{slug}/invitations": {
       "post": {
         "tags": ["Groups"],
-        "summary": "Creates a new inviatation or request to the group",
+        "summary": "Creates a new inviatation to the group",
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "parameters": [
@@ -1644,6 +1687,19 @@
             "required": true,
             "type": "string",
             "description": "Unique group's slug"
+          },
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         ],
         "security": [
@@ -1657,6 +1713,9 @@
           },
           "400": {
             "description": "Validation errors"
+          },
+          "404": {
+            "description": "Group not found"
           }
         }
       },
@@ -1685,7 +1744,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Group"
+                "$ref": "#/definitions/Invitation"
               }
             }
           },
@@ -1699,6 +1758,37 @@
       }
     },
     "/groups/{slug}/requests": {
+      "post": {
+        "tags": ["Groups"],
+        "summary": "Creates a new request to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      },
       "get": {
         "tags": ["Groups"],
         "summary": "Returns list of requests to the group",
@@ -1724,7 +1814,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Group"
+                "$ref": "#/definitions/Invitation"
               }
             }
           },
@@ -3239,6 +3329,26 @@
         },
         "commentsCounter": {
           "type": "number"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "Invitation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "code": {
+          "type": "string"
         },
         "createdAt": {
           "type": "string"
