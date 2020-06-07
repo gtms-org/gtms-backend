@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.22.1...@gtms/gatekeeper-public@0.23.0) (2020-06-07)
+
+
+### Features
+
+* master: expose user details endpoint ([842c69a](https://github.com/mariusz-kabala/gtms-backend/commit/842c69adf96948e00f96adb1a204ceb6c6e8032e))
+
+
+
+
+
 ## [0.22.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.22.0...@gtms/gatekeeper-public@0.22.1) (2020-06-07)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
