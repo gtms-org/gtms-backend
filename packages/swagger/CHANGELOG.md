@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.13.0...@gtms/swagger@0.14.0) (2020-06-07)
+
+
+### Features
+
+* GEOT-270 get user endpoint ([#102](https://github.com/mariusz-kabala/gtms-backend/issues/102)) ([4e3e81b](https://github.com/mariusz-kabala/gtms-backend/commit/4e3e81b32abeae6dd0cb8feb840c704394476e56))
+
+
+
+
+
 # [0.13.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.12.2...@gtms/swagger@0.13.0) (2020-06-07)
 
 
