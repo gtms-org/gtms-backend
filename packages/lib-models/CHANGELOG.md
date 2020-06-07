@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.7.0...@gtms/lib-models@0.8.0) (2020-06-07)
+
+
+### Features
+
+* group invitations ([#101](https://github.com/mariusz-kabala/gtms-backend/issues/101)) ([3ec892f](https://github.com/mariusz-kabala/gtms-backend/commit/3ec892f53f4090b97b47a2d213e81e40487f3be3))
+
+
+
+
+
 # [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.6.0...@gtms/lib-models@0.7.0) (2020-05-26)
 
 
