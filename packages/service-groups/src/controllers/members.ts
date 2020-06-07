@@ -253,4 +253,64 @@ export default {
         return next(err)
       })
   },
+  removeMember(req: IAuthRequest, res: Response, next: NextFunction) {
+    const { slug, user } = req.params
+
+    if (!user || user === '') {
+      return res.status(400).end()
+    }
+
+    GroupModel.findOne({
+      slug,
+    })
+      .then(async (group: IGroup | null) => {
+        if (!group) {
+          return res.status(404).end()
+        }
+
+        if (
+          `${group.owner}` !== req.user.id &&
+          group.admins.includes(req.user.id)
+        ) {
+          logger.log({
+            level: 'warn',
+            message: `User ${req.user.email} tried to remove member ${user} from group ${group.name} (${group._id}) without admin rights`,
+            traceId: res.get('x-traceid'),
+          })
+          return res.status(403).end()
+        }
+
+        GroupMemberModel.deleteOne({
+          group: group._id,
+          user,
+        })
+          .then(() => {
+            res.status(200).end()
+
+            logger.log({
+              level: 'info',
+              message: `User ${req.user.email} removed member ${user} from group ${group.name} (${group._id})`,
+              traceId: res.get('x-traceid'),
+            })
+          })
+          .catch(err => {
+            logger.log({
+              level: 'error',
+              message: `Database error, ${err}`,
+              traceId: res.get('x-traceid'),
+            })
+
+            return next(createError(500))
+          })
+      })
+      .catch(err => {
+        logger.log({
+          level: 'error',
+          message: `Database error, ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+
+        return next(createError(500))
+      })
+  },
 }
