@@ -22,7 +22,6 @@ export interface IUser extends Document {
   groupsMember: string[]
   groupsAdmin: string[]
   groupsOwner: string[]
-  groupsFavs: string[]
   avatar?: {
     status: FileStatus
     files: string[]
@@ -112,11 +111,6 @@ const UserSchema = new Schema(
       default: [],
     },
     groupsOwner: {
-      type: [Schema.Types.ObjectId],
-      required: false,
-      default: [],
-    },
-    groupsFavs: {
       type: [Schema.Types.ObjectId],
       required: false,
       default: [],
