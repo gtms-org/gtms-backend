@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.21.1...@gtms/gatekeeper-public@0.22.0) (2020-06-07)
+
+
+### Features
+
+* master: expose group invitations endpoints in GK ([2b0df3a](https://github.com/mariusz-kabala/gtms-backend/commit/2b0df3a028259bb2f2e3927738d15c60365aec77))
+
+
+
+
+
 ## [0.21.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.21.0...@gtms/gatekeeper-public@0.21.1) (2020-06-07)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
