@@ -22,6 +22,11 @@ export default {
       restricted: false,
     },
     {
+      path: '/users/:id',
+      method: http.GET,
+      restricted: false,
+    },
+    {
       path: '/authenticate',
       method: http.POST,
       restricted: false,
