@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.13](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.3.12...@gtms/worker-files@0.3.13) (2020-06-07)
+
+**Note:** Version bump only for package @gtms/worker-files
+
+
+
+
+
+## [0.3.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.3.11...@gtms/worker-files@0.3.12) (2020-06-07)
+
+**Note:** Version bump only for package @gtms/worker-files
+
+
+
+
+
 ## [0.3.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.3.10...@gtms/worker-files@0.3.11) (2020-05-23)
 
 **Note:** Version bump only for package @gtms/worker-files

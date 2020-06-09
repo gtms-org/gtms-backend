@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.8.0...@gtms/lib-models@0.9.0) (2020-06-07)
+
+
+### Features
+
+* GEOT-270 get user endpoint ([#102](https://github.com/mariusz-kabala/gtms-backend/issues/102)) ([4e3e81b](https://github.com/mariusz-kabala/gtms-backend/commit/4e3e81b32abeae6dd0cb8feb840c704394476e56))
+
+
+
+
+
+# [0.8.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.7.0...@gtms/lib-models@0.8.0) (2020-06-07)
+
+
+### Features
+
+* group invitations ([#101](https://github.com/mariusz-kabala/gtms-backend/issues/101)) ([3ec892f](https://github.com/mariusz-kabala/gtms-backend/commit/3ec892f53f4090b97b47a2d213e81e40487f3be3))
+
+
+
+
+
+# [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.6.0...@gtms/lib-models@0.7.0) (2020-05-26)
+
+
+### Features
+
+* GEOT-266: add favs endpoints ([#98](https://github.com/mariusz-kabala/gtms-backend/issues/98)) ([b296aff](https://github.com/mariusz-kabala/gtms-backend/commit/b296aff2f4b87ad9a590b14975424930fd22292f))
+
+
+
+
+
 # [0.6.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.5.1...@gtms/lib-models@0.6.0) (2020-05-23)
 
 

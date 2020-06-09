@@ -4,9 +4,11 @@ import { IGroup } from './groups'
 
 export interface IGroupInvitation extends Document {
   group: IGroup
-  user?: string
+  user: string
   type: 'invitation' | 'request'
   code?: string
+  createdAt: string
+  updatedAt: string
 }
 
 const GroupInvitationSchema = new Schema(

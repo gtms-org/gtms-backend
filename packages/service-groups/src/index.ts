@@ -6,6 +6,8 @@ import mongoose from '@gtms/client-mongoose'
 import groupsController from './controllers/group'
 import membersController from './controllers/members'
 import findController from './controllers/find'
+import adminController from './controllers/admins'
+import invitationController from './controllers/invitations'
 import {
   JWTMiddleware,
   errorMiddleware,
@@ -35,10 +37,45 @@ router.post('/find-by-ids', findController.findByIds)
 
 router.get('/:slug/join', JWTMiddleware, membersController.joinGroup)
 router.get('/:slug/leave', JWTMiddleware, membersController.leaveGroup)
+router.post(
+  '/:slug/invitations',
+  JWTMiddleware,
+  invitationController.createInvitation
+)
+router.get(
+  '/:slug/invitations',
+  JWTMiddleware,
+  invitationController.groupInvitations
+)
+router.post(
+  '/:slug/requests',
+  JWTMiddleware,
+  invitationController.createRequest
+)
+router.get('/:slug/requests', JWTMiddleware, invitationController.groupRequests)
+router.get(
+  '/invitations/my',
+  JWTMiddleware,
+  invitationController.userInvitations
+)
+router.delete(
+  '/invitations/:id',
+  JWTMiddleware,
+  invitationController.deleteInvitation
+)
+
 router.get('/:slug', groupsController.show)
 router.post('/:slug', JWTMiddleware, groupsController.update)
 
 router.get('/:slug/members', membersController.list)
+router.delete(
+  '/:slug/members/:user',
+  JWTMiddleware,
+  membersController.removeMember
+)
+router.get('/:slug/admins', adminController.list)
+router.post('/:slug/admins', JWTMiddleware, adminController.addAdmin)
+router.delete('/:slug/admins/:user', JWTMiddleware, adminController.removeAdmin)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

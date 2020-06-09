@@ -22,6 +22,11 @@ export default {
       restricted: false,
     },
     {
+      path: '/users/:id',
+      method: http.GET,
+      restricted: false,
+    },
+    {
       path: '/authenticate',
       method: http.POST,
       restricted: false,
@@ -62,16 +67,6 @@ export default {
       restricted: true,
     },
     {
-      path: '/me/favs/groups',
-      method: http.GET,
-      restricted: true,
-    },
-    {
-      path: '/me/favs/groups',
-      method: http.POST,
-      restricted: true,
-    },
-    {
       path: '/me/groups',
       method: http.GET,
       restricted: true,
@@ -84,6 +79,66 @@ export default {
     {
       path: '/me',
       method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/me/favs/groups',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/me/favs/users',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/me/favs/posts',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/favs/groups/:id',
+      method: http.DELETE,
+      restricted: true,
+    },
+    {
+      path: '/favs/groups',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/favs/groups/user/:id',
+      method: http.GET,
+      restricted: false,
+    },
+    {
+      path: '/favs/users/user/:id',
+      method: http.GET,
+      restricted: false,
+    },
+    {
+      path: '/favs/posts/user/:id',
+      method: http.GET,
+      restricted: false,
+    },
+    {
+      path: '/favs/posts/:id',
+      method: http.DELETE,
+      restricted: true,
+    },
+    {
+      path: '/favs/posts',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/favs/users/:id',
+      method: http.DELETE,
+      restricted: true,
+    },
+    {
+      path: '/favs/users',
+      method: http.POST,
       restricted: true,
     },
   ],

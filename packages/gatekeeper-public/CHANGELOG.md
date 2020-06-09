@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.22.1...@gtms/gatekeeper-public@0.23.0) (2020-06-07)
+
+
+### Features
+
+* master: expose user details endpoint ([842c69a](https://github.com/mariusz-kabala/gtms-backend/commit/842c69adf96948e00f96adb1a204ceb6c6e8032e))
+
+
+
+
+
+## [0.22.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.22.0...@gtms/gatekeeper-public@0.22.1) (2020-06-07)
+
+**Note:** Version bump only for package @gtms/gatekeeper-public
+
+
+
+
+
+# [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.21.1...@gtms/gatekeeper-public@0.22.0) (2020-06-07)
+
+
+### Features
+
+* master: expose group invitations endpoints in GK ([2b0df3a](https://github.com/mariusz-kabala/gtms-backend/commit/2b0df3a028259bb2f2e3927738d15c60365aec77))
+
+
+
+
+
+## [0.21.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.21.0...@gtms/gatekeeper-public@0.21.1) (2020-06-07)
+
+**Note:** Version bump only for package @gtms/gatekeeper-public
+
+
+
+
+
+# [0.21.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.20.0...@gtms/gatekeeper-public@0.21.0) (2020-05-27)
+
+
+### Features
+
+* GEOT-267: add group admins endpoints ([#99](https://github.com/mariusz-kabala/gtms-backend/issues/99)) ([9348b2c](https://github.com/mariusz-kabala/gtms-backend/commit/9348b2c3244ce4f487e42a0029c23d309d30b8ac))
+
+
+
+
+
+# [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.19.1...@gtms/gatekeeper-public@0.20.0) (2020-05-26)
+
+
+### Features
+
+* GEOT-266: add favs endpoints ([#98](https://github.com/mariusz-kabala/gtms-backend/issues/98)) ([b296aff](https://github.com/mariusz-kabala/gtms-backend/commit/b296aff2f4b87ad9a590b14975424930fd22292f))
+
+
+
+
+
 ## [0.19.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.19.0...@gtms/gatekeeper-public@0.19.1) (2020-05-23)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public

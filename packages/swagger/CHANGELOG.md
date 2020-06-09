@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.13.0...@gtms/swagger@0.14.0) (2020-06-07)
+
+
+### Features
+
+* GEOT-270 get user endpoint ([#102](https://github.com/mariusz-kabala/gtms-backend/issues/102)) ([4e3e81b](https://github.com/mariusz-kabala/gtms-backend/commit/4e3e81b32abeae6dd0cb8feb840c704394476e56))
+
+
+
+
+
+# [0.13.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.12.2...@gtms/swagger@0.13.0) (2020-06-07)
+
+
+### Features
+
+* group invitations ([#101](https://github.com/mariusz-kabala/gtms-backend/issues/101)) ([3ec892f](https://github.com/mariusz-kabala/gtms-backend/commit/3ec892f53f4090b97b47a2d213e81e40487f3be3))
+
+
+
+
+
+## [0.12.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.12.1...@gtms/swagger@0.12.2) (2020-05-28)
+
+
+### Bug Fixes
+
+* master: allow to return group info together with post from ([7ff2005](https://github.com/mariusz-kabala/gtms-backend/commit/7ff200541dcf4c820cab25d6433a7dce6d61730f))
+
+
+
+
+
+## [0.12.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.12.0...@gtms/swagger@0.12.1) (2020-05-28)
+
+
+### Bug Fixes
+
+* master: adjust models in swagger ([261a38f](https://github.com/mariusz-kabala/gtms-backend/commit/261a38f897aa77cb705ab8f352739c18de5788a9))
+
+
+
+
+
+# [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.11.0...@gtms/swagger@0.12.0) (2020-05-27)
+
+
+### Features
+
+* GEOT-267: add group admins endpoints ([#99](https://github.com/mariusz-kabala/gtms-backend/issues/99)) ([9348b2c](https://github.com/mariusz-kabala/gtms-backend/commit/9348b2c3244ce4f487e42a0029c23d309d30b8ac))
+
+
+
+
+
+# [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.10.3...@gtms/swagger@0.11.0) (2020-05-26)
+
+
+### Features
+
+* GEOT-266: add favs endpoints ([#98](https://github.com/mariusz-kabala/gtms-backend/issues/98)) ([b296aff](https://github.com/mariusz-kabala/gtms-backend/commit/b296aff2f4b87ad9a590b14975424930fd22292f))
+
+
+
+
+
 ## [0.10.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.10.2...@gtms/swagger@0.10.3) (2020-05-23)
 
 **Note:** Version bump only for package @gtms/swagger

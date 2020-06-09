@@ -7,7 +7,7 @@ import {
   IGroup,
 } from '@gtms/lib-models'
 import createError from 'http-errors'
-import { findMembersByIds } from '@gtms/lib-api'
+import { findUsersByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
 import { publishOnChannel } from '@gtms/client-queue'
 import {
@@ -16,25 +16,13 @@ import {
   IUserLeftGroupMsg,
   UserUpdateTypes,
   IAuthRequest,
+  getPaginationParams,
 } from '@gtms/commons'
 
 export default {
   list(req: Request, res: Response, next: NextFunction) {
     const { slug } = req.params
-    let limit = parseInt(req.query.limit || 25, 10)
-    let offset = parseInt(req.query.offset || 0, 10)
-
-    if (!Number.isInteger(limit)) {
-      limit = 25
-    }
-
-    if (!Number.isInteger(offset)) {
-      offset = 0
-    }
-
-    if (limit > 50) {
-      limit = 50
-    }
+    const { limit, offset } = getPaginationParams(req)
 
     GroupModel.findOne({
       slug,
@@ -69,17 +57,17 @@ export default {
               return res.status(200).json(result)
             }
 
-            findMembersByIds(
+            findUsersByIds(
               docs.map(value => value.user),
               {
                 traceId: res.get('x-traceid'),
                 appKey: config.get<string>('appKey'),
               }
             )
-              .then(members =>
+              .then(users =>
                 res.status(200).json({
                   ...result,
-                  docs: members,
+                  docs: users,
                 })
               )
               .catch(err => {
@@ -263,6 +251,66 @@ export default {
         })
 
         return next(err)
+      })
+  },
+  removeMember(req: IAuthRequest, res: Response, next: NextFunction) {
+    const { slug, user } = req.params
+
+    if (!user || user === '') {
+      return res.status(400).end()
+    }
+
+    GroupModel.findOne({
+      slug,
+    })
+      .then(async (group: IGroup | null) => {
+        if (!group) {
+          return res.status(404).end()
+        }
+
+        if (
+          `${group.owner}` !== req.user.id &&
+          group.admins.includes(req.user.id)
+        ) {
+          logger.log({
+            level: 'warn',
+            message: `User ${req.user.email} tried to remove member ${user} from group ${group.name} (${group._id}) without admin rights`,
+            traceId: res.get('x-traceid'),
+          })
+          return res.status(403).end()
+        }
+
+        GroupMemberModel.deleteOne({
+          group: group._id,
+          user,
+        })
+          .then(() => {
+            res.status(200).end()
+
+            logger.log({
+              level: 'info',
+              message: `User ${req.user.email} removed member ${user} from group ${group.name} (${group._id})`,
+              traceId: res.get('x-traceid'),
+            })
+          })
+          .catch(err => {
+            logger.log({
+              level: 'error',
+              message: `Database error, ${err}`,
+              traceId: res.get('x-traceid'),
+            })
+
+            return next(createError(500))
+          })
+      })
+      .catch(err => {
+        logger.log({
+          level: 'error',
+          message: `Database error, ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+
+        return next(createError(500))
       })
   },
 }

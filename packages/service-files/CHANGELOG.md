@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.4.6...@gtms/service-files@0.4.7) (2020-06-07)
+
+**Note:** Version bump only for package @gtms/service-files
+
+
+
+
+
+## [0.4.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.4.5...@gtms/service-files@0.4.6) (2020-06-07)
+
+**Note:** Version bump only for package @gtms/service-files
+
+
+
+
+
 ## [0.4.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.4.4...@gtms/service-files@0.4.5) (2020-05-23)
 
 **Note:** Version bump only for package @gtms/service-files

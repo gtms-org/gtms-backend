@@ -172,6 +172,62 @@
         }
       }
     },
+    "/auth/users/{id}": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Returns details about user",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/User"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "groupsMember": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Group"
+                      }
+                    },
+                    "groupsAdmin": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Group"
+                      }
+                    },
+                    "groupsOwner": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Group"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
     "/auth/authenticate": {
       "post": {
         "tags": ["Auth"],
@@ -456,68 +512,6 @@
         }
       }
     },
-    "/auth/me/favs/groups": {
-      "get": {
-        "security": [
-          {
-            "user_auth": []
-          }
-        ],
-        "tags": ["Auth"],
-        "summary": "Returns favs user's groups",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Group"
-              }
-            }
-          },
-          "404": {
-            "description": "User does not exist"
-          }
-        }
-      },
-      "post": {
-        "security": [
-          {
-            "user_auth": []
-          }
-        ],
-        "tags": ["Auth"],
-        "summary": "Updates favs user's groups",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "payload",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation"
-          },
-          "400": {
-            "description": "Body payload is invalid"
-          },
-          "404": {
-            "description": "User does not exist"
-          }
-        }
-      }
-    },
     "/auth/me": {
       "get": {
         "security": [
@@ -603,7 +597,556 @@
         }
       }
     },
-    "/group": {
+    "/me/favs/groups": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns info about current user fav groups",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Group"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/me/favs/users": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns info about current user fav users",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/me/favs/posts": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns info about current user fav posts",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Post"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favs/groups/user/{id}": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Returns info about user's fav groups",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "User's id"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Group"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favs/users/user/{id}": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Returns info about user's fav users",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "User's id"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favs/posts/user/{id}": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Returns info about user's fav posts",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "User's id"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Post"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favs/groups": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Creates a new fav group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "group": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/ValidationError"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favs/groups/{id}": {
+      "delete": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Removes group from favs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "Group's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Group is not in favs"
+          }
+        }
+      }
+    },
+    "/favs/posts": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Creates a new fav post",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "post": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/ValidationError"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favs/posts/{id}": {
+      "delete": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Removes post from favs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "Post's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Post is not in favs"
+          }
+        }
+      }
+    },
+    "/favs/users": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Creates a new fav user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/ValidationError"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favs/users/{id}": {
+      "delete": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Removes user from favs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "User's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Post is not in favs"
+          }
+        }
+      }
+    },
+    "/groups": {
       "post": {
         "security": [
           {
@@ -676,13 +1219,6 @@
         "summary": "Returns public groups list, sorted by creation date",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Unique group's slug"
-          },
-          {
             "name": "limit",
             "in": "query",
             "required": false,
@@ -726,7 +1262,7 @@
         }
       }
     },
-    "/group/{slug}/join": {
+    "/groups/{slug}/join": {
       "get": {
         "security": [
           {
@@ -762,7 +1298,7 @@
         }
       }
     },
-    "/group/{slug}/leave": {
+    "/groups/{slug}/leave": {
       "get": {
         "security": [
           {
@@ -795,7 +1331,7 @@
         }
       }
     },
-    "/group/{slug}": {
+    "/groups/{slug}": {
       "get": {
         "tags": ["Groups"],
         "summary": "Returns group data",
@@ -899,7 +1435,7 @@
         }
       }
     },
-    "/group/{slug}/members": {
+    "/groups/{slug}/members": {
       "get": {
         "tags": ["Groups"],
         "summary": "Returns paginated list of group's members",
@@ -951,11 +1487,178 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Group not found"
           }
         }
       }
     },
-    "/group/check-admin-rights": {
+    "/groups/{slug}/members/{user}": {
+      "delete": {
+        "tags": ["Groups"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Deletes group's member",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User's id"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "403": {
+            "description": "Current user is not group's owner or admin"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      }
+    },
+    "/groups/{slug}/admins": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns list of group's admins",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Groups"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Adds a new group's admin",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "403": {
+            "description": "Current user is not group's owner"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      }
+    },
+    "/groups/{slug}/admins/{user}": {
+      "delete": {
+        "tags": ["Groups"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Deletes group's admin",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User's id"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "403": {
+            "description": "Current user is not group's owner"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      }
+    },
+    "/groups/check-admin-rights": {
       "get": {
         "tags": ["Groups"],
         "summary": "Checks if user has right to modify group",
@@ -986,6 +1689,253 @@
           },
           "404": {
             "description": "Group does not exist in db"
+          }
+        }
+      }
+    },
+    "/groups/find-by-ids": {
+      "post": {
+        "tags": ["Groups"],
+        "summary": "Returns groups by ids",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{slug}/invitations": {
+      "post": {
+        "tags": ["Groups"],
+        "summary": "Creates a new inviatation to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          },
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns list of invitations to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Invitation"
+              }
+            }
+          },
+          "403": {
+            "description": "User is not group's owner or group's admin"
+          },
+          "404": {
+            "description": "Group does not exist"
+          }
+        }
+      }
+    },
+    "/groups/{slug}/requests": {
+      "post": {
+        "tags": ["Groups"],
+        "summary": "Creates a new request to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns list of requests to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique group's slug"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Invitation"
+              }
+            }
+          },
+          "403": {
+            "description": "User is not group's owner or group's admin"
+          },
+          "404": {
+            "description": "Group does not exist"
+          }
+        }
+      }
+    },
+    "/groups/invitations/my": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Returns list of requests and invitations to groups for current user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Group"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/invitations/{id}": {
+      "delete": {
+        "tags": ["Groups"],
+        "summary": "Deletes group's inviatation/request by id",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Invitation's id"
+          }
+        ],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "User is not group's owner, group's admin and invitation owner"
+          },
+          "404": {
+            "description": "Group does not exist"
           }
         }
       }
@@ -1896,6 +2846,50 @@
         }
       }
     },
+    "/posts/find-by-ids": {
+      "post": {
+        "tags": ["Posts"],
+        "summary": "Returns posts by ids",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "in": "query",
+            "description": "Defines if together with post group info should be returned",
+            "name": "groups",
+            "type": "boolean",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Post"
+              }
+            }
+          }
+        }
+      }
+    },
     "/comments": {
       "post": {
         "security": [
@@ -2219,6 +3213,23 @@
           "items": {
             "type": "string"
           }
+        },
+        "avatar": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "postsCounter": {
+          "type": "number"
         }
       }
     },
@@ -2262,6 +3273,15 @@
           "items": {
             "type": "string"
           }
+        },
+        "owner": {
+          "type": "string"
+        },
+        "postsCounter": {
+          "type": "number"
+        },
+        "membersCounter": {
+          "type": "number"
         }
       }
     },
@@ -2365,6 +3385,26 @@
         },
         "commentsCounter": {
           "type": "number"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "Invitation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "code": {
+          "type": "string"
         },
         "createdAt": {
           "type": "string"

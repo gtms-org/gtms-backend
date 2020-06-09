@@ -1,7 +1,18 @@
-import { IUser, UserModel, serializeUser } from '@gtms/lib-models'
+import {
+  IUser,
+  UserModel,
+  serializeUser,
+  FavGroupModel,
+} from '@gtms/lib-models'
 import logger from '@gtms/lib-logger'
 import { Response, NextFunction } from 'express'
-import { IAuthRequest, ITagsUpdateMsg, RecordType, Queues } from '@gtms/commons'
+import {
+  IAuthRequest,
+  ITagsUpdateMsg,
+  RecordType,
+  Queues,
+  getPaginationParams,
+} from '@gtms/commons'
 import { publishOnChannel } from '@gtms/client-queue'
 import { findGroupsByIds } from '@gtms/lib-api'
 import config from 'config'
@@ -141,9 +152,24 @@ export default {
         next(err)
       })
   },
-  getGroups(req: IAuthRequest, res: Response) {
-    UserModel.findById(req.user.id)
-      .then(async (user: IUser | null) => {
+  getGroups(req: IAuthRequest, res: Response, next: NextFunction) {
+    const { limit, offset } = getPaginationParams(req)
+    Promise.all([
+      UserModel.findById(req.user.id),
+      FavGroupModel.paginate(
+        {
+          owner: req.user.id,
+        },
+        {
+          offset,
+          limit,
+          sort: {
+            order: 'asc',
+          },
+        }
+      ),
+    ])
+      .then(async ([user, favGroups]) => {
         if (!user) {
           logger.log({
             message: `Someone tried to get information about not existing user account ${req.user.id} ${req.user.email}`,
@@ -158,13 +184,21 @@ export default {
 
         if (Array.isArray(user.groupsAdmin) && user.groupsAdmin.length > 0) {
           groupIds.push(
-            ...[...user.groupsAdmin].filter(id => !groupIds.includes(id))
+            ...user.groupsAdmin.filter(id => !groupIds.includes(id))
           )
         }
 
         if (Array.isArray(user.groupsOwner) && user.groupsOwner.length > 0) {
           groupIds.push(
-            ...[...user.groupsOwner].filter(id => !groupIds.includes(id))
+            ...user.groupsOwner.filter(id => !groupIds.includes(id))
+          )
+        }
+
+        if (favGroups.docs.length > 0) {
+          groupIds.push(
+            ...favGroups.docs
+              .filter(fav => !groupIds.includes(fav.group))
+              .map(fav => fav.group)
           )
         }
 
@@ -183,6 +217,14 @@ export default {
               admin: user.groupsAdmin.map(findGroup).filter(filterGroups),
               member: user.groupsMember.map(findGroup).filter(filterGroups),
               owner: user.groupsOwner.map(findGroup).filter(filterGroups),
+              favs: {
+                ...favGroups,
+                dosc: favGroups.docs
+                  .map(fav =>
+                    groups.find(group => `${group.id}` === `${fav.group}`)
+                  )
+                  .filter(filterGroups),
+              },
             })
           } catch (err) {
             res.status(500).end()
@@ -198,99 +240,18 @@ export default {
             admin: [],
             member: [],
             owner: [],
+            favs: favGroups,
           })
         }
       })
       .catch(err => {
+        next(err)
+
         logger.log({
+          message: `Database error ${err}`,
           level: 'error',
-          message: `Database error: ${err}`,
           traceId: res.get('x-traceid'),
         })
-
-        res.status(500).end()
-      })
-  },
-  getFavGroups(req: IAuthRequest, res: Response) {
-    UserModel.findById(req.user.id)
-      .then(async (user: IUser | null) => {
-        if (!user) {
-          logger.log({
-            message: `Someone tried to get information about not existing user account ${req.user.id} ${req.user.email}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-
-          return res.status(404).end()
-        }
-
-        if (Array.isArray(user.groupsFavs) && user.groupsFavs.length > 0) {
-          try {
-            const groups: { id: string }[] = await findGroupsByIds(
-              user.groupsFavs,
-              {
-                traceId: res.get('x-traceid'),
-                appKey: config.get<string>('appKey'),
-              }
-            )
-
-            res.status(200).json(groups)
-          } catch (err) {
-            res.status(500).end()
-
-            logger.log({
-              level: 'error',
-              message: `Can not fetch groups info: ${err}`,
-              traceId: res.get('x-traceid'),
-            })
-          }
-        } else {
-          res.status(200).json([])
-        }
-      })
-      .catch(err => {
-        logger.log({
-          level: 'error',
-          message: `Database error: ${err}`,
-          traceId: res.get('x-traceid'),
-        })
-
-        res.status(500).end()
-      })
-  },
-  async updateFavGroups(req: IAuthRequest, res: Response) {
-    if (!Array.isArray(req.body.groups)) {
-      return res.status(400).end()
-    }
-
-    const groups = req.body.groups.filter((g: unknown) => typeof g === 'string')
-
-    if (groups.length === 0) {
-      return res.status(400).end()
-    }
-
-    UserModel.findByIdAndUpdate(
-      {
-        _id: req.user.id,
-      },
-      {
-        groupsFavs: groups,
-      }
-    )
-      .then((user: IUser | null) => {
-        if (!user) {
-          return res.status(400).end()
-        }
-        res.status(200).end()
-      })
-      .catch(err => {
-        logger.log({
-          level: 'error',
-          message: `Database error: ${err}`,
-          traceId: res.get('x-traceid'),
-        })
-
-        res.status(500).end()
       })
   },
 }

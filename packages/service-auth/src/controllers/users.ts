@@ -1,5 +1,6 @@
 import {
   IUser,
+  IGroup,
   UserModel,
   RefreshTokenModel,
   IRefreshToken,
@@ -9,6 +10,8 @@ import { Request, Response, NextFunction } from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import logger from '@gtms/lib-logger'
+import { findGroupsByIds } from '@gtms/lib-api'
+import { arrayUnique, arrayToHash } from '@gtms/commons'
 import authenticate, { getJWTData } from '../helpers/authenticate'
 import config from 'config'
 import serializeCookie from '../helpers/cookies'
@@ -26,6 +29,7 @@ export default {
   },
   create(req: Request, res: Response, next: NextFunction): void {
     const { body } = req
+
     UserModel.create({
       name: body.name,
       surname: body.surname,
@@ -193,6 +197,80 @@ export default {
         })
       })
       .catch((err: Error) => {
+        next(err)
+      })
+  },
+  getUser(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params
+
+    UserModel.findById(id)
+      .then(async (user: IUser | null) => {
+        if (!user) {
+          return res.status(404).end()
+        }
+
+        let groupsMember = user.groupsMember
+        let groupsAdmin = user.groupsAdmin
+        let groupsOwner = user.groupsOwner
+        const groupsIds = arrayUnique([
+          ...groupsMember,
+          ...groupsAdmin,
+          ...groupsOwner,
+        ])
+
+        if (groupsIds.length > 0) {
+          try {
+            const groups = arrayToHash(
+              await findGroupsByIds(groupsIds, {
+                traceId: res.get('x-traceid'),
+                appKey: config.get<string>('appKey'),
+              }),
+              'id'
+            )
+
+            const mapGroupsFunc = (groupId: string) => {
+              if (groups[groupId]) {
+                return groups[groupId]
+              }
+
+              return null
+            }
+            const groupsFilterFunc = (group: IGroup | null) => group
+
+            groupsMember = groupsMember
+              .map(mapGroupsFunc)
+              .filter(groupsFilterFunc)
+            groupsAdmin = groupsAdmin
+              .map(mapGroupsFunc)
+              .filter(groupsFilterFunc)
+            groupsOwner = groupsOwner
+              .map(mapGroupsFunc)
+              .filter(groupsFilterFunc)
+          } catch (err) {
+            logger.log({
+              message: `Can not fetch group info ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+
+            return res.status(500).end()
+          }
+        }
+
+        res.status(200).json({
+          ...serializeUser(user),
+          groupsMember,
+          groupsAdmin,
+          groupsOwner,
+        })
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
         next(err)
       })
   },

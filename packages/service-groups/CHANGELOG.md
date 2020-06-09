@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.17.0...@gtms/service-groups@0.17.1) (2020-06-07)
+
+**Note:** Version bump only for package @gtms/service-groups
+
+
+
+
+
+# [0.17.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.16.1...@gtms/service-groups@0.17.0) (2020-06-07)
+
+
+### Features
+
+* group invitations ([#101](https://github.com/mariusz-kabala/gtms-backend/issues/101)) ([3ec892f](https://github.com/mariusz-kabala/gtms-backend/commit/3ec892f53f4090b97b47a2d213e81e40487f3be3))
+
+
+
+
+
+## [0.16.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.16.0...@gtms/service-groups@0.16.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* master: typo fix in admins controller path ([455207e](https://github.com/mariusz-kabala/gtms-backend/commit/455207e3edad693d4ee0d25c539b424fdd04fbbf))
+
+
+
+
+
+# [0.16.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.15.0...@gtms/service-groups@0.16.0) (2020-05-27)
+
+
+### Features
+
+* GEOT-267: add group admins endpoints ([#99](https://github.com/mariusz-kabala/gtms-backend/issues/99)) ([9348b2c](https://github.com/mariusz-kabala/gtms-backend/commit/9348b2c3244ce4f487e42a0029c23d309d30b8ac))
+
+
+
+
+
+# [0.15.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.14.2...@gtms/service-groups@0.15.0) (2020-05-26)
+
+
+### Features
+
+* GEOT-266: add favs endpoints ([#98](https://github.com/mariusz-kabala/gtms-backend/issues/98)) ([b296aff](https://github.com/mariusz-kabala/gtms-backend/commit/b296aff2f4b87ad9a590b14975424930fd22292f))
+
+
+
+
+
 ## [0.14.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.14.1...@gtms/service-groups@0.14.2) (2020-05-23)
 
 **Note:** Version bump only for package @gtms/service-groups
