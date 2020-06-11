@@ -11,6 +11,10 @@ resource "docker_container" "service-files" {
     value = "false"
   }
 
+  dns = [
+    "172.18.0.100"
+  ]
+
   env = [
     "QUEUE_HOST=${var.queue_host}",
     "VERSION=${var.tag}",

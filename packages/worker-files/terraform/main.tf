@@ -11,6 +11,10 @@ resource "docker_container" "worker-files" {
     value = "false"
   }
 
+  dns = [
+    "172.18.0.100"
+  ]
+
   env = [
     "QUEUE_HOST=${var.queue_host}",
     "VERSION=${var.tag}",
@@ -24,5 +28,7 @@ resource "docker_container" "worker-files" {
     "AWS_SECRET_ACCESS_KEY=${var.AWS_SECRET_ACCESS_KEY}",
     "AWS_REGION=${var.AWS_REGION}",
     "AWS_ENDPOINT=${var.AWS_ENDPOINT}",
+    "CONSUL_HOST=consul-client",
+    "CONSUL_PORT=8500"
   ]
 }

@@ -13,6 +13,8 @@ const {
   PORT,
   APP_KEY,
   INTERNAL_GATEKEEPER,
+  CONSUL_HOST,
+  CONSUL_PORT,
 } = process.env
 
 module.exports = {
@@ -32,4 +34,6 @@ module.exports = {
   },
   appKey: APP_KEY,
   internalGatekeeper: INTERNAL_GATEKEEPER,
+  consulHost: CONSUL_HOST,
+  consulPort: CONSUL_PORT,
 }

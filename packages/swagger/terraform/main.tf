@@ -31,8 +31,14 @@ resource "docker_container" "swagger" {
     value = "80"
   }
 
+  dns = [
+    "172.18.0.100"
+  ]
+
   env = [
     "VERSION=${var.tag}",
     "PORT=80",
+    "CONSUL_HOST=consul-client",
+    "CONSUL_PORT=8500"
   ]
 }

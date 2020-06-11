@@ -5,12 +5,11 @@ import Consul from 'consul'
 import uuid from 'uuid'
 import os from 'os'
 
-const port = config.get<number>('port') || 3000
+const port = parseInt(config.get<string>('port'), 10) || 3000
 const host = os.hostname()
 const consul = Consul({
-  host: 'localhost',
-  port: '8500',
-  secure: false,
+  host: config.get<string>('consulHost'),
+  port: config.get<string>('consulPort'),
 })
 const CONSUL_ID = `${config.get<string>(
   'serviceName'
@@ -18,7 +17,7 @@ const CONSUL_ID = `${config.get<string>(
 
 const consulDetails = {
   name: config.get<string>('serviceName'),
-  tags: ['service', 'auth'],
+  tags: ['service'],
   address: host,
   check: {
     ttl: '10s',
@@ -36,16 +35,22 @@ app.listen(port, () => {
       throw err
     }
 
+    logger.info('Auth service registered in consul')
+
     setInterval(() => {
       consul.agent.check.pass({ id: `service:${CONSUL_ID}` }, err => {
         if (err) {
-          throw err
+          logger.log({
+            level: 'error',
+            message: `Can not send heartbeat to consul ${err}`,
+          })
         }
       })
     }, 5 * 1000)
 
     process.on('SIGINT', () => {
       consul.agent.service.deregister({ id: CONSUL_ID }, () => {
+        logger.info('Auth service deregistered from consul')
         process.exit()
       })
     })

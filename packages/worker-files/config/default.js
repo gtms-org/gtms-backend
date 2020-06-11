@@ -14,6 +14,8 @@ const {
   AWS_SECRET_ACCESS_KEY,
   AWS_REGION,
   AWS_ENDPOINT,
+  CONSUL_HOST,
+  CONSUL_PORT,
 } = process.env
 
 module.exports = {
@@ -25,6 +27,8 @@ module.exports = {
   awsSecretAccessKey: AWS_SECRET_ACCESS_KEY,
   awsRegion: AWS_REGION,
   awsEndpoint: AWS_ENDPOINT,
+  consulHost: CONSUL_HOST,
+  consulPort: CONSUL_PORT,
   buckets: {
     groupLogo: BUCKET_GROUP_LOGO,
     avatar: BUCKET_AVATAR,
