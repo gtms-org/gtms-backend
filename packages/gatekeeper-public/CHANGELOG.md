@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.25.0...@gtms/gatekeeper-public@0.26.0) (2020-06-12)
+
+
+### Features
+
+* master: switch to consul in GK ([d988379](https://github.com/mariusz-kabala/gtms-backend/commit/d988379ac2b5c231002cfea1d7064f12ba02365d))
+
+
+
+
+
 # [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.24.1...@gtms/gatekeeper-public@0.25.0) (2020-06-12)
 
 
