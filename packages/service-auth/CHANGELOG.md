@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.16.0...@gtms/service-auth@0.17.0) (2020-06-12)
+
+
+### Features
+
+* add consul to the project ([#104](https://github.com/mariusz-kabala/gtms-backend/issues/104)) ([9be0f22](https://github.com/mariusz-kabala/gtms-backend/commit/9be0f22bae6edcf4a605b8bfe40f9ac9078b289d))
+
+
+
+
+
 # [0.16.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.15.1...@gtms/service-auth@0.16.0) (2020-06-07)
 
 
