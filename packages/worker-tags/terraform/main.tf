@@ -11,6 +11,10 @@ resource "docker_container" "worker-tags" {
     value = "false"
   }
 
+  dns = [
+    "172.18.0.100"
+  ]
+
   env = [
     "QUEUE_HOST=${var.queue_host}",
     "DB_HOST=mongo-${var.env}-db",
@@ -19,5 +23,7 @@ resource "docker_container" "worker-tags" {
     "APP_KEY=${var.APP_KEY}",
     "INTERNAL_GATEKEEPER=http://service-gatekeeper-internal-${var.env}/v1",
     "PORT=80",
+    "CONSUL_HOST=consul-client",
+    "CONSUL_PORT=8500"
   ]
 }

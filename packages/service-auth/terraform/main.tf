@@ -11,6 +11,10 @@ resource "docker_container" "service-auth" {
     value = "false"
   }
 
+  dns = [
+    "172.18.0.100"
+  ]
+
   env = [
     "JWT_SECRET=${var.jwt_secret}",
     "JWT_REFRESH_TOKEN_SECRET=${var.jwt_refresh_token_secret}",
@@ -22,6 +26,8 @@ resource "docker_container" "service-auth" {
     "VERSION=${var.tag}",
     "APP_KEY=${var.APP_KEY}",
     "PORT=80",
-    "INTERNAL_GATEKEEPER=http://service-gatekeeper-internal-${var.env}/v1"
+    "INTERNAL_GATEKEEPER=http://service-gatekeeper-internal-${var.env}/v1",
+    "CONSUL_HOST=consul-client",
+    "CONSUL_PORT=8500"
   ]
 }

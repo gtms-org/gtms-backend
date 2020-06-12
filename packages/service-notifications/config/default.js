@@ -9,6 +9,8 @@ const {
   ADDRESS_EMAIL,
   VERSION,
   PORT,
+  CONSUL_HOST,
+  CONSUL_PORT,
 } = process.env
 
 module.exports = {
@@ -20,4 +22,6 @@ module.exports = {
   serviceVersion: VERSION,
   addressEmail: ADDRESS_EMAIL,
   sendgridApiKey: SENDGRID_API_KEY,
+  consulHost: CONSUL_HOST,
+  consulPort: CONSUL_PORT,
 }

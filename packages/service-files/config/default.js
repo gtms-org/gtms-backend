@@ -10,6 +10,8 @@ const {
   S3_BUCKET,
   AWS_ENDPOINT,
   INTERNAL_GATEKEEPER,
+  CONSUL_HOST,
+  CONSUL_PORT,
 } = process.env
 
 module.exports = {
@@ -23,4 +25,6 @@ module.exports = {
   awsEndpoint: AWS_ENDPOINT,
   s3Bucket: S3_BUCKET,
   internalGatekeeper: INTERNAL_GATEKEEPER,
+  consulHost: CONSUL_HOST,
+  consulPort: CONSUL_PORT,
 }

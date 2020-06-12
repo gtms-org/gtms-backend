@@ -12,6 +12,8 @@ const {
   COMMENTS_SERVICE_URL,
   VERSION,
   PORT,
+  CONSUL_HOST,
+  CONSUL_PORT,
 } = process.env
 
 module.exports = {
@@ -27,4 +29,6 @@ module.exports = {
     comments: `https://${COMMENTS_SERVICE_URL}`,
   },
   port: PORT,
+  consulHost: CONSUL_HOST,
+  consulPort: CONSUL_PORT,
 }

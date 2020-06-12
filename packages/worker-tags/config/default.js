@@ -8,6 +8,8 @@ const {
   DB_HOST,
   APP_KEY,
   INTERNAL_GATEKEEPER,
+  CONSUL_HOST,
+  CONSUL_PORT,
 } = process.env
 
 module.exports = {
@@ -19,4 +21,6 @@ module.exports = {
   dbHost: DB_HOST,
   dbName: 'tags',
   appKey: APP_KEY,
+  consulHost: CONSUL_HOST,
+  consulPort: CONSUL_PORT,
 }

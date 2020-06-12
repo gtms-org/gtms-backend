@@ -9,6 +9,8 @@ const {
   APP_DOMAIN,
   INTERNAL_GATEKEEPER,
   APP_KEY,
+  CONSUL_HOST,
+  CONSUL_PORT,
 } = process.env
 
 module.exports = {
@@ -21,4 +23,6 @@ module.exports = {
   appDomain: APP_DOMAIN,
   internalGatekeeper: INTERNAL_GATEKEEPER,
   appKey: APP_KEY,
+  consulHost: CONSUL_HOST,
+  consulPort: CONSUL_PORT,
 }
