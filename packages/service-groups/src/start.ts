@@ -5,7 +5,7 @@ import Consul from 'consul'
 import uuid from 'uuid'
 import os from 'os'
 
-const port = config.get<number>('port') || 3000
+const port = parseInt(config.get<string>('port'), 10) || 3000
 const serviceName = config.get<string>('serviceName')
 
 const host = os.hostname()

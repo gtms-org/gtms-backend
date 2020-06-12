@@ -31,6 +31,10 @@ resource "docker_container" "gatekeeper-public" {
     value = "80"
   }
 
+  dns = [
+    "172.18.0.100"
+  ]
+
   env = [
     "RUN_ENV=${var.env}",
     "JWT_SECRET=${var.jwt_secret}",
@@ -41,6 +45,8 @@ resource "docker_container" "gatekeeper-public" {
     "FILES_SERVICE_URL=service-files-${var.env}",
     "POSTS_SERVICE_URL=service-posts-${var.env}",
     "COMMENTS_SERVICE_URL=service-comments-${var.env}",
-    "PORT=80"
+    "PORT=80",
+    "CONSUL_HOST=consul-client",
+    "CONSUL_PORT=8500"
   ]
 }
