@@ -23,6 +23,8 @@ resource "docker_container" "service-groups" {
     "VERSION=${var.tag}",
     "APP_KEY=${var.APP_KEY}",
     "PORT=80",
-    "INTERNAL_GATEKEEPER=http://service-gatekeeper-internal-${var.env}/v1"
+    "INTERNAL_GATEKEEPER=http://service-gatekeeper-internal-${var.env}/v1",
+    "CONSUL_HOST=consul-client",
+    "CONSUL_PORT=8500"
   ]
 }
