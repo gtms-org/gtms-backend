@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.3.1...@gtms/service-comments@0.3.2) (2020-06-12)
+
+
+### Bug Fixes
+
+* master: missing terraform vars for consul ([8619818](https://github.com/mariusz-kabala/gtms-backend/commit/8619818e683e9cd9f8cf2a8b619863b4cecb586d))
+
+
+
+
+
 ## [0.3.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.3.0...@gtms/service-comments@0.3.1) (2020-06-12)
 
 
