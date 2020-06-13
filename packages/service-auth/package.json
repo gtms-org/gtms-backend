@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-auth",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -14,11 +14,11 @@
     "@gtms/client-mongoose": "0.4.0",
     "@gtms/client-queue": "0.6.12",
     "@gtms/commons": "0.14.0",
+    "@gtms/lib-consul": "0.0.2",
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.16",
     "@gtms/lib-models": "0.9.0",
-    "@gtms/lib-testing": "*",
-    "@gtms/lib-consul": "*"
+    "@gtms/lib-testing": "*"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"
