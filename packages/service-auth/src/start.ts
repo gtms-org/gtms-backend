@@ -15,6 +15,11 @@ const CONSUL_ID = `${config.get<string>(
   'serviceName'
 )}-${host}-${port}-${uuid.v4()}`
 
+require('dns').lookup(require('os').hostname(), function (_: any, add: any) {
+  console.log('addr: '+add);
+})
+
+
 const consulDetails = {
   name: config.get<string>('serviceName'),
   tags: ['service'],
@@ -27,6 +32,7 @@ const consulDetails = {
   id: CONSUL_ID,
 }
 
+console.log(consulDetails)
 app.listen(port, () => {
   logger.info(`Auth service started on port ${port}`)
 

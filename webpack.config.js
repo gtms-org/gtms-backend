@@ -24,6 +24,7 @@ const localModules = [
   '@gtms/client-mongoose',
   '@gtms/client-queue',
   '@gtms/lib-http-server',
+  '@gtms/lib-consul',
 ]
 
 module.exports = {
