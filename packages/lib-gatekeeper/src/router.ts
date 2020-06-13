@@ -16,6 +16,7 @@ const proxyOptions: proxy.ProxyOptions = {
   proxyReqOptDecorator: traceIdDecorator,
   parseReqBody: false,
   reqAsBuffer: true,
+  memoizeHost: false,
   timeout: 3500,
 }
 
