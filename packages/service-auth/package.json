@@ -17,7 +17,8 @@
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.16",
     "@gtms/lib-models": "0.9.0",
-    "@gtms/lib-testing": "*"
+    "@gtms/lib-testing": "*",
+    "@gtms/lib-consul": "*"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"
