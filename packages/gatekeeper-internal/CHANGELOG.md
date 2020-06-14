@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-internal@0.5.8...@gtms/gatekeeper-internal@0.5.9) (2020-06-14)
+
+**Note:** Version bump only for package @gtms/gatekeeper-internal
+
+
+
+
+
 ## [0.5.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-internal@0.5.7...@gtms/gatekeeper-internal@0.5.8) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-internal

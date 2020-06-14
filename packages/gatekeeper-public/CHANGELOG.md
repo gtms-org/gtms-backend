@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.3...@gtms/gatekeeper-public@0.27.4) (2020-06-14)
+
+
+### Bug Fixes
+
+* debug consul params ([aa8dacf](https://github.com/mariusz-kabala/gtms-backend/commit/aa8dacf77b8a6593f3e16e891da6a4141f5d60f6))
+
+
+
+
+
 ## [0.27.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.2...@gtms/gatekeeper-public@0.27.3) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
