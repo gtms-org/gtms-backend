@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.4.0...@gtms/lib-gatekeeper@0.4.1) (2020-06-14)
+
+
+### Bug Fixes
+
+* master: use proper ip address from consul API ([b8f0af6](https://github.com/mariusz-kabala/gtms-backend/commit/b8f0af638bef840ce3bbb5a96097b717c1f4cebe))
+
+
+
+
+
 # [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.3.7...@gtms/lib-gatekeeper@0.4.0) (2020-06-14)
 
 
