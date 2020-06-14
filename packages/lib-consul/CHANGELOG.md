@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.1.1...@gtms/lib-consul@0.1.2) (2020-06-14)
+
+
+### Bug Fixes
+
+* debug consul params ([805c9c7](https://github.com/mariusz-kabala/gtms-backend/commit/805c9c72e1647524ce80c7b4a8f12b3153cc5490))
+
+
+
+
+
 ## [0.1.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.1.0...@gtms/lib-consul@0.1.1) (2020-06-14)
 
 
