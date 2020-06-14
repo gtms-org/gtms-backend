@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.1.4...@gtms/lib-consul@0.1.5) (2020-06-14)
+
+
+### Bug Fixes
+
+* master: try to find a proper ip address ([8127e1d](https://github.com/mariusz-kabala/gtms-backend/commit/8127e1da18380c6db26417fb7f349d3fe6be3de4))
+
+
+
+
+
 ## [0.1.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.1.3...@gtms/lib-consul@0.1.4) (2020-06-14)
 
 
