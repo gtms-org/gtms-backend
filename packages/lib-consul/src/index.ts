@@ -4,9 +4,23 @@ import logger from '@gtms/lib-logger'
 import { consul } from './consul'
 import os from 'os'
 
+function getIPAddress() {
+  const ifaces = os.networkInterfaces()
+
+  for (const ifname of Object.keys(ifaces)) {
+    for (const iface of ifaces[ifname]) {
+      if ('IPv4' !== iface.family || iface.internal !== false) {
+        continue
+      }
+
+      return iface.address
+    }
+  }
+}
+
 export const registerInConsul = (serviceName: string, port: number) =>
   new Promise((resolve, reject) => {
-    const ip = os.hostname()
+    const ip = getIPAddress()
     const CONSUL_ID = `${serviceName}-${ip}-${port}-${uuid.v4()}`
     const consulDetails = {
       name: config.get<string>('serviceName'),
