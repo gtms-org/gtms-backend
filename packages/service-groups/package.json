@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-groups",
-  "version": "0.18.6",
+  "version": "0.18.7",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "@gtms/client-queue": "0.6.13",
     "@gtms/commons": "0.15.0",
     "@gtms/lib-api": "0.3.3",
-    "@gtms/lib-consul": "0.1.7",
+    "@gtms/lib-consul": "0.1.8",
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.17",
     "@gtms/lib-models": "0.9.1",

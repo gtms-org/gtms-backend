@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.3.6...@gtms/service-comments@0.3.7) (2020-06-14)
+
+
+### Bug Fixes
+
+* master: cleanup consul setup" ([564070a](https://github.com/mariusz-kabala/gtms-backend/commit/564070ac934e28e19f7b95348144e26272d71911))
+
+
+
+
+
 ## [0.3.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.3.5...@gtms/service-comments@0.3.6) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/service-comments
