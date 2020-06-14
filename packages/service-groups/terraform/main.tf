@@ -11,10 +11,6 @@ resource "docker_container" "service-groups" {
     value = "false"
   }
 
-  dns = [
-    "172.18.0.100"
-  ]
-
   env = [
     "APP_DOMAIN=${var.app_domain}",
     "QUEUE_HOST=${var.queue_host}",

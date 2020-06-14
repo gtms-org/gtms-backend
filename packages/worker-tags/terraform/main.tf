@@ -11,10 +11,6 @@ resource "docker_container" "worker-tags" {
     value = "false"
   }
 
-  dns = [
-    "172.18.0.100"
-  ]
-
   env = [
     "QUEUE_HOST=${var.queue_host}",
     "DB_HOST=mongo-${var.env}-db",

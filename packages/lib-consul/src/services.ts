@@ -64,7 +64,6 @@ export class ConsulServices {
       })
 
       watch.on('change', data => {
-        console.log(data)
         logger.log({
           level: 'info',
           message: `Got a new data from consul about ${service} service, nodes: ${data.length}`,
