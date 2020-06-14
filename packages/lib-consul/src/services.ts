@@ -6,6 +6,7 @@ export interface INode {
   Node: string
   Address: string
   ServiceID: string
+  ServiceAddress: string
   ServiceName: string
   ServiceTags: string[]
   ServicePort: number

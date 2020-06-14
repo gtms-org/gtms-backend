@@ -27,7 +27,7 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
   const getServiceHost = (serviceName: string, path: string) => () => {
     const node = services.pickNode(serviceName)
 
-    return `http://${node.Address}:${node.ServicePort}${path}`
+    return `http://${node.ServiceAddress}:${node.ServicePort}${path}`
   }
 
   for (const service of config) {
