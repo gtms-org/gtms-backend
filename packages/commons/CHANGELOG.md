@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.14.0...@gtms/commons@0.15.0) (2020-06-14)
+
+
+### Features
+
+* master: use consul API directly ([334356c](https://github.com/mariusz-kabala/gtms-backend/commit/334356cd6389235c8b92cdfc916d80397d569bb1))
+
+
+
+
+
 # [0.14.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.13.0...@gtms/commons@0.14.0) (2020-06-07)
 
 

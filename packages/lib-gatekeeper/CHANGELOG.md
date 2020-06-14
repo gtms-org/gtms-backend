@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.3.7...@gtms/lib-gatekeeper@0.4.0) (2020-06-14)
+
+
+### Features
+
+* master: use consul API directly ([334356c](https://github.com/mariusz-kabala/gtms-backend/commit/334356cd6389235c8b92cdfc916d80397d569bb1))
+
+
+
+
+
 ## [0.3.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.3.6...@gtms/lib-gatekeeper@0.3.7) (2020-06-13)
 
 **Note:** Version bump only for package @gtms/lib-gatekeeper
