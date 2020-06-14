@@ -9,11 +9,11 @@ const handleIpRouteResults = (
 ) => {
   if (stdout && typeof stdout === 'string') {
     const output = stdout
-
+console.log(output)
     const match = output.match(
       /default via ((?:[0-9]{1,3}\.){3}[0-9]{1,3}) dev eth0/
     )
-
+console.log(match)
     let ip = undefined
     if (Array.isArray(match) && match.length >= 2) {
       ip = match[1]
