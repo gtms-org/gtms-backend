@@ -31,10 +31,6 @@ resource "docker_container" "gatekeeper-public" {
     value = "80"
   }
 
-  dns = [
-    "172.18.0.100"
-  ]
-
   env = [
     "RUN_ENV=${var.env}",
     "JWT_SECRET=${var.jwt_secret}",
