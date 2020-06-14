@@ -52,12 +52,15 @@ export const registerInConsul = (serviceName: string, port: number) =>
         })
       }, 5 * 1000)
 
-      process.on('SIGINT', () => {
+      const shutdown = () =>
         consul.agent.service.deregister({ id: CONSUL_ID }, () => {
           logger.info(`${serviceName} service deregistered from consul`)
           process.exit()
         })
-      })
+
+      process.on('SIGINT', shutdown)
+      process.on('SIGHUP', shutdown)
+      process.on('SIGTERM', shutdown)
 
       resolve()
     })
