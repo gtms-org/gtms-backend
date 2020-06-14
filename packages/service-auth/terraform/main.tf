@@ -1,5 +1,6 @@
 resource "docker_container" "service-auth" {
-  name  = "service-auth-${var.env}"
+  count = var.instances
+  name  = "service-auth-${var.env}-${count.index}"
   image = "docker-registry.kabala.tech/gtms/serviceauth:${var.tag}"
   restart = "always"
   networks_advanced {
