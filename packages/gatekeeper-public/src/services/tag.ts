@@ -1,9 +1,8 @@
 import { http } from '@gtms/commons'
-import config from 'config'
 
 export default {
   url: '/tags',
-  provider: config.get<string>('services.tags'),
+  provider: 'tags',
   name: 'Tags service',
   locations: [
     {

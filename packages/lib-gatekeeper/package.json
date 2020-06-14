@@ -8,6 +8,7 @@
   "dependencies": {
     "@gtms/commons": "0.14.0",
     "@gtms/lib-logger": "*",
+    "@gtms/lib-consul": "*",
     "express-http-proxy": "^1.6.0",
     "jsonwebtoken": "^8.5.1"
   },

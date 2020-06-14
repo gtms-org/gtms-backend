@@ -1,6 +1,7 @@
 import { Router, Request } from 'express'
 import { http } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
+import { ConsulServices } from '@gtms/lib-consul'
 import proxy from 'express-http-proxy'
 import uuid from 'uuid'
 import { IServiceConfig } from './types.d/config'
@@ -21,8 +22,20 @@ const proxyOptions: proxy.ProxyOptions = {
 }
 
 export function initRouter(router: Router, config: IServiceConfig[]) {
+  const servicesList: string[] = []
+  let services: ConsulServices
+  const getServiceHost = (serviceName: string, path: string) => () => {
+    const node = services.pickNode(serviceName)
+
+    return `http://${node.Address}:${node.ServicePort}${path}`
+  }
+
   for (const service of config) {
     const { url, provider, name, locations } = service
+
+    if (!servicesList.includes(provider)) {
+      servicesList.push(provider)
+    }
 
     const serviceRouter = Router()
 
@@ -42,7 +55,7 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
           serviceRouter.post(
             location.path,
             middlewares,
-            proxy(`${provider}${location.path}`, proxyOptions)
+            proxy(getServiceHost(provider, location.path), proxyOptions)
           )
           break
 
@@ -50,7 +63,7 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
           serviceRouter.get(
             location.path,
             middlewares,
-            proxy(`${provider}${location.path}`, proxyOptions)
+            proxy(getServiceHost(provider, location.path), proxyOptions)
           )
           break
 
@@ -58,7 +71,7 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
           serviceRouter.delete(
             location.path,
             middlewares,
-            proxy(`${provider}${location.path}`, proxyOptions)
+            proxy(getServiceHost(provider, location.path), proxyOptions)
           )
           break
 
@@ -66,7 +79,7 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
           serviceRouter.put(
             location.path,
             middlewares,
-            proxy(`${provider}${location.path}`, proxyOptions)
+            proxy(getServiceHost(provider, location.path), proxyOptions)
           )
           break
 
@@ -76,5 +89,9 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
     }
 
     router.use(url, serviceRouter)
+  }
+
+  if (servicesList.length > 0) {
+    services = new ConsulServices(servicesList)
   }
 }

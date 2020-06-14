@@ -1,9 +1,8 @@
 import { http } from '@gtms/commons'
-import config from 'config'
 
 export default {
   url: '/groups',
-  provider: config.get<string>('services.groups'),
+  provider: 'groups',
   name: 'Groups service',
   locations: [
     {

@@ -1,9 +1,8 @@
 import { http } from '@gtms/commons'
-import config from 'config'
 
 export default {
   url: '/auth',
-  provider: config.get<string>('services.auth'),
+  provider: 'auth',
   name: 'Auth service',
   locations: [
     {

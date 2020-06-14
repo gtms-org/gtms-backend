@@ -10,3 +10,7 @@ export function randomString(
 
   return result
 }
+
+export function randomInt(min: number, max: number) {
+  return min + Math.floor((max - min) * Math.random())
+}

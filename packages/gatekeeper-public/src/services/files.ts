@@ -1,9 +1,8 @@
 import { http } from '@gtms/commons'
-import config from 'config'
 
 export default {
   url: '/files',
-  provider: config.get<string>('services.files'),
+  provider: 'files',
   name: 'Files service',
   locations: [
     {

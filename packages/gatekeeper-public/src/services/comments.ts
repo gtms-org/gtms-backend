@@ -1,9 +1,8 @@
 import { http } from '@gtms/commons'
-import config from 'config'
 
 export default {
   url: '/comments',
-  provider: config.get<string>('services.comments'),
+  provider: 'comments',
   name: 'Comments service',
   locations: [
     {
