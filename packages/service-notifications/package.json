@@ -16,6 +16,7 @@
     "@gtms/lib-logger": "0.3.0",
     "@gtms/lib-middlewares": "0.4.17",
     "@gtms/lib-testing": "0.1.0",
+    "@gtms/lib-consul": "*",
     "@sendgrid/mail": "^6.5.5"
   },
   "author": "Mariusz Kabała",

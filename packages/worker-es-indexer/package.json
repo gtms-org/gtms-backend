@@ -14,7 +14,8 @@
     "@gtms/client-queue": "0.6.13",
     "@gtms/commons": "0.15.0",
     "@gtms/lib-http-server": "0.1.0",
-    "@gtms/lib-logger": "0.3.0"
+    "@gtms/lib-logger": "0.3.0",
+    "@gtms/lib-consul": "*"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"
