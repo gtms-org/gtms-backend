@@ -1,6 +1,6 @@
 import { consul } from './consul'
 import logger from '@gtms/lib-logger'
-import { randomInt, RoundRobinEngine } from '@gtms/commons'
+import { RoundRobinEngine } from '@gtms/commons'
 
 export interface INode {
   Node: string
@@ -12,14 +12,10 @@ export interface INode {
   ServicePort: number
 }
 
-const REFRESH_INTERVAL = 10000 // 10s
-
 export class ConsulServices {
   private services: {
     [service: string]: RoundRobinEngine | null
   }
-
-  private refreshInterval: NodeJS.Timeout
 
   constructor(private servicesList: string[]) {
     this.services = servicesList.reduce(
@@ -31,11 +27,7 @@ export class ConsulServices {
       {}
     )
 
-    this.fetchAllNodes()
-
-    setTimeout(() => {
-      this.refreshInterval = setInterval(this.fetchAllNodes, REFRESH_INTERVAL)
-    }, randomInt(0, 5000))
+    this.initWatchers()
   }
 
   private fetchNodes = (service: string) => {
@@ -63,8 +55,31 @@ export class ConsulServices {
     return nodeOne.ServiceID === nodeTwo.ServiceID
   }
 
-  private fetchAllNodes = () => {
-    Promise.all(this.servicesList.map(service => this.fetchNodes(service)))
+  private initWatchers = () => {
+    this.servicesList.forEach(service => {
+      const watch = consul.watch({
+        method: consul.catalog.service.nodes,
+        options: { service } as any, // TS typings are wrong
+        backoffFactor: 1000,
+      })
+
+      watch.on('change', data => {
+        console.log(data)
+        logger.log({
+          level: 'info',
+          message: `Got a new data from consul about ${service} service, nodes: ${data.length}`,
+        })
+        this.services[service] = new RoundRobinEngine(data)
+      })
+
+      watch.on('error', () => null)
+    })
+  }
+
+  public fetchAllNodes = () => {
+    return Promise.all(
+      this.servicesList.map(service => this.fetchNodes(service))
+    )
       .then(nodes => {
         this.servicesList.forEach((service, index) => {
           if (this.services[service] === null) {
