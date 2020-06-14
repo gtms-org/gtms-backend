@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-groups",
-  "version": "0.18.3",
+  "version": "0.18.4",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -14,11 +14,11 @@
     "@gtms/client-queue": "0.6.13",
     "@gtms/commons": "0.15.0",
     "@gtms/lib-api": "0.3.3",
+    "@gtms/lib-consul": "*",
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.17",
     "@gtms/lib-models": "0.9.1",
     "@gtms/lib-testing": "*",
-    "@gtms/lib-consul": "*",
     "@sindresorhus/slugify": "^0.11.0"
   },
   "author": "Mariusz Kabała",
