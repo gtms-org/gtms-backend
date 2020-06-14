@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.1.6...@gtms/lib-consul@0.1.7) (2020-06-14)
+
+
+### Bug Fixes
+
+* handle all SIGKILLs ([1705809](https://github.com/mariusz-kabala/gtms-backend/commit/17058090173b88749e06d24972a62e30e2f73b9b))
+
+
+
+
+
 ## [0.1.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.1.5...@gtms/lib-consul@0.1.6) (2020-06-14)
 
 

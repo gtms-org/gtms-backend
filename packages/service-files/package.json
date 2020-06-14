@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-files",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "dependencies": {
     "@gtms/client-queue": "0.6.13",
     "@gtms/commons": "0.15.0",
-    "@gtms/lib-consul": "0.1.6",
+    "@gtms/lib-consul": "0.1.7",
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.17",
     "@gtms/lib-testing": "*",
