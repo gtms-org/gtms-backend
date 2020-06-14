@@ -28,6 +28,8 @@ export const registerInConsul = (serviceName: string, port: number) =>
         id: CONSUL_ID,
       }
 
+      console.log(consulDetails)
+
       consul.agent.service.register(consulDetails, err => {
         if (err) {
           return reject(err)
