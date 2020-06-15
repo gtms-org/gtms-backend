@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.28.0...@gtms/gatekeeper-public@0.28.1) (2020-06-15)
+
+
+### Bug Fixes
+
+* master: typo in reset-password url ([0f950c7](https://github.com/mariusz-kabala/gtms-backend/commit/0f950c7f3bc9b91694d528e71fafaef1817cf899))
+
+
+
+
+
 # [0.28.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.10...@gtms/gatekeeper-public@0.28.0) (2020-06-15)
 
 
