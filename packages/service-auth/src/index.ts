@@ -56,7 +56,7 @@ router.get('/activate-account/:code', activationsController.activateAccount)
 
 router.post('/remind-password', activationsController.remindPassword)
 
-router.post('/reset-passord', activationsController.resetPassword)
+router.post('/reset-password', activationsController.resetPassword)
 
 router.post('/check-code', activationsController.checkCode)
 
