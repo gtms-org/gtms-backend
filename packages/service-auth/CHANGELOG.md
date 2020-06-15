@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.19.0...@gtms/service-auth@0.19.1) (2020-06-15)
+
+
+### Bug Fixes
+
+* master: typo in reset password url ([c9ba54a](https://github.com/mariusz-kabala/gtms-backend/commit/c9ba54acf465b794a883d360dec1a0e5c9edbd83))
+
+
+
+
+
 # [0.19.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.18.2...@gtms/service-auth@0.19.0) (2020-06-15)
 
 
