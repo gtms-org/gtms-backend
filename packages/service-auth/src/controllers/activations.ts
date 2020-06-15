@@ -6,6 +6,7 @@ import {
   IUser,
   FacebookProviderModel,
   RefreshTokenModel,
+  serializeUser,
 } from '@gtms/lib-models'
 import logger from '@gtms/lib-logger'
 import sendRemindPassEmail from '../helpers/sendRemindPassEmail'
@@ -15,8 +16,12 @@ import {
   IDeleteAccountQueueMsg,
   validateEmailAddress,
   validatePassword,
+  Queues,
+  IESUserCreateMsg,
+  ESIndexUpdateType,
+  ESIndexUpdateRecord,
 } from '@gtms/commons'
-import { publishToDeleteChannel } from '@gtms/client-queue'
+import { publishToDeleteChannel, publishOnChannel } from '@gtms/client-queue'
 
 export default {
   activateAccount(req: Request, res: Response, next: NextFunction): void {
@@ -47,6 +52,29 @@ export default {
               traceId: res.get('x-traceid'),
             })
             res.status(200).end()
+
+            publishOnChannel<IESUserCreateMsg>(Queues.updateESIndex, {
+              type: ESIndexUpdateType.create,
+              record: ESIndexUpdateRecord.user,
+              data: {
+                ...serializeUser(activationCode.owner as IUser),
+                traceId: res.get('x-traceid'),
+              },
+            })
+              .then(() => {
+                logger.log({
+                  level: 'info',
+                  message: `Info about activated user published to the queue ${Queues.updateESIndex}`,
+                  traceId: res.get('x-traceid'),
+                })
+              })
+              .catch(err => {
+                logger.log({
+                  message: `Can not publish message to the QUEUE: ${err}`,
+                  level: 'error',
+                  traceId: res.get('x-traceid'),
+                })
+              })
           })
           .catch(err => {
             logger.log({

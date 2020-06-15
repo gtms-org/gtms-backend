@@ -12,10 +12,12 @@ import {
   RecordType,
   Queues,
   getPaginationParams,
+  IESUserUpdateMsg,
+  ESIndexUpdateType,
+  ESIndexUpdateRecord,
 } from '@gtms/commons'
 import { publishOnChannel } from '@gtms/client-queue'
 import { findGroupsByIds } from '@gtms/lib-api'
-import config from 'config'
 
 export default {
   updateAccount(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -65,7 +67,32 @@ export default {
             traceId: res.get('x-traceid'),
           })
 
-          res.status(200).json(serializeUser(user))
+          const serialized = serializeUser(user)
+
+          res.status(200).json(serialized)
+
+          publishOnChannel<IESUserUpdateMsg>(Queues.updateESIndex, {
+            type: ESIndexUpdateType.update,
+            record: ESIndexUpdateRecord.user,
+            data: {
+              ...serialized,
+              traceId: res.get('x-traceid'),
+            },
+          })
+            .then(() => {
+              logger.log({
+                level: 'info',
+                message: `Info about updated user published to the queue ${Queues.updateESIndex}`,
+                traceId: res.get('x-traceid'),
+              })
+            })
+            .catch(err => {
+              logger.log({
+                message: `Can not publish message to the QUEUE: ${err}`,
+                level: 'error',
+                traceId: res.get('x-traceid'),
+              })
+            })
         } catch (err) {
           if (err.name === 'ValidationError') {
             logger.log({

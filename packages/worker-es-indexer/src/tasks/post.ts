@@ -1,15 +1,14 @@
-import { IESUserMsg, ESIndexUpdateType, Indicies } from '@gtms/commons'
+import { IESPostMsg, ESIndexUpdateType, Indicies } from '@gtms/commons'
 import { client } from '../esClient'
 import logger from '@gtms/lib-logger'
 import { RequestParams } from '@elastic/elasticsearch'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const processUserMsg = (msg: IESUserMsg): Promise<void> =>
+export const processPostMsg = (msg: IESPostMsg): Promise<void> =>
   new Promise((resolve, reject) => {
     switch (msg.type) {
       case ESIndexUpdateType.create:
         const dataToIndex: RequestParams.Index = {
-          index: Indicies.USERS_INDEX,
+          index: Indicies.POSTS_INDEX,
           body: msg.data,
         }
         client
@@ -17,7 +16,7 @@ export const processUserMsg = (msg: IESUserMsg): Promise<void> =>
           .then(response => {
             logger.log({
               level: 'info',
-              message: `Elasticserach indexed ${dataToIndex}: ${response}`,
+              message: `Elasticserach indexed a post: ${response}`,
               traceId: msg.data.traceId,
             })
 
@@ -36,7 +35,7 @@ export const processUserMsg = (msg: IESUserMsg): Promise<void> =>
 
       case ESIndexUpdateType.update:
         const dataToUpdate: RequestParams.UpdateByQuery = {
-          index: Indicies.USERS_INDEX,
+          index: Indicies.POSTS_INDEX,
           refresh: true,
           body: {
             script: {
@@ -57,7 +56,7 @@ export const processUserMsg = (msg: IESUserMsg): Promise<void> =>
           .then(response => {
             logger.log({
               level: 'info',
-              message: `Elasticserach updated user ${dataToUpdate}: ${response}`,
+              message: `Elasticserach updated post: ${response}`,
               traceid: msg.data.traceId,
             })
 

@@ -27,6 +27,7 @@ export enum ESIndexUpdateRecord {
   user = 'user',
   group = 'group',
   post = 'post',
+  comment = 'comment',
 }
 
 export enum http {
@@ -69,6 +70,9 @@ export enum GroupUpdateTypes {
 
 export enum Indicies {
   GROUPS_INDEX = 'groups',
+  USERS_INDEX = 'users',
+  POSTS_INDEX = 'posts',
+  COMMENTS_INDEX = 'comments',
 }
 
 export enum RecordType {

@@ -3,14 +3,18 @@ import logger from '@gtms/lib-logger'
 import {
   IESGroupMsg,
   IESUserMsg,
+  IESPostMsg,
+  IESCommentMsg,
   ESIndexUpdateRecord,
   Queues,
 } from '@gtms/commons'
 import { processUserMsg } from './user'
 import { processGroupMsg } from './group'
+import { processPostMsg } from './post'
+import { processCommentMsg } from './comment'
 
 export function processMsg(msg: amqp.Message): Promise<void> {
-  let jsonMsg: IESGroupMsg | IESUserMsg
+  let jsonMsg: IESGroupMsg | IESUserMsg | IESPostMsg | IESCommentMsg
 
   try {
     jsonMsg = JSON.parse(msg.content.toString())
@@ -36,5 +40,21 @@ export function processMsg(msg: amqp.Message): Promise<void> {
 
     case ESIndexUpdateRecord.user:
       return processUserMsg(jsonMsg)
+
+    case ESIndexUpdateRecord.post:
+      return processPostMsg(jsonMsg)
+
+    case ESIndexUpdateRecord.comment:
+      return processCommentMsg(jsonMsg)
+
+    default:
+      logger.log({
+        level: 'error',
+        message: `Not supported message: ${msg.content.toString()} in ${
+          Queues.updateESIndex
+        }`,
+        traceid: (jsonMsg as any).data?.traceId,
+      })
+      break
   }
 }

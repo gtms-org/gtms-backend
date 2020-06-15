@@ -8,6 +8,8 @@ import {
   GroupUpdateTypes,
   IAuthRequest,
   UserUpdateTypes,
+  ESIndexUpdateType,
+  ESIndexUpdateRecord,
 } from '@gtms/commons'
 
 export default {
@@ -90,6 +92,17 @@ export default {
               },
             },
           },
+          {
+            queue: Queues.updateESIndex,
+            message: {
+              type: ESIndexUpdateType.create,
+              record: ESIndexUpdateRecord.post,
+              data: {
+                ...serializePost(post),
+                traceId: res.get('x-traceid'),
+              },
+            },
+          },
         ]
 
         if (Array.isArray(post.tags) && post.tags.length > 0) {
@@ -158,7 +171,19 @@ export default {
             return post
           })
           .then((post: IPost) => {
-            const queueMessages: { queue: string; message: any }[] = []
+            const queueMessages: { queue: string; message: any }[] = [
+              {
+                queue: Queues.updateESIndex,
+                message: {
+                  type: ESIndexUpdateType.update,
+                  record: ESIndexUpdateRecord.post,
+                  data: {
+                    ...serializePost(post),
+                    traceId: res.get('x-traceid'),
+                  },
+                },
+              },
+            ]
 
             if (Array.isArray(post.tags) && post.tags.length > 0) {
               queueMessages.push({

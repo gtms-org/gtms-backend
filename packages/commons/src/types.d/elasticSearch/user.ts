@@ -8,7 +8,7 @@ export interface IESUserCreateMsg {
 }
 
 export interface IESUserUpdateMsg {
-  type: ESIndexUpdateType.create
+  type: ESIndexUpdateType.update
   record: ESIndexUpdateRecord.user
   data: ISerializedUser & { traceId: string }
 }
