@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.18.1...@gtms/service-auth@0.18.2) (2020-06-15)
+
+
+### Bug Fixes
+
+* master: use proper url in reset pass email ([a08cc0b](https://github.com/mariusz-kabala/gtms-backend/commit/a08cc0b65a1242887e0bca02c9b37ab35c8ed1e8))
+
+
+
+
+
 ## [0.18.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.18.0...@gtms/service-auth@0.18.1) (2020-06-15)
 
 **Note:** Version bump only for package @gtms/service-auth
