@@ -51,7 +51,7 @@ export default {
       restricted: false,
     },
     {
-      path: '/reset-passord',
+      path: '/reset-password',
       method: http.POST,
       restricted: false,
     },
