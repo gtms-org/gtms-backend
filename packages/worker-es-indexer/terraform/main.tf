@@ -13,6 +13,8 @@ resource "docker_container" "worker-es-indexer" {
 
   env = [
     "QUEUE_HOST=${var.queue_host}",
+    "ES_HOST=192.168.0.33",
+    "ES_PORT=9200",
     "VERSION=${var.tag}",
     "PORT=80",
     "CONSUL_HOST=consul-client",
