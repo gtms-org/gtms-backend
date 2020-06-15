@@ -9,9 +9,9 @@ export default function(user: IUser, traceId: string): void {
     owner: user,
   })
     .then((activationCode: IActivationCode) => {
-      const activationURL = `${config.get<string>('appDomain')}/change-pass/${
-        activationCode.code
-      }`
+      const activationURL = `${config.get<string>(
+        'appDomain'
+      )}/reset-password/${activationCode.code}`
 
       publishToNotificationsChannel({
         type: NotificationQueueMessageType.email,
