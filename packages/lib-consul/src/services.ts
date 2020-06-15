@@ -73,12 +73,12 @@ export class ConsulServices {
       return Promise.resolve()
     }
 
-    return this.fetchNodes(service).then(() => {
+    return this.fetchNodes(service, true).then(() => {
       this.initWatch(service)
     })
   }
 
-  private fetchNodes = (service: string) => {
+  private fetchNodes = (service: string, update = false) => {
     return new Promise((resolve, reject) => {
       consul.catalog.service.nodes(
         {
@@ -92,6 +92,10 @@ export class ConsulServices {
             })
 
             return reject(err)
+          }
+
+          if (update) {
+            this.services[service] = new RoundRobinEngine(result as INode[])
           }
           resolve(result)
         }
