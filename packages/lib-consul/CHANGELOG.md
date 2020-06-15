@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.2.0...@gtms/lib-consul@0.2.1) (2020-06-15)
+
+
+### Bug Fixes
+
+* master: fetch nodes from consul fixed ([305ba35](https://github.com/mariusz-kabala/gtms-backend/commit/305ba3596c750e8a8d3b77a70a6f515fb1a39932))
+
+
+
+
+
 # [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.1.8...@gtms/lib-consul@0.2.0) (2020-06-15)
 
 

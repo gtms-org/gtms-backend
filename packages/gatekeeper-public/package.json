@@ -1,6 +1,6 @@
 {
   "name": "@gtms/gatekeeper-public",
-  "version": "0.27.9",
+  "version": "0.27.10",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@gtms/commons": "0.15.0",
-    "@gtms/lib-gatekeeper": "0.4.9",
+    "@gtms/lib-gatekeeper": "0.4.10",
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.17",
     "@gtms/lib-testing": "*"

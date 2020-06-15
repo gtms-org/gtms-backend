@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-notifications",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "@gtms/client-mongoose": "0.4.0",
     "@gtms/client-queue": "0.6.13",
     "@gtms/commons": "0.15.0",
-    "@gtms/lib-consul": "0.2.0",
+    "@gtms/lib-consul": "0.2.1",
     "@gtms/lib-logger": "0.3.0",
     "@gtms/lib-middlewares": "0.4.17",
     "@gtms/lib-testing": "0.1.0",
