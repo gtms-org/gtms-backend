@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-es-indexer@0.4.8...@gtms/worker-es-indexer@0.4.9) (2020-06-15)
+
+
+### Bug Fixes
+
+* master: pass proper env vars to es indexer ([c0e3fff](https://github.com/mariusz-kabala/gtms-backend/commit/c0e3fffb6a7bf494f44d3ea4cdbeb4bf6ef851d3))
+
+
+
+
+
 ## [0.4.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-es-indexer@0.4.7...@gtms/worker-es-indexer@0.4.8) (2020-06-15)
 
 **Note:** Version bump only for package @gtms/worker-es-indexer
