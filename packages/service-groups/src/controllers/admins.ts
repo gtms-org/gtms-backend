@@ -24,7 +24,6 @@ export default {
 
         findUsersByIds(admins, {
           traceId: res.get('x-traceid'),
-          appKey: config.get<string>('appKey'),
         })
           .then(users => {
             res

@@ -6,7 +6,8 @@
   "author": "Mariusz Kabała",
   "license": "ISC",
   "dependencies": {
-    "@gtms/commons": "0.15.0"
+    "@gtms/commons": "0.15.0",
+    "@gtms/lib-consul": "*"
   },
   "scripts": {
     "test": "exit 0"

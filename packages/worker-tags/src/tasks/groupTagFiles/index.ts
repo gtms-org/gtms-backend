@@ -71,7 +71,6 @@ const processNewUpload = (payload: IFileQueueMsg) => {
 
     hasGroupAdminRights(owner, `${groupTag.group}`, {
       traceId,
-      appKey: config.get<string>('appKey'),
     })
       .then(async () => {
         groupTag.logo = {

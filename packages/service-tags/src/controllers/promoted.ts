@@ -56,7 +56,6 @@ export default {
       TagModel.findOne({ name: body.tag }),
       hasGroupAdminRights(req.user.id, body.group, {
         traceId: res.get('x-traceid'),
-        appKey: config.get<string>('appKey'),
       }),
     ])
       .then(async results => {
@@ -160,7 +159,6 @@ export default {
 
     hasGroupAdminRights(req.user.id, groupTag.group, {
       traceId: res.get('x-traceid'),
-      appKey: config.get<string>('appKey'),
     })
       .then(async () => {
         groupTag.description = body.description
@@ -219,7 +217,6 @@ export default {
 
     hasGroupAdminRights(req.user.id, groupTag.group, {
       traceId: res.get('x-traceid'),
-      appKey: config.get<string>('appKey'),
     })
       .then(async () => {
         try {
@@ -283,7 +280,6 @@ export default {
 
     hasGroupAdminRights(req.user.id, id, {
       traceId: res.get('x-traceid'),
-      appKey: config.get<string>('appKey'),
     })
       .then(async () => {
         Promise.all([

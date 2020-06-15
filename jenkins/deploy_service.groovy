@@ -439,32 +439,6 @@ pipeline {
             }
         }
 
-        stage ('Deploy internal gatekeeper') {
-            when {
-                environment name: 'SERVICE_NAME', value: 'gatekeeper-internal'
-            }
-             steps {
-                dir("packages/${env.SERVICE_NAME}/terraform") {
-                    script {
-                        docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
-                            sh "terraform init"
-                            sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
-                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"AUTH_SERVICE_KEY=${env.SERVICE_AUTH_APP_KEY}\" -var=\"GROUPS_SERVICE_KEY=${env.SERVICE_GROUPS_APP_KEY}\" -var=\"TAGS_SERVICE_KEY=${env.SERVICE_TAGS_APP_KEY}\" -var=\"TAGS_WORKER_KEY=${env.WORKER_TAGS_APP_KEY}\" -var=\"POSTS_SERVICE_KEY=${env.SERVICE_POSTS_APP_KEY}\" -var=\"COMMENTS_SERVICE_KEY=${env.SERVICE_COMMENTS_APP_KEY}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
-                            sh "terraform apply -auto-approve deploy.plan"
-                        }
-                    }
-                }
-            }
-            post {
-                success {
-                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sunny: *${env.SERVICE_NAME}* version: *${version}* Build succeeded - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
-                }
-                unsuccessful {
-                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sob: *${env.SERVICE_NAME}* version: *${version}* Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
-                }
-            }
-        }
-
         stage ('Deploy swagger') {
             when {
                 environment name: 'SERVICE_NAME', value: 'swagger'

@@ -6,24 +6,25 @@ export const findPostsByIds = (
   ids: string[],
   options: {
     traceId: string
-    appKey: string
   }
 ): Promise<ISerializedPost[]> => {
-  const { traceId, appKey } = options
-  return fetch(makeUrl('posts/find-by-ids'), {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'x-traceid': traceId,
-      'x-access-key': appKey,
-    },
-    method: 'POST',
-    body: JSON.stringify({ ids }),
-  }).then(async res => {
-    if (res.status === 200) {
-      return res.json()
-    }
+  const { traceId } = options
 
-    throw await res.text()
+  return makeUrl('posts', '/find-by-ids').then(url => {
+    return fetch(url, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'x-traceid': traceId,
+      },
+      method: 'POST',
+      body: JSON.stringify({ ids }),
+    }).then(async res => {
+      if (res.status === 200) {
+        return res.json()
+      }
+
+      throw await res.text()
+    })
   })
 }

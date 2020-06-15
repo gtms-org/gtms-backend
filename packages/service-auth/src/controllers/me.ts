@@ -206,7 +206,6 @@ export default {
           try {
             const groups: { id: string }[] = await findGroupsByIds(groupIds, {
               traceId: res.get('x-traceid'),
-              appKey: config.get<string>('appKey'),
             })
 
             const findGroup = (id: string) =>

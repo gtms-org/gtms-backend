@@ -223,7 +223,6 @@ export default {
             const groups = arrayToHash(
               await findGroupsByIds(groupsIds, {
                 traceId: res.get('x-traceid'),
-                appKey: config.get<string>('appKey'),
               }),
               'id'
             )
