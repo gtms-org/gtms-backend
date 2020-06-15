@@ -61,7 +61,6 @@ export default {
               docs.map(value => value.user),
               {
                 traceId: res.get('x-traceid'),
-                appKey: config.get<string>('appKey'),
               }
             )
               .then(users =>

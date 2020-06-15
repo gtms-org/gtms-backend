@@ -52,7 +52,6 @@ function getFavGroups(
           result.docs.map(fav => fav.group),
           {
             traceId: res.get('x-traceid'),
-            appKey: config.get<string>('appKey'),
           }
         )
 
@@ -152,7 +151,6 @@ function getFavPosts(
           result.docs.map(fav => fav.post),
           {
             traceId: res.get('x-traceid'),
-            appKey: config.get<string>('appKey'),
           }
         )
 

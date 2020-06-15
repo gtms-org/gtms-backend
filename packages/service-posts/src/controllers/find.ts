@@ -45,7 +45,6 @@ export default {
 
         findUsersByIds(getUniqueValues(result.docs, 'owner'), {
           traceId: res.get('x-traceid'),
-          appKey: config.get<string>('appKey'),
         })
           .then(users => {
             const usersHash = arrayToHash(users, 'id')
@@ -152,7 +151,6 @@ export default {
 
         findGroupsByIds(getUniqueValues(posts, 'group'), {
           traceId: res.get('x-traceid'),
-          appKey: config.get<string>('appKey'),
         })
           .then(groups => {
             const groupsHash = arrayToHash(groups, 'id')

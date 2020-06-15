@@ -74,7 +74,6 @@ async function getGroupInvitations(
         invitations.map(invitation => invitation.user),
         {
           traceId: res.get('x-traceid'),
-          appKey: config.get<string>('appKey'),
         }
       )
         .then(users => {
