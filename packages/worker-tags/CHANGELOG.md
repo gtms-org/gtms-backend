@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.3.6...@gtms/worker-tags@0.4.0) (2020-06-15)
+
+
+### Features
+
+* GEOT-273: remove internal GK ([#106](https://github.com/mariusz-kabala/gtms-backend/issues/106)) ([5c14787](https://github.com/mariusz-kabala/gtms-backend/commit/5c14787a2e6bcf98ffef77bbc4315d14c577b082))
+
+
+
+
+
 ## [0.3.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.3.5...@gtms/worker-tags@0.3.6) (2020-06-14)
 
 

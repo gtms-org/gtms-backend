@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-files",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "dependencies": {
     "@gtms/client-queue": "0.6.13",
     "@gtms/commons": "0.15.0",
-    "@gtms/lib-consul": "0.1.8",
+    "@gtms/lib-consul": "0.2.0",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
     "sharp": "^0.25.2"

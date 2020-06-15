@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.17.12...@gtms/service-auth@0.18.0) (2020-06-15)
+
+
+### Features
+
+* GEOT-273: remove internal GK ([#106](https://github.com/mariusz-kabala/gtms-backend/issues/106)) ([5c14787](https://github.com/mariusz-kabala/gtms-backend/commit/5c14787a2e6bcf98ffef77bbc4315d14c577b082))
+
+
+
+
+
 ## [0.17.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.17.11...@gtms/service-auth@0.17.12) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/service-auth
