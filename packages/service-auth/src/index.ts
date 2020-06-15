@@ -58,6 +58,8 @@ router.post('/remind-password', activationsController.remindPassword)
 
 router.post('/reset-passord', activationsController.resetPassword)
 
+router.post('/check-code', activationsController.checkCode)
+
 router.get('/favs/groups/user/:id', favController.getUserFavGroups)
 router.get('/favs/users/user/:id', favController.getUserFavUsers)
 router.get('/favs/posts/user/:id', favController.getUserFavPosts)

@@ -56,6 +56,11 @@ export default {
       restricted: false,
     },
     {
+      path: '/check-code',
+      method: http.POST,
+      restricted: false,
+    },
+    {
       path: '/delete-account',
       method: http.DELETE,
       restricted: true,

@@ -226,9 +226,12 @@ export default {
     const { code } = body
 
     if (!code || code === '') {
-      res.status(400).json({
-        code: 'Code is invalid',
-      })
+      res
+        .status(400)
+        .json({
+          code: 'Code is invalid',
+        })
+        .end()
       return
     }
 
@@ -351,6 +354,37 @@ export default {
         logger.log({
           level: 'error',
           message: `Error during account deletion ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      })
+  },
+  checkCode(req: Request, res: Response, next: NextFunction) {
+    const { code } = req.body
+
+    if (!code || code === '') {
+      res
+        .status(400)
+        .json({
+          code: 'Code is invalid',
+        })
+        .end()
+      return
+    }
+
+    ActivationCodeModel.findOne({ code })
+      .then((code: IActivationCode | null) => {
+        if (!code) {
+          return res.status(404).end()
+        }
+
+        res.status(200).end()
+      })
+      .catch(err => {
+        logger.log({
+          level: 'error',
+          message: `Database error: ${err}`,
           traceId: res.get('x-traceid'),
         })
 
