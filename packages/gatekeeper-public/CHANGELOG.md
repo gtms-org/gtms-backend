@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.10...@gtms/gatekeeper-public@0.28.0) (2020-06-15)
+
+
+### Features
+
+* GEOT-274: add check code endpoint ([#107](https://github.com/mariusz-kabala/gtms-backend/issues/107)) ([7a7019f](https://github.com/mariusz-kabala/gtms-backend/commit/7a7019fc18e064e655385b28ca42db66a8b53aff))
+
+
+
+
+
 ## [0.27.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.9...@gtms/gatekeeper-public@0.27.10) (2020-06-15)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public

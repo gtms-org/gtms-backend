@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.18.2...@gtms/service-auth@0.19.0) (2020-06-15)
+
+
+### Features
+
+* GEOT-274: add check code endpoint ([#107](https://github.com/mariusz-kabala/gtms-backend/issues/107)) ([7a7019f](https://github.com/mariusz-kabala/gtms-backend/commit/7a7019fc18e064e655385b28ca42db66a8b53aff))
+
+
+
+
+
 ## [0.18.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.18.1...@gtms/service-auth@0.18.2) (2020-06-15)
 
 
