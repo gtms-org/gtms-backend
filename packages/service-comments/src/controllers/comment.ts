@@ -2,8 +2,13 @@ import { Response, NextFunction } from 'express'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { CommentModel, IComment, serializeComment } from '@gtms/lib-models'
-import { publishMultiple, publishOnChannel } from '@gtms/client-queue'
-import { Queues, RecordType, ITagsUpdateMsg } from '@gtms/commons'
+import { publishMultiple } from '@gtms/client-queue'
+import {
+  Queues,
+  RecordType,
+  ESIndexUpdateType,
+  ESIndexUpdateRecord,
+} from '@gtms/commons'
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -50,24 +55,34 @@ export default {
         }
       })
       .then(async (comment: IComment) => {
+        const queueMessages: { queue: string; message: any }[] = [
+          {
+            queue: Queues.updateESIndex,
+            message: {
+              type: ESIndexUpdateType.create,
+              record: ESIndexUpdateRecord.comment,
+              data: {
+                ...serializeComment(comment),
+                traceId: res.get('x-traceid'),
+              },
+            },
+          },
+        ]
         if (Array.isArray(comment.tags) && comment.tags.length > 0) {
-          try {
-            await publishOnChannel<ITagsUpdateMsg>(Queues.updateTags, {
+          queueMessages.push({
+            queue: Queues.updateTags,
+            message: {
               recordType: RecordType.comment,
               data: {
                 tags: comment.tags,
                 traceId: res.get('x-traceid'),
                 owner: comment.owner,
               },
-            })
-          } catch (err) {
-            logger.log({
-              level: 'error',
-              message: `Can not publish message to ${Queues.updateTags}: ${err}`,
-              traceId: res.get('x-traceid'),
-            })
-          }
+            },
+          })
         }
+
+        publishMultiple(res.get('x-traceid'), ...queueMessages)
       })
   },
   update(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -123,7 +138,19 @@ export default {
               return
             }
 
-            const queueMessages: { queue: string; message: any }[] = []
+            const queueMessages: { queue: string; message: any }[] = [
+              {
+                queue: Queues.updateESIndex,
+                message: {
+                  type: ESIndexUpdateType.update,
+                  record: ESIndexUpdateRecord.comment,
+                  data: {
+                    ...serializeComment(comment),
+                    traceId: res.get('x-traceid'),
+                  },
+                },
+              },
+            ]
 
             if (Array.isArray(comment.tags) && comment.tags.length > 0) {
               queueMessages.push({
