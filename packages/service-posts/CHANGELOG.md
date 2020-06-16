@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.6.1...@gtms/service-posts@0.7.0) (2020-06-16)
+
+
+### Features
+
+* GEOT-275: index user, post and comment in ES ([#108](https://github.com/mariusz-kabala/gtms-backend/issues/108)) ([ec46fb9](https://github.com/mariusz-kabala/gtms-backend/commit/ec46fb9461b64cb9c5b6c973d630c89dfac86800))
+
+
+
+
+
 ## [0.6.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.6.0...@gtms/service-posts@0.6.1) (2020-06-15)
 
 **Note:** Version bump only for package @gtms/service-posts

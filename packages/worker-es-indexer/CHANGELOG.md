@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-es-indexer@0.4.9...@gtms/worker-es-indexer@0.5.0) (2020-06-16)
+
+
+### Features
+
+* GEOT-275: index user, post and comment in ES ([#108](https://github.com/mariusz-kabala/gtms-backend/issues/108)) ([ec46fb9](https://github.com/mariusz-kabala/gtms-backend/commit/ec46fb9461b64cb9c5b6c973d630c89dfac86800))
+
+
+
+
+
 ## [0.4.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-es-indexer@0.4.8...@gtms/worker-es-indexer@0.4.9) (2020-06-15)
 
 
