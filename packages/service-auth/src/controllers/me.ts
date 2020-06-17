@@ -36,6 +36,7 @@ export default {
         ;[
           'name',
           'surname',
+          'description',
           'email',
           'phone',
           'countryCode',
@@ -51,6 +52,7 @@ export default {
               | 'countryCode'
               | 'languageCode'
               | 'tags'
+              | 'description'
           ) => {
             if (req.body[field]) {
               user[field] = req.body[field]

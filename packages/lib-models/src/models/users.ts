@@ -14,6 +14,7 @@ export interface IUser extends Document {
   phone?: string
   email: string
   password: string
+  description?: string
   countryCode: string
   languageCode: string
   isBlocked: boolean
@@ -72,6 +73,11 @@ const UserSchema = new Schema(
         validator: validatePassword,
         message: `Password has to be at least 8 characters,containing at least one number, one lowercase and one uppercase letter`,
       },
+    },
+    description: {
+      type: String,
+      trim: true,
+      required: false,
     },
     countryCode: {
       type: String,
