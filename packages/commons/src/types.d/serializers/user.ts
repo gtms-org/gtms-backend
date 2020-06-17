@@ -6,6 +6,7 @@ export interface ISerializedUser {
   surname?: string
   email: string
   phone?: string
+  description?: string
   countryCode: string
   languageCode: string
   tags: string[]
