@@ -10,7 +10,6 @@ import {
   IGroupInvitation,
 } from '@gtms/lib-models'
 import { findUsersByIds } from '@gtms/lib-api'
-import config from 'config'
 import createError from 'http-errors'
 
 function canDeleteInvitation(
@@ -121,7 +120,7 @@ async function getGroupInvitations(
 export default {
   async createInvitation(req: IAuthRequest, res: Response, next: NextFunction) {
     const { slug } = req.params
-    const { user } = req.body
+    const { user, description } = req.body
 
     if (!user || user === '') {
       return res.status(400).end()
@@ -142,7 +141,10 @@ export default {
         return res.status(404).end()
       }
 
-      if (group.owner !== req.user.id || !group.admins.includes(req.user.id)) {
+      if (
+        group.type !== 'public' &&
+        (group.owner !== req.user.id || !group.admins.includes(req.user.id))
+      ) {
         return res.status(403).end()
       }
 
@@ -166,7 +168,7 @@ export default {
 
           GroupInvitationModel.findOne({
             group: group._id,
-            user: req.user.id,
+            user,
           })
             .then(record => {
               if (record) {
@@ -175,7 +177,9 @@ export default {
 
               GroupInvitationModel.create({
                 group,
-                user: req.user.id,
+                from: req.user.id,
+                user,
+                description,
                 type: 'invitation',
                 code: randomString(35),
               })
