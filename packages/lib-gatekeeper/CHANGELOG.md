@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.4.11...@gtms/lib-gatekeeper@0.4.12) (2020-06-17)
+
+**Note:** Version bump only for package @gtms/lib-gatekeeper
+
+
+
+
+
 ## [0.4.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.4.10...@gtms/lib-gatekeeper@0.4.11) (2020-06-16)
 
 **Note:** Version bump only for package @gtms/lib-gatekeeper

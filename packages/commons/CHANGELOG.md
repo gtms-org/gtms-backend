@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.16.0...@gtms/commons@0.17.0) (2020-06-17)
+
+
+### Features
+
+* GEOT-283: add user description field ([#110](https://github.com/mariusz-kabala/gtms-backend/issues/110)) ([e952598](https://github.com/mariusz-kabala/gtms-backend/commit/e9525989138b9052399db9fee87c20fcf8d43300))
+
+
+
+
+
 # [0.16.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.15.0...@gtms/commons@0.16.0) (2020-06-16)
 
 
