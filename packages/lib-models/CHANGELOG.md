@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.9.2...@gtms/lib-models@0.9.3) (2020-06-17)
+
+
+### Bug Fixes
+
+* GETO-277: allow members to invite to public groups ([#109](https://github.com/mariusz-kabala/gtms-backend/issues/109)) ([315f8af](https://github.com/mariusz-kabala/gtms-backend/commit/315f8af31a0e4825bf485d9515edcbf027e1d68a))
+
+
+
+
+
 ## [0.9.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.9.1...@gtms/lib-models@0.9.2) (2020-06-16)
 
 **Note:** Version bump only for package @gtms/lib-models
