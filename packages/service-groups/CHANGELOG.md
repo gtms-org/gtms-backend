@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.0...@gtms/service-groups@0.21.1) (2020-06-18)
+
+
+### Bug Fixes
+
+* master: cast group.owner to string ([2fe1228](https://github.com/mariusz-kabala/gtms-backend/commit/2fe1228bbc26ab5ad3af5553c84ffad5034efb13))
+
+
+
+
+
 # [0.21.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.20.1...@gtms/service-groups@0.21.0) (2020-06-18)
 
 
