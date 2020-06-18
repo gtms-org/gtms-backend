@@ -1,5 +1,10 @@
 import { Response, NextFunction } from 'express'
-import { IAuthRequest, randomString, arrayToHash } from '@gtms/commons'
+import {
+  IAuthRequest,
+  randomString,
+  arrayToHash,
+  getPaginationParams,
+} from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import {
   GroupInvitationModel,
@@ -39,6 +44,7 @@ async function getGroupInvitations(
   next: NextFunction
 ) {
   const { slug } = req.params
+  const { limit, offset } = getPaginationParams(req)
 
   try {
     const group = await GroupModel.findOne({
@@ -59,65 +65,85 @@ async function getGroupInvitations(
       return res.status(403).end()
     }
 
-    GroupInvitationModel.find({
-      group: group._id,
-      type,
-    }).then((invitations: IGroupInvitation[]) => {
-      if (invitations.length === 0) {
-        return res
-          .status(200)
-          .json([])
-          .end()
-      }
-
-      findUsersByIds(
-        invitations.reduce((all: string[], invitation) => {
-          if (!all.includes(invitation.from)) {
-            all.push(invitation.from)
-          }
-
-          if (!all.includes(invitation.user)) {
-            all.push(invitation.user)
-          }
-
-          return all
-        }, []),
-        {
-          traceId: res.get('x-traceid'),
-        }
-      )
-        .then(users => {
-          const usersHash = arrayToHash(users, 'id')
-
-          res.status(200).json(
-            invitations
-              .map(invitation => {
-                if (usersHash[invitation.user]) {
-                  return {
-                    id: invitation._id,
-                    user: usersHash[invitation.user],
-                    from: usersHash[invitation.from],
-                    code: invitation.code,
-                    createdAt: invitation.createdAt,
-                    updatedAt: invitation.updatedAt,
-                  }
-                }
-
-                return null
-              })
-              .filter(invitation => invitation)
-          )
-        })
-        .catch(err => {
+    GroupInvitationModel.paginate(
+      {
+        group: group._id,
+        type,
+      },
+      {
+        offset,
+        limit,
+      },
+      (err, result) => {
+        if (err) {
           logger.log({
+            message: `Database error ${err}`,
             level: 'error',
-            message: `Can not fetch users details, ${err}`,
             traceId: res.get('x-traceid'),
           })
 
-          return next(createError(500))
-        })
-    })
+          return next(err)
+        }
+
+        const invitations = result.docs
+
+        if (invitations.length === 0) {
+          return res
+            .status(200)
+            .json([])
+            .end()
+        }
+
+        findUsersByIds(
+          invitations.reduce((all: string[], invitation) => {
+            if (!all.includes(invitation.from)) {
+              all.push(invitation.from)
+            }
+
+            if (!all.includes(invitation.user)) {
+              all.push(invitation.user)
+            }
+
+            return all
+          }, []),
+          {
+            traceId: res.get('x-traceid'),
+          }
+        )
+          .then(users => {
+            const usersHash = arrayToHash(users, 'id')
+
+            res.status(200).json({
+              ...result,
+              docs: invitations
+                .map(invitation => {
+                  if (usersHash[invitation.user]) {
+                    return {
+                      id: invitation._id,
+                      user: usersHash[invitation.user],
+                      from: usersHash[invitation.from],
+                      code: invitation.code,
+                      createdAt: invitation.createdAt,
+                      updatedAt: invitation.updatedAt,
+                    }
+                  }
+
+                  return null
+                })
+                .filter(invitation => invitation),
+            })
+          })
+          .catch(err => {
+            logger.log({
+              level: 'error',
+              message: `Can not fetch users details, ${err}`,
+              traceId: res.get('x-traceid'),
+            })
+
+            return next(createError(500))
+          })
+      }
+    )
   } catch (err) {
     next(err)
 

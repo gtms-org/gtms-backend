@@ -1798,9 +1798,23 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Invitation"
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Invitation"
+                  }
+                }
               }
             }
           },
@@ -1868,9 +1882,23 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Invitation"
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "limit": {
+                  "type": "number"
+                },
+                "offset": {
+                  "type": "number"
+                },
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Invitation"
+                  }
+                }
               }
             }
           },
