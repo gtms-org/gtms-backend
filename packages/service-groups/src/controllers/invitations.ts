@@ -71,7 +71,17 @@ async function getGroupInvitations(
       }
 
       findUsersByIds(
-        invitations.map(invitation => invitation.user),
+        invitations.reduce((all: string[], invitation) => {
+          if (!all.includes(invitation.from)) {
+            all.push(invitation.from)
+          }
+
+          if (!all.includes(invitation.user)) {
+            all.push(invitation.user)
+          }
+
+          return all
+        }, []),
         {
           traceId: res.get('x-traceid'),
         }
@@ -86,6 +96,7 @@ async function getGroupInvitations(
                   return {
                     id: invitation._id,
                     user: usersHash[invitation.user],
+                    from: usersHash[invitation.from],
                     code: invitation.code,
                     createdAt: invitation.createdAt,
                     updatedAt: invitation.updatedAt,
