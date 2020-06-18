@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.1...@gtms/service-groups@0.21.2) (2020-06-18)
+
+
+### Bug Fixes
+
+* master: add more logs in case of 403 from group invitation ([e51f339](https://github.com/mariusz-kabala/gtms-backend/commit/e51f339255dc768fa1246796a0979b9d4f9e97e8))
+
+
+
+
+
 ## [0.21.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.0...@gtms/service-groups@0.21.1) (2020-06-18)
 
 
