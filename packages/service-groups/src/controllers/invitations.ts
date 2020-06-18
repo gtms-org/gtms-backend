@@ -61,7 +61,10 @@ async function getGroupInvitations(
       return res.status(404).end()
     }
 
-    if (group.owner !== req.user.id || !group.admins.includes(req.user.id)) {
+    if (
+      `${group.owner}` !== req.user.id ||
+      !group.admins.includes(req.user.id)
+    ) {
       return res.status(403).end()
     }
 
