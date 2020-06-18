@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.2...@gtms/service-groups@0.21.3) (2020-06-18)
+
+
+### Bug Fixes
+
+* debugging endpoint ([9c7e1e0](https://github.com/mariusz-kabala/gtms-backend/commit/9c7e1e057f573e9c4a55ba8f24aa6c7a75815415))
+
+
+
+
+
 ## [0.21.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.1...@gtms/service-groups@0.21.2) (2020-06-18)
 
 
