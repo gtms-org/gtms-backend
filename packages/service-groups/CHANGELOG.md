@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.19.4...@gtms/service-groups@0.20.0) (2020-06-18)
+
+
+### Features
+
+* master: return info about who sent invitation ([c8fbe57](https://github.com/mariusz-kabala/gtms-backend/commit/c8fbe57535bf79accf4d5ad637221dde82f770e5))
+
+
+
+
+
 ## [0.19.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.19.3...@gtms/service-groups@0.19.4) (2020-06-17)
 
 **Note:** Version bump only for package @gtms/service-groups
