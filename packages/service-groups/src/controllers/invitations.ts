@@ -22,7 +22,7 @@ function canDeleteInvitation(
   req: IAuthRequest,
   invitation: IGroupInvitation
 ): boolean {
-  if (invitation.user === req.user.id) {
+  if (`${invitation.user}` === req.user.id) {
     return true
   }
 
@@ -30,7 +30,7 @@ function canDeleteInvitation(
     return true
   }
 
-  if (invitation.group.owner === req.user.id) {
+  if (`${invitation.group.owner}` === req.user.id) {
     return true
   }
 
