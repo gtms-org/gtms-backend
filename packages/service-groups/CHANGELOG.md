@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.3...@gtms/service-groups@0.21.4) (2020-06-18)
+
+
+### Bug Fixes
+
+* master: proper ownership check ([b3f9133](https://github.com/mariusz-kabala/gtms-backend/commit/b3f9133a4c1081b5ac38df1bfab4357950d5054a))
+
+
+
+
+
 ## [0.21.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.2...@gtms/service-groups@0.21.3) (2020-06-18)
 
 
