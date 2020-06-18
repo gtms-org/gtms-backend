@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.20.0...@gtms/service-groups@0.20.1) (2020-06-18)
+
+
+### Bug Fixes
+
+* master: return from object also from group invitations end ([fdaabb0](https://github.com/mariusz-kabala/gtms-backend/commit/fdaabb05d991f8851a607c95c1e7644ef3fc6535))
+
+
+
+
+
 # [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.19.4...@gtms/service-groups@0.20.0) (2020-06-18)
 
 
