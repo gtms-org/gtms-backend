@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express'
-import config from 'config'
 import { GroupModel, IGroup } from '@gtms/lib-models'
 import createError from 'http-errors'
 import { findUsersByIds } from '@gtms/lib-api'

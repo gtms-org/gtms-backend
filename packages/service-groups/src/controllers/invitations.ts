@@ -8,6 +8,7 @@ import {
   IGroup,
   IGroupMember,
   IGroupInvitation,
+  IUser,
 } from '@gtms/lib-models'
 import { findUsersByIds } from '@gtms/lib-api'
 import createError from 'http-errors'
@@ -366,8 +367,28 @@ export default {
             $in: invitations.map(i => i.group),
           },
         })
-          .then((groups: IGroup[]) => {
+          .then(async (groups: IGroup[]) => {
             const groupsHash = arrayToHash(groups, 'id')
+            const usersIds = invitations.map(
+              (invitation: IGroupInvitation) => invitation.from
+            )
+
+            let usersHash: { [id: string]: IUser } = {}
+
+            if (usersIds.length > 0) {
+              try {
+                const users = await findUsersByIds(usersIds, {
+                  traceId: res.get('x-traceid'),
+                })
+                usersHash = arrayToHash(users, 'id')
+              } catch (err) {
+                logger.log({
+                  level: 'error',
+                  message: `Can not fetch users details ${err}`,
+                  traceId: res.get('x-traceid'),
+                })
+              }
+            }
 
             res.status(200).json(
               invitations.reduce(
@@ -380,6 +401,7 @@ export default {
 
                     all[index].push({
                       id: invitation._id,
+                      from: usersHash[invitation.from],
                       group,
                       code: invitation.code,
                       createdAt: invitation.createdAt,

@@ -1900,7 +1900,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Group"
+                "$ref": "#/definitions/Invitation"
               }
             }
           }
@@ -3399,6 +3399,9 @@
       "properties": {
         "id": {
           "type": "string"
+        },
+        "from": {
+          "$ref": "#/definitions/User"
         },
         "user": {
           "$ref": "#/definitions/User"
