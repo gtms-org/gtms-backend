@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.4...@gtms/service-groups@0.21.5) (2020-06-18)
+
+
+### Bug Fixes
+
+* master: return description ([c4cc707](https://github.com/mariusz-kabala/gtms-backend/commit/c4cc7079cf684b9ecdbbcd8567120a7747d446e6))
+
+
+
+
+
 ## [0.21.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.3...@gtms/service-groups@0.21.4) (2020-06-18)
 
 
