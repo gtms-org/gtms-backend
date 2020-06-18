@@ -65,6 +65,11 @@ async function getGroupInvitations(
       `${group.owner}` !== req.user.id ||
       !group.admins.includes(req.user.id)
     ) {
+      logger.log({
+        level: 'warn',
+        message: `User ${req.user.email} tried to fetch invitations to group ${slug} but he is not group's owner or admin`,
+        traceId: res.get('x-traceid'),
+      })
       return res.status(403).end()
     }
 
