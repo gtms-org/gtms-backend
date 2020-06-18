@@ -130,6 +130,7 @@ async function getGroupInvitations(
                       id: invitation._id,
                       user: usersHash[invitation.user],
                       from: usersHash[invitation.from],
+                      description: invitation.description,
                       code: invitation.code,
                       createdAt: invitation.createdAt,
                       updatedAt: invitation.updatedAt,
