@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.16.0...@gtms/swagger@0.17.0) (2020-06-18)
+
+
+### Features
+
+* master: add pagination to invitation endpoints ([8850291](https://github.com/mariusz-kabala/gtms-backend/commit/885029113feced34f974d2df3ff7d77ad1c0312f))
+
+
+
+
+
 # [0.16.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.15.10...@gtms/swagger@0.16.0) (2020-06-18)
 
 
