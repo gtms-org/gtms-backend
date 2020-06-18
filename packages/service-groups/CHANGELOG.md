@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.5...@gtms/service-groups@0.21.6) (2020-06-18)
+
+
+### Bug Fixes
+
+* master: proper can delete invitation logic ([abc6b2e](https://github.com/mariusz-kabala/gtms-backend/commit/abc6b2e8b595a4a1ecf9c0f6440d4a75aa0b4dfa))
+
+
+
+
+
 ## [0.21.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.4...@gtms/service-groups@0.21.5) (2020-06-18)
 
 
