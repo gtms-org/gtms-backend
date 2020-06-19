@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.6.10...@gtms/service-notifications@0.7.0) (2020-06-19)
+
+
+### Bug Fixes
+
+* master: typo fix ([a21df58](https://github.com/mariusz-kabala/gtms-backend/commit/a21df58acc6bd3b5435d8a1108512087eb5156bb))
+
+
+### Features
+
+* GEOT-287: add user notification settings ([#111](https://github.com/mariusz-kabala/gtms-backend/issues/111)) ([bb87a2e](https://github.com/mariusz-kabala/gtms-backend/commit/bb87a2efdca0d40657a5d19995e398b62f222fc6))
+
+
+
+
+
 ## [0.6.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.6.9...@gtms/service-notifications@0.6.10) (2020-06-17)
 
 **Note:** Version bump only for package @gtms/service-notifications

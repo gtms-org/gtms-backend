@@ -1,6 +1,6 @@
 {
   "name": "@gtms/swagger",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "private": true,
   "description": "Swagger API Project",
   "keywords": [],
@@ -9,7 +9,7 @@
   "main": "app.js",
   "dependencies": {
     "@gtms/lib-consul": "0.2.1",
-    "@gtms/lib-middlewares": "0.4.19",
+    "@gtms/lib-middlewares": "0.4.20",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4"
   },

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.17.0...@gtms/commons@0.18.0) (2020-06-19)
+
+
+### Features
+
+* GEOT-287: add user notification settings ([#111](https://github.com/mariusz-kabala/gtms-backend/issues/111)) ([bb87a2e](https://github.com/mariusz-kabala/gtms-backend/commit/bb87a2efdca0d40657a5d19995e398b62f222fc6))
+
+
+
+
+
 # [0.17.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.16.0...@gtms/commons@0.17.0) (2020-06-17)
 
 
