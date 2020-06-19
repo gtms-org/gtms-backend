@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
 import webPushSubscriptionsController from './controllers/webPushSubscriptions'
+import notificationsSettingsController from './controllers/notificationsSettings'
 import {
   JWTMiddleware,
   errorMiddleware,
@@ -27,9 +28,11 @@ router.get('/managment/heath', (_: Request, res: Response) => {
   })
 })
 
+router.post('/web-push/check', webPushSubscriptionsController.checkIfExists)
 router.post('/web-push', webPushSubscriptionsController.create)
-router.delete('/web-push/:hash', webPushSubscriptionsController.deleteRecord)
-router.get('/web-push/:hash', webPushSubscriptionsController.checkIfExists)
+router.delete('/web-push', webPushSubscriptionsController.deleteSubscription)
+router.post('/settings', notificationsSettingsController.updateMySettings)
+router.get('/settings', notificationsSettingsController.mySettings)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

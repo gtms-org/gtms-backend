@@ -4,6 +4,7 @@ import TagsService from './tag'
 import FilesService from './files'
 import PostsService from './posts'
 import CommentsService from './comments'
+import NotificationsService from './notifications'
 
 export default [
   AuthService,
@@ -12,4 +13,5 @@ export default [
   FilesService,
   PostsService,
   CommentsService,
+  NotificationsService,
 ]
