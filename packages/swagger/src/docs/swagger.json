@@ -1987,7 +1987,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "subscription": {
+                  "type": "string"
+                },
+                "userAgent": {
                   "type": "string"
                 }
               }
@@ -2016,47 +2019,6 @@
             }
           }
         }
-      }
-    },
-    "/web-push/{hash}": {
-      "get": {
-        "security": [
-          {
-            "user_auth": []
-          }
-        ],
-        "tags": ["Notifications"],
-        "summary": "Checks if subscription exists",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "parameters": [
-          {
-            "name": "hash",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Subscription hash"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Subscription exists",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "hash": {
-                  "type": "string"
-                },
-                "userAgent": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Subscription does not exist"
-          }
-        }
       },
       "delete": {
         "security": [
@@ -2070,11 +2032,17 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "hash",
-            "in": "path",
+            "in": "body",
+            "name": "payload",
             "required": true,
-            "type": "string",
-            "description": "Subscription hash"
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subscription": {
+                  "type": "string"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -2083,6 +2051,147 @@
           },
           "404": {
             "description": "Subscription does not exist"
+          }
+        }
+      }
+    },
+    "/notifications/web-push/check": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Notifications"],
+        "summary": "Checks if subscription exists",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subscription": {
+                  "type": "string"
+                },
+                "userAgent": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription exists"
+          },
+          "404": {
+            "description": "Subscription does not exist"
+          }
+        }
+      }
+    },
+    "/notifications/settings": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Notifications"],
+        "summary": "Updates user's notification settings",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "invitation": {
+                  "type": "boolean"
+                },
+                "newPostInOwnedGroup": {
+                  "type": "boolean"
+                },
+                "newMembershipRequestInOwnedGroup": {
+                  "type": "boolean"
+                },
+                "newMemberInOwnedGroup": {
+                  "type": "boolean"
+                },
+                "newPostInAdminnedGroup": {
+                  "type": "boolean"
+                },
+                "newMembershipRequestInAdminnedGroup": {
+                  "type": "boolean"
+                },
+                "newMemberInAdminnedGroup": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/ValidationError"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Notifications"],
+        "summary": "Returns user's notification settings",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "invitation": {
+                  "type": "boolean"
+                },
+                "newPostInOwnedGroup": {
+                  "type": "boolean"
+                },
+                "newMembershipRequestInOwnedGroup": {
+                  "type": "boolean"
+                },
+                "newMemberInOwnedGroup": {
+                  "type": "boolean"
+                },
+                "newPostInAdminnedGroup": {
+                  "type": "boolean"
+                },
+                "newMembershipRequestInAdminnedGroup": {
+                  "type": "boolean"
+                },
+                "newMemberInAdminnedGroup": {
+                  "type": "boolean"
+                }
+              }
+            }
           }
         }
       }

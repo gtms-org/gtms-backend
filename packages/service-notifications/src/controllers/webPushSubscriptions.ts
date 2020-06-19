@@ -1,8 +1,9 @@
 import { Response, NextFunction } from 'express'
 import { IAuthRequest } from '@gtms/commons'
-import WebPushSubscriptionModel, {
+import {
+  WebPushSubscriptionModel,
   IWebPushSubscription,
-} from '../models/webPushSubscriptions'
+} from '@gtms/lib-models'
 import logger from '@gtms/lib-logger'
 
 export default {
@@ -14,19 +15,14 @@ export default {
       owner: req.user.id,
       userAgent: body.userAgent,
     })
-      .then((subscription: IWebPushSubscription) => {
+      .then(() => {
         logger.log({
-          message: `New subscription ${subscription.hash} (owner: ${subscription.owner}) has been created`,
+          message: `User ${req.user.email} subscribed for web push notifications from ${body.userAgent}`,
           level: 'info',
           traceId: res.get('x-traceid'),
         })
 
-        res
-          .status(201)
-          .json({
-            hash: subscription.hash,
-          })
-          .end()
+        res.status(201).end()
       })
       .catch(err => {
         if (err.name === 'ValidationError') {
@@ -43,18 +39,18 @@ export default {
           next(err)
 
           logger.log({
-            message: `Request error ${err}`,
+            message: `Database error ${err}`,
             level: 'error',
             traceId: res.get('x-traceid'),
           })
         }
       })
   },
-  checkIfExists(req: IAuthRequest, res: Response): void {
-    const { hash } = req.params
+  checkIfExists(req: IAuthRequest, res: Response, next: NextFunction): void {
+    const { subscription } = req.body
 
     WebPushSubscriptionModel.findOne({
-      hash,
+      subscription,
       owner: req.user.id,
     })
       .then((subscription: IWebPushSubscription | null) => {
@@ -62,30 +58,34 @@ export default {
           return res.status(404).end()
         }
 
-        res
-          .status(200)
-          .json({
-            hash: subscription.hash,
-            userAgent: subscription.userAgent,
-          })
-          .end()
+        res.status(200).end()
       })
-      .catch(() => {
-        res.status(404).end()
+      .catch(err => {
+        next(err)
+
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
       })
   },
-  deleteRecord(req: IAuthRequest, res: Response, next: NextFunction): void {
-    const { hash } = req.params
+  deleteSubscription(
+    req: IAuthRequest,
+    res: Response,
+    next: NextFunction
+  ): void {
+    const { subscription } = req.body
 
     WebPushSubscriptionModel.findOneAndDelete({
-      hash,
+      subscription,
       owner: req.user.id,
     })
       .then((result: IWebPushSubscription | null) => {
         if (result !== null) {
           res.status(200).end()
           logger.log({
-            message: `Subscription ${result.hash} (user id: ${result.owner}) has been removed from DB`,
+            message: `User ${req.user.email} unsubscribed from web push notifications`,
             level: 'info',
             traceId: res.get('x-traceid'),
           })
@@ -97,7 +97,7 @@ export default {
         next(err)
 
         logger.log({
-          message: `Request error ${err}`,
+          message: `Database error ${err}`,
           level: 'error',
           traceId: res.get('x-traceid'),
         })
