@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.7.0...@gtms/service-notifications@0.7.1) (2020-06-20)
+
+
+### Bug Fixes
+
+* master: allow to make multiple webpush subscription reques ([4b57382](https://github.com/mariusz-kabala/gtms-backend/commit/4b57382016d0e32f2a727f4782d3159c5c3dea66))
+
+
+
+
+
 # [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.6.10...@gtms/service-notifications@0.7.0) (2020-06-19)
 
 
