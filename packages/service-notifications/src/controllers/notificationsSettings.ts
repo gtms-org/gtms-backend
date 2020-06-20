@@ -40,13 +40,16 @@ export default {
       'newPostInAdminnedGroup',
       'newMembershipRequestInAdminnedGroup',
       'newMemberInAdminnedGroup',
-    ].reduce((results: { [item: string]: boolean }, item) => {
-      if (typeof body[item] !== 'undefined') {
-        results[item] = !!body[item]
-      }
+    ].reduce(
+      (results: { [item: string]: boolean | string }, item) => {
+        if (typeof body[item] !== 'undefined') {
+          results[item] = !!body[item]
+        }
 
-      return results
-    }, {})
+        return results
+      },
+      { user: req.user.id }
+    )
 
     NotificationsSettingsModel.update({ user: req.user.id }, payload, {
       upsert: true,

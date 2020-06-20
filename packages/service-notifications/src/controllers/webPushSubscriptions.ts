@@ -10,11 +10,18 @@ export default {
   create(req: IAuthRequest, res: Response, next: NextFunction): void {
     const { body } = req
 
-    WebPushSubscriptionModel.create({
-      subscription: body.subscription,
-      owner: req.user.id,
-      userAgent: body.userAgent,
-    })
+    WebPushSubscriptionModel.update(
+      { owner: req.user.id },
+      {
+        subscription: body.subscription,
+        owner: req.user.id,
+        userAgent: body.userAgent,
+      },
+      {
+        upsert: true,
+        setDefaultsOnInsert: true,
+      }
+    )
       .then(() => {
         logger.log({
           message: `User ${req.user.email} subscribed for web push notifications from ${body.userAgent}`,
