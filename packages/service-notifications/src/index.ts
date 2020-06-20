@@ -33,6 +33,9 @@ router.post('/web-push', webPushSubscriptionsController.create)
 router.delete('/web-push', webPushSubscriptionsController.deleteSubscription)
 router.post('/settings', notificationsSettingsController.updateMySettings)
 router.get('/settings', notificationsSettingsController.mySettings)
+router.post('/follow', notificationsSettingsController.follow)
+router.delete('/follow', notificationsSettingsController.unfollow)
+router.get('/follow', notificationsSettingsController.isFollowing)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

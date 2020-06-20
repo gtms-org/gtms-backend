@@ -68,4 +68,161 @@ export default {
         })
       })
   },
+  follow(req: IAuthRequest, res: Response, next: NextFunction) {
+    const {
+      body: { user, group },
+    } = req
+
+    if (!user && !group) {
+      return res.status(400).end()
+    }
+
+    ;(NotificationsSettingsModel as any).findOrCreate(
+      {
+        user: req.user.id,
+      },
+      async (
+        err: Error | null,
+        notificationSettings: INotificationsSettings
+      ) => {
+        if (err) {
+          next(err)
+
+          return logger.log({
+            message: `Database error ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+        }
+
+        let changed = false
+
+        if (user && !notificationSettings.users.includes(user)) {
+          notificationSettings.users.push(user)
+          changed = true
+        }
+
+        if (group && !notificationSettings.groups.includes(group)) {
+          notificationSettings.groups.push(group)
+          changed = true
+        }
+
+        if (changed) {
+          try {
+            await notificationSettings.save()
+          } catch (err) {
+            next(err)
+
+            return logger.log({
+              message: `Database error ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+          }
+        }
+
+        res.status(201).end()
+      }
+    )
+  },
+  unfollow(req: IAuthRequest, res: Response, next: NextFunction) {
+    const {
+      body: { user, group },
+    } = req
+
+    if (!user && !group) {
+      return res.status(400).end()
+    }
+
+    ;(NotificationsSettingsModel as any).findOrCreate(
+      {
+        user: req.user.id,
+      },
+      async (
+        err: Error | null,
+        notificationSettings: INotificationsSettings
+      ) => {
+        if (err) {
+          next(err)
+
+          return logger.log({
+            message: `Database error ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+        }
+
+        const userIndex = user ? notificationSettings.users.indexOf(user) : -1
+        const groupIndex = group
+          ? notificationSettings.groups.indexOf(group)
+          : -1
+
+        if (userIndex > -1) {
+          notificationSettings.users.splice(userIndex, 1)
+        }
+
+        if (groupIndex > -1) {
+          notificationSettings.groups.splice(groupIndex, 1)
+        }
+
+        if (userIndex > -1 || groupIndex > -1) {
+          try {
+            await notificationSettings.save()
+          } catch (err) {
+            next(err)
+
+            return logger.log({
+              message: `Database error ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+          }
+        }
+
+        res.status(200).end()
+      }
+    )
+  },
+  isFollowing(req: IAuthRequest, res: Response, next: NextFunction) {
+    const { user, group } = req.query
+
+    if (!user && !group) {
+      return res.status(400).end()
+    }
+
+    if (user && group) {
+      return res.status(400).end()
+    }
+
+    ;(NotificationsSettingsModel as any).findOrCreate(
+      {
+        user: req.user.id,
+      },
+      (err: Error | null, notificationSettings: INotificationsSettings) => {
+        if (err) {
+          next(err)
+
+          return logger.log({
+            message: `Database error ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+        }
+
+        if (user) {
+          return res
+            .status(notificationSettings.users.includes(user) ? 200 : 404)
+            .end()
+        }
+
+        if (group) {
+          return res
+            .status(notificationSettings.groups.includes(group) ? 200 : 404)
+            .end()
+        }
+
+        res.status(400).end()
+      }
+    )
+  },
 }

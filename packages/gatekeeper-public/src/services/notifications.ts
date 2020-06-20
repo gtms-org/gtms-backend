@@ -30,5 +30,20 @@ export default {
       method: http.GET,
       restricted: true,
     },
+    {
+      path: '/follow',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/follow',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/follow',
+      method: http.DELETE,
+      restricted: true,
+    },
   ],
 }
