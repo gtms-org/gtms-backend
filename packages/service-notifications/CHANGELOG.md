@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.7.1...@gtms/service-notifications@0.8.0) (2020-06-21)
+
+
+### Features
+
+* GEOT-287: /follow endpoints ([#112](https://github.com/mariusz-kabala/gtms-backend/issues/112)) ([be10b29](https://github.com/mariusz-kabala/gtms-backend/commit/be10b29af49b36433086466aa85b9b95e9d7d614))
+
+
+
+
+
 ## [0.7.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.7.0...@gtms/service-notifications@0.7.1) (2020-06-20)
 
 
