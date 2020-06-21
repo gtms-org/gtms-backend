@@ -1999,15 +1999,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "hash": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "Successful operation"
           },
           "400": {
             "description": "Validation errors",
@@ -2192,6 +2184,120 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/notifications/follow": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Notifications"],
+        "summary": "Checks if current user follows group or user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "User's id to check"
+          },
+          {
+            "name": "group",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Group's id to check"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User follows"
+          },
+          "400": {
+            "description": "Query param is missing, or both are present"
+          },
+          "404": {
+            "description": "User does not follow"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Notifications"],
+        "summary": "Subscribes for group or user notifications",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "group": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid payload"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Notifications"],
+        "summary": "Unsubscribes from group or user notifications",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "group": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid payload"
           }
         }
       }

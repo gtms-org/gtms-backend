@@ -6,4 +6,6 @@ export interface ISerializedNotificationsSettings {
   newPostInAdminnedGroup: boolean
   newMembershipRequestInAdminnedGroup: boolean
   newMemberInAdminnedGroup: boolean
+  groups: string[]
+  users: string[]
 }
