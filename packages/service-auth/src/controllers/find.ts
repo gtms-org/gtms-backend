@@ -62,4 +62,54 @@ export default {
       }
     )
   },
+  byTags(req: Request, res: Response, next: NextFunction) {
+    const { limit, offset } = getPaginationParams(req)
+    const { q } = req.query
+
+    let tagsToFind: string[] = q
+      .split(',')
+      .map((tag: string) => {
+        return tag !== '' ? tag.trim() : null
+      })
+      .filter((tag: string) => tag)
+
+    if (tagsToFind.length === 0) {
+      return res.status(400).end()
+    }
+
+    if (tagsToFind.length > 10) {
+      tagsToFind = tagsToFind.slice(0, 10)
+    }
+
+    UserModel.paginate(
+      {
+        isActive: true,
+        tags: {
+          $in: tagsToFind,
+        },
+      },
+      {
+        offset,
+        limit,
+        sort: {
+          createdAt: 'desc',
+        },
+      },
+      (err, result) => {
+        if (err) {
+          logger.log({
+            message: `Database error ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          return next(err)
+        }
+        res.status(200).json({
+          ...result,
+          docs: result.docs.map((user: IUser) => serializeUser(user)),
+        })
+      }
+    )
+  },
 }

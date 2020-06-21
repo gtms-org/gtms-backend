@@ -31,6 +31,7 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.post('/', JWTMiddleware, groupsController.create)
 router.get('/', findController.list)
+router.get('/tag', findController.byTags)
 
 router.get('/check-admin-rights', groupsController.hasAdminAccess)
 router.post('/find-by-ids', findController.findByIds)
