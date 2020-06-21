@@ -14,5 +14,7 @@ export function serializeNotificationsSettings(
     newMembershipRequestInAdminnedGroup:
       notificationsSettings.newMembershipRequestInAdminnedGroup,
     newMemberInAdminnedGroup: notificationsSettings.newMemberInAdminnedGroup,
+    groups: notificationsSettings.groups,
+    users: notificationsSettings.users,
   }
 }
