@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-groups",
-  "version": "0.21.9",
+  "version": "0.22.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

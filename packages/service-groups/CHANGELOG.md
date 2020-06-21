@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.9...@gtms/service-groups@0.22.0) (2020-06-21)
+
+
+### Features
+
+* GEOT-219: endpoints - find users and groups by tag ([#114](https://github.com/mariusz-kabala/gtms-backend/issues/114)) ([2e250d3](https://github.com/mariusz-kabala/gtms-backend/commit/2e250d384a4d80ee72e60d8c92859ba7c3196236))
+
+
+
+
+
 ## [0.21.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.8...@gtms/service-groups@0.21.9) (2020-06-21)
 
 **Note:** Version bump only for package @gtms/service-groups
