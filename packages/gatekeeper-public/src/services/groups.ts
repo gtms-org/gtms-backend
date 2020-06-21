@@ -16,6 +16,11 @@ export default {
       restricted: false,
     },
     {
+      path: '/tag',
+      method: http.GET,
+      restricted: false,
+    },
+    {
       path: '/:slug/join',
       method: http.GET,
       restricted: true,

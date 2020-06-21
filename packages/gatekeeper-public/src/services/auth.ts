@@ -11,6 +11,11 @@ export default {
       restricted: false,
     },
     {
+      path: '/tag',
+      method: http.GET,
+      restricted: false,
+    },
+    {
       path: '/users',
       method: http.POST,
       restricted: false,
