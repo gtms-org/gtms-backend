@@ -5,6 +5,7 @@ export interface IPost extends Document {
   group: string
   text: string
   tags: string[]
+  followers: string[]
   owner: string
   commentsCounter: number
   application: string
@@ -41,6 +42,11 @@ const PostSchema = new Schema(
     application: {
       type: String,
       required: false,
+    },
+    followers: {
+      type: [Schema.Types.ObjectId],
+      required: false,
+      default: [],
     },
   },
   {

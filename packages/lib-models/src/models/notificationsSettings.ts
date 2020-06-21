@@ -10,6 +10,8 @@ export interface INotificationsSettings extends Document {
   newPostInAdminnedGroup: boolean
   newMembershipRequestInAdminnedGroup: boolean
   newMemberInAdminnedGroup: boolean
+  groups: string[]
+  users: string[]
 }
 
 const NotificationsSettingsSchema = new Schema({
@@ -52,6 +54,16 @@ const NotificationsSettingsSchema = new Schema({
     type: Boolean,
     required: false,
     default: true,
+  },
+  groups: {
+    type: [Schema.Types.ObjectId],
+    required: false,
+    default: [],
+  },
+  users: {
+    type: [Schema.Types.ObjectId],
+    required: false,
+    default: [],
   },
 })
 
