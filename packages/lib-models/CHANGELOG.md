@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.12.0...@gtms/lib-models@0.12.1) (2020-06-21)
+
+
+### Bug Fixes
+
+* GEOT-287: expose followed users and groups; swagger definiti ([#113](https://github.com/mariusz-kabala/gtms-backend/issues/113)) ([a1e6a93](https://github.com/mariusz-kabala/gtms-backend/commit/a1e6a9316e955ce0811ea6a4c0ff8d6adfe103f7))
+
+
+
+
+
 # [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.11.0...@gtms/lib-models@0.12.0) (2020-06-21)
 
 
