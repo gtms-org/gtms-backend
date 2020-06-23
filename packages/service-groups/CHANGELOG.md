@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.22.0...@gtms/service-groups@0.22.1) (2020-06-23)
+
+
+### Bug Fixes
+
+* master: returns records that match all tags ([2fe889f](https://github.com/mariusz-kabala/gtms-backend/commit/2fe889f2079696fdbe6a56848d162579a163d212))
+
+
+
+
+
 # [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.21.9...@gtms/service-groups@0.22.0) (2020-06-21)
 
 
