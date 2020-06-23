@@ -84,7 +84,7 @@ export default {
       {
         visibility: 'public',
         tags: {
-          $in: tagsToFind,
+          $all: tagsToFind,
         },
       },
       {

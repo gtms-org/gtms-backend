@@ -85,7 +85,7 @@ export default {
       {
         isActive: true,
         tags: {
-          $in: tagsToFind,
+          $all: tagsToFind,
         },
       },
       {
