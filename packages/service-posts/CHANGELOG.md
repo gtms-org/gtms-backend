@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.7.5...@gtms/service-posts@0.8.0) (2020-06-24)
+
+
+### Features
+
+* GEOT-297: support post tags ([#115](https://github.com/mariusz-kabala/gtms-backend/issues/115)) ([2bc392c](https://github.com/mariusz-kabala/gtms-backend/commit/2bc392c50176ae68c02f594a591dddf0c4f68d7c))
+
+
+
+
+
 ## [0.7.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.7.4...@gtms/service-posts@0.7.5) (2020-06-21)
 
 **Note:** Version bump only for package @gtms/service-posts
