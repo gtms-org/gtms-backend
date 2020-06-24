@@ -15,7 +15,7 @@ import {
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
-      body: { group, text, tags = [] },
+      body: { group, text },
     } = req
 
     if (typeof group !== 'string' || group === '') {
@@ -30,10 +30,18 @@ export default {
       return res.status(403).end()
     }
 
+    const tags = text.match(/#(\w+)\b/gi)
+
     PostModel.create({
       group,
       text,
-      tags,
+      tags: Array.isArray(tags)
+        ? tags
+            .filter((value, index, self) => {
+              return self.indexOf(value) === index
+            })
+            .map(tag => tag.replace('#', '').trim())
+        : [],
       owner: req.user.id,
     })
       .then((post: IPost) => {
