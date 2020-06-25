@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.5.6...@gtms/service-comments@0.5.7) (2020-06-25)
+
+
+### Bug Fixes
+
+* master: drop APP_KEY from services configs ([7203a0f](https://github.com/mariusz-kabala/gtms-backend/commit/7203a0f59f5f1181548a624ace74962072e83cc6))
+
+
+
+
+
 ## [0.5.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.5.5...@gtms/service-comments@0.5.6) (2020-06-25)
 
 **Note:** Version bump only for package @gtms/service-comments

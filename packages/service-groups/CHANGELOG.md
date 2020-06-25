@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.22.2...@gtms/service-groups@0.22.3) (2020-06-25)
+
+
+### Bug Fixes
+
+* master: drop APP_KEY from services configs ([7203a0f](https://github.com/mariusz-kabala/gtms-backend/commit/7203a0f59f5f1181548a624ace74962072e83cc6))
+
+
+
+
+
 ## [0.22.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.22.1...@gtms/service-groups@0.22.2) (2020-06-25)
 
 **Note:** Version bump only for package @gtms/service-groups

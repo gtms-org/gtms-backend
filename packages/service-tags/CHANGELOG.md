@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.6.8...@gtms/service-tags@0.6.9) (2020-06-25)
+
+
+### Bug Fixes
+
+* master: drop APP_KEY from services configs ([7203a0f](https://github.com/mariusz-kabala/gtms-backend/commit/7203a0f59f5f1181548a624ace74962072e83cc6))
+
+
+
+
+
 ## [0.6.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.6.7...@gtms/service-tags@0.6.8) (2020-06-25)
 
 **Note:** Version bump only for package @gtms/service-tags
