@@ -9,6 +9,7 @@ export function serializePost(post: IPost): ISerializedPost {
     tags: post.tags,
     owner: post.owner,
     commentsCounter: post.commentsCounter,
+    firstComments: post.firstComments || [],
     createdAt: post.createdAt,
     updatedAt: post.updatedAt,
   }
