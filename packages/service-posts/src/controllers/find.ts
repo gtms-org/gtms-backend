@@ -44,14 +44,14 @@ export default {
 
         findUsersByIds(
           result.docs.reduce((all: string[], post) => {
-            if (!all.includes(post.owner)) {
-              all.push(post.owner)
+            if (!all.includes(`${post.owner}`)) {
+              all.push(`${post.owner}`)
             }
 
             if (Array.isArray(post.firstComments)) {
               for (const comment of post.firstComments) {
-                if (!all.includes(comment.owner as string)) {
-                  all.push(comment.owner as string)
+                if (!all.includes(`${comment.owner}`)) {
+                  all.push(`${comment.owner}`)
                 }
               }
             }

@@ -27,8 +27,8 @@ export function serializePostWithUser(
 
   if (Array.isArray(post.firstComments)) {
     for (const comment of post.firstComments) {
-      if (members[comment.owner as string]) {
-        comment.owner = members[comment.owner as string]
+      if (members[`${comment.owner}`]) {
+        comment.owner = members[`${comment.owner}`]
       }
     }
   }
