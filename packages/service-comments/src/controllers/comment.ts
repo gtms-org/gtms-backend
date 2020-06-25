@@ -57,6 +57,17 @@ export default {
       .then(async (comment: IComment) => {
         const queueMessages: { queue: string; message: any }[] = [
           {
+            queue: Queues.newComment,
+            message: {
+              post: comment.post,
+              data: {
+                comment: serializeComment(comment),
+                traceId: res.get('x-traceid'),
+                parentComment: comment.parent,
+              },
+            },
+          },
+          {
             queue: Queues.updateESIndex,
             message: {
               type: ESIndexUpdateType.create,
