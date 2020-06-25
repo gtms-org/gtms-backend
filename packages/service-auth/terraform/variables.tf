@@ -20,8 +20,6 @@ variable "DOCKER_REGISTRY_USERNAME" {}
 
 variable "db_name" {}
 
-variable "APP_KEY" {}
-
 variable "instances" {
     default = 1
 }
