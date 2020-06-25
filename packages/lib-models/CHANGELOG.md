@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.12.1...@gtms/lib-models@0.13.0) (2020-06-25)
+
+
+### Features
+
+* GEOT-300: posts worker ([#117](https://github.com/mariusz-kabala/gtms-backend/issues/117)) ([eda131f](https://github.com/mariusz-kabala/gtms-backend/commit/eda131f56bb9e217d5c1afd8bd83be25d45e7d88))
+
+
+
+
+
 ## [0.12.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.12.0...@gtms/lib-models@0.12.1) (2020-06-21)
 
 

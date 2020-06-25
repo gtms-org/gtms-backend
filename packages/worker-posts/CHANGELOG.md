@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.1.0 (2020-06-25)
+
+
+### Features
+
+* GEOT-300: posts worker ([#117](https://github.com/mariusz-kabala/gtms-backend/issues/117)) ([eda131f](https://github.com/mariusz-kabala/gtms-backend/commit/eda131f56bb9e217d5c1afd8bd83be25d45e7d88))
+
+
+
+
+
 ## [0.4.14](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.4.13...@gtms/worker-groups@0.4.14) (2020-06-21)
 
 **Note:** Version bump only for package @gtms/worker-groups
