@@ -10,6 +10,7 @@ export enum Queues {
   groupUpdate = 'groupUpdate',
   updateTags = 'updateTags',
   updateGroupTagFiles = 'updateGroupTagFiles',
+  newComment = 'newComment',
 }
 
 export enum NotificationQueueMessageType {

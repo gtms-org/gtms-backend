@@ -1,5 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate'
+import { ISerializedComment } from '@gtms/commons'
 
 export interface IPost extends Document {
   group: string
@@ -8,6 +9,7 @@ export interface IPost extends Document {
   followers: string[]
   owner: string
   commentsCounter: number
+  firstComments: ISerializedComment[]
   application: string
   createdAt: string
   updatedAt: string
@@ -34,6 +36,16 @@ const PostSchema = new Schema(
       required: true,
       index: true,
     },
+    firstComments: [
+      {
+        id: String,
+        text: String,
+        tags: [String],
+        owner: String,
+        createdAt: Date,
+        updatedAt: Date,
+      },
+    ],
     commentsCounter: {
       type: Number,
       required: false,
