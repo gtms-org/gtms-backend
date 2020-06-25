@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.8.3...@gtms/service-posts@0.8.4) (2020-06-25)
+
+
+### Bug Fixes
+
+* master: return info about user together with post first co ([d85168e](https://github.com/mariusz-kabala/gtms-backend/commit/d85168efa73d57dd4cac300714e77ea7a9fcb1d1))
+
+
+
+
+
 ## [0.8.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.8.2...@gtms/service-posts@0.8.3) (2020-06-25)
 
 **Note:** Version bump only for package @gtms/service-posts
