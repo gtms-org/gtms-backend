@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.8.4...@gtms/service-posts@0.8.5) (2020-06-25)
+
+
+### Bug Fixes
+
+* master: cast comment.owner to string ([dd127a5](https://github.com/mariusz-kabala/gtms-backend/commit/dd127a5b473df95025add2be33db78e2cde628bc))
+
+
+
+
+
 ## [0.8.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.8.3...@gtms/service-posts@0.8.4) (2020-06-25)
 
 

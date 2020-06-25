@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.2...@gtms/lib-models@0.13.3) (2020-06-25)
+
+
+### Bug Fixes
+
+* master: cast comment.owner to string ([dd127a5](https://github.com/mariusz-kabala/gtms-backend/commit/dd127a5b473df95025add2be33db78e2cde628bc))
+
+
+
+
+
 ## [0.13.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.1...@gtms/lib-models@0.13.2) (2020-06-25)
 
 
