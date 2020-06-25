@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.5.7...@gtms/service-comments@0.6.0) (2020-06-25)
+
+
+### Features
+
+* master: dispatch new comment msg from comments service ([a8e6eb2](https://github.com/mariusz-kabala/gtms-backend/commit/a8e6eb2cce689a471225db121ae4d175fb2f08e4))
+
+
+
+
+
 ## [0.5.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.5.6...@gtms/service-comments@0.5.7) (2020-06-25)
 
 
