@@ -1,6 +1,6 @@
 import { IPost } from '../models/posts'
 import { ISerializedPost } from '@gtms/commons'
-import { IUser } from '../models/users'
+import { ISerializedUser } from '@gtms/commons'
 
 export function serializePost(post: IPost): ISerializedPost {
   return {
@@ -17,12 +17,20 @@ export function serializePost(post: IPost): ISerializedPost {
 
 export function serializePostWithUser(
   post: IPost,
-  members: { [id: string]: IUser }
+  members: { [id: string]: ISerializedUser }
 ) {
   const result: any = serializePost(post)
 
   if (members[post.owner]) {
     result.owner = members[post.owner]
+  }
+
+  if (Array.isArray(post.firstComments)) {
+    for (const comment of post.firstComments) {
+      if (members[comment.owner as string]) {
+        comment.owner = members[comment.owner as string]
+      }
+    }
   }
 
   return result

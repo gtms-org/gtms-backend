@@ -1,3 +1,5 @@
+import { ISerializedUser } from './user'
+
 export interface ISerializedComment {
   id: string
   text: string
@@ -8,7 +10,7 @@ export interface ISerializedComment {
     text: string
   }[]
   tags: string[]
-  owner: string
+  owner: ISerializedUser | string
   createdAt: string
   updatedAt: string
 }

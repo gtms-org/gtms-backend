@@ -16,7 +16,6 @@ import {
 } from '@gtms/commons'
 import { findUsersByIds, findGroupsByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
-import config from 'config'
 import { ObjectID } from 'mongodb'
 
 export default {
@@ -43,9 +42,26 @@ export default {
           return next(err)
         }
 
-        findUsersByIds(getUniqueValues(result.docs, 'owner'), {
-          traceId: res.get('x-traceid'),
-        })
+        findUsersByIds(
+          result.docs.reduce((all: string[], post) => {
+            if (!all.includes(post.owner)) {
+              all.push(post.owner)
+            }
+
+            if (Array.isArray(post.firstComments)) {
+              for (const comment of post.firstComments) {
+                if (!all.includes(comment.owner as string)) {
+                  all.push(comment.owner as string)
+                }
+              }
+            }
+
+            return all
+          }, []),
+          {
+            traceId: res.get('x-traceid'),
+          }
+        )
           .then(users => {
             const usersHash = arrayToHash(users, 'id')
 
