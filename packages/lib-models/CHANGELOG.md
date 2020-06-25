@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.0...@gtms/lib-models@0.13.1) (2020-06-25)
+
+
+### Bug Fixes
+
+* master: expose post firstComments to clients ([b202453](https://github.com/mariusz-kabala/gtms-backend/commit/b202453b84ddabdf7af611b5b832c5abff2b8911))
+
+
+
+
+
 # [0.13.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.12.1...@gtms/lib-models@0.13.0) (2020-06-25)
 
 
