@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.7...@gtms/lib-models@0.13.8) (2020-06-26)
+
+
+### Bug Fixes
+
+* master: post serializer ([eaa9847](https://github.com/mariusz-kabala/gtms-backend/commit/eaa9847e2e673abfd8dc7494166a508fc8db54da))
+
+
+
+
+
 ## [0.13.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.6...@gtms/lib-models@0.13.7) (2020-06-26)
 
 
