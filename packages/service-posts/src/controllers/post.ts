@@ -11,6 +11,7 @@ import {
   ESIndexUpdateType,
   ESIndexUpdateRecord,
 } from '@gtms/commons'
+import { validateObjectId } from '@gtms/client-mongoose'
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -18,8 +19,8 @@ export default {
       body: { group, text },
     } = req
 
-    if (typeof group !== 'string' || group === '') {
-      return res.status(403).end()
+    if (!validateObjectId(group)) {
+      return res.status(400).end()
     }
 
     if (

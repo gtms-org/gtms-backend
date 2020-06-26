@@ -28,25 +28,20 @@ export function serializePostWithUser(
     result.owner = members[post.owner]
   }
 
-  console.log('---- RESULT ----')
-  console.log(result)
-
   if (Array.isArray(result.firstComments)) {
-    console.log('FOUND COMMENTS')
     result.firstComments = result.firstComments.map(
       (comment: ISerializedComment) => {
-        console.log(`${comment.owner}`, members[`${comment.owner}`])
         if (members[`${comment.owner}`]) {
-          comment.owner = members[`${comment.owner}`]
+          return {
+            ...comment,
+            owner: members[`${comment.owner}`],
+          }
         }
 
         return comment
       }
     )
   }
-
-  console.log('---- FINIAL RESULT ---- ')
-  console.log(result)
 
   return result
 }

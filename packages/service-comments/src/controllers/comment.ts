@@ -13,15 +13,23 @@ import {
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
-      body: { post, text, parent, tags },
+      body: { post, text, parent },
     } = req
+
+    const tags = text.match(/#(\w+)\b/gi)
 
     // check somehow if user can add
     CommentModel.create({
       post,
       text,
       parent,
-      tags,
+      tags: Array.isArray(tags)
+        ? tags
+            .filter((value, index, self) => {
+              return self.indexOf(value) === index
+            })
+            .map(tag => tag.replace('#', '').trim())
+        : [],
       owner: req.user.id,
     })
       .then((comment: IComment) => {
