@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.3...@gtms/lib-models@0.13.4) (2020-06-26)
+
+
+### Bug Fixes
+
+* master: validate object id ([41fbf85](https://github.com/mariusz-kabala/gtms-backend/commit/41fbf854779e9f7c7a18b1a4d3d0559fd579c418))
+
+
+
+
+
 ## [0.13.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.2...@gtms/lib-models@0.13.3) (2020-06-25)
 
 

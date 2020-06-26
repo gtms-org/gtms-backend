@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-mongoose@0.4.0...@gtms/client-mongoose@0.4.1) (2020-06-26)
+
+
+### Bug Fixes
+
+* master: validate object id ([41fbf85](https://github.com/mariusz-kabala/gtms-backend/commit/41fbf854779e9f7c7a18b1a4d3d0559fd579c418))
+
+
+
+
+
 # [0.4.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-mongoose@0.3.0...@gtms/client-mongoose@0.4.0) (2020-05-05)
 
 
