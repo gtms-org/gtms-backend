@@ -12,7 +12,6 @@ import {
 } from '@gtms/lib-models'
 import logger from '@gtms/lib-logger'
 import { hasGroupAdminRights } from '@gtms/lib-api'
-import config from 'config'
 import {
   IAddOperation,
   IUpdateOperation,
