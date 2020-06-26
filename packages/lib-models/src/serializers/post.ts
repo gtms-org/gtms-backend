@@ -6,15 +6,17 @@ import {
 } from '@gtms/commons'
 
 export function serializePost(post: IPost): ISerializedPost {
+  const postObj = post.toObject()
+
   return {
-    id: post._id,
-    text: post.text,
-    tags: post.tags,
-    owner: post.owner,
-    commentsCounter: post.commentsCounter,
-    firstComments: post.firstComments || [],
-    createdAt: post.createdAt,
-    updatedAt: post.updatedAt,
+    id: postObj._id,
+    text: postObj.text,
+    tags: postObj.tags,
+    owner: postObj.owner,
+    commentsCounter: postObj.commentsCounter,
+    firstComments: postObj.firstComments || [],
+    createdAt: postObj.createdAt,
+    updatedAt: postObj.updatedAt,
   }
 }
 
