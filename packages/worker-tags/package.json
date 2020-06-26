@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-tags",
-  "version": "0.4.13",
+  "version": "0.4.14",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,12 +10,12 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-queue": "0.6.20",
-    "@gtms/commons": "0.19.2",
+    "@gtms/client-queue": "0.6.21",
+    "@gtms/commons": "0.19.3",
     "@gtms/lib-consul": "0.2.1",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.13.4"
+    "@gtms/lib-models": "0.13.5"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.19.2...@gtms/commons@0.19.3) (2020-06-26)
+
+
+### Bug Fixes
+
+* master: better post records interfaces ([af79e42](https://github.com/mariusz-kabala/gtms-backend/commit/af79e429eb91c396062d3d8a0bf7a31332183dad))
+
+
+
+
+
 ## [0.19.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.19.1...@gtms/commons@0.19.2) (2020-06-25)
 
 
