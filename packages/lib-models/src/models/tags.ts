@@ -7,6 +7,7 @@ export interface ITag extends Document {
   membersCounter: number
   postsCounter: number
   groupsCounter: number
+  commentsCounter: number
   totalCounter: number
 }
 
@@ -33,6 +34,10 @@ const TagSchema = new Schema(
       default: 0,
     },
     groupsCounter: {
+      type: Number,
+      default: 0,
+    },
+    commentsCounter: {
       type: Number,
       default: 0,
     },

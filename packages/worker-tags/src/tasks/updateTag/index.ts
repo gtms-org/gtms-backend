@@ -1,13 +1,10 @@
 import amqp from 'amqplib'
-import config from 'config'
 import logger from '@gtms/lib-logger'
 import { Queues, ITagsUpdateMsg, RecordType } from '@gtms/commons'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
   getSendMsgToRetryFunc,
-  onQueueConnectionError,
-  setConnectionErrorsHandlers,
 } from '@gtms/client-queue'
 import { TagModel, ITag } from '@gtms/lib-models'
 
@@ -87,6 +84,7 @@ function processMsg(msg: amqp.Message) {
                   membersCounter: recordType === RecordType.member ? 1 : 0,
                   postsCounter: recordType === RecordType.post ? 1 : 0,
                   groupsCounter: recordType === RecordType.group ? 1 : 0,
+                  commentsCounter: recordType === RecordType.comment ? 1 : 0,
                   totalCounter: 1,
                 },
               },
@@ -124,6 +122,18 @@ function processMsg(msg: amqp.Message) {
                     update: {
                       $inc: {
                         postsCounter: 1,
+                        totalCounter: 1,
+                      },
+                    },
+                  },
+                }
+              case RecordType.comment:
+                return {
+                  updateOne: {
+                    filter: { name: t },
+                    update: {
+                      $inc: {
+                        commentsCounter: 1,
                         totalCounter: 1,
                       },
                     },
