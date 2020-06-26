@@ -1,8 +1,15 @@
 import { Response, Request, NextFunction } from 'express'
-import { GroupModel, IGroup, serializeGroup } from '@gtms/lib-models'
+import {
+  GroupModel,
+  IGroup,
+  serializeGroup,
+  GroupMemberModel,
+  IGroupMember,
+} from '@gtms/lib-models'
 import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import slugify from '@sindresorhus/slugify'
+import { validateObjectId } from '@gtms/client-mongoose'
 import { publishOnChannel, publishMultiple } from '@gtms/client-queue'
 import {
   Queues,
@@ -236,6 +243,10 @@ export default {
   hasAdminAccess(req: Request, res: Response, next: NextFunction) {
     const { user, group } = req.query
 
+    if (!validateObjectId(group)) {
+      return res.status(400).end()
+    }
+
     GroupModel.findOne({
       _id: group,
     })
@@ -253,6 +264,50 @@ export default {
         }
 
         res.status(401).end()
+      })
+      .catch(err => {
+        next(err)
+
+        logger.log({
+          level: 'error',
+          message: `Database error: ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+      })
+  },
+  canAddPost(req: Request, res: Response, next: NextFunction) {
+    const { group, user } = req.query
+
+    if (!validateObjectId(group) || !validateObjectId(user)) {
+      return res.status(400).end()
+    }
+
+    GroupModel.findOne({
+      _id: group,
+    })
+      .then((group: IGroup | null) => {
+        if (!group) {
+          return res.status(404).end()
+        }
+
+        if (
+          group.type === 'public' ||
+          `${group.owner}` === `${user}` ||
+          (Array.isArray(group.admins) && group.admins.includes(`${user}`))
+        ) {
+          return res.status(200).end()
+        }
+
+        GroupMemberModel.findOne({
+          group: group._id,
+          user,
+        }).then((member: IGroupMember | null) => {
+          if (!member) {
+            return res.status(403).end()
+          }
+
+          res.status(200).end()
+        })
       })
       .catch(err => {
         next(err)

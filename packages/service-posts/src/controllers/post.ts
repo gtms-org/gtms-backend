@@ -12,6 +12,7 @@ import {
   ESIndexUpdateRecord,
 } from '@gtms/commons'
 import { validateObjectId } from '@gtms/client-mongoose'
+import { canAddPost } from '@gtms/lib-api'
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -23,112 +24,118 @@ export default {
       return res.status(400).end()
     }
 
-    if (
-      !req.user.groupsMember.includes(group) &&
-      !req.user.groupsAdmin.includes(group) &&
-      !req.user.groupsOwner.includes(group)
-    ) {
-      return res.status(403).end()
-    }
-
-    const tags = text.match(/#(\w+)\b/gi)
-
-    PostModel.create({
-      group,
-      text,
-      tags: Array.isArray(tags)
-        ? tags
-            .filter((value, index, self) => {
-              return self.indexOf(value) === index
-            })
-            .map(tag => tag.replace('#', '').trim())
-        : [],
-      owner: req.user.id,
+    canAddPost(req.user.id, group, {
+      traceId: res.get('x-traceid'),
     })
-      .then((post: IPost) => {
-        res.status(201).json(serializePost(post))
+      .then(() => {
+        const tags = text.match(/#(\w+)\b/gi)
+
+        PostModel.create({
+          group,
+          text,
+          tags: Array.isArray(tags)
+            ? tags
+                .filter((value, index, self) => {
+                  return self.indexOf(value) === index
+                })
+                .map(tag => tag.replace('#', '').trim())
+            : [],
+          owner: req.user.id,
+        })
+          .then((post: IPost) => {
+            res.status(201).json(serializePost(post))
+
+            logger.log({
+              message: `New post created by ${req.user.email} for group ${group} has been added`,
+              level: 'info',
+              traceId: res.get('x-traceid'),
+            })
+
+            return post
+          })
+          .catch(err => {
+            if (err.name === 'ValidationError') {
+              res.status(400).json(err.errors)
+
+              logger.log({
+                message: `Validation error ${err}`,
+                level: 'error',
+                traceId: res.get('x-traceid'),
+              })
+            } else {
+              next(err)
+
+              logger.log({
+                message: `Database error ${err}`,
+                level: 'error',
+                traceId: res.get('x-traceid'),
+              })
+            }
+          })
+          .then(async (post?: IPost) => {
+            if (!post) {
+              return
+            }
+
+            const queueMessages: { queue: string; message: any }[] = [
+              {
+                queue: Queues.groupUpdate,
+                message: {
+                  type: GroupUpdateTypes.increasePostsCounter,
+                  data: {
+                    group: post.group,
+                    traceId: res.get('x-traceid'),
+                  },
+                },
+              },
+              {
+                queue: Queues.userUpdate,
+                message: {
+                  type: UserUpdateTypes.increasePostsCounter,
+                  data: {
+                    user: post.owner,
+                    traceId: res.get('x-traceid'),
+                  },
+                },
+              },
+              {
+                queue: Queues.updateESIndex,
+                message: {
+                  type: ESIndexUpdateType.create,
+                  record: ESIndexUpdateRecord.post,
+                  data: {
+                    ...serializePost(post),
+                    traceId: res.get('x-traceid'),
+                  },
+                },
+              },
+            ]
+
+            if (Array.isArray(post.tags) && post.tags.length > 0) {
+              queueMessages.push({
+                queue: Queues.updateTags,
+                message: {
+                  recordType: RecordType.post,
+                  data: {
+                    tags: post.tags,
+                    traceId: res.get('x-traceid'),
+                    owner: post.owner,
+                  },
+                },
+              })
+            }
+
+            publishMultiple(res.get('x-traceid'), ...queueMessages)
+          })
+      })
+      .catch(() => {
+        res.status(403).end()
 
         logger.log({
-          message: `New post created by ${req.user.email} for group ${group} has been added`,
-          level: 'info',
+          message: `User ${req.user.email} tried to add post to group ${group} but he has no rights to do that`,
+          level: 'warn',
           traceId: res.get('x-traceid'),
         })
-
-        return post
-      })
-      .catch(err => {
-        if (err.name === 'ValidationError') {
-          res.status(400).json(err.errors)
-
-          logger.log({
-            message: `Validation error ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-        } else {
-          next(err)
-
-          logger.log({
-            message: `Database error ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-        }
-      })
-      .then(async (post?: IPost) => {
-        if (!post) {
-          return
-        }
-
-        const queueMessages: { queue: string; message: any }[] = [
-          {
-            queue: Queues.groupUpdate,
-            message: {
-              type: GroupUpdateTypes.increasePostsCounter,
-              data: {
-                group: post.group,
-                traceId: res.get('x-traceid'),
-              },
-            },
-          },
-          {
-            queue: Queues.userUpdate,
-            message: {
-              type: UserUpdateTypes.increasePostsCounter,
-              data: {
-                user: post.owner,
-                traceId: res.get('x-traceid'),
-              },
-            },
-          },
-          {
-            queue: Queues.updateESIndex,
-            message: {
-              type: ESIndexUpdateType.create,
-              record: ESIndexUpdateRecord.post,
-              data: {
-                ...serializePost(post),
-                traceId: res.get('x-traceid'),
-              },
-            },
-          },
-        ]
-
-        if (Array.isArray(post.tags) && post.tags.length > 0) {
-          queueMessages.push({
-            queue: Queues.updateTags,
-            message: {
-              recordType: RecordType.post,
-              data: {
-                tags: post.tags,
-                traceId: res.get('x-traceid'),
-                owner: post.owner,
-              },
-            },
-          })
-        }
-
-        publishMultiple(res.get('x-traceid'), ...queueMessages)
       })
   },
   update(req: IAuthRequest, res: Response, next: NextFunction) {
