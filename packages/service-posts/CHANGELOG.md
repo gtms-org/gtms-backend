@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.8.9...@gtms/service-posts@0.9.0) (2020-06-26)
+
+
+### Features
+
+* GEOT-301: add canAddPost method ([#119](https://github.com/mariusz-kabala/gtms-backend/issues/119)) ([98ec0e2](https://github.com/mariusz-kabala/gtms-backend/commit/98ec0e215578cf262a323a99298980ccd919696d))
+
+
+
+
+
 ## [0.8.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.8.8...@gtms/service-posts@0.8.9) (2020-06-26)
 
 
