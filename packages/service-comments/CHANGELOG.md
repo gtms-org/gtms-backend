@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.6.6...@gtms/service-comments@0.6.7) (2020-06-26)
+
+
+### Bug Fixes
+
+* master: parse comment tags, cleanup ([3a3a3a7](https://github.com/mariusz-kabala/gtms-backend/commit/3a3a3a75b868f4d8598044cecbaa3b1b02966713))
+
+
+
+
+
 ## [0.6.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.6.5...@gtms/service-comments@0.6.6) (2020-06-26)
 
 **Note:** Version bump only for package @gtms/service-comments
