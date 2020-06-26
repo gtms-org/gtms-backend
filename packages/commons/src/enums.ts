@@ -11,8 +11,10 @@ export enum Queues {
   updateTags = 'updateTags',
   updateGroupTagFiles = 'updateGroupTagFiles',
   newComment = 'newComment',
+  newNotification = 'newNotification',
 }
 
+// to remove
 export enum NotificationQueueMessageType {
   email = 'email',
   webPush = 'webPush',
@@ -81,4 +83,13 @@ export enum RecordType {
   group = 'group',
   post = 'post',
   comment = 'comment',
+}
+
+export enum NotificationType {
+  newGroupInvitation = 'newGroupInvitation',
+  newPost = 'newPost',
+  newMembershipRequest = 'newMembershipRequest',
+  newGroupMember = 'newGroupMember',
+  newComment = 'newComment',
+  newAnswerToComment = 'newAnswerToComment',
 }

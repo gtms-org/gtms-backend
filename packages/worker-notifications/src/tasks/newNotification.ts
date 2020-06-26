@@ -1,7 +1,7 @@
 import amqp from 'amqplib'
 import logger from '@gtms/lib-logger'
-import { Queues, INewPostCommentMsg } from '@gtms/commons'
-import { PostModel } from '@gtms/lib-models'
+import { Queues, INotification } from '@gtms/commons'
+import { NotificationModel } from '@gtms/lib-models'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
@@ -9,7 +9,7 @@ import {
 } from '@gtms/client-queue'
 
 const retryPolicy: IRetryPolicy = {
-  queue: Queues.newComment,
+  queue: Queues.newNotification,
   retries: [
     {
       name: '30s',
@@ -37,7 +37,7 @@ const retryPolicy: IRetryPolicy = {
 const sendMsgToRetry = getSendMsgToRetryFunc(retryPolicy)
 
 const processMsg = (msg: amqp.Message) => {
-  let jsonMsg: INewPostCommentMsg
+  let jsonMsg: INotification
 
   try {
     jsonMsg = JSON.parse(msg.content.toString())
@@ -45,7 +45,7 @@ const processMsg = (msg: amqp.Message) => {
     logger.log({
       level: 'error',
       message: `Can not parse ${
-        Queues.newComment
+        Queues.newNotification
       } queue message: ${msg.content.toString()} / error: ${err}`,
     })
     return Promise.reject(`can not parse json`)

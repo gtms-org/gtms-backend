@@ -77,6 +77,7 @@ const GroupSchema = new Schema(
     tags: {
       type: [String],
       required: false,
+      index: true,
     },
     admins: {
       type: [Schema.Types.ObjectId],
