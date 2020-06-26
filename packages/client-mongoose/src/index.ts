@@ -50,4 +50,6 @@ if (NODE_ENV === 'test') {
 
 mongoose.Promise = global.Promise
 
+export * from './helpers'
+
 export default mongoose

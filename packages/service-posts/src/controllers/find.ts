@@ -16,12 +16,17 @@ import {
 } from '@gtms/commons'
 import { findUsersByIds, findGroupsByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
+import { validateObjectId } from '@gtms/client-mongoose'
 import { ObjectID } from 'mongodb'
 
 export default {
   groupPosts(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params
     const { limit, offset } = getPaginationParams(req)
+
+    if (!validateObjectId(id)) {
+      return res.status(400).end()
+    }
 
     PostModel.paginate(
       { group: new ObjectID(id) },
