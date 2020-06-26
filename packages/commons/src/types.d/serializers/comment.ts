@@ -4,7 +4,7 @@ export interface ISerializedComment {
   id: string
   text: string
   lastSubComments: {
-    owner: string
+    owner: string | ISerializedUser
     createdAt: string
     updatedAt: string
     text: string
