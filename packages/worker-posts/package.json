@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-posts",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "@gtms/lib-consul": "0.2.1",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.13.5"
+    "@gtms/lib-models": "0.13.6"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"
