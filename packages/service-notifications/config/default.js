@@ -5,8 +5,6 @@ dotenv.config()
 const {
   DB_HOST,
   QUEUE_HOST,
-  SENDGRID_API_KEY,
-  ADDRESS_EMAIL,
   VERSION,
   PORT,
   CONSUL_HOST,
@@ -20,8 +18,6 @@ module.exports = {
   queueHost: QUEUE_HOST,
   serviceName: 'notifications',
   serviceVersion: VERSION,
-  addressEmail: ADDRESS_EMAIL,
-  sendgridApiKey: SENDGRID_API_KEY,
   consulHost: CONSUL_HOST,
   consulPort: CONSUL_PORT,
 }

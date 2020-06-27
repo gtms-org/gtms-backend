@@ -1,10 +1,6 @@
 import amqp from 'amqplib'
 import logger from '@gtms/lib-logger'
-import {
-  INotificationQueueMsg,
-  IDeleteAccountQueueMsg,
-  Queues,
-} from '@gtms/commons'
+import { IDeleteAccountQueueMsg, Queues } from '@gtms/commons'
 import config from 'config'
 
 export function publishOnChannel<T>(queueName: string, message: T) {
@@ -103,10 +99,4 @@ export function publishToDeleteChannel(
   message: IDeleteAccountQueueMsg
 ): Promise<void> {
   return publishOnChannel<IDeleteAccountQueueMsg>(Queues.deleteAccount, message)
-}
-
-export function publishToNotificationsChannel(
-  message: INotificationQueueMsg
-): Promise<void> {
-  return publishOnChannel<INotificationQueueMsg>(Queues.notifications, message)
 }

@@ -1,5 +1,6 @@
 export enum Queues {
-  notifications = 'notifications',
+  // notifications = 'notifications',
+  sendEmail = 'sendEmail',
   deleteAccount = 'deleteAccount',
   updateESIndex = 'updateESIndex',
   deleteGroup = 'deleteGroup',
@@ -12,12 +13,6 @@ export enum Queues {
   updateGroupTagFiles = 'updateGroupTagFiles',
   newComment = 'newComment',
   newNotification = 'newNotification',
-}
-
-// to remove
-export enum NotificationQueueMessageType {
-  email = 'email',
-  webPush = 'webPush',
 }
 
 export enum ESIndexUpdateType {

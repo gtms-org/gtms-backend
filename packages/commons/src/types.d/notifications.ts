@@ -1,21 +1,14 @@
-import {
-  NotificationQueueMessageType,
-  RecordType,
-  NotificationType,
-} from '../enums'
+import { RecordType, NotificationType } from '../enums'
 
-export interface IEmailNotification {
-  to: string
-  from?: string
-  subject: string
-  text: string
-  html: string
-  traceId: string
-}
-
-export interface INotificationQueueMsg {
-  type: NotificationQueueMessageType
-  data: IEmailNotification
+export interface ISendEmailMsg {
+  data: {
+    to: string
+    from?: string
+    subject: string
+    text: string
+    html: string
+    traceId: string
+  }
 }
 
 export interface IDeleteAccountQueueMsg {

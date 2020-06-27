@@ -1,1 +1,2 @@
-export * from './newComment'
+export * from './newNotification'
+export * from './sendEmail'

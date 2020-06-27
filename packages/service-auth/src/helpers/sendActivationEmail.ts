@@ -1,6 +1,6 @@
 import { IUser, ActivationCodeModel, IActivationCode } from '@gtms/lib-models'
-import { publishToNotificationsChannel } from '@gtms/client-queue'
-import { NotificationQueueMessageType } from '@gtms/commons'
+import { publishOnChannel } from '@gtms/client-queue'
+import { ISendEmailMsg, Queues } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import config from 'config'
 
@@ -14,8 +14,7 @@ export default function(user: IUser, traceId: string): void {
       )}/activate-account/${activationCode.code}`
 
       try {
-        await publishToNotificationsChannel({
-          type: NotificationQueueMessageType.email,
+        await publishOnChannel<ISendEmailMsg>(Queues.sendEmail, {
           data: {
             to: user.email,
             subject: 'Activate your account',

@@ -1,6 +1,6 @@
 import amqp from 'amqplib'
 import config from 'config'
-import { initNewPostCommentTask } from './tasks'
+import { initNewNotificationTask, initSendEmailTask } from './tasks'
 import {
   onQueueConnectionError,
   setConnectionErrorsHandlers,
@@ -17,7 +17,8 @@ export async function startWorkers() {
       await conn.createChannel().then(ch => {
         queueConnection = conn
 
-        initNewPostCommentTask(ch)
+        initNewNotificationTask(ch)
+        initSendEmailTask(ch)
       })
     })
     .catch(onQueueConnectionError)

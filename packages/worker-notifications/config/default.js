@@ -8,6 +8,8 @@ const {
   DB_HOST,
   CONSUL_HOST,
   CONSUL_PORT,
+  SENDGRID_API_KEY,
+  ADDRESS_EMAIL,
 } = process.env
 
 module.exports = {
@@ -17,6 +19,8 @@ module.exports = {
   serviceVersion: VERSION,
   dbHost: DB_HOST,
   dbName: 'notifications',
+  addressEmail: ADDRESS_EMAIL,
+  sendgridApiKey: SENDGRID_API_KEY,
   consulHost: CONSUL_HOST,
   consulPort: CONSUL_PORT,
 }
