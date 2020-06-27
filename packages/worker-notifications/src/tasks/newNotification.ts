@@ -63,14 +63,14 @@ const processMsg = (msg: amqp.Message) => {
 }
 
 export function initNewNotificationTask(ch: amqp.Channel) {
-  const ok = ch.assertQueue(Queues.newComment, { durable: true })
+  const ok = ch.assertQueue(Queues.newNotification, { durable: true })
 
   ok.then(async () => {
     await setupRetriesPolicy(ch, retryPolicy)
     ch.prefetch(1)
   }).then(() => {
     ch.consume(
-      Queues.newComment,
+      Queues.newNotification,
       msg => {
         if (msg.fields.redelivered) {
           return sendMsgToRetry({
