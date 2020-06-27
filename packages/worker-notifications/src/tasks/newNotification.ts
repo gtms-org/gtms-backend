@@ -50,7 +50,8 @@ const processMsg = (msg: amqp.Message) => {
     })
     return Promise.reject(`can not parse json`)
   }
-
+console.log('--- DEBUG ---')
+console.log(jsonMsg)
   switch (jsonMsg.data.notificationType) {
     case NotificationType.newPost:
       return handleNewPostNotification(jsonMsg)
