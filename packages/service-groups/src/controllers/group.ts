@@ -117,7 +117,9 @@ export default {
     let group: IGroup | null
 
     try {
-      group = await GroupModel.findOne({ slug })
+      group = await GroupModel.findOne(
+        validateObjectId(slug) ? { _id: slug } : { slug }
+      )
     } catch (err) {
       logger.log({
         message: `Database error ${err}`,

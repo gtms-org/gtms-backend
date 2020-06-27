@@ -22,9 +22,7 @@ export interface INotification {
     relatedRecordId?: string
     notificationType: NotificationType
     owner: string
-    createdAt: string
-    updatedAt: string
-    payload: any
+    payload?: any
     traceId: string
   }
 }

@@ -16,6 +16,7 @@
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
     "@gtms/lib-models": "0.14.0",
+    "@gtms/lib-api": "*",
     "@sendgrid/mail": "^6.5.5"
   },
   "author": "Mariusz Kabała",
