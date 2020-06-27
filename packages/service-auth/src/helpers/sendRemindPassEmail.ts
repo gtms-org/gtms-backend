@@ -1,6 +1,6 @@
 import { IActivationCode, ActivationCodeModel, IUser } from '@gtms/lib-models'
-import { publishToNotificationsChannel } from '@gtms/client-queue'
-import { NotificationQueueMessageType } from '@gtms/commons'
+import { publishOnChannel } from '@gtms/client-queue'
+import { ISendEmailMsg, Queues } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import config from 'config'
 
@@ -13,8 +13,7 @@ export default function(user: IUser, traceId: string): void {
         'appDomain'
       )}/reset-password/${activationCode.code}`
 
-      publishToNotificationsChannel({
-        type: NotificationQueueMessageType.email,
+      publishOnChannel<ISendEmailMsg>(Queues.sendEmail, {
         data: {
           to: user.email,
           subject: 'Change password to your account',

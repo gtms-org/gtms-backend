@@ -1,7 +1,7 @@
 import amqp from 'amqplib'
 import logger from '@gtms/lib-logger'
-import { Queues, INewPostCommentMsg } from '@gtms/commons'
-import { PostModel } from '@gtms/lib-models'
+import { Queues, INotification } from '@gtms/commons'
+import { NotificationModel } from '@gtms/lib-models'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
@@ -9,7 +9,7 @@ import {
 } from '@gtms/client-queue'
 
 const retryPolicy: IRetryPolicy = {
-  queue: Queues.newComment,
+  queue: Queues.newNotification,
   retries: [
     {
       name: '30s',
@@ -37,7 +37,7 @@ const retryPolicy: IRetryPolicy = {
 const sendMsgToRetry = getSendMsgToRetryFunc(retryPolicy)
 
 const processMsg = (msg: amqp.Message) => {
-  let jsonMsg: INewPostCommentMsg
+  let jsonMsg: INotification
 
   try {
     jsonMsg = JSON.parse(msg.content.toString())
@@ -45,79 +45,43 @@ const processMsg = (msg: amqp.Message) => {
     logger.log({
       level: 'error',
       message: `Can not parse ${
-        Queues.newComment
+        Queues.newNotification
       } queue message: ${msg.content.toString()} / error: ${err}`,
     })
     return Promise.reject(`can not parse json`)
   }
 
   return new Promise((resolve, reject) => {
-    const {
-      post,
-      data: { comment, traceId, parentComment },
-    } = jsonMsg
+    const { data } = jsonMsg
 
-    const updateQuery: any = {
-      $inc: {
-        commentsCounter: 1,
-      },
-    }
-
-    if (!parentComment) {
-      updateQuery.$push = {
-        firstComments: {
-          $each: [
-            {
-              id: comment.id,
-              text: comment.text,
-              tags: comment.tags,
-              owner: comment.owner,
-              createdAt: comment.createdAt,
-              updatedAt: comment.updatedAt,
-            },
-          ],
-          $sort: { createdAt: 1 },
-          $slice: 5,
-        },
-      }
-    }
-
-    PostModel.updateOne(
-      {
-        _id: post,
-      },
-      updateQuery
-    )
-      .then(({ nModified }) => {
-        if (nModified > 0) {
-          logger.log({
-            level: 'info',
-            message: `Post ${post} has been updated with last comments and commentsCounter`,
-            traceId,
-          })
-        } else {
-          logger.log({
-            level: 'warn',
-            message: `Can not modify post record, post ${post} not found`,
-            traceId,
-          })
-        }
-
+    NotificationModel.create({
+      relatedRecordType: data.relatedRecordType,
+      relatedRecordId: data.relatedRecordId,
+      notificationType: data.notificationType,
+      owner: data.owner,
+      payload: data.payload,
+    })
+      .then(notification => {
         resolve()
+        logger.log({
+          level: 'info',
+          message: `A new notification ${notification.notificationType} for user ${notification.owner} has been saved`,
+          traceId: data.traceId,
+        })
       })
       .catch(err => {
         logger.log({
           message: `Database error ${err}`,
           level: 'error',
-          traceId,
+          traceId: data.traceId,
         })
 
-        return reject('database error')
+        reject('database error')
       })
   })
 }
 
-export function initNewPostCommentTask(ch: amqp.Channel) {
+export function initNewNotificationTask(ch: amqp.Channel) {
   const ok = ch.assertQueue(Queues.newComment, { durable: true })
 
   ok.then(async () => {

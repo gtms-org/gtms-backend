@@ -1,22 +1,22 @@
 {
-  "name": "@gtms/service-notifications",
-  "version": "0.8.11",
+  "name": "@gtms/worker-notifications",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest --runInBand",
+    "test": "jest",
     "dev": "nodemon",
     "build": "webpack --mode=production --config ../../webpack.config.js",
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-mongoose": "0.4.1",
+    "@gtms/client-queue": "0.6.21",
     "@gtms/commons": "0.19.3",
     "@gtms/lib-consul": "0.2.1",
-    "@gtms/lib-logger": "0.3.0",
-    "@gtms/lib-middlewares": "0.4.25",
+    "@gtms/lib-http-server": "*",
+    "@gtms/lib-logger": "*",
     "@gtms/lib-models": "0.13.8",
-    "@gtms/lib-testing": "0.1.0"
+    "@sendgrid/mail": "^6.5.5"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

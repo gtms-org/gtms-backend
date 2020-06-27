@@ -46,6 +46,7 @@ const CommentSchema = new Schema(
     tags: {
       type: [String],
       required: false,
+      index: true,
     },
     owner: {
       type: Schema.Types.ObjectId,

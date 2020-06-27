@@ -1,6 +1,6 @@
-resource "docker_container" "service-notifications" {
-  name  = "service-notifications-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/servicenotifications:${var.tag}"
+resource "docker_container" "worker-notifications" {
+  name  = "worker-notifications-${var.env}"
+  image = "docker-registry.kabala.tech/gtms/workernotifications:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"
@@ -16,6 +16,8 @@ resource "docker_container" "service-notifications" {
     "DB_HOST=mongo-${var.env}-db",
     "DB_NAME=${var.db_name}",
     "VERSION=${var.tag}",
+    "SENDGRID_API_KEY=${var.SENDGRID_API_KEY}",
+    "ADDRESS_EMAIL=${var.emailAddress}",
     "PORT=80",
     "CONSUL_HOST=consul-client",
     "CONSUL_PORT=8500"

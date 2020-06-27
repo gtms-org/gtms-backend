@@ -1,5 +1,6 @@
 export enum Queues {
-  notifications = 'notifications',
+  // notifications = 'notifications',
+  sendEmail = 'sendEmail',
   deleteAccount = 'deleteAccount',
   updateESIndex = 'updateESIndex',
   deleteGroup = 'deleteGroup',
@@ -11,11 +12,7 @@ export enum Queues {
   updateTags = 'updateTags',
   updateGroupTagFiles = 'updateGroupTagFiles',
   newComment = 'newComment',
-}
-
-export enum NotificationQueueMessageType {
-  email = 'email',
-  webPush = 'webPush',
+  newNotification = 'newNotification',
 }
 
 export enum ESIndexUpdateType {
@@ -81,4 +78,13 @@ export enum RecordType {
   group = 'group',
   post = 'post',
   comment = 'comment',
+}
+
+export enum NotificationType {
+  newGroupInvitation = 'newGroupInvitation',
+  newPost = 'newPost',
+  newMembershipRequest = 'newMembershipRequest',
+  newGroupMember = 'newGroupMember',
+  newComment = 'newComment',
+  newAnswerToComment = 'newAnswerToComment',
 }

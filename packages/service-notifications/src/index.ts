@@ -12,8 +12,6 @@ import {
   getAppInfoMiddleware,
 } from '@gtms/lib-middlewares'
 
-import { listenToNotificationQueue } from './worker'
-
 const app = express()
 const router: Router = Router()
 
@@ -65,7 +63,5 @@ app.use(
 app.use(bodyParser.json())
 app.use('/', router)
 app.use(errorMiddleware)
-
-listenToNotificationQueue()
 
 export { app }
