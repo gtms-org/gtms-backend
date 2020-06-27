@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.9.0...@gtms/service-notifications@0.9.1) (2020-06-27)
+
+
+### Bug Fixes
+
+* master: drop unused vars from terraform ([259595d](https://github.com/mariusz-kabala/gtms-backend/commit/259595d9e4edce8971c25a8247b93076ebc0859d))
+
+
+
+
+
 # [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.8.11...@gtms/service-notifications@0.9.0) (2020-06-27)
 
 
