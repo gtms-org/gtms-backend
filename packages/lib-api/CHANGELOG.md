@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.5.1...@gtms/lib-api@0.6.0) (2020-06-27)
+
+
+### Features
+
+* GEOT-302: new post notification ([#122](https://github.com/mariusz-kabala/gtms-backend/issues/122)) ([3e83c15](https://github.com/mariusz-kabala/gtms-backend/commit/3e83c1543c09b450a92708c728fc159df32b5c88))
+
+
+
+
+
 ## [0.5.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.5.0...@gtms/lib-api@0.5.1) (2020-06-27)
 
 **Note:** Version bump only for package @gtms/lib-api

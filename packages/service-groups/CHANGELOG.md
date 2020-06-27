@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.24.0...@gtms/service-groups@0.25.0) (2020-06-27)
+
+
+### Features
+
+* GEOT-302: new post notification ([#122](https://github.com/mariusz-kabala/gtms-backend/issues/122)) ([3e83c15](https://github.com/mariusz-kabala/gtms-backend/commit/3e83c1543c09b450a92708c728fc159df32b5c88))
+
+
+
+
+
 # [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.23.2...@gtms/service-groups@0.24.0) (2020-06-27)
 
 
