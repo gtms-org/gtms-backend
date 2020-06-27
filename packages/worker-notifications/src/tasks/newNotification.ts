@@ -1,12 +1,12 @@
 import amqp from 'amqplib'
 import logger from '@gtms/lib-logger'
-import { Queues, INotification } from '@gtms/commons'
-import { NotificationModel } from '@gtms/lib-models'
+import { Queues, INotification, NotificationType } from '@gtms/commons'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
   getSendMsgToRetryFunc,
 } from '@gtms/client-queue'
+import { handleNewPostNotification } from './notifications'
 
 const retryPolicy: IRetryPolicy = {
   queue: Queues.newNotification,
@@ -51,34 +51,15 @@ const processMsg = (msg: amqp.Message) => {
     return Promise.reject(`can not parse json`)
   }
 
-  return new Promise((resolve, reject) => {
-    const { data } = jsonMsg
+  switch (jsonMsg.data.notificationType) {
+    case NotificationType.newPost:
+      return handleNewPostNotification(jsonMsg)
 
-    NotificationModel.create({
-      relatedRecordType: data.relatedRecordType,
-      relatedRecordId: data.relatedRecordId,
-      notificationType: data.notificationType,
-      owner: data.owner,
-      payload: data.payload,
-    })
-      .then(notification => {
-        resolve()
-        logger.log({
-          level: 'info',
-          message: `A new notification ${notification.notificationType} for user ${notification.owner} has been saved`,
-          traceId: data.traceId,
-        })
-      })
-      .catch(err => {
-        logger.log({
-          message: `Database error ${err}`,
-          level: 'error',
-          traceId: data.traceId,
-        })
-
-        reject('database error')
-      })
-  })
+    default:
+      return Promise.reject(
+        `Notification ${jsonMsg.data.notificationType} is not supported`
+      )
+  }
 }
 
 export function initNewNotificationTask(ch: amqp.Channel) {

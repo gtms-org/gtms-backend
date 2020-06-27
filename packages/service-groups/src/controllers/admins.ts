@@ -4,14 +4,20 @@ import createError from 'http-errors'
 import { findUsersByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
 import { IAuthRequest } from '@gtms/commons'
+import { validateObjectId } from '@gtms/client-mongoose'
 
 export default {
   list(req: Request, res: Response, next: NextFunction) {
     const { slug } = req.params
+    const { onlyIds = false } = req.query
 
-    GroupModel.findOne({
-      slug,
-    })
+    GroupModel.findOne(
+      validateObjectId(slug)
+        ? { _id: slug }
+        : {
+            slug,
+          }
+    )
       .then((group: IGroup | null) => {
         if (!group) {
           return next(createError(404, 'Group not found'))
@@ -20,6 +26,10 @@ export default {
         const admins = group.admins || []
 
         admins.unshift(group.owner)
+
+        if (!!onlyIds) {
+          return res.status(200).json(admins)
+        }
 
         findUsersByIds(admins, {
           traceId: res.get('x-traceid'),

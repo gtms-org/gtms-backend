@@ -5,14 +5,17 @@ import { publishMultiple } from '@gtms/client-queue'
 import {
   Queues,
   RecordType,
+  NotificationType,
   GroupUpdateTypes,
+  ISerializedPost,
+  ISerializedGroup,
   IAuthRequest,
   UserUpdateTypes,
   ESIndexUpdateType,
   ESIndexUpdateRecord,
 } from '@gtms/commons'
 import { validateObjectId } from '@gtms/client-mongoose'
-import { canAddPost } from '@gtms/lib-api'
+import { canAddPost, getGroup } from '@gtms/lib-api'
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -107,6 +110,16 @@ export default {
                     ...serializePost(post),
                     traceId: res.get('x-traceid'),
                   },
+                },
+              },
+              {
+                queue: Queues.newNotification,
+                message: {
+                  relatedRecordType: RecordType.group,
+                  relatedRecordId: post._id,
+                  notificationType: NotificationType.newPost,
+                  owner: post.owner,
+                  traceId: res.get('x-traceid'),
                 },
               },
             ]
@@ -256,7 +269,25 @@ export default {
           return res.status(404).end()
         }
 
-        res.status(200).json(serializePost(post))
+        const serializedPost: ISerializedPost & {
+          group?: ISerializedGroup
+        } = serializePost(post)
+
+        getGroup(post.group, { traceId: res.get('x-traceid') })
+          .then(group => {
+            serializedPost.group = group
+
+            res.status(200).json(serializedPost)
+          })
+          .catch(err => {
+            res.status(200).json(serializedPost)
+
+            logger.log({
+              level: 'error',
+              message: `Can not fetch info about post's group, returning without it - ${err}`,
+              traceId: res.get('x-traceid'),
+            })
+          })
       })
       .catch(err => {
         next(err)
