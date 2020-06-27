@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.9...@gtms/lib-models@0.14.0) (2020-06-27)
+
+
+### Features
+
+* GEOT-302 notifications worker ([#120](https://github.com/mariusz-kabala/gtms-backend/issues/120)) ([5345391](https://github.com/mariusz-kabala/gtms-backend/commit/5345391792bf05715d349c798ac6dab7400338ab))
+
+
+
+
+
 ## [0.13.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.13.8...@gtms/lib-models@0.13.9) (2020-06-26)
 
 ### Bug Fixes

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.23.2...@gtms/service-groups@0.24.0) (2020-06-27)
+
+
+### Features
+
+* GEOT-302 notifications worker ([#120](https://github.com/mariusz-kabala/gtms-backend/issues/120)) ([5345391](https://github.com/mariusz-kabala/gtms-backend/commit/5345391792bf05715d349c798ac6dab7400338ab))
+
+
+
+
+
 ## [0.23.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.23.1...@gtms/service-groups@0.23.2) (2020-06-26)
 
 **Note:** Version bump only for package @gtms/service-groups

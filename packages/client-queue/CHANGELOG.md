@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-queue@0.6.21...@gtms/client-queue@0.7.0) (2020-06-27)
+
+
+### Features
+
+* GEOT-302 notifications worker ([#120](https://github.com/mariusz-kabala/gtms-backend/issues/120)) ([5345391](https://github.com/mariusz-kabala/gtms-backend/commit/5345391792bf05715d349c798ac6dab7400338ab))
+
+
+
+
+
 ## [0.6.21](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-queue@0.6.20...@gtms/client-queue@0.6.21) (2020-06-26)
 
 **Note:** Version bump only for package @gtms/client-queue
