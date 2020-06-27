@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.2.0...@gtms/worker-notifications@0.2.1) (2020-06-27)
+
+
+### Bug Fixes
+
+* master: use proper queue name ([e9e4485](https://github.com/mariusz-kabala/gtms-backend/commit/e9e44858bb224618aec8ed6ebaf3d9e2131f932b))
+
+
+
+
+
 # [0.2.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.1.0...@gtms/worker-notifications@0.2.0) (2020-06-27)
 
 
