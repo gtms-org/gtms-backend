@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.2.3...@gtms/worker-notifications@0.2.4) (2020-06-28)
+
+
+### Bug Fixes
+
+* master: better handling api errors ([04c93fc](https://github.com/mariusz-kabala/gtms-backend/commit/04c93fcd1ecf10fe80d979e3c82f539af5562ddb))
+
+
+
+
+
 ## [0.2.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.2.2...@gtms/worker-notifications@0.2.3) (2020-06-28)
 
 
