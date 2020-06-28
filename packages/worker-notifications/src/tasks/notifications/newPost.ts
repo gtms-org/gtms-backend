@@ -14,8 +14,6 @@ import { ObjectID } from 'mongodb'
 import logger from '@gtms/lib-logger'
 
 export function handleNewPostNotification(msg: INotification) {
-  console.log('WORKS HERE')
-  console.log(msg)
   return new Promise(async (resolve, reject) => {
     const {
       relatedRecordType,

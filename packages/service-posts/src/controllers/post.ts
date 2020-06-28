@@ -116,7 +116,7 @@ export default {
                 queue: Queues.newNotification,
                 message: {
                   data: {
-                    relatedRecordType: RecordType.group,
+                    relatedRecordType: RecordType.post,
                     relatedRecordId: post._id,
                     notificationType: NotificationType.newPost,
                     owner: post.owner,
