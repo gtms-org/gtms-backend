@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.11.2...@gtms/service-posts@0.11.3) (2020-06-28)
+
+
+### Bug Fixes
+
+* pass proper record type with notification ([1f8a951](https://github.com/mariusz-kabala/gtms-backend/commit/1f8a951bb133610de8ab3994b0a57883fc7d539b))
+
+
+
+
+
 ## [0.11.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.11.1...@gtms/service-posts@0.11.2) (2020-06-28)
 
 **Note:** Version bump only for package @gtms/service-posts
