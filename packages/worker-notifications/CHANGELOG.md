@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.2.2...@gtms/worker-notifications@0.2.3) (2020-06-28)
+
+
+### Bug Fixes
+
+* master: proper new notification msg format ([66dcf61](https://github.com/mariusz-kabala/gtms-backend/commit/66dcf6133f2c8553e45a69764167a9844596abab))
+
+
+
+
+
 ## [0.2.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.2.1...@gtms/worker-notifications@0.2.2) (2020-06-27)
 
 

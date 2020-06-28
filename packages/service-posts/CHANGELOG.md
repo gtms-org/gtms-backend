@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.11.0...@gtms/service-posts@0.11.1) (2020-06-28)
+
+
+### Bug Fixes
+
+* master: proper new notification msg format ([66dcf61](https://github.com/mariusz-kabala/gtms-backend/commit/66dcf6133f2c8553e45a69764167a9844596abab))
+
+
+
+
+
 # [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.10.0...@gtms/service-posts@0.11.0) (2020-06-27)
 
 
