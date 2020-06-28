@@ -8,7 +8,6 @@ import {
 import { GroupTagModel, IGroupTag } from '@gtms/lib-models'
 import { Queues, IFileQueueMsg, FileStatus } from '@gtms/commons'
 import { hasGroupAdminRights } from '@gtms/lib-api'
-import config from 'config'
 import logger from '@gtms/lib-logger'
 
 const retryPolicy: IRetryPolicy = {

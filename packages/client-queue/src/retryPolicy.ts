@@ -82,8 +82,6 @@ export function getSendMsgToRetryFunc(policy: IRetryPolicy) {
     channel: amqp.Channel
     reasonOfFail: Error | string
   }) => {
-    channel.ack(msg)
-
     const { attempt, content, traceId } = getAttemptAndUpdatedContent(msg)
 
     if (attempt > policy.retries.length) {
