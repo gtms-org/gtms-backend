@@ -25,10 +25,20 @@ export function handleNewPostNotification(msg: INotification) {
     } = msg.data
 
     if (!relatedRecordId) {
+      logger.log({
+        level: 'error',
+        message: `Notification ${notificationType} has no related record id`,
+        traceId,
+      })
       return reject('New post id has not been provided')
     }
 
     if (relatedRecordType !== RecordType.post) {
+      logger.log({
+        level: 'error',
+        message: `Notification ${notificationType} has invalid related record type - ${relatedRecordType}`,
+        traceId,
+      })
       return reject('Record type is not equal post')
     }
 
