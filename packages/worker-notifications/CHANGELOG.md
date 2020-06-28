@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.2.4...@gtms/worker-notifications@0.2.5) (2020-06-28)
+
+
+### Bug Fixes
+
+* debugging ([3269c6a](https://github.com/mariusz-kabala/gtms-backend/commit/3269c6ac9c95d250f49b991500691715e38c9b88))
+
+
+
+
+
 ## [0.2.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.2.3...@gtms/worker-notifications@0.2.4) (2020-06-28)
 
 
