@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-es-indexer@0.5.9...@gtms/worker-es-indexer@0.5.10) (2020-06-28)
+
+**Note:** Version bump only for package @gtms/worker-es-indexer
+
+
+
+
+
 ## [0.5.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-es-indexer@0.5.8...@gtms/worker-es-indexer@0.5.9) (2020-06-27)
 
 **Note:** Version bump only for package @gtms/worker-es-indexer
