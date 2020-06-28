@@ -115,11 +115,13 @@ export default {
               {
                 queue: Queues.newNotification,
                 message: {
-                  relatedRecordType: RecordType.group,
-                  relatedRecordId: post._id,
-                  notificationType: NotificationType.newPost,
-                  owner: post.owner,
-                  traceId: res.get('x-traceid'),
+                  data: {
+                    relatedRecordType: RecordType.group,
+                    relatedRecordId: post._id,
+                    notificationType: NotificationType.newPost,
+                    owner: post.owner,
+                    traceId: res.get('x-traceid'),
+                  },
                 },
               },
             ]
