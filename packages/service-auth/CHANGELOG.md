@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.23.2...@gtms/service-auth@0.24.0) (2020-06-28)
+
+
+### Features
+
+* GEOT-305 new joiner notification ([#123](https://github.com/mariusz-kabala/gtms-backend/issues/123)) ([749eb4c](https://github.com/mariusz-kabala/gtms-backend/commit/749eb4caee514bd17d3421117e3dfcc695f4a5d8))
+
+
+
+
+
 ## [0.23.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.23.1...@gtms/service-auth@0.23.2) (2020-06-28)
 
 **Note:** Version bump only for package @gtms/service-auth

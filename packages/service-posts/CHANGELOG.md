@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.11.3...@gtms/service-posts@0.12.0) (2020-06-28)
+
+
+### Features
+
+* GEOT-305 new joiner notification ([#123](https://github.com/mariusz-kabala/gtms-backend/issues/123)) ([749eb4c](https://github.com/mariusz-kabala/gtms-backend/commit/749eb4caee514bd17d3421117e3dfcc695f4a5d8))
+
+
+
+
+
 ## [0.11.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.11.2...@gtms/service-posts@0.11.3) (2020-06-28)
 
 

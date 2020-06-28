@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-notifications",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "dependencies": {
     "@gtms/client-queue": "0.7.2",
     "@gtms/commons": "0.21.0",
-    "@gtms/lib-api": "0.6.0",
+    "@gtms/lib-api": "0.7.0",
     "@gtms/lib-consul": "*",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
