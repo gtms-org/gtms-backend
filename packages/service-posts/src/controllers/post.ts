@@ -202,7 +202,7 @@ export default {
             return post
           })
           .then((post: IPost) => {
-            const queueMessages: { queue: string; message: any }[] = [
+            const queueMessages: { queue: Queues; message: any }[] = [
               {
                 queue: Queues.updateESIndex,
                 message: {

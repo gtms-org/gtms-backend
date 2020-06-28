@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express'
-import config from 'config'
 import {
   GroupModel,
   GroupMemberModel,
@@ -9,14 +8,15 @@ import {
 import createError from 'http-errors'
 import { findUsersByIds } from '@gtms/lib-api'
 import logger from '@gtms/lib-logger'
-import { publishOnChannel } from '@gtms/client-queue'
+import { publishOnChannel, publishMultiple } from '@gtms/client-queue'
 import {
   Queues,
-  IUserJoinedGroupMsg,
   IUserLeftGroupMsg,
   UserUpdateTypes,
   IAuthRequest,
   getPaginationParams,
+  RecordType,
+  NotificationType,
 } from '@gtms/commons'
 
 export default {
@@ -147,22 +147,34 @@ export default {
               traceId: res.get('x-traceid'),
             })
 
-            try {
-              await publishOnChannel<IUserJoinedGroupMsg>(Queues.userUpdate, {
-                type: UserUpdateTypes.joinedGroup,
-                data: {
-                  group: group._id,
-                  user: req.user.id,
-                  traceId: res.get('x-traceid'),
+            publishMultiple(
+              res.get('x-traceid'),
+              ...[
+                {
+                  queue: Queues.userUpdate,
+                  message: {
+                    type: UserUpdateTypes.joinedGroup,
+                    data: {
+                      group: group._id,
+                      user: req.user.id,
+                      traceId: res.get('x-traceid'),
+                    },
+                  },
                 },
-              })
-            } catch (err) {
-              logger.log({
-                message: `Can not publish message to the QUEUE: ${err}`,
-                level: 'error',
-                traceId: res.get('x-traceid'),
-              })
-            }
+                {
+                  queue: Queues.newNotification,
+                  message: {
+                    data: {
+                      relatedRecordType: RecordType.group,
+                      relatedRecordId: group._id,
+                      notificationType: NotificationType.newGroupMember,
+                      owner: req.user.id,
+                      traceId: res.get('x-traceid'),
+                    },
+                  },
+                },
+              ]
+            )
           })
           .catch(err => {
             logger.log({
