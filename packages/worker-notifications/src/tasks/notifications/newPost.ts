@@ -1,4 +1,9 @@
-import { INotification, RecordType } from '@gtms/commons'
+import {
+  INotification,
+  RecordType,
+  ISerializedPost,
+  ISerializedGroup,
+} from '@gtms/commons'
 import { getPost, getGroupAdmins } from '@gtms/lib-api'
 import {
   NotificationsSettingsModel,
@@ -25,8 +30,34 @@ export function handleNewPostNotification(msg: INotification) {
       return reject('Record type is not equal post')
     }
 
-    const post = await getPost(relatedRecordId, { traceId })
-    const admins = await getGroupAdmins(post.group.id, { traceId })
+    let post: ISerializedPost & {
+      group?: ISerializedGroup
+    }
+    let admins: string[]
+
+    try {
+      post = await getPost(relatedRecordId, { traceId })
+    } catch (err) {
+      logger.log({
+        level: 'error',
+        message: `Can not fetch info about post - ${err}`,
+        traceId,
+      })
+
+      return reject('api error')
+    }
+
+    try {
+      admins = await getGroupAdmins(post.group.id, { traceId })
+    } catch (err) {
+      logger.log({
+        level: 'error',
+        message: `Can not fetch info about group admins - ${err}`,
+        traceId,
+      })
+
+      return reject('api error')
+    }
 
     NotificationsSettingsModel.find({
       $or: [
