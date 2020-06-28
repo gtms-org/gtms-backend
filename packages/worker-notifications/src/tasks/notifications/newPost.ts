@@ -80,7 +80,7 @@ export function handleNewPostNotification(msg: INotification) {
     })
       .then((notifications: INotificationsSettings[]) => {
         if (notifications.length === 0) {
-          return
+          return resolve()
         }
 
         NotificationModel.insertMany(
