@@ -202,11 +202,16 @@ export default {
   },
   getUser(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params
+    const { basic = false } = req.query
 
     UserModel.findById(id)
       .then(async (user: IUser | null) => {
         if (!user) {
           return res.status(404).end()
+        }
+
+        if (!!basic) {
+          return res.status(200).json(user)
         }
 
         let groupsMember = user.groupsMember

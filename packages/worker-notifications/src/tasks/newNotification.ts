@@ -6,7 +6,10 @@ import {
   IRetryPolicy,
   getSendMsgToRetryFunc,
 } from '@gtms/client-queue'
-import { handleNewPostNotification } from './notifications'
+import {
+  handleNewPostNotification,
+  handleNewGroupJoinerNotification,
+} from './notifications'
 
 const retryPolicy: IRetryPolicy = {
   queue: Queues.newNotification,
@@ -54,6 +57,9 @@ const processMsg = (msg: amqp.Message) => {
   switch (jsonMsg.data.notificationType) {
     case NotificationType.newPost:
       return handleNewPostNotification(jsonMsg)
+
+    case NotificationType.newGroupMember:
+      return handleNewGroupJoinerNotification(jsonMsg)
 
     default:
       return Promise.reject(
