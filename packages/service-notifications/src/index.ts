@@ -5,6 +5,7 @@ import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
 import webPushSubscriptionsController from './controllers/webPushSubscriptions'
 import notificationsSettingsController from './controllers/notificationsSettings'
+import notificationController from './controllers/notifications'
 import {
   JWTMiddleware,
   errorMiddleware,
@@ -34,6 +35,8 @@ router.get('/settings', notificationsSettingsController.mySettings)
 router.post('/follow', notificationsSettingsController.follow)
 router.delete('/follow', notificationsSettingsController.unfollow)
 router.get('/follow', notificationsSettingsController.isFollowing)
+router.get('/recent', notificationController.recent)
+router.get('/', notificationController.myNotifications)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

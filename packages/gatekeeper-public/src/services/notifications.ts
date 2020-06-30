@@ -45,5 +45,15 @@ export default {
       method: http.DELETE,
       restricted: true,
     },
+    {
+      path: '/recent',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/',
+      method: http.GET,
+      restricted: true,
+    },
   ],
 }
