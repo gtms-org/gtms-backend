@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.3.1...@gtms/worker-notifications@0.3.2) (2020-06-30)
+
+
+### Bug Fixes
+
+* master: save info about group and posts owner in newPost n ([a0f0e70](https://github.com/mariusz-kabala/gtms-backend/commit/a0f0e70b58c9fa8285cb327bdc0fc16942b63e98))
+
+
+
+
+
 ## [0.3.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.3.0...@gtms/worker-notifications@0.3.1) (2020-06-30)
 
 **Note:** Version bump only for package @gtms/worker-notifications
