@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.9.2...@gtms/service-notifications@0.10.0) (2020-06-30)
+
+
+### Features
+
+* GEOT-309: notifications endpoints ([#124](https://github.com/mariusz-kabala/gtms-backend/issues/124)) ([1e646e9](https://github.com/mariusz-kabala/gtms-backend/commit/1e646e94a847b0c9c27fe742c44368730e6acc6e))
+
+
+
+
+
 ## [0.9.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.9.1...@gtms/service-notifications@0.9.2) (2020-06-27)
 
 **Note:** Version bump only for package @gtms/service-notifications

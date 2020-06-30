@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.32.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.6...@gtms/gatekeeper-public@0.32.0) (2020-06-30)
+
+
+### Features
+
+* GEOT-309: notifications endpoints ([#124](https://github.com/mariusz-kabala/gtms-backend/issues/124)) ([1e646e9](https://github.com/mariusz-kabala/gtms-backend/commit/1e646e94a847b0c9c27fe742c44368730e6acc6e))
+
+
+
+
+
 ## [0.31.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.5...@gtms/gatekeeper-public@0.31.6) (2020-06-27)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
