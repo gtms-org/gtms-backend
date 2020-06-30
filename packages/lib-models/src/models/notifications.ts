@@ -6,6 +6,7 @@ export interface INotification extends Document {
   relatedRecordType?: RecordType
   relatedRecordId?: string
   notificationType: NotificationType
+  isRead: boolean
   owner: string
   createdAt: string
   updatedAt: string
@@ -33,6 +34,10 @@ const NotificationSchema = new Schema(
       type: Schema.Types.ObjectId,
       required: true,
       index: true,
+    },
+    isRead: {
+      type: Boolean,
+      default: false,
     },
     payload: {
       type: Object,
