@@ -4,6 +4,7 @@ import {
   RecordType,
   arrayToHash,
   getPaginationParams,
+  NotificationType,
 } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { NotificationModel, INotification } from '@gtms/lib-models'
@@ -13,8 +14,33 @@ function prepareResponse(notifications: INotification[], traceId: string) {
   return new Promise((resolve, reject) => {
     const recordsToFetch = notifications.reduce(
       (all, notification) => {
-        all[notification.relatedRecordType].push(notification.relatedRecordId)
+        if (
+          !all[notification.relatedRecordType].includes(
+            notification.relatedRecordId
+          )
+        ) {
+          all[notification.relatedRecordType].push(notification.relatedRecordId)
+        }
 
+        switch (notification.notificationType) {
+          case NotificationType.newPost:
+            if (
+              notification.payload?.groupId &&
+              !all[RecordType.group].includes(notification.payload?.groupId)
+            ) {
+              all[RecordType.group].push(notification.payload?.groupId)
+            }
+
+            if (
+              notification.payload?.postOwnerId &&
+              !all[RecordType.member].includes(
+                notification.payload?.postOwnerId
+              )
+            ) {
+              all[RecordType.member].push(notification.payload?.postOwnerId)
+            }
+            break
+        }
         return all
       },
       {
@@ -46,6 +72,29 @@ function prepareResponse(notifications: INotification[], traceId: string) {
       .then(([members, groups, posts, comments]) => {
         resolve(
           notifications
+            .map(notification => {
+              switch (notification.notificationType) {
+                case NotificationType.newPost:
+                  if (
+                    notification.payload?.groupId &&
+                    groups[notification.payload.groupId]
+                  ) {
+                    notification.payload.group =
+                      groups[notification.payload.groupId]
+                  }
+
+                  if (
+                    notification.payload?.postOwnerId &&
+                    members[notification.payload.postOwnerId]
+                  ) {
+                    notification.payload.postOwner =
+                      members[notification.payload.postOwnerId]
+                  }
+                  break
+              }
+
+              return notification
+            })
             .map(notification => {
               const basic = {
                 notificationType: notification.notificationType,
