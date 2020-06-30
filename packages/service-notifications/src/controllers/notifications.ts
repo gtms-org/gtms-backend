@@ -97,6 +97,7 @@ function prepareResponse(notifications: INotification[], traceId: string) {
             })
             .map(notification => {
               const basic = {
+                id: notification.id,
                 notificationType: notification.notificationType,
                 isRead: notification.isRead,
                 payload: notification.payload,
