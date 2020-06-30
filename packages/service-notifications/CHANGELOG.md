@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.10.1...@gtms/service-notifications@0.10.2) (2020-06-30)
+
+
+### Bug Fixes
+
+* master: add id to notifications response ([b042930](https://github.com/mariusz-kabala/gtms-backend/commit/b042930d4c80438c78bfdc244a8fe64390534e0c))
+
+
+
+
+
 ## [0.10.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.10.0...@gtms/service-notifications@0.10.1) (2020-06-30)
 
 
