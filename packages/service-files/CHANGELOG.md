@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.21](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.5.20...@gtms/service-files@0.5.21) (2020-07-01)
+
+
+### Bug Fixes
+
+* master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
+
+
+
+
+
 ## [0.5.20](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.5.19...@gtms/service-files@0.5.20) (2020-06-28)
 
 **Note:** Version bump only for package @gtms/service-files

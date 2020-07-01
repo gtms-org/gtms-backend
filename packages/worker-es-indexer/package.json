@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-es-indexer",
-  "version": "0.5.10",
+  "version": "0.5.11",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

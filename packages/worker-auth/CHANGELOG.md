@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-auth@0.5.3...@gtms/worker-auth@0.5.4) (2020-07-01)
+
+
+### Bug Fixes
+
+* master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
+
+
+
+
+
 ## [0.5.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-auth@0.5.2...@gtms/worker-auth@0.5.3) (2020-06-30)
 
 **Note:** Version bump only for package @gtms/worker-auth

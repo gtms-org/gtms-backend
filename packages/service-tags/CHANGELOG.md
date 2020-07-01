@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.8.3...@gtms/service-tags@0.8.4) (2020-07-01)
+
+
+### Bug Fixes
+
+* master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
+
+
+
+
+
 ## [0.8.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.8.2...@gtms/service-tags@0.8.3) (2020-06-30)
 
 **Note:** Version bump only for package @gtms/service-tags

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.19.6...@gtms/swagger@0.19.7) (2020-07-01)
+
+
+### Bug Fixes
+
+* master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
+
+
+
+
+
 ## [0.19.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.19.5...@gtms/swagger@0.19.6) (2020-06-27)
 
 **Note:** Version bump only for package @gtms/swagger

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.0...@gtms/gatekeeper-public@0.32.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
+
+
+
+
+
 # [0.32.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.6...@gtms/gatekeeper-public@0.32.0) (2020-06-30)
 
 
