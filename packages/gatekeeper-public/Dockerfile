@@ -25,7 +25,6 @@ RUN ls -la /app
 
 ENV PORT 80
 ENV NODE_ENV "production"
-ENV DEBUG "express-http-proxy"
 
 EXPOSE 80
 
