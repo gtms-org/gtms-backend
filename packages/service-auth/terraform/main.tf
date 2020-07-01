@@ -12,6 +12,11 @@ resource "docker_container" "service-auth" {
     value = "false"
   }
 
+  labels {
+    label = "gtms"
+    value = "qa-master"
+  }
+
   env = [
     "JWT_SECRET=${var.jwt_secret}",
     "JWT_REFRESH_TOKEN_SECRET=${var.jwt_refresh_token_secret}",

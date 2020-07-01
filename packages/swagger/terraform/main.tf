@@ -31,6 +31,11 @@ resource "docker_container" "swagger" {
     value = "80"
   }
 
+  labels {
+    label = "gtms"
+    value = "qa-master"
+  }
+
   env = [
     "VERSION=${var.tag}",
     "PORT=80",

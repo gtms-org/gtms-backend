@@ -11,6 +11,11 @@ resource "docker_container" "service-groups" {
     value = "false"
   }
 
+  labels {
+    label = "gtms"
+    value = "qa-master"
+  }
+
   env = [
     "APP_DOMAIN=${var.app_domain}",
     "QUEUE_HOST=${var.queue_host}",

@@ -11,6 +11,11 @@ resource "docker_container" "worker-auth" {
     value = "false"
   }
 
+  labels {
+    label = "gtms"
+    value = "qa-master"
+  }
+
   env = [
     "QUEUE_HOST=${var.queue_host}",
     "DB_HOST=mongo-${var.env}-db",

@@ -31,6 +31,11 @@ resource "docker_container" "gatekeeper-public" {
     value = "80"
   }
 
+  labels {
+    label = "gtms"
+    value = "qa-master"
+  }
+
   env = [
     "RUN_ENV=${var.env}",
     "JWT_SECRET=${var.jwt_secret}",

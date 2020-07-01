@@ -11,6 +11,11 @@ resource "docker_container" "worker-es-indexer" {
     value = "false"
   }
 
+  labels {
+    label = "gtms"
+    value = "qa-master"
+  }
+
   env = [
     "QUEUE_HOST=${var.queue_host}",
     "ES_HOST=192.168.0.33",
