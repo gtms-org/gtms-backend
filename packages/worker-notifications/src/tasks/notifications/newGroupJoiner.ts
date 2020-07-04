@@ -50,13 +50,13 @@ export function handleNewGroupJoinerNotification(msg: INotification) {
           },
           {
             newMemberInAdminnedGroup: true,
-            user: {
+            owner: {
               $in: groupAdmins.map((id: string) => new ObjectID(id)),
             },
           },
           {
             newMemberInOwnedGroup: true,
-            user: new ObjectID(group.owner),
+            owner: new ObjectID(group.owner),
           },
         ],
       })

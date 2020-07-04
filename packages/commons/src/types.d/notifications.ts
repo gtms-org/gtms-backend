@@ -16,6 +16,13 @@ export interface IDeleteAccountQueueMsg {
   traceId: string
 }
 
+export interface ICreateUserNotificationSettingsMsg {
+  data: {
+    userId: string
+    traceId: string
+  }
+}
+
 export interface INotification {
   data: {
     relatedRecordType?: RecordType

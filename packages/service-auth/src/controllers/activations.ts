@@ -21,7 +21,11 @@ import {
   ESIndexUpdateType,
   ESIndexUpdateRecord,
 } from '@gtms/commons'
-import { publishToDeleteChannel, publishOnChannel } from '@gtms/client-queue'
+import {
+  publishToDeleteChannel,
+  publishOnChannel,
+  publishMultiple,
+} from '@gtms/client-queue'
 
 export default {
   activateAccount(req: Request, res: Response, next: NextFunction): void {
@@ -44,6 +48,8 @@ export default {
           { isActive: true }
         )
           .then(() => {
+            res.status(200).end()
+
             logger.log({
               level: 'info',
               message: `User ${(activationCode.owner as IUser)._id} (${
@@ -51,30 +57,28 @@ export default {
               }) activated account`,
               traceId: res.get('x-traceid'),
             })
-            res.status(200).end()
 
-            publishOnChannel<IESUserCreateMsg>(Queues.updateESIndex, {
-              type: ESIndexUpdateType.create,
-              record: ESIndexUpdateRecord.user,
-              data: {
-                ...serializeUser(activationCode.owner as IUser),
-                traceId: res.get('x-traceid'),
+            publishMultiple(
+              res.get('x-traceid'),
+              {
+                queue: Queues.updateESIndex,
+                message: {
+                  type: ESIndexUpdateType.create,
+                  record: ESIndexUpdateRecord.user,
+                  data: {
+                    ...serializeUser(activationCode.owner as IUser),
+                    traceId: res.get('x-traceid'),
+                  },
+                },
               },
-            })
-              .then(() => {
-                logger.log({
-                  level: 'info',
-                  message: `Info about activated user published to the queue ${Queues.updateESIndex}`,
+              {
+                queue: Queues.createUserNotificationSettings,
+                message: {
+                  userId: (activationCode.owner as IUser)._id,
                   traceId: res.get('x-traceid'),
-                })
-              })
-              .catch(err => {
-                logger.log({
-                  message: `Can not publish message to the QUEUE: ${err}`,
-                  level: 'error',
-                  traceId: res.get('x-traceid'),
-                })
-              })
+                },
+              }
+            )
           })
           .catch(err => {
             logger.log({

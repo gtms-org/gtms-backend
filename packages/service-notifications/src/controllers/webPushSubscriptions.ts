@@ -82,7 +82,7 @@ export default {
     res: Response,
     next: NextFunction
   ): void {
-    const { subscription } = req.body
+    const { subscription } = req.params
 
     WebPushSubscriptionModel.findOneAndDelete({
       subscription,

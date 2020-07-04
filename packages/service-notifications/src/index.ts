@@ -29,7 +29,10 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 router.post('/web-push/check', webPushSubscriptionsController.checkIfExists)
 router.post('/web-push', webPushSubscriptionsController.create)
-router.delete('/web-push', webPushSubscriptionsController.deleteSubscription)
+router.delete(
+  '/web-push/:subscription',
+  webPushSubscriptionsController.deleteSubscription
+)
 router.post('/settings', notificationsSettingsController.updateMySettings)
 router.get('/settings', notificationsSettingsController.mySettings)
 router.post('/follow', notificationsSettingsController.follow)

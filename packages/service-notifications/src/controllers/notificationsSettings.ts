@@ -11,7 +11,7 @@ export default {
   mySettings(req: IAuthRequest, res: Response, next: NextFunction) {
     ;(NotificationsSettingsModel as any).findOrCreate(
       {
-        user: req.user.id,
+        owner: req.user.id,
       },
       (err: Error | null, notificationSettings: INotificationsSettings) => {
         if (err) {
@@ -48,10 +48,10 @@ export default {
 
         return results
       },
-      { user: req.user.id }
+      { owner: req.user.id }
     )
 
-    NotificationsSettingsModel.update({ user: req.user.id }, payload, {
+    NotificationsSettingsModel.update({ owner: req.user.id }, payload, {
       upsert: true,
       setDefaultsOnInsert: true,
     })
@@ -79,7 +79,7 @@ export default {
 
     ;(NotificationsSettingsModel as any).findOrCreate(
       {
-        user: req.user.id,
+        owner: req.user.id,
       },
       async (
         err: Error | null,
@@ -127,7 +127,7 @@ export default {
   },
   unfollow(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
-      body: { user, group },
+      query: { user, group },
     } = req
 
     if (!user && !group) {
@@ -136,7 +136,7 @@ export default {
 
     ;(NotificationsSettingsModel as any).findOrCreate(
       {
-        user: req.user.id,
+        owner: req.user.id,
       },
       async (
         err: Error | null,
@@ -196,7 +196,7 @@ export default {
 
     ;(NotificationsSettingsModel as any).findOrCreate(
       {
-        user: req.user.id,
+        owner: req.user.id,
       },
       (err: Error | null, notificationSettings: INotificationsSettings) => {
         if (err) {

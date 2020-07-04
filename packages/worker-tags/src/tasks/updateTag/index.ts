@@ -74,7 +74,7 @@ function processMsg(msg: amqp.Message) {
       .then((dbTags: ITag[]) => {
         const existing = dbTags.map(t => t.name)
 
-        const dbOperations = tags.map(t => {
+        const dbOperations: any[] = tags.map(t => {
           if (!existing.includes(t)) {
             return {
               insertOne: {
@@ -142,6 +142,37 @@ function processMsg(msg: amqp.Message) {
             }
           }
         })
+
+        // update related tags list
+        for (const dbTag of dbTags) {
+          const related = dbTag.related || []
+
+          for (const tag of tags) {
+            if (tag === dbTag.name) {
+              continue
+            }
+
+            const relatedIndex = related.findIndex(r => r.name === tag)
+
+            if (relatedIndex > 0) {
+              related[relatedIndex].counter += 1
+            } else {
+              related.push({
+                name: tag,
+                counter: 1,
+              })
+            }
+          }
+
+          dbOperations.push({
+            updateOne: {
+              filter: { _id: dbTag._id },
+              update: {
+                related,
+              },
+            },
+          })
+        }
 
         if (dbOperations.length === 0) {
           logger.log({
