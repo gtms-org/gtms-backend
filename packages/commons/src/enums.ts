@@ -13,6 +13,7 @@ export enum Queues {
   updateGroupTagFiles = 'updateGroupTagFiles',
   newComment = 'newComment',
   newNotification = 'newNotification',
+  createUserNotificationSettings = 'createUserNotificationSettings',
 }
 
 export enum ESIndexUpdateType {

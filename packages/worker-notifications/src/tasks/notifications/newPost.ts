@@ -75,13 +75,13 @@ export function handleNewPostNotification(msg: INotification) {
           groups: new ObjectID(post.group.id),
         },
         {
-          user: {
+          owner: {
             $in: admins.map((id: string) => new ObjectID(id)),
           },
           newPostInAdminnedGroup: true,
         },
         {
-          user: new ObjectID(post.group.owner),
+          owner: new ObjectID(post.group.owner),
           newPostInOwnedGroup: true,
         },
       ],

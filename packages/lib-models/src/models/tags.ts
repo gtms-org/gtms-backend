@@ -9,6 +9,10 @@ export interface ITag extends Document {
   groupsCounter: number
   commentsCounter: number
   totalCounter: number
+  related: {
+    name: string
+    counter: number
+  }[]
 }
 
 const TagSchema = new Schema(
@@ -45,6 +49,12 @@ const TagSchema = new Schema(
       type: Number,
       default: 0,
     },
+    related: [
+      {
+        name: String,
+        counter: Number,
+      },
+    ],
   },
   {
     timestamps: true,

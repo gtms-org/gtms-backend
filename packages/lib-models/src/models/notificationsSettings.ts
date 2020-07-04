@@ -2,7 +2,7 @@ import mongoose, { Document, Schema } from 'mongoose'
 import findOrCreate from 'mongoose-findorcreate'
 
 export interface INotificationsSettings extends Document {
-  user: string
+  owner: string
   invitation: boolean
   newPostInOwnedGroup: boolean
   newMembershipRequestInOwnedGroup: boolean
@@ -15,7 +15,7 @@ export interface INotificationsSettings extends Document {
 }
 
 const NotificationsSettingsSchema = new Schema({
-  user: {
+  owner: {
     type: Schema.Types.ObjectId,
     required: true,
     index: true,

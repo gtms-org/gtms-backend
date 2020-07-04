@@ -1,6 +1,10 @@
 import amqp from 'amqplib'
 import config from 'config'
-import { initNewNotificationTask, initSendEmailTask } from './tasks'
+import {
+  initNewNotificationTask,
+  initSendEmailTask,
+  initCreateUserNotificationSettingsTask,
+} from './tasks'
 import {
   onQueueConnectionError,
   setConnectionErrorsHandlers,
@@ -19,6 +23,7 @@ export async function startWorkers() {
 
         initNewNotificationTask(ch)
         initSendEmailTask(ch)
+        initCreateUserNotificationSettingsTask(ch)
       })
     })
     .catch(onQueueConnectionError)

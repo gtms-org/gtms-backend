@@ -241,6 +241,13 @@
         "produces": ["application/json"],
         "parameters": [
           {
+            "name": "basic",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "description": "If true returns only basic user info"
+          },
+          {
             "name": "id",
             "in": "path",
             "required": true,
@@ -1462,14 +1469,17 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Unique group's slug"
+            "description": "Unique group's slug or group id"
           }
         ],
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "Successful operation"
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
           },
           "404": {
             "description": "Group does not exist in db"
@@ -1668,6 +1678,13 @@
             "required": true,
             "type": "string",
             "description": "Unique group's slug"
+          },
+          {
+            "name": "onlyIds",
+            "in": "query",
+            "description": "Defines if endpoint should return only ids of admins or entire user's objects",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "consumes": ["application/json"],
@@ -2088,6 +2105,96 @@
         }
       }
     },
+    "/groups/can-add-post": {
+      "get": {
+        "tags": ["Groups"],
+        "summary": "Checks if user is allowed to add a post to the group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "User's id"
+          },
+          {
+            "name": "group",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Group's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User can add a post"
+          },
+          "400": {
+            "description": "Query params are invalid"
+          },
+          "401": {
+            "description": "User can not add any posts to the group"
+          },
+          "404": {
+            "description": "Group does not exist"
+          }
+        }
+      }
+    },
+    "/notifications": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Notifications"],
+        "summary": "Returns unread notifications",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/notifications/recent": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Notifications"],
+        "summary": "Returns recent notifications",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records limit (no more than 50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "Returned records offset"
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
     "/notifications/web-push": {
       "post": {
         "security": [
@@ -2108,7 +2215,8 @@
               "type": "object",
               "properties": {
                 "subscription": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Base64 encoded subscription object"
                 },
                 "userAgent": {
                   "type": "string"
@@ -2131,7 +2239,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/notifications/web-push/{subscription}": {
       "delete": {
         "security": [
           {
@@ -2144,17 +2254,11 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "in": "body",
-            "name": "payload",
+            "name": "subscription",
+            "in": "path",
             "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "subscription": {
-                  "type": "string"
-                }
-              }
-            }
+            "type": "string",
+            "description": "Base64 encoded subscription object"
           }
         ],
         "responses": {
@@ -2396,20 +2500,18 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "in": "body",
-            "name": "payload",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "group": {
-                  "type": "string"
-                }
-              }
-            }
+            "in": "query",
+            "description": "User's id",
+            "name": "user",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "description": "Group's id",
+            "name": "group",
+            "type": "string",
+            "required": true
           }
         ],
         "responses": {
@@ -2435,6 +2537,46 @@
             "required": true,
             "type": "string",
             "description": "Term to search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Query param is missing"
+          }
+        }
+      }
+    },
+    "/tags/suggested": {
+      "post": {
+        "tags": ["Tags"],
+        "summary": "Return suggested tags",
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -2972,7 +3114,19 @@
           "200": {
             "description": "Successful operation",
             "schema": {
-              "$ref": "#/definitions/Post"
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Post"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "group": {
+                      "$ref": "#/definitions/Group"
+                    }
+                  }
+                }
+              ]
             }
           },
           "404": {
@@ -3687,6 +3841,12 @@
         },
         "text": {
           "type": "string"
+        },
+        "firstComments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
         },
         "tags": {
           "type": "array",

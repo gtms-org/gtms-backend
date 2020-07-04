@@ -35,5 +35,10 @@ export default {
       method: http.POST,
       restricted: true,
     },
+    {
+      path: '/suggested',
+      method: http.POST,
+      restricted: true,
+    },
   ],
 }
