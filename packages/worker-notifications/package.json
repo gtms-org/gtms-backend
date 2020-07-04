@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-notifications",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,13 +10,13 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-queue": "0.7.2",
-    "@gtms/commons": "0.21.0",
-    "@gtms/lib-api": "0.7.0",
+    "@gtms/client-queue": "0.7.3",
+    "@gtms/commons": "0.21.1",
+    "@gtms/lib-api": "0.7.1",
     "@gtms/lib-consul": "*",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.15.0",
+    "@gtms/lib-models": "0.15.1",
     "@sendgrid/mail": "^6.5.5"
   },
   "author": "Mariusz Kabała",

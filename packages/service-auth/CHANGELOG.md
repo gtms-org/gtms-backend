@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.2...@gtms/service-auth@0.24.3) (2020-07-04)
+
+
+### Bug Fixes
+
+* Diff fixes ([#126](https://github.com/mariusz-kabala/gtms-backend/issues/126)) ([eaf49f2](https://github.com/mariusz-kabala/gtms-backend/commit/eaf49f21d0d1943736ad4e71467b695f24c545a0))
+
+
+
+
+
 ## [0.24.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.1...@gtms/service-auth@0.24.2) (2020-07-01)
 
 
