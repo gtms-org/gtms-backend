@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.19.8...@gtms/swagger@0.19.9) (2020-07-06)
+
+
+### Bug Fixes
+
+* master: add group query param to get post endpoint ([77973ad](https://github.com/mariusz-kabala/gtms-backend/commit/77973ad8f05f6e861b0f0b13341d54eb38de3635))
+
+
+
+
+
 ## [0.19.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.19.7...@gtms/swagger@0.19.8) (2020-07-04)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.12.3...@gtms/service-posts@0.12.4) (2020-07-06)
+
+
+### Bug Fixes
+
+* master: add group query param to get post endpoint ([77973ad](https://github.com/mariusz-kabala/gtms-backend/commit/77973ad8f05f6e861b0f0b13341d54eb38de3635))
+
+
+
+
+
 ## [0.12.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.12.2...@gtms/service-posts@0.12.3) (2020-07-04)
 
 **Note:** Version bump only for package @gtms/service-posts
