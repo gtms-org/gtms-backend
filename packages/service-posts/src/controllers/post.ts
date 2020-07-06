@@ -264,11 +264,16 @@ export default {
   },
   show(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params
+    const { group = false } = req.query
 
     PostModel.findById(id)
       .then((post: IPost | null) => {
         if (!post) {
           return res.status(404).end()
+        }
+
+        if (!group) {
+          return res.status(200).json(serializePost(post))
         }
 
         const serializedPost: ISerializedPost & {

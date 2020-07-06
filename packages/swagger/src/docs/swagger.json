@@ -3094,20 +3094,11 @@
             "description": "Post's id"
           },
           {
-            "in": "body",
-            "name": "payload",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "descripiotn": {
-                  "type": "string"
-                },
-                "order": {
-                  "type": "integer"
-                }
-              }
-            }
+            "in": "query",
+            "name": "group",
+            "required": false,
+            "type": "boolean",
+            "description": "Defines if together with post info about group should be returned"
           }
         ],
         "responses": {
