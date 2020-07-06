@@ -31,9 +31,9 @@ export const findPostsByIds = (
 
 export const getPost = (
   id: string,
-  options: IOptions
+  options: IOptions & { group?: boolean }
 ): Promise<ISerializedPost & { group?: ISerializedGroup }> => {
-  const { traceId } = options
+  const { traceId, group = true } = options
 
   return makeUrl(POSTS_SERVICE, `/${id}`).then(url => {
     return fetch(url, {
