@@ -1,12 +1,12 @@
 {
   "name": "@gtms/lib-models",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "description": "",
   "main": "src/index.ts",
   "author": "Mariusz Kabała",
   "license": "ISC",
   "dependencies": {
-    "@gtms/commons": "0.21.1",
+    "@gtms/commons": "0.21.2",
     "mongoose-paginate": "^5.0.3"
   },
   "devDependencies": {

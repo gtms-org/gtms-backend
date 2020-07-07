@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.21.1...@gtms/commons@0.21.2) (2020-07-07)
+
+
+### Bug Fixes
+
+* GEOT-322: comments owners ([#129](https://github.com/mariusz-kabala/gtms-backend/issues/129)) ([f210d78](https://github.com/mariusz-kabala/gtms-backend/commit/f210d784e6891f37df05b4b1636fefdeac8f00d8))
+
+
+
+
+
 ## [0.21.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.21.0...@gtms/commons@0.21.1) (2020-07-04)
 
 

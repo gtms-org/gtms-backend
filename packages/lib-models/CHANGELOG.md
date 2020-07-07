@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.15.1...@gtms/lib-models@0.15.2) (2020-07-07)
+
+
+### Bug Fixes
+
+* GEOT-322: comments owners ([#129](https://github.com/mariusz-kabala/gtms-backend/issues/129)) ([f210d78](https://github.com/mariusz-kabala/gtms-backend/commit/f210d784e6891f37df05b4b1636fefdeac8f00d8))
+
+
+
+
+
 ## [0.15.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.15.0...@gtms/lib-models@0.15.1) (2020-07-04)
 
 
