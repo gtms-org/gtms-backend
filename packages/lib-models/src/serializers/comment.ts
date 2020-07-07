@@ -1,13 +1,13 @@
 import { IComment } from '../models/comments'
-import { ISerializedComment } from '@gtms/commons'
+import { ISerializedComment, ISerializedUser } from '@gtms/commons'
 
-export function serializeComment(comment: IComment): ISerializedComment {
+export function serializeComment(comment: IComment, owners?: {[id: string]: ISerializedUser}): ISerializedComment {
   return {
     id: comment._id,
     text: comment.text,
-    lastSubComments: comment.lastSubComments,
+    subComments: comment.subComments,
     tags: comment.tags,
-    owner: comment.owner,
+    owner: owners !== undefined && owners[comment.owner] ? owners[comment.owner] : comment.owner,
     createdAt: comment.createdAt,
     updatedAt: comment.updatedAt,
   }
