@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { IAuthRequest, getPaginationParams } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { CommentModel, IComment, serializeComment } from '@gtms/lib-models'
+import { findUsersByIds } from '@gtms/lib-api'
 import { ObjectID } from 'mongodb'
 
 export default {
@@ -18,7 +19,7 @@ export default {
           createdAt: 'desc',
         },
       },
-      (err, result) => {
+      async (err, result) => {
         if (err) {
           logger.log({
             message: `Database error ${err}`,
@@ -29,12 +30,49 @@ export default {
           return next(err)
         }
 
-        res.status(200).json({
-          ...result,
-          docs: result.docs.map((comment: IComment) =>
-            serializeComment(comment)
-          ),
-        })
+        if (result.docs.length === 0) {
+          return res.status(200).json(result)
+        }
+
+        const ownerIds = result.docs.reduce(
+          (all: string[], comment: IComment) => {
+            if (!all.includes(`${comment.owner}`)) {
+              all.push(`${comment.owner}`)
+            }
+
+            if (Array.isArray(comment.subComments)) {
+              for (const subcomment of comment.subComments) {
+                if (!all.includes(`${subcomment.owner}`)) {
+                  all.push(`${subcomment.owner}`)
+                }
+              }
+            }
+
+            return all
+          },
+          []
+        )
+
+        try {
+          const owners = await findUsersByIds(ownerIds, {
+            traceId: res.get('x-traceid'),
+          })
+
+          res.status(200).json({
+            ...result,
+            docs: result.docs.map((comment: IComment) =>
+              serializeComment(comment, owners)
+            ),
+          })
+        } catch (err) {
+          logger.log({
+            message: `API Error - can not fetch info about comment's owners ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          res.status(500).end()
+        }
       }
     )
   },
