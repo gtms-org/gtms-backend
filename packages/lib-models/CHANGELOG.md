@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.15.3...@gtms/lib-models@0.15.4) (2020-07-08)
+
+
+### Bug Fixes
+
+* master: return info about owner also for subComments ([e169901](https://github.com/mariusz-kabala/gtms-backend/commit/e1699011927cb8471b92d46cc8733166cb5e23d0))
+
+
+
+
+
 ## [0.15.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.15.2...@gtms/lib-models@0.15.3) (2020-07-08)
 
 
