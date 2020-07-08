@@ -8,7 +8,12 @@ export function serializeComment(
   return {
     id: comment._id,
     text: comment.text,
-    subComments: comment.subComments,
+    subComments: (comment.subComments || []).map(subComment => ({
+      ...subComment,
+      owner: (owners !== undefined && owners[`${comment.owner}`]
+        ? owners[`${comment.owner}`]
+        : subComment.owner) as ISerializedUser,
+    })),
     tags: comment.tags,
     owner:
       owners !== undefined && owners[`${comment.owner}`]
