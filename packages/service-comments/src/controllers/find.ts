@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { IAuthRequest, getPaginationParams } from '@gtms/commons'
+import { IAuthRequest, getPaginationParams, arrayToHash } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { CommentModel, IComment, serializeComment } from '@gtms/lib-models'
 import { findUsersByIds } from '@gtms/lib-api'
@@ -54,9 +54,12 @@ export default {
         )
 
         try {
-          const owners = await findUsersByIds(ownerIds, {
-            traceId: res.get('x-traceid'),
-          })
+          const owners = arrayToHash(
+            await findUsersByIds(ownerIds, {
+              traceId: res.get('x-traceid'),
+            }),
+            'id'
+          )
 
           res.status(200).json({
             ...result,
