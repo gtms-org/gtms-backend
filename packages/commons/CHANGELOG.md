@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.21.2...@gtms/commons@0.21.3) (2020-07-08)
+
+**Note:** Version bump only for package @gtms/commons
+
+
+
+
+
 ## [0.21.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.21.1...@gtms/commons@0.21.2) (2020-07-07)
 
 

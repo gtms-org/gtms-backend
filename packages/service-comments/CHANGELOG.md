@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.7.7...@gtms/service-comments@0.7.8) (2020-07-08)
+
+
+### Bug Fixes
+
+* master: fixes for post comments endpoint ([4f1d538](https://github.com/mariusz-kabala/gtms-backend/commit/4f1d5386f0d6476b8d611962393cb1aea4b86dae))
+
+
+
+
+
 ## [0.7.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.7.6...@gtms/service-comments@0.7.7) (2020-07-07)
 
 

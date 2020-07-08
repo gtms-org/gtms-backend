@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-posts",
-  "version": "0.12.5",
+  "version": "0.12.6",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@gtms/client-mongoose": "0.4.1",
-    "@gtms/client-queue": "0.7.4",
-    "@gtms/commons": "0.21.2",
-    "@gtms/lib-api": "0.7.2",
+    "@gtms/client-queue": "0.7.5",
+    "@gtms/commons": "0.21.3",
+    "@gtms/lib-api": "0.7.3",
     "@gtms/lib-consul": "0.2.1",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-middlewares": "0.4.29",
-    "@gtms/lib-models": "0.15.2",
+    "@gtms/lib-middlewares": "0.4.30",
+    "@gtms/lib-models": "0.15.3",
     "@gtms/lib-testing": "*"
   },
   "author": "Mariusz Kabała",
