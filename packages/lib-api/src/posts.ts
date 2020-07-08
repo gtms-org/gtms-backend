@@ -35,7 +35,7 @@ export const getPost = (
 ): Promise<ISerializedPost & { group?: ISerializedGroup }> => {
   const { traceId, group = true } = options
 
-  return makeUrl(POSTS_SERVICE, `/${id}`).then(url => {
+  return makeUrl(POSTS_SERVICE, `/${id}?group=${group ? 1 : 0}`).then(url => {
     return fetch(url, {
       headers: {
         Accept: 'application/json',

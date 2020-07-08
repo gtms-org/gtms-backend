@@ -4,11 +4,12 @@ import mongoosePaginate from 'mongoose-paginate'
 export interface IComment extends Document {
   post: string
   text: string
-  lastSubComments: {
+  subComments: {
     owner: string
     createdAt: string
     updatedAt: string
     text: string
+    tags: string[]
   }[]
   parent?: IComment
   tags: string[]
@@ -25,12 +26,13 @@ const CommentSchema = new Schema(
       required: true,
       index: true,
     },
-    lastSubComments: [
+    subComments: [
       {
         owner: String,
         createdAt: Date,
         updatedAt: Date,
         text: String,
+        tags: [String],
       },
     ],
     text: {
