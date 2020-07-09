@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.15](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.7.14...@gtms/service-comments@0.7.15) (2020-07-09)
+
+
+### Bug Fixes
+
+* master: return updated document when adding subcomment ([16a8e0d](https://github.com/mariusz-kabala/gtms-backend/commit/16a8e0d44419e0d9cd5a0f9179cd266b7ecf64a2))
+
+
+
+
+
 ## [0.7.14](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.7.13...@gtms/service-comments@0.7.14) (2020-07-09)
 
 
