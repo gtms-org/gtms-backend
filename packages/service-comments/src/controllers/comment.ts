@@ -19,6 +19,8 @@ function addComment(
     return CommentModel.create(payload)
   }
 
+  const now = new Date(Date.now()).toISOString()
+
   return CommentModel.findOneAndUpdate(
     {
       _id: parent,
@@ -27,6 +29,8 @@ function addComment(
       $push: {
         subComments: {
           ...payload,
+          createdAt: now,
+          updatedAt: now,
           _id: new ObjectID(),
         },
       },

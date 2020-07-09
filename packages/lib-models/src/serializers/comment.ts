@@ -19,7 +19,11 @@ export function serializeComment(
     id: comment._id,
     text: comment.text,
     subComments: (comment.subComments || []).map((subComment: any) => ({
-      ...serializeComment(subComment),
+      id: `${subComment._id}`,
+      text: subComment.text,
+      tags: subComment.tags || [],
+      createdAt: subComment.createdAt,
+      updatedAt: subComment.updatedAt,
       owner: (owners !== undefined && owners[`${comment.owner}`]
         ? owners[`${comment.owner}`]
         : subComment.owner) as ISerializedUser,
