@@ -5,6 +5,7 @@ export interface IComment extends Document {
   post: string
   text: string
   subComments: {
+    _id: string
     owner: string
     createdAt: string
     updatedAt: string

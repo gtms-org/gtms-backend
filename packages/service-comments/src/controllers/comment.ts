@@ -9,6 +9,30 @@ import {
   ESIndexUpdateType,
   ESIndexUpdateRecord,
 } from '@gtms/commons'
+import { ObjectID } from 'mongodb'
+
+function addComment(
+  payload: { post: string; text: string; tags?: string[]; owner: string },
+  parent?: string
+) {
+  if (!parent) {
+    return CommentModel.create(payload)
+  }
+
+  return CommentModel.findOneAndUpdate(
+    {
+      _id: parent,
+    },
+    {
+      $push: {
+        subComments: {
+          ...payload,
+          _id: new ObjectID(),
+        },
+      },
+    }
+  )
+}
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -19,19 +43,21 @@ export default {
     const tags = text.match(/#(\w+)\b/gi)
 
     // check somehow if user can add
-    CommentModel.create({
-      post,
-      text,
-      parent,
-      tags: Array.isArray(tags)
-        ? tags
-            .filter((value, index, self) => {
-              return self.indexOf(value) === index
-            })
-            .map(tag => tag.replace('#', '').trim())
-        : [],
-      owner: req.user.id,
-    })
+    addComment(
+      {
+        post,
+        text,
+        tags: Array.isArray(tags)
+          ? tags
+              .filter((value, index, self) => {
+                return self.indexOf(value) === index
+              })
+              .map(tag => tag.replace('#', '').trim())
+          : [],
+        owner: req.user.id,
+      },
+      parent
+    )
       .then((comment: IComment) => {
         res.status(201).json(serializeComment(comment))
 
