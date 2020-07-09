@@ -12,9 +12,7 @@ export interface IComment extends Document {
     text: string
     tags: string[]
   }[]
-  parent?: IComment
   tags: string[]
-  followers: string[]
   owner: string
   createdAt: string
   updatedAt: string
@@ -41,11 +39,6 @@ const CommentSchema = new Schema(
       required: true,
       trim: true,
     },
-    parent: {
-      type: Schema.Types.ObjectId,
-      required: false,
-      ref: 'Comment',
-    },
     tags: {
       type: [String],
       required: false,
@@ -55,11 +48,6 @@ const CommentSchema = new Schema(
       type: Schema.Types.ObjectId,
       required: true,
       index: true,
-    },
-    followers: {
-      type: [Schema.Types.ObjectId],
-      required: false,
-      default: [],
     },
   },
   {
