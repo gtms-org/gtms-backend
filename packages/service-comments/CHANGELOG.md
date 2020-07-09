@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.7.9...@gtms/service-comments@0.7.10) (2020-07-09)
+
+
+### Bug Fixes
+
+* master: deal with nested comments in a proper way ([900a0aa](https://github.com/mariusz-kabala/gtms-backend/commit/900a0aaa8bcc2df44c1caa7bf7969e19382b9ed0))
+
+
+
+
+
 ## [0.7.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.7.8...@gtms/service-comments@0.7.9) (2020-07-08)
 
 **Note:** Version bump only for package @gtms/service-comments
