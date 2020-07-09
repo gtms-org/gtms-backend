@@ -101,7 +101,6 @@ export default {
               data: {
                 comment: serializeComment(comment),
                 traceId: res.get('x-traceid'),
-                parentComment: comment.parent,
               },
             },
           },
