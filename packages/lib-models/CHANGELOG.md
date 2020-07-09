@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.15.6...@gtms/lib-models@0.15.7) (2020-07-09)
+
+
+### Bug Fixes
+
+* master: try to serialize comment in a better way ([1b67822](https://github.com/mariusz-kabala/gtms-backend/commit/1b67822c57a49817a2ff4c323e9d6b8bd3cba100))
+
+
+
+
+
 ## [0.15.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.15.5...@gtms/lib-models@0.15.6) (2020-07-09)
 
 
