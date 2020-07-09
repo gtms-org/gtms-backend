@@ -34,6 +34,9 @@ function addComment(
           _id: new ObjectID(),
         },
       },
+    },
+    {
+      new: true,
     }
   )
 }
