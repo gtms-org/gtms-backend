@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-tags",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "@gtms/lib-consul": "0.2.1",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.15.7"
+    "@gtms/lib-models": "0.15.8"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"
