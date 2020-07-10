@@ -71,7 +71,7 @@ export function handleNewGroupJoinerNotification(msg: INotification) {
                 relatedRecordType,
                 relatedRecordId,
                 notificationType,
-                owner: record.user,
+                owner: record.owner,
                 payload: user,
               }
             })

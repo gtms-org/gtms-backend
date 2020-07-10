@@ -97,7 +97,7 @@ export function handleNewPostNotification(msg: INotification) {
               relatedRecordType,
               relatedRecordId,
               notificationType,
-              owner: record.user,
+              owner: record.owner,
               payload: {
                 groupId: post.group.id,
                 postOwnerId: post.owner,
