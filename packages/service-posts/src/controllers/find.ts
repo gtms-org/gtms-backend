@@ -23,13 +23,34 @@ export default {
   groupPosts(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params
     const { limit, offset } = getPaginationParams(req)
+    const { tags } = req.query
 
     if (!validateObjectId(id)) {
       return res.status(400).end()
     }
 
+    const tagsToFind: string[] = Array.isArray(tags)
+      ? tags
+          .map(tag => {
+            return tag !== '' ? tag.trim() : null
+          })
+          .filter((tag: string | null) => tag)
+      : []
+    const query: {
+      group: ObjectID
+      tags?: {
+        $all: string[]
+      }
+    } = { group: new ObjectID(id) }
+
+    if (tagsToFind.length > 0) {
+      query.tags = {
+        $all: tagsToFind,
+      }
+    }
+
     PostModel.paginate(
-      { group: new ObjectID(id) },
+      query,
       {
         offset,
         limit,
