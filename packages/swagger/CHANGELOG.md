@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.21.0...@gtms/swagger@0.22.0) (2020-07-10)
+
+
+### Features
+
+* GEOT-332: /posts/find endpoint ([#132](https://github.com/mariusz-kabala/gtms-backend/issues/132)) ([36033c5](https://github.com/mariusz-kabala/gtms-backend/commit/36033c54c51e4a0970f9192cbd2ef79b4685a5b0))
+
+
+
+
+
 # [0.21.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.20.0...@gtms/swagger@0.21.0) (2020-07-10)
 
 
