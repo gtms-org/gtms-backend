@@ -3845,6 +3845,12 @@
             "type": "string"
           }
         },
+        "lastTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "owner": {
           "type": "string"
         },
@@ -3873,6 +3879,9 @@
           "items": {
             "type": "object",
             "properties": {
+              "id": {
+                "type": "string"
+              },
               "owner": {
                 "type": "string"
               },
@@ -3884,6 +3893,18 @@
               },
               "text": {
                 "type": "string"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "lastTags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -3894,11 +3915,14 @@
             "type": "string"
           }
         },
+        "lastTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "owner": {
           "type": "string"
-        },
-        "commentsCounter": {
-          "type": "number"
         },
         "createdAt": {
           "type": "string"
