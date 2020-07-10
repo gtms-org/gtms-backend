@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.8.0...@gtms/service-comments@0.8.1) (2020-07-10)
+
+
+### Bug Fixes
+
+* master: fix newComment queue message ([bd3494b](https://github.com/mariusz-kabala/gtms-backend/commit/bd3494bb2818b2c57fdd8a84e66ebf646e29b84f))
+
+
+
+
+
 # [0.8.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.7.15...@gtms/service-comments@0.8.0) (2020-07-10)
 
 
