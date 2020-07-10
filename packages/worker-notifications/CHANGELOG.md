@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.14](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.3.13...@gtms/worker-notifications@0.3.14) (2020-07-10)
+
+
+### Bug Fixes
+
+* master: use proper field for owner in notification model ([95f8464](https://github.com/mariusz-kabala/gtms-backend/commit/95f84643a882511ff5984ee196743dcdfef37712))
+
+
+
+
+
 ## [0.3.13](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.3.12...@gtms/worker-notifications@0.3.13) (2020-07-10)
 
 **Note:** Version bump only for package @gtms/worker-notifications
