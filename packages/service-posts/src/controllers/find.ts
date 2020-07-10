@@ -19,8 +19,78 @@ import logger from '@gtms/lib-logger'
 import { validateObjectId } from '@gtms/client-mongoose'
 import { ObjectID } from 'mongodb'
 
+function findPosts(
+  query: {
+    group?: ObjectID
+    tags?: {
+      $all: string[]
+    }
+  },
+  params: {
+    offset?: number
+    limit?: number
+    sort?: {
+      [key: string]: 'desc' | 'asc'
+    }
+  },
+  traceId: string
+) {
+  return new Promise((resolve, reject) => {
+    PostModel.paginate(query, params, (err, result) => {
+      if (err) {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId,
+        })
+        return reject()
+      }
+
+      findUsersByIds(
+        result.docs.reduce((all: string[], post) => {
+          if (!all.includes(`${post.owner}`)) {
+            all.push(`${post.owner}`)
+          }
+
+          if (Array.isArray(post.firstComments)) {
+            for (const comment of post.firstComments) {
+              if (!all.includes(`${comment.owner}`)) {
+                all.push(`${comment.owner}`)
+              }
+            }
+          }
+
+          return all
+        }, []),
+        {
+          traceId,
+        }
+      )
+        .then(users => {
+          const usersHash = arrayToHash(users, 'id')
+
+          resolve({
+            ...result,
+            docs: result.docs.map((post: IPost) =>
+              serializePostWithUser(post, usersHash)
+            ),
+          })
+        })
+        .catch(err => {
+          logger.log({
+            message: `Can not fetch user info ${err}`,
+            level: 'error',
+            traceId,
+          })
+
+          reject()
+        })
+    })
+  })
+}
+
 export default {
-  groupPosts(req: Request, res: Response, next: NextFunction) {
+  groupPosts(req: Request, res: Response) {
     const { id } = req.params
     const { limit, offset } = getPaginationParams(req)
     const { tags } = req.query
@@ -49,7 +119,7 @@ export default {
       }
     }
 
-    PostModel.paginate(
+    findPosts(
       query,
       {
         offset,
@@ -58,57 +128,44 @@ export default {
           createdAt: 'desc',
         },
       },
-      (err, result) => {
-        if (err) {
-          logger.log({
-            message: `Database error ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-          return next(err)
-        }
-
-        findUsersByIds(
-          result.docs.reduce((all: string[], post) => {
-            if (!all.includes(`${post.owner}`)) {
-              all.push(`${post.owner}`)
-            }
-
-            if (Array.isArray(post.firstComments)) {
-              for (const comment of post.firstComments) {
-                if (!all.includes(`${comment.owner}`)) {
-                  all.push(`${comment.owner}`)
-                }
-              }
-            }
-
-            return all
-          }, []),
-          {
-            traceId: res.get('x-traceid'),
-          }
-        )
-          .then(users => {
-            const usersHash = arrayToHash(users, 'id')
-
-            res.status(200).json({
-              ...result,
-              docs: result.docs.map((post: IPost) =>
-                serializePostWithUser(post, usersHash)
-              ),
-            })
-          })
-          .catch(err => {
-            logger.log({
-              message: `Can not fetch user info ${err}`,
-              level: 'error',
-              traceId: res.get('x-traceid'),
-            })
-
-            res.status(500).end()
-          })
-      }
+      res.get('x-traceid')
     )
+      .then(result => res.status(200).json(result))
+      .catch(() => res.status(500).end())
+  },
+  findByTag(req: Request, res: Response) {
+    const { tags } = req.query
+    const tagsToFind: string[] = Array.isArray(tags)
+      ? tags
+          .map(tag => {
+            return tag !== '' ? tag.trim() : null
+          })
+          .filter((tag: string | null) => tag)
+      : []
+
+    if (tagsToFind.length === 0) {
+      return res.status(400).end()
+    }
+
+    const { limit, offset } = getPaginationParams(req)
+
+    findPosts(
+      {
+        tags: {
+          $all: tagsToFind,
+        },
+      },
+      {
+        offset,
+        limit,
+        sort: {
+          createdAt: 'desc',
+        },
+      },
+      res.get('x-traceid')
+    )
+      .then(result => res.status(200).json(result))
+      .catch(() => res.status(500).end())
   },
   userPosts(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params
