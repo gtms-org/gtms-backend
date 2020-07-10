@@ -8,11 +8,18 @@ import {
   RecordType,
   ESIndexUpdateType,
   ESIndexUpdateRecord,
+  parseText,
 } from '@gtms/commons'
 import { ObjectID } from 'mongodb'
 
 function addComment(
-  payload: { post: string; text: string; tags?: string[]; owner: string },
+  payload: {
+    post: string
+    text: string
+    tags?: string[]
+    lastTags?: readonly string[]
+    owner: string
+  },
   parent?: string
 ) {
   if (!parent) {
@@ -48,12 +55,14 @@ export default {
     } = req
 
     const tags = text.match(/#(\w+)\b/gi)
+    const parsed = parseText(text)
 
-    // check somehow if user can add
+    // todo: check somehow if user can add
     addComment(
       {
         post,
-        text,
+        text: parsed.text,
+        lastTags: parsed.lastTags,
         tags: Array.isArray(tags)
           ? tags
               .filter((value, index, self) => {
@@ -160,6 +169,7 @@ export default {
 
         const payload: {
           tags?: string[]
+          lastTags?: readonly string[]
           text?: string
         } = {}
         ;['text', 'tags'].forEach((field: 'text' | 'tags') => {
@@ -167,6 +177,11 @@ export default {
             payload[field] = body[field]
           }
         })
+
+        const parsed = parseText(payload.text)
+
+        payload.text = parsed.text
+        payload.lastTags = parsed.lastTags
 
         CommentModel.findOneAndUpdate(query, payload, { new: true })
           .then((comment: IComment | null) => {

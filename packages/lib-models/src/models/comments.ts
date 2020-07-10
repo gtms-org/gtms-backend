@@ -11,8 +11,10 @@ export interface IComment extends Document {
     updatedAt: string
     text: string
     tags: string[]
+    lastTags: string[]
   }[]
   tags: string[]
+  lastTags: string[]
   owner: string
   createdAt: string
   updatedAt: string
@@ -32,6 +34,7 @@ const CommentSchema = new Schema(
         updatedAt: Date,
         text: String,
         tags: [String],
+        lastTags: [String],
       },
     ],
     text: {
@@ -43,6 +46,10 @@ const CommentSchema = new Schema(
       type: [String],
       required: false,
       index: true,
+    },
+    lastTags: {
+      type: [String],
+      required: false,
     },
     owner: {
       type: Schema.Types.ObjectId,

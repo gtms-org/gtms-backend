@@ -12,6 +12,7 @@ export function serializePost(post: IPost): ISerializedPost {
     id: postObj._id,
     text: postObj.text,
     tags: postObj.tags,
+    lastTags: postObj.lastTags || [],
     owner: postObj.owner,
     commentsCounter: postObj.commentsCounter,
     firstComments: postObj.firstComments || [],

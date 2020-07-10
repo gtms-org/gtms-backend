@@ -9,8 +9,10 @@ export interface ISerializedComment {
     updatedAt: string
     text: string
     tags: string[]
+    lastTags: string[]
   }[]
   tags: string[]
+  lastTags: string[]
   owner: ISerializedUser | string
   createdAt: string
   updatedAt: string
