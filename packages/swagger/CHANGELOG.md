@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.20.0...@gtms/swagger@0.21.0) (2020-07-10)
+
+
+### Features
+
+* GEOT-330: add filter by tag option in group posts endpoint ([#131](https://github.com/mariusz-kabala/gtms-backend/issues/131)) ([929d1b0](https://github.com/mariusz-kabala/gtms-backend/commit/929d1b016fe76fc4d042257c0d8f526ef3548418))
+
+
+
+
+
 # [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.19.12...@gtms/swagger@0.20.0) (2020-07-10)
 
 
