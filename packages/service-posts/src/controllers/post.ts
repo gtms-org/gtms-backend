@@ -13,6 +13,7 @@ import {
   UserUpdateTypes,
   ESIndexUpdateType,
   ESIndexUpdateRecord,
+  parseText,
 } from '@gtms/commons'
 import { validateObjectId } from '@gtms/client-mongoose'
 import { canAddPost, getGroup } from '@gtms/lib-api'
@@ -32,10 +33,12 @@ export default {
     })
       .then(() => {
         const tags = text.match(/#(\w+)\b/gi)
+        const parsed = parseText(text)
 
         PostModel.create({
           group,
-          text,
+          text: parsed.text,
+          lastTags: parsed.lastTags,
           tags: Array.isArray(tags)
             ? tags
                 .filter((value, index, self) => {
@@ -177,6 +180,7 @@ export default {
 
         const payload: {
           tags?: string[]
+          lastTags?: readonly string[]
           text?: string
         } = {}
         ;['text', 'tags'].forEach((field: 'text' | 'tags') => {
@@ -184,6 +188,11 @@ export default {
             payload[field] = body[field]
           }
         })
+
+        const parsed = parseText(payload.text)
+
+        payload.text = parsed.text
+        payload.lastTags = parsed.lastTags
 
         PostModel.findOneAndUpdate(query, payload, { new: true })
           .then((post: IPost | null) => {

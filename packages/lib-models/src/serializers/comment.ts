@@ -9,6 +9,7 @@ export function serializeComment(
         subComments: any
         text: string
         tags: string[]
+        lastTags: string[]
         owner: string
         createdAt: string
         updatedAt: string
@@ -22,6 +23,7 @@ export function serializeComment(
       id: `${subComment._id}`,
       text: subComment.text,
       tags: subComment.tags || [],
+      lastTags: subComment.lastTags || [],
       createdAt: subComment.createdAt,
       updatedAt: subComment.updatedAt,
       owner: (owners !== undefined && owners[`${comment.owner}`]
@@ -29,6 +31,7 @@ export function serializeComment(
         : subComment.owner) as ISerializedUser,
     })),
     tags: comment.tags,
+    lastTags: comment.lastTags || [],
     owner:
       owners !== undefined && owners[`${comment.owner}`]
         ? owners[`${comment.owner}`]
