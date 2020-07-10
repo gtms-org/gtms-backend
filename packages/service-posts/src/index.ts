@@ -29,6 +29,7 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 
 // routes
 router.post('/find-by-ids', findController.findByIds)
+router.get('/find', findController.findByTag)
 router.get('/group/:id', findController.groupPosts)
 router.get('/user/:id', findController.userPosts)
 router.get('/my', findController.myPosts)

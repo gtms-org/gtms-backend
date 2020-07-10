@@ -11,16 +11,6 @@ export default {
       restricted: true,
     },
     {
-      path: '/:id',
-      method: http.POST,
-      restricted: true,
-    },
-    {
-      path: '/:id',
-      method: http.GET,
-      restricted: false,
-    },
-    {
       path: '/group/:id',
       method: http.GET,
       restricted: false,
@@ -34,6 +24,21 @@ export default {
       path: '/my',
       method: http.GET,
       restricted: true,
+    },
+    {
+      path: '/find',
+      method: http.GET,
+      restricted: false,
+    },
+    {
+      path: '/:id',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/:id',
+      method: http.GET,
+      restricted: false,
     },
   ],
 }
