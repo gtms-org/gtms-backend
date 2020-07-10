@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.12.11...@gtms/service-posts@0.13.0) (2020-07-10)
+
+
+### Features
+
+* GEOT-328: remove tags from end of a post or comment ([#130](https://github.com/mariusz-kabala/gtms-backend/issues/130)) ([8f85a71](https://github.com/mariusz-kabala/gtms-backend/commit/8f85a71117ed67af9e960967dc4627b3157c8cbf))
+
+
+
+
+
 ## [0.12.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.12.10...@gtms/service-posts@0.12.11) (2020-07-09)
 
 **Note:** Version bump only for package @gtms/service-posts

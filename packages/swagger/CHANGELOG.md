@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.19.12...@gtms/swagger@0.20.0) (2020-07-10)
+
+
+### Features
+
+* GEOT-328: remove tags from end of a post or comment ([#130](https://github.com/mariusz-kabala/gtms-backend/issues/130)) ([8f85a71](https://github.com/mariusz-kabala/gtms-backend/commit/8f85a71117ed67af9e960967dc4627b3157c8cbf))
+
+
+
+
+
 ## [0.19.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.19.11...@gtms/swagger@0.19.12) (2020-07-08)
 
 **Note:** Version bump only for package @gtms/swagger
