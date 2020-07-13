@@ -7,6 +7,7 @@ export interface ISerializedPost {
   tags: string[]
   lastTags: string[]
   owner: string | ISerializedUser
+  favs: number
   commentsCounter: number
   firstComments: ISerializedComment[]
   createdAt: string

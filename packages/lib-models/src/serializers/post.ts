@@ -14,6 +14,7 @@ export function serializePost(post: IPost): ISerializedPost {
     tags: postObj.tags,
     lastTags: postObj.lastTags || [],
     owner: postObj.owner,
+    favs: (postObj.favs || []).length,
     commentsCounter: postObj.commentsCounter,
     firstComments: postObj.firstComments || [],
     createdAt: postObj.createdAt,

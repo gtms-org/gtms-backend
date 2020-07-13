@@ -3470,6 +3470,108 @@
         }
       }
     },
+    "/posts/{id}/favs": {
+      "get": {
+        "tags": ["Posts"],
+        "summary": "Returns list of users which added post to favs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Posts's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Posts"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Adds a post to user's favs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Posts's id"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Posts"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Removes a post from user's favs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Post's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/posts/my/favs": {
+      "get": {
+        "tags": ["Posts"],
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "summary": "Return user's favs posts",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
     "/comments": {
       "post": {
         "security": [

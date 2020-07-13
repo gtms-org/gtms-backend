@@ -8,6 +8,7 @@ export interface IPost extends Document {
   tags: string[]
   lastTags: string[]
   followers: string[]
+  favs: string[]
   owner: string
   commentsCounter: number
   firstComments: ISerializedComment[]
@@ -62,6 +63,11 @@ const PostSchema = new Schema(
       required: false,
     },
     followers: {
+      type: [Schema.Types.ObjectId],
+      required: false,
+      default: [],
+    },
+    favs: {
       type: [Schema.Types.ObjectId],
       required: false,
       default: [],
