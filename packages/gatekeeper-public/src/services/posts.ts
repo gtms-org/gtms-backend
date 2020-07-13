@@ -31,6 +31,26 @@ export default {
       restricted: false,
     },
     {
+      path: '/:id/favs',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/:id/favs',
+      method: http.DELETE,
+      restricted: true,
+    },
+    {
+      path: '/:id/favs',
+      method: http.GET,
+      restricted: false,
+    },
+    {
+      path: '/my/favs',
+      method: http.GET,
+      restricted: true,
+    },
+    {
       path: '/:id',
       method: http.POST,
       restricted: true,
