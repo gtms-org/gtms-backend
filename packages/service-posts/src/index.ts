@@ -5,6 +5,7 @@ import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
 import postsController from './controllers/post'
 import findController from './controllers/find'
+import favsController from './controllers/favs'
 
 import {
   JWTMiddleware,
@@ -33,6 +34,11 @@ router.get('/find', findController.findByTag)
 router.get('/group/:id', findController.groupPosts)
 router.get('/user/:id', findController.userPosts)
 router.get('/my', findController.myPosts)
+
+router.post('/:id/favs', JWTMiddleware, favsController.addToFavs)
+router.delete('/:id/favs', JWTMiddleware, favsController.removeFromFavs)
+router.get('/:id/favs', favsController.postFavs)
+router.get('/my/favs', JWTMiddleware, favsController.removeFromFavs)
 
 router.post('/', JWTMiddleware, postsController.create)
 router.get('/:id', postsController.show)
