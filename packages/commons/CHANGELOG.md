@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.22.0...@gtms/commons@0.23.0) (2020-07-13)
+
+
+### Features
+
+* GEOT-335 favs posts ([#133](https://github.com/mariusz-kabala/gtms-backend/issues/133)) ([43198c7](https://github.com/mariusz-kabala/gtms-backend/commit/43198c7d0a321fa0ace8cd37c6395b167537ebd4))
+
+
+
+
+
 # [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.21.4...@gtms/commons@0.22.0) (2020-07-10)
 
 
