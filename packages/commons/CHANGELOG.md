@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.23.0...@gtms/commons@0.23.1) (2020-07-14)
+
+
+### Bug Fixes
+
+* master: pass to fe raw favs data ([cdf9f1d](https://github.com/mariusz-kabala/gtms-backend/commit/cdf9f1d8af36ecfc1df37cc8002084a0aba3d956))
+
+
+
+
+
 # [0.23.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.22.0...@gtms/commons@0.23.0) (2020-07-13)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.7.6...@gtms/lib-api@0.7.7) (2020-07-14)
+
+**Note:** Version bump only for package @gtms/lib-api
+
+
+
+
+
 ## [0.7.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.7.5...@gtms/lib-api@0.7.6) (2020-07-13)
 
 **Note:** Version bump only for package @gtms/lib-api
