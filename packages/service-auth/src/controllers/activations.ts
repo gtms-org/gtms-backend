@@ -17,15 +17,10 @@ import {
   validateEmailAddress,
   validatePassword,
   Queues,
-  IESUserCreateMsg,
   ESIndexUpdateType,
   ESIndexUpdateRecord,
 } from '@gtms/commons'
-import {
-  publishToDeleteChannel,
-  publishOnChannel,
-  publishMultiple,
-} from '@gtms/client-queue'
+import { publishToDeleteChannel, publishMultiple } from '@gtms/client-queue'
 
 export default {
   activateAccount(req: Request, res: Response, next: NextFunction): void {

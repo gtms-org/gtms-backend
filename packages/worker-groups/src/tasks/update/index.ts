@@ -8,6 +8,7 @@ import {
 } from '@gtms/client-queue'
 import { processIncreasePostsCounterMsg } from './increasePostsCounter'
 import { processDescreasedPostsCounterMsg } from './descreasePostsCounter'
+import { processUpdateGroupTagsMsg } from './updateTags'
 
 const retryPolicy: IRetryPolicy = {
   queue: Queues.groupUpdate,
@@ -58,6 +59,9 @@ const processMsg = (msg: amqp.Message) => {
 
     case GroupUpdateTypes.descreasePostsCounter:
       return processDescreasedPostsCounterMsg(jsonMsg)
+
+    case GroupUpdateTypes.updateTags:
+      return processUpdateGroupTagsMsg(jsonMsg)
   }
 }
 

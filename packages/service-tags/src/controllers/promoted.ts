@@ -3,6 +3,9 @@ import {
   IAuthRequest,
   IGenericDeleteOperation,
   BulkOperationTypes,
+  Queues,
+  IUpdateGroupTagsMsq,
+  GroupUpdateTypes,
 } from '@gtms/commons'
 import {
   GroupTagModel,
@@ -12,6 +15,7 @@ import {
 } from '@gtms/lib-models'
 import logger from '@gtms/lib-logger'
 import { hasGroupAdminRights } from '@gtms/lib-api'
+import { publishOnChannel } from '@gtms/client-queue'
 import {
   IAddOperation,
   IUpdateOperation,
@@ -56,59 +60,102 @@ export default {
       hasGroupAdminRights(req.user.id, body.group, {
         traceId: res.get('x-traceid'),
       }),
-    ])
-      .then(async results => {
-        let [tag] = results
+    ]).then(async results => {
+      let [tag] = results
 
-        if (!tag) {
-          try {
-            tag = await TagModel.create({
-              name: body.tag,
-              creator: req.user.id,
-              groupsCounter: 1,
-              totalCounter: 1,
-            })
-          } catch (err) {
-            next(err)
+      if (!tag) {
+        try {
+          tag = await TagModel.create({
+            name: body.tag,
+            creator: req.user.id,
+            groupsCounter: 1,
+            totalCounter: 1,
+          })
+        } catch (err) {
+          next(err)
 
-            logger.log({
-              level: 'error',
-              message: `Database error: ${err}`,
-              traceId: res.get('x-traceid'),
-            })
-            return
-          }
+          logger.log({
+            level: 'error',
+            message: `Database error: ${err}`,
+            traceId: res.get('x-traceid'),
+          })
+          return
         }
+      }
 
-        GroupTagModel.create({
-          tag,
-          description: body.description,
-          group: body.group,
-          order: body.order || 0,
-        })
-          .then((groupTag: IGroupTag) => {
-            res.status(201).json(serializeGroupTag(groupTag))
-          })
-          .catch(err => {
-            next(err)
-
-            logger.log({
-              message: `Database error: ${err}`,
-              level: 'error',
-              traceId: res.get('x-traceid'),
+      GroupTagModel.findOne({
+        tag,
+        group: body.group,
+      })
+        .then((group: IGroupTag | null) => {
+          if (group) {
+            return res.status(400).json({
+              tag: {
+                message: `Field tag has to be unique`,
+                name: 'unique',
+                properties: {
+                  message: `Field tag has to be unique`,
+                  type: 'required',
+                  path: 'tag',
+                },
+              },
             })
-          })
-      })
-      .catch(err => {
-        logger.log({
-          level: 'error',
-          message: `Error occurred during Group Tag record creation: ${err}`,
-          traceId: res.get('x-traceid'),
-        })
+          }
 
-        // most probably user has no rights
-        res.status(403).end()
-      })
+          GroupTagModel.create({
+            tag,
+            description: body.description,
+            group: body.group,
+            order: body.order || 0,
+          })
+            .then((groupTag: IGroupTag) => {
+              res.status(201).json(serializeGroupTag(groupTag))
+            })
+            .catch(err => {
+              next(err)
+
+              logger.log({
+                message: `Database error: ${err}`,
+                level: 'error',
+                traceId: res.get('x-traceid'),
+              })
+            })
+            .then(async () => {
+              try {
+                publishOnChannel<IUpdateGroupTagsMsq>(Queues.groupUpdate, {
+                  type: GroupUpdateTypes.updateTags,
+                  data: {
+                    group: body.group,
+                    traceId: res.get('x-traceid'),
+                    tags: [body.tag],
+                  },
+                })
+
+                logger.log({
+                  message: `Update group's tags message for ${body.group} (tag: ${body.tag}) has been sent to the queue ${GroupUpdateTypes.updateTags}`,
+                  level: 'info',
+                  traceId: res.get('x-traceid'),
+                })
+              } catch (err) {
+                logger.log({
+                  message: `Can not send update group's tags message to the queue ${GroupUpdateTypes.updateTags} - ${err}`,
+                  level: 'error',
+                  traceId: res.get('x-traceid'),
+                })
+              }
+            })
+        })
+        .catch(err => {
+          logger.log({
+            level: 'error',
+            message: `Error occurred during Group Tag record creation: ${err}`,
+            traceId: res.get('x-traceid'),
+          })
+
+          // most probably user has no rights
+          res.status(403).end()
+        })
+    })
   },
   async update(req: IAuthRequest, res: Response, next: NextFunction) {
     const { body } = req

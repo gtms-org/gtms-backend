@@ -65,6 +65,7 @@ export enum UserUpdateTypes {
 export enum GroupUpdateTypes {
   increasePostsCounter = 'increasePostsCounter',
   descreasePostsCounter = 'descreasePostsCounter',
+  updateTags = 'updateTags',
 }
 
 export enum Indicies {
