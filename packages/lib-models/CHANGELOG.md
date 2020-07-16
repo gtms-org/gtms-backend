@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.17.1...@gtms/lib-models@0.17.2) (2020-07-16)
+
+
+### Bug Fixes
+
+* GEOT-338: Check if promoted tag is unique for the group, aut ([#134](https://github.com/mariusz-kabala/gtms-backend/issues/134)) ([fc82d76](https://github.com/mariusz-kabala/gtms-backend/commit/fc82d7610669b3493f565bf2af670d15c3b7a620))
+
+
+
+
+
 ## [0.17.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.17.0...@gtms/lib-models@0.17.1) (2020-07-14)
 
 

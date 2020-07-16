@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.16](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.5.15...@gtms/worker-groups@0.5.16) (2020-07-16)
+
+
+### Bug Fixes
+
+* GEOT-338: Check if promoted tag is unique for the group, aut ([#134](https://github.com/mariusz-kabala/gtms-backend/issues/134)) ([fc82d76](https://github.com/mariusz-kabala/gtms-backend/commit/fc82d7610669b3493f565bf2af670d15c3b7a620))
+
+
+
+
+
 ## [0.5.15](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.5.14...@gtms/worker-groups@0.5.15) (2020-07-14)
 
 **Note:** Version bump only for package @gtms/worker-groups

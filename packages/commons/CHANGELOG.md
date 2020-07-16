@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.23.1...@gtms/commons@0.23.2) (2020-07-16)
+
+
+### Bug Fixes
+
+* GEOT-338: Check if promoted tag is unique for the group, aut ([#134](https://github.com/mariusz-kabala/gtms-backend/issues/134)) ([fc82d76](https://github.com/mariusz-kabala/gtms-backend/commit/fc82d7610669b3493f565bf2af670d15c3b7a620))
+
+
+
+
+
 ## [0.23.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.23.0...@gtms/commons@0.23.1) (2020-07-14)
 
 

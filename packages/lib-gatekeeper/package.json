@@ -1,12 +1,12 @@
 {
   "name": "@gtms/lib-gatekeeper",
-  "version": "0.4.27",
+  "version": "0.4.28",
   "description": "",
   "main": "src/index.ts",
   "author": "Mariusz Kabała",
   "license": "ISC",
   "dependencies": {
-    "@gtms/commons": "0.23.1",
+    "@gtms/commons": "0.23.2",
     "@gtms/lib-consul": "0.2.1",
     "@gtms/lib-logger": "*",
     "express-http-proxy": "^1.6.0",
