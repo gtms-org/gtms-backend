@@ -16,6 +16,16 @@ export interface IDescreaseGroupPostsCounterMsg {
   }
 }
 
+export interface IUpdateGroupTagsMsq {
+  type: GroupUpdateTypes.updateTags
+  data: {
+    group: string
+    traceId: string
+    tags: string[]
+  }
+}
+
 export type IGroupUpdateMsg =
   | IIncreaseGroupPostsCounterMsg
   | IDescreaseGroupPostsCounterMsg
+  | IUpdateGroupTagsMsq

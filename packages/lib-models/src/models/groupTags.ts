@@ -22,6 +22,7 @@ const GroupTagSchema = new Schema({
   group: {
     type: Schema.Types.ObjectId,
     required: true,
+    index: true,
   },
   description: {
     type: String,
