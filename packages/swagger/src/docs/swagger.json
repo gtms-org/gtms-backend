@@ -64,6 +64,40 @@
         }
       }
     },
+    "/auth/users/username": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Checks if username exists in database",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Username exists"
+          },
+          "400": {
+            "description": "Invalid payload"
+          },
+          "404": {
+            "description": "Username does not exist"
+          }
+        }
+      }
+    },
     "/auth/users": {
       "post": {
         "tags": ["Auth"],
