@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.25.0...@gtms/service-auth@0.25.1) (2020-07-17)
+
+
+### Bug Fixes
+
+* master: adjust username checking query ([55ecb29](https://github.com/mariusz-kabala/gtms-backend/commit/55ecb29ae5edfc92302a5bb8bc4eafbdffc2a782))
+
+
+
+
+
 # [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.15...@gtms/service-auth@0.25.0) (2020-07-17)
 
 
