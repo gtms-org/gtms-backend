@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.25.1...@gtms/service-auth@0.25.2) (2020-07-17)
+
+
+### Bug Fixes
+
+* master: fixes in random username generator ([84c601e](https://github.com/mariusz-kabala/gtms-backend/commit/84c601e9e14088b4dc9f6722bd58f128fc5c80e4))
+
+
+
+
+
 ## [0.25.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.25.0...@gtms/service-auth@0.25.1) (2020-07-17)
 
 
