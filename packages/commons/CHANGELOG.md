@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.23.2...@gtms/commons@0.23.3) (2020-07-17)
+
+
+### Bug Fixes
+
+* GEOT-339: add username field ([#136](https://github.com/mariusz-kabala/gtms-backend/issues/136)) ([e1682da](https://github.com/mariusz-kabala/gtms-backend/commit/e1682dadefd325f79bb3c9c511e502e2e7c06726))
+
+
+
+
+
 ## [0.23.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.23.1...@gtms/commons@0.23.2) (2020-07-16)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-tags",
-  "version": "0.8.17",
+  "version": "0.8.18",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
@@ -9,10 +9,10 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/commons": "0.23.2",
-    "@gtms/lib-api": "0.7.8",
+    "@gtms/commons": "0.23.3",
+    "@gtms/lib-api": "0.7.9",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.17.2"
+    "@gtms/lib-models": "0.17.3"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

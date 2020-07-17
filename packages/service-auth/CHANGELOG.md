@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.15](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.14...@gtms/service-auth@0.24.15) (2020-07-17)
+
+
+### Bug Fixes
+
+* GEOT-339: add username field ([#136](https://github.com/mariusz-kabala/gtms-backend/issues/136)) ([e1682da](https://github.com/mariusz-kabala/gtms-backend/commit/e1682dadefd325f79bb3c9c511e502e2e7c06726))
+
+
+
+
+
 ## [0.24.14](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.13...@gtms/service-auth@0.24.14) (2020-07-16)
 
 
