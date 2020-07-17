@@ -37,6 +37,7 @@ export default {
           'name',
           'surname',
           'description',
+          'username',
           'email',
           'phone',
           'countryCode',
@@ -47,6 +48,7 @@ export default {
             field:
               | 'name'
               | 'surname'
+              | 'username'
               | 'email'
               | 'phone'
               | 'countryCode'

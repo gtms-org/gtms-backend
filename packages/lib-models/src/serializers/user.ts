@@ -4,6 +4,7 @@ import { ISerializedUser } from '@gtms/commons'
 export function serializeUser(user: IUser): ISerializedUser {
   return {
     id: user._id,
+    username: user.username,
     name: user.name,
     surname: user.surname,
     description: user.description,
