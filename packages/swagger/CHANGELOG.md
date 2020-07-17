@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.24.0...@gtms/swagger@0.25.0) (2020-07-17)
+
+
+### Features
+
+* master: find by username endpoint ([f0f5795](https://github.com/mariusz-kabala/gtms-backend/commit/f0f57959c6720264ad92e7d02c1f0477b9567659))
+
+
+
+
+
 # [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.23.3...@gtms/swagger@0.24.0) (2020-07-17)
 
 
