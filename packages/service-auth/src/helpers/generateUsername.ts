@@ -5,11 +5,11 @@ async function findRandomUsername(limit = 3): Promise<string> {
   for (let x = 0; x < limit; x++) {
     const username = randomString(8)
 
-    const counter = await UserModel.estimatedDocumentCount({
+    const user = await UserModel.findOne({
       username,
     })
 
-    if (counter === 0) {
+    if (!user) {
       return username
     }
   }
@@ -24,7 +24,7 @@ async function findUsername(
 ): Promise<string> {
   for (let x = start; x <= start + limit; x++) {
     const usernameToCheck = `${username}${x}`
-    const counter = await UserModel.estimatedDocumentCount({
+    const counter = await UserModel.countDocuments({
       username: usernameToCheck,
     })
 
@@ -51,7 +51,7 @@ export function generateRandomUsername(
     }
 
     if (usernameProposal) {
-      UserModel.estimatedDocumentCount({
+      UserModel.countDocuments({
         username: new RegExp(`${usernameProposal}.*`),
       })
         .then(async (counter: number) => {
