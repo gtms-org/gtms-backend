@@ -98,6 +98,41 @@
         }
       }
     },
+    "/auth/username/find": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Finds users by username",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid params"
+          }
+        }
+      }
+    },
     "/auth/users": {
       "post": {
         "tags": ["Auth"],

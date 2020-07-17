@@ -21,6 +21,11 @@ export default {
       restricted: false,
     },
     {
+      path: '/username/find',
+      method: http.GET,
+      restricted: false,
+    },
+    {
       path: '/users',
       method: http.POST,
       restricted: false,

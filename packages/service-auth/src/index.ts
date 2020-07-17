@@ -36,6 +36,7 @@ router.get('/managment/heath', (_: Request, res: Response) => {
 router.get('/users/count', usersController.count)
 router.get('/users/tag', findController.byTags)
 router.post('/users/username', findController.usernameExists)
+router.get('/username/find', findController.findByUsername)
 router.post('/users', usersController.create)
 router.get('/users', findController.list)
 router.get('/users/:id', usersController.getUser)

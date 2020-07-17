@@ -138,4 +138,39 @@ export default {
         return next(err)
       })
   },
+  findByUsername(req: Request, res: Response, next: NextFunction) {
+    const query = req.query.query
+    let limit = parseInt(req.query.limit, 10)
+
+    if (!query || typeof query !== 'string' || query.length < 3) {
+      return res.status(400).end()
+    }
+
+    if (isNaN(limit) || limit < 1) {
+      limit = 20
+    }
+
+    if (limit > 25) {
+      limit = 25
+    }
+
+    UserModel.find({
+      username: {
+        $regex: `${query}.*`,
+      },
+    })
+      .limit(limit)
+      .then((users: IUser[]) => {
+        res.status(200).json(users.map(user => serializeUser(user)))
+      })
+      .catch(err => {
+        logger.log({
+          level: 'error',
+          message: `Database error: ${err}`,
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      })
+  },
 }
