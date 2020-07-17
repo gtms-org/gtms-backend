@@ -119,11 +119,14 @@ export default {
       return res.status(400).end()
     }
 
-    UserModel.estimatedDocumentCount({
-      username,
-    })
-      .then(counter => {
-        res.status(counter === 0 ? 404 : 200).end()
+    UserModel.find(
+      {
+        username,
+      },
+      { limit: 1 }
+    )
+      .then((user: IUser[]) => {
+        res.status(user.length === 0 ? 404 : 200).end()
       })
       .catch(err => {
         logger.log({
