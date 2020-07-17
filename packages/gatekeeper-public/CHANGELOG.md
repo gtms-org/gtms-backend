@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.34.3...@gtms/gatekeeper-public@0.35.0) (2020-07-17)
+
+
+### Features
+
+* GEOT-341: check username endpoint ([#138](https://github.com/mariusz-kabala/gtms-backend/issues/138)) ([a25f13c](https://github.com/mariusz-kabala/gtms-backend/commit/a25f13c7c1bf5e4a8094cc29ebbe534508820144))
+
+
+
+
+
 ## [0.34.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.34.2...@gtms/gatekeeper-public@0.34.3) (2020-07-17)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
