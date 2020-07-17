@@ -112,4 +112,27 @@ export default {
       }
     )
   },
+  usernameExists(req: Request, res: Response, next: NextFunction) {
+    const { username } = req.body
+
+    if (!username || typeof username !== 'string') {
+      return res.status(400).end()
+    }
+
+    UserModel.estimatedDocumentCount({
+      username,
+    })
+      .then(counter => {
+        res.status(counter === 0 ? 404 : 200).end()
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        return next(err)
+      })
+  },
 }
