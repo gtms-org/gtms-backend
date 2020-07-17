@@ -14,6 +14,7 @@ import sendActivationEmail from '../helpers/sendActivationEmail'
 import { publishOnChannel } from '@gtms/client-queue'
 import { IFileQueueMsg, Queues, FileTypes, FileStatus } from '@gtms/commons'
 import serializeCookie from '../helpers/cookies'
+import { generateRandomUsername } from '../helpers/generateUsername'
 import config from 'config'
 
 export default async function(req: Request, res: Response, next: NextFunction) {
@@ -47,9 +48,22 @@ export default async function(req: Request, res: Response, next: NextFunction) {
     if (!fb) {
       // new user
       let user: IUser
+      let username: string
+
+      try {
+        username = await generateRandomUsername(name[0], name[1])
+      } catch (err) {
+        logger.log({
+          message: `Error during random nickname generation - ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+        return res.status(500).end()
+      }
 
       try {
         user = await UserModel.create({
+          username,
           name: name[0],
           surname: name[1],
           email: response.email,

@@ -13,6 +13,7 @@ export interface IUser extends Document {
   surname?: string
   phone?: string
   email: string
+  username: string
   password: string
   description?: string
   countryCode: string
@@ -53,6 +54,13 @@ const UserSchema = new Schema(
       type: String,
       trim: true,
       required: false,
+    },
+    username: {
+      type: String,
+      unique: true,
+      trim: true,
+      required: true,
+      index: true,
     },
     email: {
       type: String,

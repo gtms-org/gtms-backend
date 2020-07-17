@@ -16,6 +16,12 @@ import authenticate, { getJWTData } from '../helpers/authenticate'
 import config from 'config'
 import serializeCookie from '../helpers/cookies'
 import sendActivationEmail from '../helpers/sendActivationEmail'
+import { generateRandomUsername } from '../helpers/generateUsername'
+
+const getUsername = (body: { [key: string]: string }) =>
+  body.username
+    ? Promise.resolve(body.username.trim())
+    : generateRandomUsername(body.name, body.surname)
 
 export default {
   count(_: Request, res: Response, next: NextFunction): void {
@@ -30,46 +36,58 @@ export default {
   create(req: Request, res: Response, next: NextFunction): void {
     const { body } = req
 
-    UserModel.create({
-      name: body.name,
-      surname: body.surname,
-      email: body.email,
-      phone: body.phone,
-      password: body.password,
-      countryCode: body.countryCode,
-      languageCode: body.languageCode,
-    })
-      .then((user: IUser) => {
-        const { name, surname, email } = user
-
-        logger.log({
-          message: `New user with email ${email} and name ${name ||
-            'empty'} ${surname || 'empty'} successfuly created`,
-          level: 'info',
-          traceId: res.get('x-traceid'),
+    getUsername(body)
+      .then(username => {
+        UserModel.create({
+          username,
+          name: body.name,
+          surname: body.surname,
+          email: body.email,
+          phone: body.phone,
+          password: body.password,
+          countryCode: body.countryCode,
+          languageCode: body.languageCode,
         })
+          .then((user: IUser) => {
+            const { name, surname, email } = user
 
-        res.status(201).json(serializeUser(user))
+            logger.log({
+              message: `New user with email ${email} and name ${name ||
+                'empty'} ${surname || 'empty'} successfuly created`,
+              level: 'info',
+              traceId: res.get('x-traceid'),
+            })
 
-        sendActivationEmail(user, res.get('x-traceid'))
+            res.status(201).json(serializeUser(user))
+
+            sendActivationEmail(user, res.get('x-traceid'))
+          })
+          .catch(err => {
+            if (err.name === 'ValidationError') {
+              logger.log({
+                message: `Validation error ${err}`,
+                level: 'error',
+                traceId: res.get('x-traceid'),
+              })
+              res.status(400).json(err.errors)
+            } else {
+              next(err)
+
+              logger.log({
+                message: `Request error ${err}`,
+                level: 'error',
+                traceId: res.get('x-traceid'),
+              })
+            }
+          })
       })
       .catch(err => {
-        if (err.name === 'ValidationError') {
-          logger.log({
-            message: `Validation error ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-          res.status(400).json(err.errors)
-        } else {
-          next(err)
-
-          logger.log({
-            message: `Request error ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-        }
+        logger.log({
+          message: `Error during random nickname generation - ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+        res.status(500).end()
       })
   },
   authenticate(req: Request, res: Response, next: NextFunction): void {
