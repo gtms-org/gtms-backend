@@ -16,7 +16,7 @@ import {
   parseText,
 } from '@gtms/commons'
 import { validateObjectId } from '@gtms/client-mongoose'
-import { canAddPost, getGroup } from '@gtms/lib-api'
+import { canAddPost, getGroup, findUsersByUsernames } from '@gtms/lib-api'
 
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
@@ -31,12 +31,37 @@ export default {
     canAddPost(req.user.id, group, {
       traceId: res.get('x-traceid'),
     })
-      .then(() => {
+      .then(async () => {
         const tags = text.match(/#(\w+)\b/gi)
+        const mentionedUsernames = text.match(/@(\w+)\b/gi)
         const parsed = parseText(text)
+        let mentioned: string[] = []
+
+        if (
+          Array.isArray(mentionedUsernames) &&
+          mentionedUsernames.length > 0
+        ) {
+          try {
+            mentioned = (
+              await findUsersByUsernames(
+                mentionedUsernames.map(username => username.substr(1)),
+                {
+                  traceId: res.get('x-traceid'),
+                }
+              )
+            ).map(user => user.id)
+          } catch (err) {
+            logger.log({
+              level: 'error',
+              message: `Can not fetch list of mentioned users; API error - ${err}`,
+              traceId: res.get('x-traceid'),
+            })
+          }
+        }
 
         PostModel.create({
           group,
+          mentioned,
           text: parsed.text,
           lastTags: parsed.lastTags,
           tags: Array.isArray(tags)

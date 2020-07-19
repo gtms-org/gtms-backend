@@ -173,4 +173,29 @@ export default {
         next(err)
       })
   },
+  findByUsernames(req: Request, res: Response, next: NextFunction) {
+    const { usernames } = req.body
+
+    if (!Array.isArray(usernames) || usernames.length === 0) {
+      return res.status(400).end()
+    }
+
+    UserModel.find({
+      username: {
+        $in: usernames,
+      },
+    })
+      .then((users: IUser[]) => {
+        res.status(200).json(users.map(user => serializeUser(user)))
+      })
+      .catch(err => {
+        logger.log({
+          message: `Request error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      })
+  },
 }
