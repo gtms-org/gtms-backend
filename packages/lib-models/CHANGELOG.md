@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.17.3...@gtms/lib-models@0.18.0) (2020-07-19)
+
+
+### Features
+
+* GEOT-344: save with a post list of mentioned users ([#139](https://github.com/mariusz-kabala/gtms-backend/issues/139)) ([9de0d6c](https://github.com/mariusz-kabala/gtms-backend/commit/9de0d6c1ad6634fd94628d6f4e200ef7908c07e2))
+
+
+
+
+
 ## [0.17.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.17.2...@gtms/lib-models@0.17.3) (2020-07-17)
 
 

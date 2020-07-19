@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.16.3...@gtms/service-posts@0.17.0) (2020-07-19)
+
+
+### Features
+
+* GEOT-344: save with a post list of mentioned users ([#139](https://github.com/mariusz-kabala/gtms-backend/issues/139)) ([9de0d6c](https://github.com/mariusz-kabala/gtms-backend/commit/9de0d6c1ad6634fd94628d6f4e200ef7908c07e2))
+
+
+
+
+
 ## [0.16.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.16.2...@gtms/service-posts@0.16.3) (2020-07-17)
 
 **Note:** Version bump only for package @gtms/service-posts
