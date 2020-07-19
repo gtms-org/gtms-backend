@@ -18,6 +18,8 @@ import {
 import { validateObjectId } from '@gtms/client-mongoose'
 import { canAddPost, getGroup, findUsersByUsernames } from '@gtms/lib-api'
 
+const MENTIONED_NOTIFICATION_CHUNK = 50 // how many users can be notificed in one queue msg
+
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
@@ -28,6 +30,8 @@ export default {
       return res.status(400).end()
     }
 
+    let mentioned: string[] = []
+
     canAddPost(req.user.id, group, {
       traceId: res.get('x-traceid'),
     })
@@ -35,7 +39,6 @@ export default {
         const tags = text.match(/#(\w+)\b/gi)
         const mentionedUsernames = text.match(/@(\w+)\b/gi)
         const parsed = parseText(text)
-        let mentioned: string[] = []
 
         if (
           Array.isArray(mentionedUsernames) &&
@@ -153,6 +156,32 @@ export default {
                 },
               },
             ]
+
+            if (mentioned.length > 0) {
+              for (
+                let i = 0, j = mentioned.length;
+                i < j;
+                i += MENTIONED_NOTIFICATION_CHUNK
+              ) {
+                const payload = mentioned.slice(
+                  i,
+                  i + MENTIONED_NOTIFICATION_CHUNK
+                )
+                queueMessages.push({
+                  queue: Queues.newNotification,
+                  message: {
+                    data: {
+                      relatedRecordType: RecordType.post,
+                      relatedRecordId: post._id,
+                      notificationType: NotificationType.mentionedInPost,
+                      payload,
+                      owner: post.owner,
+                      traceId: res.get('x-traceid'),
+                    },
+                  },
+                })
+              }
+            }
 
             if (Array.isArray(post.tags) && post.tags.length > 0) {
               queueMessages.push({
