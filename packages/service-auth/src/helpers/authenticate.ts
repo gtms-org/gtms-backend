@@ -1,10 +1,9 @@
 import jwt from 'jsonwebtoken'
 import { IUser, RefreshTokenModel } from '@gtms/lib-models'
 import config from 'config'
-import requestAPI from '../helpers/requestAPI'
 import logger from '@gtms/lib-logger'
 
-export function getJWTData(user: IUser, traceId: string): Promise<any> {
+export function getJWTData(user: IUser): Promise<any> {
   return new Promise(async resolve => {
     const result: any = {
       id: user._id,
@@ -23,34 +22,12 @@ export function getJWTData(user: IUser, traceId: string): Promise<any> {
       groupsOwner: user.groupsOwner,
     }
 
-    const userProfileService = config.get<string | undefined>(
-      'services.userProfile'
-    )
-
-    if (typeof userProfileService === 'string' && userProfileService !== '') {
-      try {
-        const profile = await requestAPI({
-          url: `http://${userProfileService}/`,
-          jwt: result,
-          traceId,
-        })
-
-        result.profile = profile
-      } catch (profileErr) {
-        logger.log({
-          level: 'error',
-          message: `Can not fetch user profile ${profileErr}`,
-          traceId,
-        })
-      }
-    }
-
     resolve(result)
   })
 }
 
 export default async function(user: IUser, traceId: string) {
-  const userData = await getJWTData(user, traceId)
+  const userData = await getJWTData(user)
 
   const token = jwt.sign(userData, config.get<string>('secret'), {
     expiresIn: config.get<string>('tokenLife'),

@@ -187,7 +187,7 @@ export default {
         }
 
         const newToken = jwt.sign(
-          await getJWTData(token.user as IUser, res.get('x-traceid')),
+          await getJWTData(token.user as IUser),
           config.get<string>('secret'),
           {
             expiresIn: config.get<number>('tokenLife'),
