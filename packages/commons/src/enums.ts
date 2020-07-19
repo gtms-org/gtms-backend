@@ -89,4 +89,5 @@ export enum NotificationType {
   newGroupMember = 'newGroupMember',
   newComment = 'newComment',
   newAnswerToComment = 'newAnswerToComment',
+  mentionedInPost = 'mentionedInPost',
 }

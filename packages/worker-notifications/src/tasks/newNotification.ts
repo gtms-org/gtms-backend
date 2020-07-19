@@ -9,6 +9,7 @@ import {
 import {
   handleNewPostNotification,
   handleNewGroupJoinerNotification,
+  handleMentionedInPostNotification,
 } from './notifications'
 
 const retryPolicy: IRetryPolicy = {
@@ -60,6 +61,9 @@ const processMsg = (msg: amqp.Message) => {
 
     case NotificationType.newGroupMember:
       return handleNewGroupJoinerNotification(jsonMsg)
+
+    case NotificationType.mentionedInPost:
+      return handleMentionedInPostNotification(jsonMsg)
 
     default:
       return Promise.reject(
