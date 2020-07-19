@@ -8,6 +8,7 @@ export interface IPost extends Document {
   tags: string[]
   lastTags: string[]
   followers: string[]
+  mentioned: string[]
   favs: string[]
   owner: string
   commentsCounter: number
@@ -65,6 +66,12 @@ const PostSchema = new Schema(
     followers: {
       type: [Schema.Types.ObjectId],
       required: false,
+      default: [],
+    },
+    mentioned: {
+      type: [Schema.Types.ObjectId],
+      required: false,
+      index: true,
       default: [],
     },
     favs: {

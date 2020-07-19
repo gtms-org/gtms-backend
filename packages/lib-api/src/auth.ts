@@ -51,3 +51,27 @@ export const getUser = (
     })
   })
 }
+
+export const findUsersByUsernames = (
+  usernames: string[],
+  options: IOptions
+): Promise<ISerializedUser[]> => {
+  const { traceId } = options
+  return makeUrl(AUTH_SERVICE, '/username/find').then(url => {
+    return fetch(url, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'x-traceid': traceId,
+      },
+      method: 'POST',
+      body: JSON.stringify({ usernames }),
+    }).then(async res => {
+      if (res.status === 200) {
+        return res.json()
+      }
+
+      throw await res.text()
+    })
+  })
+}
