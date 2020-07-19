@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-queue@0.7.11...@gtms/client-queue@0.7.12) (2020-07-19)
+
+**Note:** Version bump only for package @gtms/client-queue
+
+
+
+
+
 ## [0.7.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-queue@0.7.10...@gtms/client-queue@0.7.11) (2020-07-17)
 
 **Note:** Version bump only for package @gtms/client-queue

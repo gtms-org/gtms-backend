@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.23.3...@gtms/commons@0.24.0) (2020-07-19)
+
+
+### Features
+
+* GEOT-345: send notification when user is mentioned in a post ([#140](https://github.com/mariusz-kabala/gtms-backend/issues/140)) ([47db061](https://github.com/mariusz-kabala/gtms-backend/commit/47db061888e45b88a0def91aade602b3de0ab71b))
+
+
+
+
+
 ## [0.23.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.23.2...@gtms/commons@0.23.3) (2020-07-17)
 
 

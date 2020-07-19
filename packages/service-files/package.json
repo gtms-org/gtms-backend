@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-files",
-  "version": "0.5.30",
+  "version": "0.5.31",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,11 +10,11 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-queue": "0.7.11",
-    "@gtms/commons": "0.23.3",
+    "@gtms/client-queue": "0.7.12",
+    "@gtms/commons": "0.24.0",
     "@gtms/lib-consul": "0.2.1",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-middlewares": "0.4.36",
+    "@gtms/lib-middlewares": "0.4.37",
     "@gtms/lib-testing": "*",
     "aws-sdk": "2.658.0",
     "express-fileupload": "1.1.7-alpha.3",

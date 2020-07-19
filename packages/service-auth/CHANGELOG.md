@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.27.0...@gtms/service-auth@0.27.1) (2020-07-19)
+
+
+### Bug Fixes
+
+* GEOT-340: drop user profile service ([#141](https://github.com/mariusz-kabala/gtms-backend/issues/141)) ([baec795](https://github.com/mariusz-kabala/gtms-backend/commit/baec795a61edb1c22aeaba5d1a56ef3beb368adc))
+
+
+
+
+
 # [0.27.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.26.0...@gtms/service-auth@0.27.0) (2020-07-19)
 
 
