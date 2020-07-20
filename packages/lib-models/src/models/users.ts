@@ -34,6 +34,11 @@ export interface IUser extends Document {
     files: string[]
   }[]
   tags: string[]
+  loginHistory: {
+    ipAddress: string
+    date: string
+    userAgent: string
+  }[]
   postsCounter: number
 }
 
@@ -152,6 +157,19 @@ const UserSchema = new Schema(
       required: false,
       default: [],
     },
+    loginHistory: [
+      {
+        ipAddress: {
+          type: String,
+        },
+        date: {
+          type: Date,
+        },
+        userAgent: {
+          type: String,
+        },
+      },
+    ],
     postsCounter: {
       type: Number,
       required: false,

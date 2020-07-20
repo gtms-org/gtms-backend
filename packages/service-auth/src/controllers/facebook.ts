@@ -97,7 +97,13 @@ export default async function(req: Request, res: Response, next: NextFunction) {
         name: response.name,
         user: user._id,
       }).then((fb: IFacebookProvider) => {
-        authenticate(user, res.get('x-traceid'))
+        authenticate({
+          user,
+          traceId: res.get('x-traceid'),
+          ipAddress: (req.headers['x-forwarded-for'] ||
+            req.connection.remoteAddress) as string,
+          userAgent: req.get('User-Agent'),
+        })
           .then(data => {
             if (data) {
               logger.log({
@@ -185,7 +191,13 @@ export default async function(req: Request, res: Response, next: NextFunction) {
         return
       }
 
-      authenticate(user, res.get('x-traceid'))
+      authenticate({
+        user,
+        traceId: res.get('x-traceid'),
+        ipAddress: (req.headers['x-forwarded-for'] ||
+          req.connection.remoteAddress) as string,
+        userAgent: req.get('User-Agent'),
+      })
         .then(data => {
           if (data) {
             logger.log({

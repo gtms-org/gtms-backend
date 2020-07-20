@@ -4,6 +4,8 @@ import { IUser } from './users'
 export interface IRefreshToken extends Document {
   token: string
   user: IUser['_id']
+  ipAddress: string
+  userAgent: string
 }
 
 const RefreshTokenSchema = new Schema({
@@ -17,6 +19,16 @@ const RefreshTokenSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'User',
+  },
+  ipAddress: {
+    type: String,
+    required: true,
+    index: true,
+  },
+  userAgent: {
+    type: String,
+    required: true,
+    index: true,
   },
 })
 
