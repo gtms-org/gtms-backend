@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { IUser, RefreshTokenModel } from '@gtms/lib-models'
+import { IUser, RefreshTokenModel, UserModel } from '@gtms/lib-models'
 import config from 'config'
 import logger from '@gtms/lib-logger'
 
@@ -26,7 +26,17 @@ export function getJWTData(user: IUser): Promise<any> {
   })
 }
 
-export default async function(user: IUser, traceId: string) {
+export default async function({
+  user,
+  traceId,
+  ipAddress,
+  userAgent,
+}: {
+  user: IUser
+  traceId: string
+  ipAddress: string
+  userAgent: string
+}) {
   const userData = await getJWTData(user)
 
   const token = jwt.sign(userData, config.get<string>('secret'), {
@@ -44,6 +54,8 @@ export default async function(user: IUser, traceId: string) {
   try {
     await RefreshTokenModel.deleteMany({
       user: user._id,
+      ipAddress,
+      userAgent,
     })
   } catch (err) {
     logger.log({
@@ -59,7 +71,37 @@ export default async function(user: IUser, traceId: string) {
     await RefreshTokenModel.create({
       token: refreshToken,
       user: user._id,
+      ipAddress,
+      userAgent,
     })
+
+    setTimeout(() => {
+      UserModel.updateOne(
+        {
+          _id: user._id,
+        },
+        {
+          $push: {
+            loginHistory: {
+              $each: [
+                {
+                  ipAddress,
+                  userAgent,
+                  date: new Date(Date.now()).toISOString(),
+                },
+              ],
+              $slice: -50,
+            },
+          },
+        }
+      ).catch(err => {
+        logger.log({
+          level: 'error',
+          message: `Can not update user login history - ${err}`,
+          traceId,
+        })
+      })
+    }, 0)
 
     return {
       accessToken: token,

@@ -119,7 +119,13 @@ export default {
         }
 
         if (bcrypt.compareSync(req.body.password, user.password)) {
-          authenticate(user, res.get('x-traceid'))
+          authenticate({
+            user,
+            traceId: res.get('x-traceid'),
+            ipAddress: (req.headers['x-forwarded-for'] ||
+              req.connection.remoteAddress) as string,
+            userAgent: req.get('User-Agent'),
+          })
             .then(data => {
               if (data) {
                 logger.log({
