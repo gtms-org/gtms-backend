@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.24.0...@gtms/commons@0.25.0) (2020-07-20)
+
+
+### Features
+
+* GEOT-347: expose login history, active sessions and allow us ([#145](https://github.com/mariusz-kabala/gtms-backend/issues/145)) ([462d59c](https://github.com/mariusz-kabala/gtms-backend/commit/462d59ccfcc68d92fa85a0f7d02d8c53a916248a))
+
+
+
+
+
 # [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.23.3...@gtms/commons@0.24.0) (2020-07-19)
 
 

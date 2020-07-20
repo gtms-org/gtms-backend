@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.37.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.36.1...@gtms/gatekeeper-public@0.37.0) (2020-07-20)
+
+
+### Features
+
+* GEOT-347: expose login history, active sessions and allow us ([#145](https://github.com/mariusz-kabala/gtms-backend/issues/145)) ([462d59c](https://github.com/mariusz-kabala/gtms-backend/commit/462d59ccfcc68d92fa85a0f7d02d8c53a916248a))
+
+
+
+
+
 ## [0.36.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.36.0...@gtms/gatekeeper-public@0.36.1) (2020-07-19)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
