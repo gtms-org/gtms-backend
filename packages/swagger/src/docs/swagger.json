@@ -733,7 +733,7 @@
         }
       }
     },
-    "/me/favs/groups": {
+    "/auth/me/favs/groups": {
       "get": {
         "security": [
           {
@@ -787,7 +787,7 @@
         }
       }
     },
-    "/me/favs/users": {
+    "/auth/me/favs/users": {
       "get": {
         "security": [
           {
@@ -841,7 +841,7 @@
         }
       }
     },
-    "/me/favs/posts": {
+    "/auth/me/favs/posts": {
       "get": {
         "security": [
           {
@@ -895,7 +895,7 @@
         }
       }
     },
-    "/favs/groups/user/{id}": {
+    "/auth/favs/groups/user/{id}": {
       "get": {
         "tags": ["Auth"],
         "summary": "Returns info about user's fav groups",
@@ -949,7 +949,7 @@
         }
       }
     },
-    "/favs/users/user/{id}": {
+    "/auth/favs/users/user/{id}": {
       "get": {
         "tags": ["Auth"],
         "summary": "Returns info about user's fav users",
@@ -1003,7 +1003,7 @@
         }
       }
     },
-    "/favs/posts/user/{id}": {
+    "/auth/favs/posts/user/{id}": {
       "get": {
         "tags": ["Auth"],
         "summary": "Returns info about user's fav posts",
@@ -1057,7 +1057,7 @@
         }
       }
     },
-    "/favs/groups": {
+    "/auth/favs/groups": {
       "post": {
         "security": [
           {
@@ -1102,7 +1102,7 @@
         }
       }
     },
-    "/favs/groups/{id}": {
+    "/auth/favs/groups/{id}": {
       "delete": {
         "security": [
           {
@@ -1132,7 +1132,7 @@
         }
       }
     },
-    "/favs/posts": {
+    "/auth/favs/posts": {
       "post": {
         "security": [
           {
@@ -1177,7 +1177,7 @@
         }
       }
     },
-    "/favs/posts/{id}": {
+    "/auth/favs/posts/{id}": {
       "delete": {
         "security": [
           {
@@ -1207,7 +1207,7 @@
         }
       }
     },
-    "/favs/users": {
+    "/auth/favs/users": {
       "post": {
         "security": [
           {
@@ -1252,7 +1252,7 @@
         }
       }
     },
-    "/favs/users/{id}": {
+    "/auth/favs/users/{id}": {
       "delete": {
         "security": [
           {
@@ -1278,6 +1278,87 @@
           },
           "404": {
             "description": "Post is not in favs"
+          }
+        }
+      }
+    },
+    "/auth/login-history": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns user's login history",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LoginHistory"
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/auth/sessions": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Returns user's active sessions",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ActiveSession"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sessions/{id}": {
+      "delete": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Deletes user's active session",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "Session's id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Session's id not found"
           }
         }
       }
@@ -4194,6 +4275,37 @@
           "type": "string"
         },
         "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "LoginHistory": {
+      "type": "object",
+      "properties": {
+        "ipAddress": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        }
+      }
+    },
+    "ActiveSession": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        },
+        "createdAt": {
           "type": "string"
         }
       }

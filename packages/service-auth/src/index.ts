@@ -16,6 +16,7 @@ import activationsController from './controllers/activations'
 import findController from './controllers/find'
 import meController from './controllers/me'
 import favController from './controllers/favs'
+import technicalController from './controllers/technical'
 
 const app = express()
 const router: Router = Router()
@@ -45,6 +46,10 @@ router.get('/users/:id', usersController.getUser)
 router.get('/me/groups', JWTMiddleware, meController.getGroups)
 router.post('/me', JWTMiddleware, meController.updateAccount)
 router.get('/me', JWTMiddleware, meController.getAccount)
+
+router.get('/login-history', JWTMiddleware, technicalController.loginHistory)
+router.get('/sessions', JWTMiddleware, technicalController.activeSessions)
+router.delete('/sessions/:id', JWTMiddleware, technicalController.deleteSession)
 
 router.get('/me/favs/groups', JWTMiddleware, favController.getMyFavGroups)
 router.get('/me/favs/users', JWTMiddleware, favController.getMyFavUsers)

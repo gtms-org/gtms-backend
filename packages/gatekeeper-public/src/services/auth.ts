@@ -160,5 +160,20 @@ export default {
       method: http.POST,
       restricted: true,
     },
+    {
+      path: '/login-history',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/sessions',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/sessions/:id',
+      method: http.DELETE,
+      restricted: true,
+    },
   ],
 }
