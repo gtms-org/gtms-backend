@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.27.1...@gtms/service-auth@0.27.2) (2020-07-20)
+
+
+### Bug Fixes
+
+* GEOT-346: allow multiple user sessions ([#142](https://github.com/mariusz-kabala/gtms-backend/issues/142)) ([f161183](https://github.com/mariusz-kabala/gtms-backend/commit/f1611833f41a44bc25ecdb4193e24f07bb1381d8))
+
+
+
+
+
 ## [0.27.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.27.0...@gtms/service-auth@0.27.1) (2020-07-19)
 
 
