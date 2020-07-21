@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.28.2...@gtms/service-auth@0.29.0) (2020-07-21)
+
+
+### Features
+
+* master: add endpoint to check if group is in user favs ([e4933f9](https://github.com/mariusz-kabala/gtms-backend/commit/e4933f99b278b51fa5934bc076e10138189c156a))
+
+
+
+
+
 ## [0.28.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.28.1...@gtms/service-auth@0.28.2) (2020-07-21)
 
 

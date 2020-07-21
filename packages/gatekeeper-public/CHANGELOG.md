@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.38.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.37.1...@gtms/gatekeeper-public@0.38.0) (2020-07-21)
+
+
+### Features
+
+* master: add endpoint to check if group is in user favs ([e4933f9](https://github.com/mariusz-kabala/gtms-backend/commit/e4933f99b278b51fa5934bc076e10138189c156a))
+
+
+
+
+
 ## [0.37.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.37.0...@gtms/gatekeeper-public@0.37.1) (2020-07-21)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public

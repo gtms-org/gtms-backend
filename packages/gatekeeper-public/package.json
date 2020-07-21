@@ -1,6 +1,6 @@
 {
   "name": "@gtms/gatekeeper-public",
-  "version": "0.37.1",
+  "version": "0.38.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
