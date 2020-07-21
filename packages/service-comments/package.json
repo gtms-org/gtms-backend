@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-comments",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "@gtms/lib-consul": "0.2.1",
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.38",
-    "@gtms/lib-models": "0.19.0",
+    "@gtms/lib-models": "0.20.0",
     "@gtms/lib-testing": "*"
   },
   "author": "Mariusz Kabała",

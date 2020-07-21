@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.4.31...@gtms/lib-gatekeeper@0.5.0) (2020-07-21)
+
+
+### Features
+
+* GEOT-349: add cron jobs to delete outdated refresh tokens an ([#146](https://github.com/mariusz-kabala/gtms-backend/issues/146)) ([8e7bd51](https://github.com/mariusz-kabala/gtms-backend/commit/8e7bd51d193a1272e2cd0b77dbde9b42b108db52))
+
+
+
+
+
 ## [0.4.31](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-gatekeeper@0.4.30...@gtms/lib-gatekeeper@0.4.31) (2020-07-20)
 
 **Note:** Version bump only for package @gtms/lib-gatekeeper
