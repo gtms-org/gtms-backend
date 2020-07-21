@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express'
-import createError from 'http-errors'
 import jwt from 'jsonwebtoken'
 import logger from '@gtms/lib-logger'
 import config from 'config'

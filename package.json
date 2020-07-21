@@ -34,6 +34,7 @@
     "mongoose-findorcreate": "^3.0.0",
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.9.1",
+    "node-cron": "^2.0.3",
     "node-fetch": "^2.6.0",
     "uuid": "^3.3.3",
     "winston": "^3.2.1"
@@ -53,6 +54,7 @@
     "@types/mongoose-unique-validator": "^1.0.1",
     "@types/morgan": "^1.7.35",
     "@types/node": "^13.7.4",
+    "@types/node-cron": "^2.0.3",
     "@types/node-fetch": "^2.3.3",
     "@types/set-cookie-parser": "^0.0.6",
     "@types/uuid": "^3.4.4",

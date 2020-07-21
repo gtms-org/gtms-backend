@@ -7,19 +7,24 @@ export interface IActivationCode extends Document {
   owner: string | IUser
 }
 
-const ActivationCodeSchema = new Schema({
-  code: {
-    type: String,
-    required: false,
-    unique: true,
-    index: true,
+const ActivationCodeSchema = new Schema(
+  {
+    code: {
+      type: String,
+      required: false,
+      unique: true,
+      index: true,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
   },
-  owner: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: 'User',
-  },
-})
+  {
+    timestamps: true,
+  }
+)
 
 ActivationCodeSchema.plugin(uniqueValidator)
 
