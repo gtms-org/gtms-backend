@@ -13,6 +13,7 @@ const {
 module.exports = {
   port: PORT,
   queueHost: QUEUE_HOST,
+  refreshTokenLife: 86400,
   serviceName: 'worker-auth',
   serviceVersion: VERSION,
   dbHost: DB_HOST,
