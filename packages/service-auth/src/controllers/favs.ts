@@ -407,4 +407,62 @@ export default {
   getMyFavPosts(req: IAuthRequest, res: Response, next: NextFunction) {
     return getFavPosts(req.user.id, req, res, next)
   },
+  async bulkUpdateFavGroupsOrder(
+    req: IAuthRequest,
+    res: Response,
+    next: NextFunction
+  ) {
+    const { body } = req
+
+    if (!Array.isArray(body) || body.length === 0) {
+      return res.status(400).end()
+    }
+
+    try {
+      await FavGroupModel.updateMany(
+        {
+          owner: req.user.id,
+        },
+        {
+          order: 0,
+        }
+      )
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId: res.get('x-traceid'),
+      })
+
+      next(err)
+    }
+
+    const groups = body.slice(0, 10) // to not make to many updates on DB, UI does not support more
+
+    Promise.all(
+      groups.map((group, index) => {
+        return FavGroupModel.updateOne(
+          {
+            owner: req.user.id,
+            group: group,
+          },
+          {
+            order: index,
+          }
+        )
+      })
+    )
+      .then(() => {
+        res.status(200).end()
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      })
+  },
 }

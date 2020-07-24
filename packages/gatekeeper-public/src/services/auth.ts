@@ -106,6 +106,11 @@ export default {
       restricted: true,
     },
     {
+      path: '/me/favs/groups',
+      method: http.PUT,
+      restricted: true,
+    },
+    {
       path: '/me/favs/users',
       method: http.GET,
       restricted: true,
