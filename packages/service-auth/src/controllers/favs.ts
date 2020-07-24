@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { IAuthRequest, getPaginationParams } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
-import config from 'config'
 import {
   FavGroupModel,
   IFavGroup,
@@ -406,6 +405,30 @@ export default {
   },
   getMyFavPosts(req: IAuthRequest, res: Response, next: NextFunction) {
     return getFavPosts(req.user.id, req, res, next)
+  },
+  isGroupInFavs(req: IAuthRequest, res: Response, next: NextFunction) {
+    const { id } = req.params
+
+    FavGroupModel.findOne({
+      owner: req.user.id,
+      group: id,
+    })
+      .then((favGroup: IFavGroup | null) => {
+        if (favGroup) {
+          return res.status(200).end()
+        }
+
+        res.status(404).end()
+      })
+      .catch(err => {
+        next(err)
+
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+      })
   },
   async bulkUpdateFavGroupsOrder(
     req: IAuthRequest,

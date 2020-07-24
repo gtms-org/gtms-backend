@@ -101,6 +101,11 @@ export default {
       restricted: true,
     },
     {
+      path: '/me/favs/groups/:id',
+      method: http.GET,
+      restricted: true,
+    },
+    {
       path: '/me/favs/groups',
       method: http.GET,
       restricted: true,

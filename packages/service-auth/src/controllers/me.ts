@@ -249,7 +249,7 @@ export default {
               owner: user.groupsOwner.map(findGroup).filter(filterGroups),
               favs: {
                 ...favGroups,
-                dosc: favGroups.docs
+                docs: favGroups.docs
                   .map(fav =>
                     groups.find(group => `${group.id}` === `${fav.group}`)
                   )
