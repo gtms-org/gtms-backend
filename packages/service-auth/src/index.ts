@@ -52,6 +52,7 @@ router.get('/sessions', JWTMiddleware, technicalController.activeSessions)
 router.delete('/sessions/:id', JWTMiddleware, technicalController.deleteSession)
 
 router.get('/me/favs/groups', JWTMiddleware, favController.getMyFavGroups)
+router.put('/me/favs/groups', JWTMiddleware, favController.getMyFavPosts)
 router.get('/me/favs/users', JWTMiddleware, favController.getMyFavUsers)
 router.get('/me/favs/posts', JWTMiddleware, favController.getMyFavUsers)
 
