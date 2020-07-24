@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.29.0...@gtms/service-auth@0.30.0) (2020-07-24)
+
+
+### Features
+
+* GEOT-375 favs bulk update ([#148](https://github.com/mariusz-kabala/gtms-backend/issues/148)) ([39966a8](https://github.com/mariusz-kabala/gtms-backend/commit/39966a8557095c740e9615f21501bf1bfb0f6401))
+
+
+
+
+
 # [0.29.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.28.2...@gtms/service-auth@0.29.0) (2020-07-21)
 
 ### Features
