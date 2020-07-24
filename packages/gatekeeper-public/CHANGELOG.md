@@ -5,787 +5,417 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.38.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.37.1...@gtms/gatekeeper-public@0.38.0) (2020-07-21)
 
-
 ### Features
 
-* master: add endpoint to check if group is in user favs ([e4933f9](https://github.com/mariusz-kabala/gtms-backend/commit/e4933f99b278b51fa5934bc076e10138189c156a))
-
-
-
-
+- master: add endpoint to check if group is in user favs ([e4933f9](https://github.com/mariusz-kabala/gtms-backend/commit/e4933f99b278b51fa5934bc076e10138189c156a))
 
 ## [0.37.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.37.0...@gtms/gatekeeper-public@0.37.1) (2020-07-21)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.37.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.36.1...@gtms/gatekeeper-public@0.37.0) (2020-07-20)
-
 
 ### Features
 
-* GEOT-347: expose login history, active sessions and allow us ([#145](https://github.com/mariusz-kabala/gtms-backend/issues/145)) ([462d59c](https://github.com/mariusz-kabala/gtms-backend/commit/462d59ccfcc68d92fa85a0f7d02d8c53a916248a))
-
-
-
-
+- GEOT-347: expose login history, active sessions and allow us ([#145](https://github.com/mariusz-kabala/gtms-backend/issues/145)) ([462d59c](https://github.com/mariusz-kabala/gtms-backend/commit/462d59ccfcc68d92fa85a0f7d02d8c53a916248a))
 
 ## [0.36.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.36.0...@gtms/gatekeeper-public@0.36.1) (2020-07-19)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.36.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.35.0...@gtms/gatekeeper-public@0.36.0) (2020-07-17)
-
 
 ### Features
 
-* master: find by username endpoint ([f0f5795](https://github.com/mariusz-kabala/gtms-backend/commit/f0f57959c6720264ad92e7d02c1f0477b9567659))
-
-
-
-
+- master: find by username endpoint ([f0f5795](https://github.com/mariusz-kabala/gtms-backend/commit/f0f57959c6720264ad92e7d02c1f0477b9567659))
 
 # [0.35.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.34.3...@gtms/gatekeeper-public@0.35.0) (2020-07-17)
 
-
 ### Features
 
-* GEOT-341: check username endpoint ([#138](https://github.com/mariusz-kabala/gtms-backend/issues/138)) ([a25f13c](https://github.com/mariusz-kabala/gtms-backend/commit/a25f13c7c1bf5e4a8094cc29ebbe534508820144))
-
-
-
-
+- GEOT-341: check username endpoint ([#138](https://github.com/mariusz-kabala/gtms-backend/issues/138)) ([a25f13c](https://github.com/mariusz-kabala/gtms-backend/commit/a25f13c7c1bf5e4a8094cc29ebbe534508820144))
 
 ## [0.34.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.34.2...@gtms/gatekeeper-public@0.34.3) (2020-07-17)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.34.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.34.1...@gtms/gatekeeper-public@0.34.2) (2020-07-16)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
-
-
-
-
 
 ## [0.34.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.34.0...@gtms/gatekeeper-public@0.34.1) (2020-07-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.34.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.33.0...@gtms/gatekeeper-public@0.34.0) (2020-07-13)
-
 
 ### Features
 
-* GEOT-335 favs posts ([#133](https://github.com/mariusz-kabala/gtms-backend/issues/133)) ([43198c7](https://github.com/mariusz-kabala/gtms-backend/commit/43198c7d0a321fa0ace8cd37c6395b167537ebd4))
-
-
-
-
+- GEOT-335 favs posts ([#133](https://github.com/mariusz-kabala/gtms-backend/issues/133)) ([43198c7](https://github.com/mariusz-kabala/gtms-backend/commit/43198c7d0a321fa0ace8cd37c6395b167537ebd4))
 
 # [0.33.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.7...@gtms/gatekeeper-public@0.33.0) (2020-07-10)
 
-
 ### Features
 
-* GEOT-332: /posts/find endpoint ([#132](https://github.com/mariusz-kabala/gtms-backend/issues/132)) ([36033c5](https://github.com/mariusz-kabala/gtms-backend/commit/36033c54c51e4a0970f9192cbd2ef79b4685a5b0))
-
-
-
-
+- GEOT-332: /posts/find endpoint ([#132](https://github.com/mariusz-kabala/gtms-backend/issues/132)) ([36033c5](https://github.com/mariusz-kabala/gtms-backend/commit/36033c54c51e4a0970f9192cbd2ef79b4685a5b0))
 
 ## [0.32.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.6...@gtms/gatekeeper-public@0.32.7) (2020-07-10)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.32.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.5...@gtms/gatekeeper-public@0.32.6) (2020-07-08)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
-
-
-
-
 
 ## [0.32.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.4...@gtms/gatekeeper-public@0.32.5) (2020-07-08)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.32.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.3...@gtms/gatekeeper-public@0.32.4) (2020-07-07)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.32.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.2...@gtms/gatekeeper-public@0.32.3) (2020-07-04)
-
 
 ### Bug Fixes
 
-* Diff fixes ([#126](https://github.com/mariusz-kabala/gtms-backend/issues/126)) ([eaf49f2](https://github.com/mariusz-kabala/gtms-backend/commit/eaf49f21d0d1943736ad4e71467b695f24c545a0))
-
-
-
-
+- Diff fixes ([#126](https://github.com/mariusz-kabala/gtms-backend/issues/126)) ([eaf49f2](https://github.com/mariusz-kabala/gtms-backend/commit/eaf49f21d0d1943736ad4e71467b695f24c545a0))
 
 ## [0.32.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.1...@gtms/gatekeeper-public@0.32.2) (2020-07-01)
 
-
 ### Bug Fixes
 
-* master: drop debugger from GK ([84199bd](https://github.com/mariusz-kabala/gtms-backend/commit/84199bd6ada222b3d42494e564dcaf6f64cd15bb))
-
-
-
-
+- master: drop debugger from GK ([84199bd](https://github.com/mariusz-kabala/gtms-backend/commit/84199bd6ada222b3d42494e564dcaf6f64cd15bb))
 
 ## [0.32.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.32.0...@gtms/gatekeeper-public@0.32.1) (2020-07-01)
 
-
 ### Bug Fixes
 
-* master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
-
-
-
-
+- master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
 
 # [0.32.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.6...@gtms/gatekeeper-public@0.32.0) (2020-06-30)
 
-
 ### Features
 
-* GEOT-309: notifications endpoints ([#124](https://github.com/mariusz-kabala/gtms-backend/issues/124)) ([1e646e9](https://github.com/mariusz-kabala/gtms-backend/commit/1e646e94a847b0c9c27fe742c44368730e6acc6e))
-
-
-
-
+- GEOT-309: notifications endpoints ([#124](https://github.com/mariusz-kabala/gtms-backend/issues/124)) ([1e646e9](https://github.com/mariusz-kabala/gtms-backend/commit/1e646e94a847b0c9c27fe742c44368730e6acc6e))
 
 ## [0.31.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.5...@gtms/gatekeeper-public@0.31.6) (2020-06-27)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.31.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.4...@gtms/gatekeeper-public@0.31.5) (2020-06-27)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
-
-
-
-
 
 ## [0.31.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.3...@gtms/gatekeeper-public@0.31.4) (2020-06-26)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.31.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.2...@gtms/gatekeeper-public@0.31.3) (2020-06-25)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
-
-
-
-
 
 ## [0.31.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.1...@gtms/gatekeeper-public@0.31.2) (2020-06-25)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.31.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.31.0...@gtms/gatekeeper-public@0.31.1) (2020-06-25)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.31.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.30.1...@gtms/gatekeeper-public@0.31.0) (2020-06-21)
-
 
 ### Features
 
-* GEOT-219: endpoints - find users and groups by tag ([#114](https://github.com/mariusz-kabala/gtms-backend/issues/114)) ([2e250d3](https://github.com/mariusz-kabala/gtms-backend/commit/2e250d384a4d80ee72e60d8c92859ba7c3196236))
-
-
-
-
+- GEOT-219: endpoints - find users and groups by tag ([#114](https://github.com/mariusz-kabala/gtms-backend/issues/114)) ([2e250d3](https://github.com/mariusz-kabala/gtms-backend/commit/2e250d384a4d80ee72e60d8c92859ba7c3196236))
 
 ## [0.30.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.30.0...@gtms/gatekeeper-public@0.30.1) (2020-06-21)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.30.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.29.0...@gtms/gatekeeper-public@0.30.0) (2020-06-21)
-
 
 ### Features
 
-* GEOT-287: /follow endpoints ([#112](https://github.com/mariusz-kabala/gtms-backend/issues/112)) ([be10b29](https://github.com/mariusz-kabala/gtms-backend/commit/be10b29af49b36433086466aa85b9b95e9d7d614))
-
-
-
-
+- GEOT-287: /follow endpoints ([#112](https://github.com/mariusz-kabala/gtms-backend/issues/112)) ([be10b29](https://github.com/mariusz-kabala/gtms-backend/commit/be10b29af49b36433086466aa85b9b95e9d7d614))
 
 # [0.29.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.28.3...@gtms/gatekeeper-public@0.29.0) (2020-06-19)
 
-
 ### Features
 
-* GEOT-287: add user notification settings ([#111](https://github.com/mariusz-kabala/gtms-backend/issues/111)) ([bb87a2e](https://github.com/mariusz-kabala/gtms-backend/commit/bb87a2efdca0d40657a5d19995e398b62f222fc6))
-
-
-
-
+- GEOT-287: add user notification settings ([#111](https://github.com/mariusz-kabala/gtms-backend/issues/111)) ([bb87a2e](https://github.com/mariusz-kabala/gtms-backend/commit/bb87a2efdca0d40657a5d19995e398b62f222fc6))
 
 ## [0.28.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.28.2...@gtms/gatekeeper-public@0.28.3) (2020-06-17)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.28.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.28.1...@gtms/gatekeeper-public@0.28.2) (2020-06-16)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.28.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.28.0...@gtms/gatekeeper-public@0.28.1) (2020-06-15)
-
 
 ### Bug Fixes
 
-* master: typo in reset-password url ([0f950c7](https://github.com/mariusz-kabala/gtms-backend/commit/0f950c7f3bc9b91694d528e71fafaef1817cf899))
-
-
-
-
+- master: typo in reset-password url ([0f950c7](https://github.com/mariusz-kabala/gtms-backend/commit/0f950c7f3bc9b91694d528e71fafaef1817cf899))
 
 # [0.28.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.10...@gtms/gatekeeper-public@0.28.0) (2020-06-15)
 
-
 ### Features
 
-* GEOT-274: add check code endpoint ([#107](https://github.com/mariusz-kabala/gtms-backend/issues/107)) ([7a7019f](https://github.com/mariusz-kabala/gtms-backend/commit/7a7019fc18e064e655385b28ca42db66a8b53aff))
-
-
-
-
+- GEOT-274: add check code endpoint ([#107](https://github.com/mariusz-kabala/gtms-backend/issues/107)) ([7a7019f](https://github.com/mariusz-kabala/gtms-backend/commit/7a7019fc18e064e655385b28ca42db66a8b53aff))
 
 ## [0.27.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.9...@gtms/gatekeeper-public@0.27.10) (2020-06-15)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.27.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.8...@gtms/gatekeeper-public@0.27.9) (2020-06-15)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
-
-
-
-
 
 ## [0.27.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.7...@gtms/gatekeeper-public@0.27.8) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.27.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.6...@gtms/gatekeeper-public@0.27.7) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.27.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.5...@gtms/gatekeeper-public@0.27.6) (2020-06-14)
-
 
 ### Bug Fixes
 
-* debug containers ([7c1f9ac](https://github.com/mariusz-kabala/gtms-backend/commit/7c1f9acdef036695c2a0eb29cc2edfabb7c874dc))
-
-
-
-
+- debug containers ([7c1f9ac](https://github.com/mariusz-kabala/gtms-backend/commit/7c1f9acdef036695c2a0eb29cc2edfabb7c874dc))
 
 ## [0.27.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.4...@gtms/gatekeeper-public@0.27.5) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.27.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.3...@gtms/gatekeeper-public@0.27.4) (2020-06-14)
-
 
 ### Bug Fixes
 
-* debug consul params ([aa8dacf](https://github.com/mariusz-kabala/gtms-backend/commit/aa8dacf77b8a6593f3e16e891da6a4141f5d60f6))
-
-
-
-
+- debug consul params ([aa8dacf](https://github.com/mariusz-kabala/gtms-backend/commit/aa8dacf77b8a6593f3e16e891da6a4141f5d60f6))
 
 ## [0.27.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.2...@gtms/gatekeeper-public@0.27.3) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.27.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.1...@gtms/gatekeeper-public@0.27.2) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
-
-
-
-
 
 ## [0.27.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.27.0...@gtms/gatekeeper-public@0.27.1) (2020-06-14)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.27.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.26.1...@gtms/gatekeeper-public@0.27.0) (2020-06-14)
-
 
 ### Features
 
-* master: use consul API directly ([334356c](https://github.com/mariusz-kabala/gtms-backend/commit/334356cd6389235c8b92cdfc916d80397d569bb1))
-
-
-
-
+- master: use consul API directly ([334356c](https://github.com/mariusz-kabala/gtms-backend/commit/334356cd6389235c8b92cdfc916d80397d569bb1))
 
 ## [0.26.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.26.0...@gtms/gatekeeper-public@0.26.1) (2020-06-13)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.26.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.25.0...@gtms/gatekeeper-public@0.26.0) (2020-06-12)
-
 
 ### Features
 
-* master: switch to consul in GK ([d988379](https://github.com/mariusz-kabala/gtms-backend/commit/d988379ac2b5c231002cfea1d7064f12ba02365d))
-
-
-
-
+- master: switch to consul in GK ([d988379](https://github.com/mariusz-kabala/gtms-backend/commit/d988379ac2b5c231002cfea1d7064f12ba02365d))
 
 # [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.24.1...@gtms/gatekeeper-public@0.25.0) (2020-06-12)
 
-
 ### Features
 
-* master: switch to consul in GK ([befd604](https://github.com/mariusz-kabala/gtms-backend/commit/befd6049a670850f85835d9c8bbcc2ea064d292c))
-
-
-
-
+- master: switch to consul in GK ([befd604](https://github.com/mariusz-kabala/gtms-backend/commit/befd6049a670850f85835d9c8bbcc2ea064d292c))
 
 ## [0.24.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.24.0...@gtms/gatekeeper-public@0.24.1) (2020-06-12)
 
-
 ### Bug Fixes
 
-* master: consul config fixes ([002407f](https://github.com/mariusz-kabala/gtms-backend/commit/002407f65f476e4b2d452dc68291cad426aa866d))
-
-
-
-
+- master: consul config fixes ([002407f](https://github.com/mariusz-kabala/gtms-backend/commit/002407f65f476e4b2d452dc68291cad426aa866d))
 
 # [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.23.0...@gtms/gatekeeper-public@0.24.0) (2020-06-12)
 
-
 ### Features
 
-* add consul to the project ([#104](https://github.com/mariusz-kabala/gtms-backend/issues/104)) ([9be0f22](https://github.com/mariusz-kabala/gtms-backend/commit/9be0f22bae6edcf4a605b8bfe40f9ac9078b289d))
-
-
-
-
+- add consul to the project ([#104](https://github.com/mariusz-kabala/gtms-backend/issues/104)) ([9be0f22](https://github.com/mariusz-kabala/gtms-backend/commit/9be0f22bae6edcf4a605b8bfe40f9ac9078b289d))
 
 # [0.23.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.22.1...@gtms/gatekeeper-public@0.23.0) (2020-06-07)
 
-
 ### Features
 
-* master: expose user details endpoint ([842c69a](https://github.com/mariusz-kabala/gtms-backend/commit/842c69adf96948e00f96adb1a204ceb6c6e8032e))
-
-
-
-
+- master: expose user details endpoint ([842c69a](https://github.com/mariusz-kabala/gtms-backend/commit/842c69adf96948e00f96adb1a204ceb6c6e8032e))
 
 ## [0.22.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.22.0...@gtms/gatekeeper-public@0.22.1) (2020-06-07)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.21.1...@gtms/gatekeeper-public@0.22.0) (2020-06-07)
-
 
 ### Features
 
-* master: expose group invitations endpoints in GK ([2b0df3a](https://github.com/mariusz-kabala/gtms-backend/commit/2b0df3a028259bb2f2e3927738d15c60365aec77))
-
-
-
-
+- master: expose group invitations endpoints in GK ([2b0df3a](https://github.com/mariusz-kabala/gtms-backend/commit/2b0df3a028259bb2f2e3927738d15c60365aec77))
 
 ## [0.21.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.21.0...@gtms/gatekeeper-public@0.21.1) (2020-06-07)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.21.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.20.0...@gtms/gatekeeper-public@0.21.0) (2020-05-27)
-
 
 ### Features
 
-* GEOT-267: add group admins endpoints ([#99](https://github.com/mariusz-kabala/gtms-backend/issues/99)) ([9348b2c](https://github.com/mariusz-kabala/gtms-backend/commit/9348b2c3244ce4f487e42a0029c23d309d30b8ac))
-
-
-
-
+- GEOT-267: add group admins endpoints ([#99](https://github.com/mariusz-kabala/gtms-backend/issues/99)) ([9348b2c](https://github.com/mariusz-kabala/gtms-backend/commit/9348b2c3244ce4f487e42a0029c23d309d30b8ac))
 
 # [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.19.1...@gtms/gatekeeper-public@0.20.0) (2020-05-26)
 
-
 ### Features
 
-* GEOT-266: add favs endpoints ([#98](https://github.com/mariusz-kabala/gtms-backend/issues/98)) ([b296aff](https://github.com/mariusz-kabala/gtms-backend/commit/b296aff2f4b87ad9a590b14975424930fd22292f))
-
-
-
-
+- GEOT-266: add favs endpoints ([#98](https://github.com/mariusz-kabala/gtms-backend/issues/98)) ([b296aff](https://github.com/mariusz-kabala/gtms-backend/commit/b296aff2f4b87ad9a590b14975424930fd22292f))
 
 ## [0.19.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.19.0...@gtms/gatekeeper-public@0.19.1) (2020-05-23)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.19.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.18.4...@gtms/gatekeeper-public@0.19.0) (2020-05-23)
-
 
 ### Bug Fixes
 
-* master: add new config to index ([1f39f9a](https://github.com/mariusz-kabala/gtms-backend/commit/1f39f9abb5c59eaadaa1c0472d4f9ec1802ce34f))
-
+- master: add new config to index ([1f39f9a](https://github.com/mariusz-kabala/gtms-backend/commit/1f39f9abb5c59eaadaa1c0472d4f9ec1802ce34f))
 
 ### Features
 
-* master: expose endpoint from comments and post services in ([789f02f](https://github.com/mariusz-kabala/gtms-backend/commit/789f02fdc12c6099c45c837998c36f17369d641f))
-
-
-
-
+- master: expose endpoint from comments and post services in ([789f02f](https://github.com/mariusz-kabala/gtms-backend/commit/789f02fdc12c6099c45c837998c36f17369d641f))
 
 ## [0.18.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.18.3...@gtms/gatekeeper-public@0.18.4) (2020-05-22)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.18.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.18.2...@gtms/gatekeeper-public@0.18.3) (2020-05-22)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
-
-
-
-
 
 ## [0.18.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.18.1...@gtms/gatekeeper-public@0.18.2) (2020-05-19)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.18.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.18.0...@gtms/gatekeeper-public@0.18.1) (2020-05-16)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.18.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.17.0...@gtms/gatekeeper-public@0.18.0) (2020-05-16)
-
 
 ### Features
 
-* master: swagger definitions and some small adjustments ([b2687b4](https://github.com/mariusz-kabala/gtms-backend/commit/b2687b4dcd8096bdf4c703e586494b4c0707df52))
-
-
-
-
+- master: swagger definitions and some small adjustments ([b2687b4](https://github.com/mariusz-kabala/gtms-backend/commit/b2687b4dcd8096bdf4c703e586494b4c0707df52))
 
 # [0.17.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.16.1...@gtms/gatekeeper-public@0.17.0) (2020-05-16)
 
-
 ### Features
 
-* master: get promoted tags endpoint ([21ec8c0](https://github.com/mariusz-kabala/gtms-backend/commit/21ec8c04eb5cd496abecc708bd8430d7e48955a7))
-
-
-
-
+- master: get promoted tags endpoint ([21ec8c0](https://github.com/mariusz-kabala/gtms-backend/commit/21ec8c04eb5cd496abecc708bd8430d7e48955a7))
 
 ## [0.16.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.16.0...@gtms/gatekeeper-public@0.16.1) (2020-05-16)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.16.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.15.1...@gtms/gatekeeper-public@0.16.0) (2020-05-15)
-
 
 ### Features
 
-* GEOT-256: update, delete and bulk update promoted tags endpo ([#85](https://github.com/mariusz-kabala/gtms-backend/issues/85)) ([5651e4c](https://github.com/mariusz-kabala/gtms-backend/commit/5651e4c2447d905688a470213928bf524793b3b8))
-
-
-
-
+- GEOT-256: update, delete and bulk update promoted tags endpo ([#85](https://github.com/mariusz-kabala/gtms-backend/issues/85)) ([5651e4c](https://github.com/mariusz-kabala/gtms-backend/commit/5651e4c2447d905688a470213928bf524793b3b8))
 
 ## [0.15.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.15.0...@gtms/gatekeeper-public@0.15.1) (2020-05-13)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 # [0.15.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.14.0...@gtms/gatekeeper-public@0.15.0) (2020-05-13)
-
 
 ### Features
 
-* GEOT-253: expose recent users, recent groups ([#83](https://github.com/mariusz-kabala/gtms-backend/issues/83)) ([353d01e](https://github.com/mariusz-kabala/gtms-backend/commit/353d01e15665284fdeb4a457477b09083823f2e4))
-
-
-
-
+- GEOT-253: expose recent users, recent groups ([#83](https://github.com/mariusz-kabala/gtms-backend/issues/83)) ([353d01e](https://github.com/mariusz-kabala/gtms-backend/commit/353d01e15665284fdeb4a457477b09083823f2e4))
 
 # [0.14.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.13.3...@gtms/gatekeeper-public@0.14.0) (2020-05-13)
 
-
 ### Features
 
-* GEOT-242: add favs groups get and update endpoints ([#78](https://github.com/mariusz-kabala/gtms-backend/issues/78)) ([63ac356](https://github.com/mariusz-kabala/gtms-backend/commit/63ac356a06eea31a2ff8a5bc4dc678928bf287ae))
-
-
-
-
+- GEOT-242: add favs groups get and update endpoints ([#78](https://github.com/mariusz-kabala/gtms-backend/issues/78)) ([63ac356](https://github.com/mariusz-kabala/gtms-backend/commit/63ac356a06eea31a2ff8a5bc4dc678928bf287ae))
 
 ## [0.13.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.13.2...@gtms/gatekeeper-public@0.13.3) (2020-05-12)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.13.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.13.1...@gtms/gatekeeper-public@0.13.2) (2020-05-12)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.13.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.13.0...@gtms/gatekeeper-public@0.13.1) (2020-05-11)
-
 
 ### Bug Fixes
 
-* master: send fixed response in case of invalid JWT ([13b68eb](https://github.com/mariusz-kabala/gtms-backend/commit/13b68eb058922d22b95e4872974275aa5134e9e2))
-
-
-
-
+- master: send fixed response in case of invalid JWT ([13b68eb](https://github.com/mariusz-kabala/gtms-backend/commit/13b68eb058922d22b95e4872974275aa5134e9e2))
 
 # [0.13.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.12.2...@gtms/gatekeeper-public@0.13.0) (2020-05-09)
 
-
 ### Features
 
-* GEOT-241: expose /me/groups endpoint ([#77](https://github.com/mariusz-kabala/gtms-backend/issues/77)) ([1b29303](https://github.com/mariusz-kabala/gtms-backend/commit/1b29303b24758cf7e06c1f4b40156d467f4602d8))
-
-
-
-
+- GEOT-241: expose /me/groups endpoint ([#77](https://github.com/mariusz-kabala/gtms-backend/issues/77)) ([1b29303](https://github.com/mariusz-kabala/gtms-backend/commit/1b29303b24758cf7e06c1f4b40156d467f4602d8))
 
 ## [0.12.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.12.1...@gtms/gatekeeper-public@0.12.2) (2020-05-08)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.12.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.12.0...@gtms/gatekeeper-public@0.12.1) (2020-05-08)
-
 
 ### Bug Fixes
 
-* master: add setup for file service in GK ([34e59f9](https://github.com/mariusz-kabala/gtms-backend/commit/34e59f90a238634ebd9e3cd0946f835a79c0224d))
-
-
-
-
+- master: add setup for file service in GK ([34e59f9](https://github.com/mariusz-kabala/gtms-backend/commit/34e59f90a238634ebd9e3cd0946f835a79c0224d))
 
 # [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.11.1...@gtms/gatekeeper-public@0.12.0) (2020-05-08)
 
-
 ### Features
 
-* master: expose File servide endpoints in GK ([ca06403](https://github.com/mariusz-kabala/gtms-backend/commit/ca06403db0f762f9760b2d74ccb2ebdf8b1e830b))
-
-
-
-
+- master: expose File servide endpoints in GK ([ca06403](https://github.com/mariusz-kabala/gtms-backend/commit/ca06403db0f762f9760b2d74ccb2ebdf8b1e830b))
 
 ## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.11.0...@gtms/gatekeeper-public@0.11.1) (2020-05-07)
 
-
 ### Bug Fixes
 
-* master: small GK adjustments ([5444cb7](https://github.com/mariusz-kabala/gtms-backend/commit/5444cb753d74fd68d4e8851502de70c2c06ee4ff))
-
-
-
-
+- master: small GK adjustments ([5444cb7](https://github.com/mariusz-kabala/gtms-backend/commit/5444cb753d74fd68d4e8851502de70c2c06ee4ff))
 
 # [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.10.3...@gtms/gatekeeper-public@0.11.0) (2020-05-07)
 
-
 ### Features
 
-* master: enable tags service in public GK ([8371127](https://github.com/mariusz-kabala/gtms-backend/commit/8371127da8dd2a82f7f8242ce32bc48319dca9f8))
-
-
-
-
+- master: enable tags service in public GK ([8371127](https://github.com/mariusz-kabala/gtms-backend/commit/8371127da8dd2a82f7f8242ce32bc48319dca9f8))
 
 ## [0.10.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.10.2...@gtms/gatekeeper-public@0.10.3) (2020-05-07)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.10.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.10.1...@gtms/gatekeeper-public@0.10.2) (2020-05-07)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
 
-
-
-
-
 ## [0.10.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.10.0...@gtms/gatekeeper-public@0.10.1) (2020-05-06)
-
 
 ### Bug Fixes
 
-* master: proper terraform config for public gatekeeper ([895e848](https://github.com/mariusz-kabala/gtms-backend/commit/895e84865545e8852c4ed015f5b2eeee4528a6e5))
-
-
-
-
+- master: proper terraform config for public gatekeeper ([895e848](https://github.com/mariusz-kabala/gtms-backend/commit/895e84865545e8852c4ed015f5b2eeee4528a6e5))
 
 # [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.9.0...@gtms/gatekeeper-public@0.10.0) (2020-05-06)
 
-
 ### Features
 
-* master: enable /me service auth endpoint, enable tags serv ([2960f40](https://github.com/mariusz-kabala/gtms-backend/commit/2960f40101b9f38df6ba73890cb243075dabb407))
-
-
-
-
+- master: enable /me service auth endpoint, enable tags serv ([2960f40](https://github.com/mariusz-kabala/gtms-backend/commit/2960f40101b9f38df6ba73890cb243075dabb407))
 
 # 0.9.0 (2020-05-05)
 
-
 ### Features
 
-* GEOT-235: add internal gatekeeper ([#71](https://github.com/mariusz-kabala/gtms-backend/issues/71)) ([109096e](https://github.com/mariusz-kabala/gtms-backend/commit/109096e31e7bfa633dab1f0358a085e1922c4884))
-
-
-
-
+- GEOT-235: add internal gatekeeper ([#71](https://github.com/mariusz-kabala/gtms-backend/issues/71)) ([109096e](https://github.com/mariusz-kabala/gtms-backend/commit/109096e31e7bfa633dab1f0358a085e1922c4884))
 
 ## [0.8.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-gatekeeper@0.8.4...@gtms/service-gatekeeper@0.8.5) (2020-04-23)
 

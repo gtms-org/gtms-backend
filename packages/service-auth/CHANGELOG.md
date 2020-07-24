@@ -5,291 +5,155 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.29.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.28.2...@gtms/service-auth@0.29.0) (2020-07-21)
 
-
 ### Features
 
-* master: add endpoint to check if group is in user favs ([e4933f9](https://github.com/mariusz-kabala/gtms-backend/commit/e4933f99b278b51fa5934bc076e10138189c156a))
-
-
-
-
+- master: add endpoint to check if group is in user favs ([e4933f9](https://github.com/mariusz-kabala/gtms-backend/commit/e4933f99b278b51fa5934bc076e10138189c156a))
 
 ## [0.28.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.28.1...@gtms/service-auth@0.28.2) (2020-07-21)
 
-
 ### Bug Fixes
 
-* master: typo fix ([770d9cb](https://github.com/mariusz-kabala/gtms-backend/commit/770d9cb9d313411f3b8d5f0c11ae3e362518dc3d))
-
-
-
-
+- master: typo fix ([770d9cb](https://github.com/mariusz-kabala/gtms-backend/commit/770d9cb9d313411f3b8d5f0c11ae3e362518dc3d))
 
 ## [0.28.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.28.0...@gtms/service-auth@0.28.1) (2020-07-21)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 # [0.28.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.27.2...@gtms/service-auth@0.28.0) (2020-07-20)
-
 
 ### Features
 
-* GEOT-347: expose login history, active sessions and allow us ([#145](https://github.com/mariusz-kabala/gtms-backend/issues/145)) ([462d59c](https://github.com/mariusz-kabala/gtms-backend/commit/462d59ccfcc68d92fa85a0f7d02d8c53a916248a))
-
-
-
-
+- GEOT-347: expose login history, active sessions and allow us ([#145](https://github.com/mariusz-kabala/gtms-backend/issues/145)) ([462d59c](https://github.com/mariusz-kabala/gtms-backend/commit/462d59ccfcc68d92fa85a0f7d02d8c53a916248a))
 
 ## [0.27.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.27.1...@gtms/service-auth@0.27.2) (2020-07-20)
 
-
 ### Bug Fixes
 
-* GEOT-346: allow multiple user sessions ([#142](https://github.com/mariusz-kabala/gtms-backend/issues/142)) ([f161183](https://github.com/mariusz-kabala/gtms-backend/commit/f1611833f41a44bc25ecdb4193e24f07bb1381d8))
-
-
-
-
+- GEOT-346: allow multiple user sessions ([#142](https://github.com/mariusz-kabala/gtms-backend/issues/142)) ([f161183](https://github.com/mariusz-kabala/gtms-backend/commit/f1611833f41a44bc25ecdb4193e24f07bb1381d8))
 
 ## [0.27.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.27.0...@gtms/service-auth@0.27.1) (2020-07-19)
 
-
 ### Bug Fixes
 
-* GEOT-340: drop user profile service ([#141](https://github.com/mariusz-kabala/gtms-backend/issues/141)) ([baec795](https://github.com/mariusz-kabala/gtms-backend/commit/baec795a61edb1c22aeaba5d1a56ef3beb368adc))
-
-
-
-
+- GEOT-340: drop user profile service ([#141](https://github.com/mariusz-kabala/gtms-backend/issues/141)) ([baec795](https://github.com/mariusz-kabala/gtms-backend/commit/baec795a61edb1c22aeaba5d1a56ef3beb368adc))
 
 # [0.27.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.26.0...@gtms/service-auth@0.27.0) (2020-07-19)
 
-
 ### Features
 
-* GEOT-344: save with a post list of mentioned users ([#139](https://github.com/mariusz-kabala/gtms-backend/issues/139)) ([9de0d6c](https://github.com/mariusz-kabala/gtms-backend/commit/9de0d6c1ad6634fd94628d6f4e200ef7908c07e2))
-
-
-
-
+- GEOT-344: save with a post list of mentioned users ([#139](https://github.com/mariusz-kabala/gtms-backend/issues/139)) ([9de0d6c](https://github.com/mariusz-kabala/gtms-backend/commit/9de0d6c1ad6634fd94628d6f4e200ef7908c07e2))
 
 # [0.26.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.25.2...@gtms/service-auth@0.26.0) (2020-07-17)
 
-
 ### Features
 
-* master: find by username endpoint ([f0f5795](https://github.com/mariusz-kabala/gtms-backend/commit/f0f57959c6720264ad92e7d02c1f0477b9567659))
-
-
-
-
+- master: find by username endpoint ([f0f5795](https://github.com/mariusz-kabala/gtms-backend/commit/f0f57959c6720264ad92e7d02c1f0477b9567659))
 
 ## [0.25.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.25.1...@gtms/service-auth@0.25.2) (2020-07-17)
 
-
 ### Bug Fixes
 
-* master: fixes in random username generator ([84c601e](https://github.com/mariusz-kabala/gtms-backend/commit/84c601e9e14088b4dc9f6722bd58f128fc5c80e4))
-
-
-
-
+- master: fixes in random username generator ([84c601e](https://github.com/mariusz-kabala/gtms-backend/commit/84c601e9e14088b4dc9f6722bd58f128fc5c80e4))
 
 ## [0.25.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.25.0...@gtms/service-auth@0.25.1) (2020-07-17)
 
-
 ### Bug Fixes
 
-* master: adjust username checking query ([55ecb29](https://github.com/mariusz-kabala/gtms-backend/commit/55ecb29ae5edfc92302a5bb8bc4eafbdffc2a782))
-
-
-
-
+- master: adjust username checking query ([55ecb29](https://github.com/mariusz-kabala/gtms-backend/commit/55ecb29ae5edfc92302a5bb8bc4eafbdffc2a782))
 
 # [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.15...@gtms/service-auth@0.25.0) (2020-07-17)
 
-
 ### Features
 
-* GEOT-341: check username endpoint ([#138](https://github.com/mariusz-kabala/gtms-backend/issues/138)) ([a25f13c](https://github.com/mariusz-kabala/gtms-backend/commit/a25f13c7c1bf5e4a8094cc29ebbe534508820144))
-
-
-
-
+- GEOT-341: check username endpoint ([#138](https://github.com/mariusz-kabala/gtms-backend/issues/138)) ([a25f13c](https://github.com/mariusz-kabala/gtms-backend/commit/a25f13c7c1bf5e4a8094cc29ebbe534508820144))
 
 ## [0.24.15](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.14...@gtms/service-auth@0.24.15) (2020-07-17)
 
-
 ### Bug Fixes
 
-* GEOT-339: add username field ([#136](https://github.com/mariusz-kabala/gtms-backend/issues/136)) ([e1682da](https://github.com/mariusz-kabala/gtms-backend/commit/e1682dadefd325f79bb3c9c511e502e2e7c06726))
-
-
-
-
+- GEOT-339: add username field ([#136](https://github.com/mariusz-kabala/gtms-backend/issues/136)) ([e1682da](https://github.com/mariusz-kabala/gtms-backend/commit/e1682dadefd325f79bb3c9c511e502e2e7c06726))
 
 ## [0.24.14](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.13...@gtms/service-auth@0.24.14) (2020-07-16)
 
-
 ### Bug Fixes
 
-* GEOT-338: Check if promoted tag is unique for the group, aut ([#134](https://github.com/mariusz-kabala/gtms-backend/issues/134)) ([fc82d76](https://github.com/mariusz-kabala/gtms-backend/commit/fc82d7610669b3493f565bf2af670d15c3b7a620))
-
-
-
-
+- GEOT-338: Check if promoted tag is unique for the group, aut ([#134](https://github.com/mariusz-kabala/gtms-backend/issues/134)) ([fc82d76](https://github.com/mariusz-kabala/gtms-backend/commit/fc82d7610669b3493f565bf2af670d15c3b7a620))
 
 ## [0.24.13](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.12...@gtms/service-auth@0.24.13) (2020-07-14)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 ## [0.24.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.11...@gtms/service-auth@0.24.12) (2020-07-13)
 
 **Note:** Version bump only for package @gtms/service-auth
-
-
-
-
 
 ## [0.24.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.10...@gtms/service-auth@0.24.11) (2020-07-10)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 ## [0.24.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.9...@gtms/service-auth@0.24.10) (2020-07-09)
 
 **Note:** Version bump only for package @gtms/service-auth
-
-
-
-
 
 ## [0.24.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.8...@gtms/service-auth@0.24.9) (2020-07-09)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 ## [0.24.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.7...@gtms/service-auth@0.24.8) (2020-07-09)
 
 **Note:** Version bump only for package @gtms/service-auth
-
-
-
-
 
 ## [0.24.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.6...@gtms/service-auth@0.24.7) (2020-07-09)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 ## [0.24.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.5...@gtms/service-auth@0.24.6) (2020-07-08)
 
 **Note:** Version bump only for package @gtms/service-auth
-
-
-
-
 
 ## [0.24.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.4...@gtms/service-auth@0.24.5) (2020-07-08)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 ## [0.24.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.3...@gtms/service-auth@0.24.4) (2020-07-07)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 ## [0.24.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.2...@gtms/service-auth@0.24.3) (2020-07-04)
-
 
 ### Bug Fixes
 
-* Diff fixes ([#126](https://github.com/mariusz-kabala/gtms-backend/issues/126)) ([eaf49f2](https://github.com/mariusz-kabala/gtms-backend/commit/eaf49f21d0d1943736ad4e71467b695f24c545a0))
-
-
-
-
+- Diff fixes ([#126](https://github.com/mariusz-kabala/gtms-backend/issues/126)) ([eaf49f2](https://github.com/mariusz-kabala/gtms-backend/commit/eaf49f21d0d1943736ad4e71467b695f24c545a0))
 
 ## [0.24.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.1...@gtms/service-auth@0.24.2) (2020-07-01)
 
-
 ### Bug Fixes
 
-* master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
-
-
-
-
+- master: add gtms docker label ([5401419](https://github.com/mariusz-kabala/gtms-backend/commit/54014194c1ccd1d8dc1aace99440c8187fa70f38))
 
 ## [0.24.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.24.0...@gtms/service-auth@0.24.1) (2020-06-30)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 # [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.23.2...@gtms/service-auth@0.24.0) (2020-06-28)
-
 
 ### Features
 
-* GEOT-305 new joiner notification ([#123](https://github.com/mariusz-kabala/gtms-backend/issues/123)) ([749eb4c](https://github.com/mariusz-kabala/gtms-backend/commit/749eb4caee514bd17d3421117e3dfcc695f4a5d8))
-
-
-
-
+- GEOT-305 new joiner notification ([#123](https://github.com/mariusz-kabala/gtms-backend/issues/123)) ([749eb4c](https://github.com/mariusz-kabala/gtms-backend/commit/749eb4caee514bd17d3421117e3dfcc695f4a5d8))
 
 ## [0.23.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.23.1...@gtms/service-auth@0.23.2) (2020-06-28)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 ## [0.23.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.23.0...@gtms/service-auth@0.23.1) (2020-06-27)
 
 **Note:** Version bump only for package @gtms/service-auth
 
-
-
-
-
 # [0.23.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.22.12...@gtms/service-auth@0.23.0) (2020-06-27)
-
 
 ### Features
 
-* GEOT-302 notifications worker ([#120](https://github.com/mariusz-kabala/gtms-backend/issues/120)) ([5345391](https://github.com/mariusz-kabala/gtms-backend/commit/5345391792bf05715d349c798ac6dab7400338ab))
-
-
-
-
+- GEOT-302 notifications worker ([#120](https://github.com/mariusz-kabala/gtms-backend/issues/120)) ([5345391](https://github.com/mariusz-kabala/gtms-backend/commit/5345391792bf05715d349c798ac6dab7400338ab))
 
 ## [0.22.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.22.11...@gtms/service-auth@0.22.12) (2020-06-26)
 
