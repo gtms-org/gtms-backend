@@ -101,7 +101,7 @@ export default {
       restricted: true,
     },
     {
-      path: '/me/favs/groups/:id',
+      path: '/me/favs/groups/status',
       method: http.GET,
       restricted: true,
     },
