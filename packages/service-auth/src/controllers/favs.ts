@@ -407,18 +407,38 @@ export default {
     return getFavPosts(req.user.id, req, res, next)
   },
   isGroupInFavs(req: IAuthRequest, res: Response, next: NextFunction) {
-    const { id } = req.params
+    const { id } = req.query
 
-    FavGroupModel.findOne({
+    if (!Array.isArray(id) || id.length === 0) {
+      return res.status(400).end()
+    }
+
+    FavGroupModel.find({
       owner: req.user.id,
-      group: id,
+      group: {
+        $in: id,
+      },
     })
-      .then((favGroup: IFavGroup | null) => {
-        if (favGroup) {
-          return res.status(200).end()
+      .then((favGroups: IFavGroup[]) => {
+        const result: { [key: string]: boolean } = favGroups.reduce(
+          (all: { [key: string]: boolean }, fav) => {
+            all[fav.group] = true
+
+            return all
+          },
+          {}
+        )
+
+        for (const groupId in id) {
+          if (!result[groupId]) {
+            result[groupId] = false
+          }
         }
 
-        res.status(404).end()
+        res
+          .status(200)
+          .json(result)
+          .end()
       })
       .catch(err => {
         next(err)
