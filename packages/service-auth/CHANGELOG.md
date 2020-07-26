@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.30.0...@gtms/service-auth@0.30.1) (2020-07-26)
+
+
+### Bug Fixes
+
+* GEOT-386: allow to check fav status for multiple groups ([#149](https://github.com/mariusz-kabala/gtms-backend/issues/149)) ([c175d1f](https://github.com/mariusz-kabala/gtms-backend/commit/c175d1f052d03b372fb0ea8b9f6b6305398d83ee))
+
+
+
+
+
 # [0.30.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.29.0...@gtms/service-auth@0.30.0) (2020-07-24)
 
 
