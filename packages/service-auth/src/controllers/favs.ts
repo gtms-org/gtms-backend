@@ -429,7 +429,7 @@ export default {
           {}
         )
 
-        for (const groupId in id) {
+        for (const groupId of id) {
           if (!result[groupId]) {
             result[groupId] = false
           }
