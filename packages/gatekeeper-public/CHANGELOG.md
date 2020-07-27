@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.39.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.39.1...@gtms/gatekeeper-public@0.39.2) (2020-07-27)
+
+
+### Bug Fixes
+
+* GEOT-388: cleanup favs endpoint ([#151](https://github.com/mariusz-kabala/gtms-backend/issues/151)) ([e44994f](https://github.com/mariusz-kabala/gtms-backend/commit/e44994fb8f42377f0d01ab92e8ce376c222e62a5))
+
+
+
+
+
 ## [0.39.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.39.0...@gtms/gatekeeper-public@0.39.1) (2020-07-26)
 
 
