@@ -52,10 +52,9 @@ router.get('/sessions', JWTMiddleware, technicalController.activeSessions)
 router.delete('/sessions/:id', JWTMiddleware, technicalController.deleteSession)
 
 router.get('/me/favs/groups', JWTMiddleware, favController.getMyFavGroups)
-router.put('/me/favs/groups', JWTMiddleware, favController.getMyFavPosts)
+//router.put('/me/favs/groups', JWTMiddleware, )
 router.get('/me/favs/groups/status', JWTMiddleware, favController.isGroupInFavs)
 router.get('/me/favs/users', JWTMiddleware, favController.getMyFavUsers)
-router.get('/me/favs/posts', JWTMiddleware, favController.getMyFavUsers)
 
 router.post('/authenticate', usersController.authenticate)
 
@@ -73,7 +72,6 @@ router.post('/check-code', activationsController.checkCode)
 
 router.get('/favs/groups/user/:id', favController.getUserFavGroups)
 router.get('/favs/users/user/:id', favController.getUserFavUsers)
-router.get('/favs/posts/user/:id', favController.getUserFavPosts)
 
 router.delete('/favs/groups/:id', JWTMiddleware, favController.removeFavGroup)
 router.post('/favs/groups', JWTMiddleware, favController.addFavGroup)

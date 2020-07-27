@@ -10,7 +10,7 @@ import {
   IFavUser,
   serializeUser,
 } from '@gtms/lib-models'
-import { findGroupsByIds, findPostsByIds } from '@gtms/lib-api'
+import { findGroupsByIds } from '@gtms/lib-api'
 
 function getFavGroups(
   owner: string,
@@ -107,65 +107,6 @@ function getFavUsers(
         ...result,
         docs: result.docs.map(doc => serializeUser(doc.user)),
       })
-    }
-  )
-}
-
-function getFavPosts(
-  owner: string,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  const { limit, offset } = getPaginationParams(req)
-
-  FavPostModel.paginate(
-    {
-      owner,
-    },
-    {
-      offset,
-      limit,
-      sort: {
-        order: 'asc',
-      },
-    },
-    async (err, result) => {
-      if (err) {
-        logger.log({
-          message: `Database error ${err}`,
-          level: 'error',
-          traceId: res.get('x-traceid'),
-        })
-
-        return next(err)
-      }
-
-      if (result.docs.length === 0) {
-        return res.status(200).json([])
-      }
-
-      try {
-        const posts = await findPostsByIds(
-          result.docs.map(fav => fav.post),
-          {
-            traceId: res.get('x-traceid'),
-          }
-        )
-
-        res.status(200).json({
-          ...result,
-          docs: posts,
-        })
-      } catch (err) {
-        res.status(500).end()
-
-        logger.log({
-          level: 'error',
-          message: `Can not fetch groups info: ${err}`,
-          traceId: res.get('x-traceid'),
-        })
-      }
     }
   )
 }
@@ -397,14 +338,6 @@ export default {
           traceId: res.get('x-traceid'),
         })
       })
-  },
-  getUserFavPosts(req: Request, res: Response, next: NextFunction) {
-    const { userId } = req.params
-
-    return getFavPosts(userId, req, res, next)
-  },
-  getMyFavPosts(req: IAuthRequest, res: Response, next: NextFunction) {
-    return getFavPosts(req.user.id, req, res, next)
   },
   isGroupInFavs(req: IAuthRequest, res: Response, next: NextFunction) {
     const { id } = req.query

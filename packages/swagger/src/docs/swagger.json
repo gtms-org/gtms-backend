@@ -638,6 +638,26 @@
                   "items": {
                     "$ref": "#/definitions/Group"
                   }
+                },
+                "favs": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "number"
+                    },
+                    "limit": {
+                      "type": "number"
+                    },
+                    "offset": {
+                      "type": "number"
+                    },
+                    "docs": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Group"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -787,6 +807,36 @@
         }
       }
     },
+    "/auth/me/favs/groups/status": {
+      "get": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Checks if groups are in user favs",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "description": "User's id",
+            "name": "id[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
     "/auth/me/favs/users": {
       "get": {
         "security": [
@@ -833,60 +883,6 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/definitions/User"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/auth/me/favs/posts": {
-      "get": {
-        "security": [
-          {
-            "user_auth": []
-          }
-        ],
-        "tags": ["Auth"],
-        "summary": "Returns info about current user fav posts",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "type": "number",
-            "description": "Returned records limit (no more than 50)"
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "required": false,
-            "type": "number",
-            "description": "Returned records offset"
-          }
-        ],
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "total": {
-                  "type": "number"
-                },
-                "limit": {
-                  "type": "number"
-                },
-                "offset": {
-                  "type": "number"
-                },
-                "docs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Post"
                   }
                 }
               }
@@ -995,60 +991,6 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/definitions/User"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/auth/favs/posts/user/{id}": {
-      "get": {
-        "tags": ["Auth"],
-        "summary": "Returns info about user's fav posts",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "in": "path",
-            "description": "User's id"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "type": "number",
-            "description": "Returned records limit (no more than 50)"
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "required": false,
-            "type": "number",
-            "description": "Returned records offset"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "total": {
-                  "type": "number"
-                },
-                "limit": {
-                  "type": "number"
-                },
-                "offset": {
-                  "type": "number"
-                },
-                "docs": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Post"
                   }
                 }
               }
