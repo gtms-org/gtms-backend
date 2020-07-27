@@ -121,12 +121,12 @@ export default {
       restricted: true,
     },
     {
-      path: '/favs/groups/:id',
+      path: '/me/favs/groups/:id',
       method: http.DELETE,
       restricted: true,
     },
     {
-      path: '/favs/groups',
+      path: '/me/favs/groups',
       method: http.POST,
       restricted: true,
     },
@@ -141,17 +141,12 @@ export default {
       restricted: false,
     },
     {
-      path: '/favs/posts',
-      method: http.POST,
-      restricted: true,
-    },
-    {
-      path: '/favs/users/:id',
+      path: '/me/favs/users/:id',
       method: http.DELETE,
       restricted: true,
     },
     {
-      path: '/favs/users',
+      path: '/me/favs/users',
       method: http.POST,
       restricted: true,
     },
