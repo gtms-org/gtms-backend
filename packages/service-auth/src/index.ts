@@ -58,7 +58,11 @@ router.delete(
   JWTMiddleware,
   favController.removeFavGroup
 )
-//router.put('/me/favs/groups', JWTMiddleware, )
+router.put(
+  '/me/favs/groups',
+  JWTMiddleware,
+  favController.bulkUpdateFavGroupsOrder
+)
 router.get('/me/favs/groups/status', JWTMiddleware, favController.isGroupInFavs)
 router.get('/me/favs/users', JWTMiddleware, favController.getMyFavUsers)
 router.delete('/me/favs/users/:id', JWTMiddleware, favController.addFavUser)

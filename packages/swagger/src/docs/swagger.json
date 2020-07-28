@@ -805,6 +805,38 @@
             }
           }
         }
+      },
+      "put": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Updates order of favs group",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid payload"
+          }
+        }
       }
     },
     "/auth/me/favs/groups/status": {
@@ -838,6 +870,49 @@
       }
     },
     "/auth/me/favs/users": {
+      "post": {
+        "security": [
+          {
+            "user_auth": []
+          }
+        ],
+        "tags": ["Auth"],
+        "summary": "Creates a new fav user",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation errors",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/ValidationError"
+              }
+            }
+          }
+        }
+      },
       "get": {
         "security": [
           {
@@ -1044,7 +1119,7 @@
         }
       }
     },
-    "/auth/favs/groups/{id}": {
+    "/auth/me/favs/groups/{id}": {
       "delete": {
         "security": [
           {
@@ -1074,127 +1149,7 @@
         }
       }
     },
-    "/auth/favs/posts": {
-      "post": {
-        "security": [
-          {
-            "user_auth": []
-          }
-        ],
-        "tags": ["Auth"],
-        "summary": "Creates a new fav post",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "payload",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "post": {
-                  "type": "string"
-                },
-                "order": {
-                  "type": "number"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Successful operation"
-          },
-          "400": {
-            "description": "Validation errors",
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/ValidationError"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/auth/favs/posts/{id}": {
-      "delete": {
-        "security": [
-          {
-            "user_auth": []
-          }
-        ],
-        "tags": ["Auth"],
-        "summary": "Removes post from favs",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "in": "path",
-            "description": "Post's id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful operation"
-          },
-          "404": {
-            "description": "Post is not in favs"
-          }
-        }
-      }
-    },
-    "/auth/favs/users": {
-      "post": {
-        "security": [
-          {
-            "user_auth": []
-          }
-        ],
-        "tags": ["Auth"],
-        "summary": "Creates a new fav user",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "payload",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "order": {
-                  "type": "number"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Successful operation"
-          },
-          "400": {
-            "description": "Validation errors",
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/ValidationError"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/auth/favs/users/{id}": {
+    "/auth/me/favs/users/{id}": {
       "delete": {
         "security": [
           {
