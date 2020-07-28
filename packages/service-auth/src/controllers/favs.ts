@@ -330,7 +330,7 @@ export default {
           owner: req.user.id,
         },
         {
-          order: -1,
+          order: 99999,
         }
       )
     } catch (err) {
