@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.26.1...@gtms/swagger@0.26.2) (2020-07-28)
+
+
+### Bug Fixes
+
+* master: enable bulk update on favs group order ([9bd1f55](https://github.com/mariusz-kabala/gtms-backend/commit/9bd1f55de65b31ffa5731fd9e8c4046f28f21754))
+
+
+
+
+
 ## [0.26.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.26.0...@gtms/swagger@0.26.1) (2020-07-27)
 
 
