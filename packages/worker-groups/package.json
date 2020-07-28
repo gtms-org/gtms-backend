@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-groups",
-  "version": "0.5.22",
+  "version": "0.5.23",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "dependencies": {
     "@gtms/client-queue": "0.7.13",
     "@gtms/commons": "0.25.0",
-    "@gtms/lib-consul": "0.2.1",
+    "@gtms/lib-consul": "0.2.2",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
     "@gtms/lib-models": "0.20.0"

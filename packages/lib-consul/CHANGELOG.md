@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.2.1...@gtms/lib-consul@0.2.2) (2020-07-28)
+
+
+### Bug Fixes
+
+* master: set -1 as initial order ([8c2c2c3](https://github.com/mariusz-kabala/gtms-backend/commit/8c2c2c336cad78da164e671e459ef281e49edc36))
+
+
+
+
+
 ## [0.2.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.2.0...@gtms/lib-consul@0.2.1) (2020-06-15)
 
 
