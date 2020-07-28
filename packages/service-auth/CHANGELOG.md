@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.30.6...@gtms/service-auth@0.30.7) (2020-07-28)
+
+
+### Bug Fixes
+
+* master: set 99999 as initial order ([b550b4d](https://github.com/mariusz-kabala/gtms-backend/commit/b550b4d0f9545307533e4cb3700a6a22c6319a51))
+
+
+
+
+
 ## [0.30.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.30.5...@gtms/service-auth@0.30.6) (2020-07-28)
 
 
