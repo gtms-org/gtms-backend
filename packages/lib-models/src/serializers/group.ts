@@ -1,4 +1,4 @@
-import { IGroup } from '../models/groups'
+import { IGroup, BGTypes } from '../models/groups'
 import { ISerializedGroup } from '@gtms/commons'
 
 export function serializeGroup(group: IGroup): ISerializedGroup {
@@ -10,6 +10,8 @@ export function serializeGroup(group: IGroup): ISerializedGroup {
     type: group.type,
     visibility: group.visibility,
     avatar: group.avatar,
+    bg: group.bg,
+    bgType: group.bgType || BGTypes.background1,
     tags: group.tags,
     owner: group.owner,
     postsCounter: group.postsCounter,

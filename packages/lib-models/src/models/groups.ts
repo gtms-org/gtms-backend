@@ -4,6 +4,21 @@ import mongoosePaginate from 'mongoose-paginate'
 import slugify from '@sindresorhus/slugify'
 import { FileStatus } from '@gtms/commons'
 
+export enum BGTypes {
+  file = 'file',
+  background1 = 'background1',
+  background2 = 'background2',
+  background3 = 'background3',
+  background4 = 'background4',
+  background5 = 'background5',
+  background6 = 'background6',
+  background7 = 'background7',
+  background8 = 'background8',
+  background9 = 'background9',
+  background10 = 'background10',
+  background11 = 'background11',
+}
+
 export interface IGroup extends Document {
   name: string
   slug: string
@@ -18,6 +33,7 @@ export interface IGroup extends Document {
     status: FileStatus
     files: string[]
   }
+  bgType: BGTypes
   tags?: string[]
   admins?: string[]
   owner: string
@@ -73,6 +89,24 @@ const GroupSchema = new Schema(
       files: {
         type: [String],
       },
+    },
+    bgType: {
+      type: String,
+      enum: [
+        BGTypes.file,
+        BGTypes.background1,
+        BGTypes.background2,
+        BGTypes.background3,
+        BGTypes.background4,
+        BGTypes.background5,
+        BGTypes.background6,
+        BGTypes.background7,
+        BGTypes.background8,
+        BGTypes.background9,
+        BGTypes.background10,
+        BGTypes.background11,
+      ],
+      default: BGTypes.background1,
     },
     tags: {
       type: [String],

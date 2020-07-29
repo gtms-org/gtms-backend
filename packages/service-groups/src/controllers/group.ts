@@ -30,6 +30,7 @@ export default {
       description: body.description,
       type: body.type,
       visibility: body.visibility,
+      bgType: body.bgType,
       tags: body.tags,
       members: [req.user.id],
       owner: req.user.id,
@@ -150,9 +151,18 @@ export default {
       visibility?: string
       tags?: string[]
       slug?: string
+      bgType?: string
     } = {}
-    ;['name', 'description', 'type', 'visibility', 'tags'].forEach(
-      (field: 'name' | 'description' | 'type' | 'visibility' | 'tags') => {
+    ;['name', 'description', 'type', 'visibility', 'tags', 'bgType'].forEach(
+      (
+        field:
+          | 'name'
+          | 'description'
+          | 'type'
+          | 'visibility'
+          | 'tags'
+          | 'bgType'
+      ) => {
         if (typeof body[field] !== 'undefined') {
           payload[field] = body[field]
         }

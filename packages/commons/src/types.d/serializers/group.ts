@@ -11,6 +11,11 @@ export interface ISerializedGroup {
     status: FileStatus
     files: string[]
   }
+  bg?: {
+    status: FileStatus
+    files: string[]
+  }
+  bgType: any
   tags?: string[]
   owner: string
   postsCounter: number
