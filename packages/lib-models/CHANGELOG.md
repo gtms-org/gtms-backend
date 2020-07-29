@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.20.0...@gtms/lib-models@0.20.1) (2020-07-29)
+
+
+### Bug Fixes
+
+* GEOT-393: support bgType in group model ([#154](https://github.com/mariusz-kabala/gtms-backend/issues/154)) ([7161878](https://github.com/mariusz-kabala/gtms-backend/commit/71618789ad235d629d16f4866d97eed11936bf1d))
+
+
+
+
+
 # [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.19.0...@gtms/lib-models@0.20.0) (2020-07-21)
 
 

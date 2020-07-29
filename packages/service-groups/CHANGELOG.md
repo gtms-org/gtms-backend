@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.22](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.26.21...@gtms/service-groups@0.26.22) (2020-07-29)
+
+
+### Bug Fixes
+
+* GEOT-393: support bgType in group model ([#154](https://github.com/mariusz-kabala/gtms-backend/issues/154)) ([7161878](https://github.com/mariusz-kabala/gtms-backend/commit/71618789ad235d629d16f4866d97eed11936bf1d))
+
+
+
+
+
 ## [0.26.21](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.26.20...@gtms/service-groups@0.26.21) (2020-07-28)
 
 **Note:** Version bump only for package @gtms/service-groups
