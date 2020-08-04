@@ -144,7 +144,7 @@ export default {
     }
 
     if (sort === 'active') {
-      query.postsCounter = {
+      query.commentsCounter = {
         $gte: 0,
       }
     }
