@@ -101,7 +101,7 @@ export default {
       }
     } = {
       popular: {
-        postsCounter: 'desc',
+        commentsCounter: 'desc',
         createdAt: 'desc',
       },
       latest: {
@@ -132,7 +132,7 @@ export default {
       tags?: {
         $all: string[]
       }
-      postsCounter?: {
+      commentsCounter?: {
         $gte: number
       }
     } = { group: new ObjectID(id) }
