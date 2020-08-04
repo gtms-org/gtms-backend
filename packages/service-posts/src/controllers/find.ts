@@ -94,6 +94,27 @@ export default {
     const { id } = req.params
     const { limit, offset } = getPaginationParams(req)
     const { tags } = req.query
+    let sort: 'popular' | 'latest' | 'active' = req.query.sort
+    const sortingMapper: {
+      [key: string]: {
+        [field: string]: 'asc' | 'desc'
+      }
+    } = {
+      popular: {
+        postsCounter: 'desc',
+        createdAt: 'desc',
+      },
+      latest: {
+        createdAt: 'desc',
+      },
+      active: {
+        createdAt: 'desc',
+      },
+    }
+
+    if (!Object.keys(sortingMapper).includes(sort)) {
+      sort = 'latest'
+    }
 
     if (!validateObjectId(id)) {
       return res.status(400).end()
@@ -111,6 +132,9 @@ export default {
       tags?: {
         $all: string[]
       }
+      postsCounter?: {
+        $gte: number
+      }
     } = { group: new ObjectID(id) }
 
     if (tagsToFind.length > 0) {
@@ -119,14 +143,18 @@ export default {
       }
     }
 
+    if (sort === 'active') {
+      query.postsCounter = {
+        $gte: 0,
+      }
+    }
+
     findPosts(
       query,
       {
         offset,
         limit,
-        sort: {
-          createdAt: 'desc',
-        },
+        sort: sortingMapper[sort],
       },
       res.get('x-traceid')
     )

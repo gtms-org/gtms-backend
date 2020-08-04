@@ -3269,6 +3269,13 @@
             "description": "Returned records offset"
           },
           {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "popular | latest | active"
+          },
+          {
             "name": "tags",
             "in": "query",
             "required": false,
