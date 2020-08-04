@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.18.7...@gtms/service-posts@0.18.8) (2020-08-04)
+
+
+### Bug Fixes
+
+* master: use proper field when sorting ([60b6f18](https://github.com/mariusz-kabala/gtms-backend/commit/60b6f184ca62b8373f87e58c076561ec86f7f489))
+
+
+
+
+
 ## [0.18.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.18.6...@gtms/service-posts@0.18.7) (2020-08-04)
 
 
