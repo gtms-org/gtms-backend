@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.26.4...@gtms/swagger@0.26.5) (2020-08-04)
+
+
+### Bug Fixes
+
+* GEOT-403: sorting group posts ([#158](https://github.com/mariusz-kabala/gtms-backend/issues/158)) ([6fda141](https://github.com/mariusz-kabala/gtms-backend/commit/6fda14123d8ac2d95d80e446e94c9e1d33eec450))
+
+
+
+
+
 ## [0.26.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.26.3...@gtms/swagger@0.26.4) (2020-07-29)
 
 **Note:** Version bump only for package @gtms/swagger
