@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.26.5...@gtms/swagger@0.27.0) (2020-08-05)
+
+
+### Features
+
+* GEOT-406: allow to filter by owner in group posts endpoint ([#159](https://github.com/mariusz-kabala/gtms-backend/issues/159)) ([d5d7271](https://github.com/mariusz-kabala/gtms-backend/commit/d5d7271083a1db9730b4cef0a61515034b2f9d58))
+
+
+
+
+
 ## [0.26.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.26.4...@gtms/swagger@0.26.5) (2020-08-04)
 
 
