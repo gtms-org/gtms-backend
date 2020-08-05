@@ -93,7 +93,7 @@ export default {
   groupPosts(req: Request, res: Response) {
     const { id } = req.params
     const { limit, offset } = getPaginationParams(req)
-    const { tags } = req.query
+    const { tags, users } = req.query
     let sort: 'popular' | 'latest' | 'active' = req.query.sort
     const sortingMapper: {
       [key: string]: {
@@ -127,10 +127,18 @@ export default {
           })
           .filter((tag: string | null) => tag)
       : []
+    const usersToFind: string[] = Array.isArray(users)
+      ? users
+          .map(user => (validateObjectId(user) ? user : null))
+          .filter(user => user)
+      : []
     const query: {
       group: ObjectID
       tags?: {
         $all: string[]
+      }
+      owner?: {
+        $in: string[]
       }
       commentsCounter?: {
         $gte: number
@@ -140,6 +148,12 @@ export default {
     if (tagsToFind.length > 0) {
       query.tags = {
         $all: tagsToFind,
+      }
+    }
+
+    if (usersToFind.length > 0) {
+      query.owner = {
+        $in: usersToFind,
       }
     }
 
