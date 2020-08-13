@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.19.0...@gtms/service-posts@0.20.0) (2020-08-13)
+
+
+### Features
+
+* GEOT-422: add markdown parser ([#165](https://github.com/mariusz-kabala/gtms-backend/issues/165)) ([4de88ba](https://github.com/mariusz-kabala/gtms-backend/commit/4de88ba6e61308b14051bdd85b2f48b9f0152384))
+
+
+
+
+
 # [0.19.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.18.8...@gtms/service-posts@0.19.0) (2020-08-05)
 
 
