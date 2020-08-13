@@ -4,6 +4,7 @@ import { ISerializedUser } from './user'
 export interface ISerializedPost {
   id: string
   text: string
+  html: string
   tags: string[]
   lastTags: string[]
   owner: string | ISerializedUser
