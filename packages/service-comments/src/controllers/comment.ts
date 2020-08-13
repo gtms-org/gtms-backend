@@ -1,14 +1,15 @@
 import { Response, NextFunction } from 'express'
-import { IAuthRequest } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { CommentModel, IComment, serializeComment } from '@gtms/lib-models'
 import { publishMultiple } from '@gtms/client-queue'
 import {
+  IAuthRequest,
   Queues,
   RecordType,
   ESIndexUpdateType,
   ESIndexUpdateRecord,
   parseText,
+  parseMarkdown,
 } from '@gtms/commons'
 import { ObjectID } from 'mongodb'
 
@@ -16,6 +17,7 @@ function addComment(
   payload: {
     post: string
     text: string
+    html: string
     tags?: string[]
     lastTags?: readonly string[]
     owner: string
@@ -49,18 +51,20 @@ function addComment(
 }
 
 export default {
-  create(req: IAuthRequest, res: Response, next: NextFunction) {
+  async create(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
       body: { post, text, parent },
     } = req
 
     const tags = text.match(/#(\w+)\b/gi)
     const parsed = parseText(text)
+    const html = await parseMarkdown(text)
 
     // todo: check somehow if user can add
     addComment(
       {
         post,
+        html,
         text: parsed.text,
         lastTags: parsed.lastTags,
         tags: Array.isArray(tags)
@@ -155,7 +159,7 @@ export default {
     }
 
     CommentModel.findOne(query)
-      .then((comment: IComment) => {
+      .then(async (comment: IComment) => {
         if (!comment) {
           return res.status(404).end()
         }
@@ -172,6 +176,7 @@ export default {
           tags?: string[]
           lastTags?: readonly string[]
           text?: string
+          html?: string
         } = {}
         ;['text', 'tags'].forEach((field: 'text' | 'tags') => {
           if (typeof body[field] !== 'undefined') {
@@ -180,9 +185,11 @@ export default {
         })
 
         const parsed = parseText(payload.text)
+        const html = await parseMarkdown(payload.text)
 
         payload.text = parsed.text
         payload.lastTags = parsed.lastTags
+        payload.html = html
 
         CommentModel.findOneAndUpdate(query, payload, { new: true })
           .then((comment: IComment | null) => {

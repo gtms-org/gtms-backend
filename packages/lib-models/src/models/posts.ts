@@ -5,6 +5,7 @@ import { ISerializedComment } from '@gtms/commons'
 export interface IPost extends Document {
   group: string
   text: string
+  html: string
   tags: string[]
   lastTags: string[]
   followers: string[]
@@ -26,6 +27,11 @@ const PostSchema = new Schema(
       index: true,
     },
     text: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    html: {
       type: String,
       required: true,
       trim: true,

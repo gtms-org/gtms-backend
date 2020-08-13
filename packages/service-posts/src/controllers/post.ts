@@ -14,6 +14,7 @@ import {
   ESIndexUpdateType,
   ESIndexUpdateRecord,
   parseText,
+  parseMarkdown,
 } from '@gtms/commons'
 import { validateObjectId } from '@gtms/client-mongoose'
 import { canAddPost, getGroup, findUsersByUsernames } from '@gtms/lib-api'
@@ -62,10 +63,13 @@ export default {
           }
         }
 
+        const html = await parseMarkdown(parsed.text)
+
         PostModel.create({
           group,
           mentioned,
           text: parsed.text,
+          html,
           lastTags: parsed.lastTags,
           tags: Array.isArray(tags)
             ? tags
@@ -219,7 +223,7 @@ export default {
     }
 
     PostModel.findOne(query)
-      .then((post: IPost) => {
+      .then(async (post: IPost) => {
         if (!post) {
           return res.status(404).end()
         }
@@ -236,6 +240,7 @@ export default {
           tags?: string[]
           lastTags?: readonly string[]
           text?: string
+          html?: string
         } = {}
         ;['text', 'tags'].forEach((field: 'text' | 'tags') => {
           if (typeof body[field] !== 'undefined') {
@@ -244,9 +249,11 @@ export default {
         })
 
         const parsed = parseText(payload.text)
+        const html = await parseMarkdown(parsed.text)
 
         payload.text = parsed.text
         payload.lastTags = parsed.lastTags
+        payload.html = html
 
         PostModel.findOneAndUpdate(query, payload, { new: true })
           .then((post: IPost | null) => {
