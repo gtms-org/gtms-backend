@@ -19,6 +19,26 @@ export enum BGTypes {
   background11 = 'background11',
 }
 
+export enum CoverTypes {
+  file = 'file',
+  noCover = 'noCover',
+  unknown = 'unknown',
+  cover1 = 'cover1',
+  cover2 = 'cover2',
+  cover3 = 'cover3',
+  cover4 = 'cover4',
+  cover5 = 'cover5',
+  cover6 = 'cover6',
+  cover7 = 'cover7',
+  cover8 = 'cover8',
+  cover9 = 'cover9',
+  cover10 = 'cover10',
+  cover11 = 'cover11',
+  cover12 = 'cover12',
+  cover13 = 'cover13',
+  cover14 = 'cover14',
+}
+
 export interface IGroup extends Document {
   name: string
   slug: string
@@ -34,6 +54,11 @@ export interface IGroup extends Document {
     files: string[]
   }
   bgType: BGTypes
+  cover?: {
+    status: FileStatus
+    files: string[]
+  }
+  coverType: CoverTypes
   tags?: string[]
   admins?: string[]
   owner: string
@@ -107,6 +132,37 @@ const GroupSchema = new Schema(
         BGTypes.background11,
       ],
       default: BGTypes.background1,
+    },
+    cover: {
+      status: {
+        type: String,
+      },
+      files: {
+        type: [String],
+      },
+    },
+    coverType: {
+      type: String,
+      enum: [
+        CoverTypes.file,
+        CoverTypes.noCover,
+        CoverTypes.unknown,
+        CoverTypes.cover1,
+        CoverTypes.cover2,
+        CoverTypes.cover3,
+        CoverTypes.cover4,
+        CoverTypes.cover5,
+        CoverTypes.cover6,
+        CoverTypes.cover7,
+        CoverTypes.cover8,
+        CoverTypes.cover9,
+        CoverTypes.cover10,
+        CoverTypes.cover11,
+        CoverTypes.cover12,
+        CoverTypes.cover13,
+        CoverTypes.cover14,
+      ],
+      default: CoverTypes.unknown,
     },
     tags: {
       type: [String],
