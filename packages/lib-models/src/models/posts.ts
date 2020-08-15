@@ -1,11 +1,12 @@
 import mongoose, { Document, Schema } from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate'
-import { ISerializedComment } from '@gtms/commons'
+import { ISerializedComment, IOEmbed } from '@gtms/commons'
 
 export interface IPost extends Document {
   group: string
   text: string
   html: string
+  oembeds: IOEmbed[]
   tags: string[]
   lastTags: string[]
   followers: string[]
@@ -35,6 +36,11 @@ const PostSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+    },
+    oembeds: {
+      type: [Object],
+      required: false,
+      index: false,
     },
     tags: {
       type: [String],
