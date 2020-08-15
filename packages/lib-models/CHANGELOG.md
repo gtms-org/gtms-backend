@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.22.0...@gtms/lib-models@0.23.0) (2020-08-15)
+
+
+### Features
+
+* GEOT-423: add cover photo support ([#169](https://github.com/mariusz-kabala/gtms-backend/issues/169)) ([8a6e54a](https://github.com/mariusz-kabala/gtms-backend/commit/8a6e54ab5f9d1de9a835b4dd686ce08ec12915a4))
+
+
+
+
+
 # [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.21.0...@gtms/lib-models@0.22.0) (2020-08-15)
 
 

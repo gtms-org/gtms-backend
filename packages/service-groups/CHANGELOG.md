@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.26.24...@gtms/service-groups@0.27.0) (2020-08-15)
+
+
+### Features
+
+* GEOT-423: add cover photo support ([#169](https://github.com/mariusz-kabala/gtms-backend/issues/169)) ([8a6e54a](https://github.com/mariusz-kabala/gtms-backend/commit/8a6e54ab5f9d1de9a835b4dd686ce08ec12915a4))
+
+
+
+
+
 ## [0.26.24](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.26.23...@gtms/service-groups@0.26.24) (2020-08-15)
 
 **Note:** Version bump only for package @gtms/service-groups

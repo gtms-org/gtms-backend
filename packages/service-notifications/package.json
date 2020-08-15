@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-notifications",
-  "version": "0.10.25",
+  "version": "0.10.26",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "@gtms/lib-consul": "0.2.2",
     "@gtms/lib-logger": "*",
     "@gtms/lib-middlewares": "0.4.41",
-    "@gtms/lib-models": "0.22.0",
+    "@gtms/lib-models": "0.23.0",
     "@gtms/lib-testing": "*"
   },
   "author": "Mariusz Kabała",
