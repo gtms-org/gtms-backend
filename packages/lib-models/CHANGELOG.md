@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.23.0...@gtms/lib-models@0.23.1) (2020-08-15)
+
+
+### Bug Fixes
+
+* master: group cover refactor ([cee751f](https://github.com/mariusz-kabala/gtms-backend/commit/cee751f2560694461f53b3b6dbb15dbc16bcee1d))
+
+
+
+
+
 # [0.23.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.22.0...@gtms/lib-models@0.23.0) (2020-08-15)
 
 
