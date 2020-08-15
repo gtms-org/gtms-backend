@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.39.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.39.6...@gtms/gatekeeper-public@0.39.7) (2020-08-15)
+
+**Note:** Version bump only for package @gtms/gatekeeper-public
+
+
+
+
+
 ## [0.39.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.39.5...@gtms/gatekeeper-public@0.39.6) (2020-08-13)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public

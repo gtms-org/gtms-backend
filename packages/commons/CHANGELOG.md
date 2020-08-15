@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.26.0...@gtms/commons@0.27.0) (2020-08-15)
+
+
+### Features
+
+* GEOT-422: support oembed media in posts ([#168](https://github.com/mariusz-kabala/gtms-backend/issues/168)) ([077086b](https://github.com/mariusz-kabala/gtms-backend/commit/077086b8404521a934d4a1a2122ef67ca6ea4afc))
+
+
+
+
+
 # [0.26.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.25.1...@gtms/commons@0.26.0) (2020-08-13)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.27.1...@gtms/swagger@0.27.2) (2020-08-15)
+
+**Note:** Version bump only for package @gtms/swagger
+
+
+
+
+
 ## [0.27.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.27.0...@gtms/swagger@0.27.1) (2020-08-13)
 
 **Note:** Version bump only for package @gtms/swagger
