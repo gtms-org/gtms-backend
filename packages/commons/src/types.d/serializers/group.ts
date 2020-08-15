@@ -1,4 +1,6 @@
 import { FileStatus } from '../../enums'
+import { BGTypes } from '../groupBgTypes'
+import { CoverTypes } from '../groupCoverTypes'
 
 export interface ISerializedGroup {
   id: string
@@ -15,7 +17,12 @@ export interface ISerializedGroup {
     status: FileStatus
     files: string[]
   }
-  bgType: any
+  bgType: BGTypes
+  cover?: {
+    status: FileStatus
+    files: string[]
+  }
+  coverType: CoverTypes
   tags?: string[]
   owner: string
   postsCounter: number

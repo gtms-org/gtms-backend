@@ -2,42 +2,7 @@ import mongoose, { Document, Schema, HookNextFunction } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 import mongoosePaginate from 'mongoose-paginate'
 import slugify from '@sindresorhus/slugify'
-import { FileStatus } from '@gtms/commons'
-
-export enum BGTypes {
-  file = 'file',
-  background1 = 'background1',
-  background2 = 'background2',
-  background3 = 'background3',
-  background4 = 'background4',
-  background5 = 'background5',
-  background6 = 'background6',
-  background7 = 'background7',
-  background8 = 'background8',
-  background9 = 'background9',
-  background10 = 'background10',
-  background11 = 'background11',
-}
-
-export enum CoverTypes {
-  file = 'file',
-  noCover = 'noCover',
-  unknown = 'unknown',
-  cover1 = 'cover1',
-  cover2 = 'cover2',
-  cover3 = 'cover3',
-  cover4 = 'cover4',
-  cover5 = 'cover5',
-  cover6 = 'cover6',
-  cover7 = 'cover7',
-  cover8 = 'cover8',
-  cover9 = 'cover9',
-  cover10 = 'cover10',
-  cover11 = 'cover11',
-  cover12 = 'cover12',
-  cover13 = 'cover13',
-  cover14 = 'cover14',
-}
+import { FileStatus, BGTypes, CoverTypes } from '@gtms/commons'
 
 export interface IGroup extends Document {
   name: string
