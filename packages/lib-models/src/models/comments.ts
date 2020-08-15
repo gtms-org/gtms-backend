@@ -1,10 +1,12 @@
 import mongoose, { Document, Schema } from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate'
+import { IOEmbed } from '@gtms/commons'
 
 export interface IComment extends Document {
   post: string
   text: string
   html: string
+  oembeds: IOEmbed[]
   subComments: {
     _id: string
     owner: string
@@ -12,6 +14,7 @@ export interface IComment extends Document {
     updatedAt: string
     text: string
     html: string
+    oembeds: IOEmbed[]
     tags: string[]
     lastTags: string[]
   }[]
@@ -36,6 +39,7 @@ const CommentSchema = new Schema(
         updatedAt: Date,
         text: String,
         html: String,
+        oembeds: [Object],
         tags: [String],
         lastTags: [String],
       },
@@ -49,6 +53,11 @@ const CommentSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+    },
+    oembeds: {
+      type: [Object],
+      required: false,
+      index: false,
     },
     tags: {
       type: [String],

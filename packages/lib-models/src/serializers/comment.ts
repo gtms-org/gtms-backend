@@ -1,5 +1,5 @@
 import { IComment } from '../models/comments'
-import { ISerializedComment, ISerializedUser } from '@gtms/commons'
+import { ISerializedComment, ISerializedUser, IOEmbed } from '@gtms/commons'
 
 export function serializeComment(
   comment:
@@ -9,6 +9,7 @@ export function serializeComment(
         subComments: any
         text: string
         html: string
+        oembeds: IOEmbed[]
         tags: string[]
         lastTags: string[]
         owner: string
@@ -21,10 +22,12 @@ export function serializeComment(
     id: comment._id,
     text: comment.text,
     html: comment.html,
+    oembeds: comment.oembeds,
     subComments: (comment.subComments || []).map((subComment: any) => ({
       id: `${subComment._id}`,
       text: subComment.text,
       html: subComment.html,
+      oembeds: subComment.oembeds,
       tags: subComment.tags || [],
       lastTags: subComment.lastTags || [],
       createdAt: subComment.createdAt,

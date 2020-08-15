@@ -20,7 +20,8 @@
             "*": [
                 "node_modules/*"
             ]
-        }
+        },
+        "resolveJsonModule": true,
     },
     "files": [
         "packages/lib-testing/src/node-mongodb-fixtures.d.ts",

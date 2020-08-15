@@ -14,7 +14,9 @@ import {
   ESIndexUpdateType,
   ESIndexUpdateRecord,
   parseText,
-  parseMarkdown,
+  findEmbeds,
+  prepareHtml,
+  IOEmbed,
 } from '@gtms/commons'
 import { validateObjectId } from '@gtms/client-mongoose'
 import { canAddPost, getGroup, findUsersByUsernames } from '@gtms/lib-api'
@@ -63,13 +65,15 @@ export default {
           }
         }
 
-        const html = await parseMarkdown(parsed.text)
+        const oembeds = await findEmbeds(parsed.text)
+        const html = prepareHtml(parsed.text, oembeds)
 
         PostModel.create({
           group,
           mentioned,
           text: parsed.text,
           html,
+          oembeds,
           lastTags: parsed.lastTags,
           tags: Array.isArray(tags)
             ? tags
@@ -241,6 +245,7 @@ export default {
           lastTags?: readonly string[]
           text?: string
           html?: string
+          oembeds?: IOEmbed[]
         } = {}
         ;['text', 'tags'].forEach((field: 'text' | 'tags') => {
           if (typeof body[field] !== 'undefined') {
@@ -249,11 +254,13 @@ export default {
         })
 
         const parsed = parseText(payload.text)
-        const html = await parseMarkdown(parsed.text)
+        const oembeds = await findEmbeds(parsed.text)
+        const html = prepareHtml(parsed.text, oembeds)
 
         payload.text = parsed.text
         payload.lastTags = parsed.lastTags
         payload.html = html
+        payload.oembeds = oembeds
 
         PostModel.findOneAndUpdate(query, payload, { new: true })
           .then((post: IPost | null) => {
