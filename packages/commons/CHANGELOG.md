@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.27.1...@gtms/commons@0.27.2) (2020-08-16)
+
+
+### Bug Fixes
+
+* master: oembed fix ([7bdc29f](https://github.com/mariusz-kabala/gtms-backend/commit/7bdc29fd3476976cedc1503c480e3e3215708a67))
+
+
+
+
+
 ## [0.27.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.27.0...@gtms/commons@0.27.1) (2020-08-15)
 
 

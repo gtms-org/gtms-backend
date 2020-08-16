@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.29](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.5.28...@gtms/worker-groups@0.5.29) (2020-08-16)
+
+**Note:** Version bump only for package @gtms/worker-groups
+
+
+
+
+
 ## [0.5.28](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.5.27...@gtms/worker-groups@0.5.28) (2020-08-15)
 
 **Note:** Version bump only for package @gtms/worker-groups
