@@ -38,7 +38,7 @@ export async function findEmbeds(text: string): Promise<IOEmbed[]> {
     return await Promise.all(
       toFetch.reduce((all: Promise<IOEmbed>[], item) => {
         for (const url of item.results) {
-          all.push(fetchEmbed(item.provider, url))
+          all.push(fetchEmbed(item.provider, url).catch(() => null))
         }
 
         return all
@@ -49,10 +49,17 @@ export async function findEmbeds(text: string): Promise<IOEmbed[]> {
   return []
 }
 
-export function replaceEmbedsWithHtml(text: string, oEmbeds: IOEmbed[]) {
+export function replaceEmbedsWithHtml(
+  text: string,
+  oEmbeds: (IOEmbed | null)[]
+) {
   let html = text
 
   for (const oEmbed of oEmbeds) {
+    if (oEmbed === null) {
+      continue
+    }
+
     html = html.replace(oEmbed.url, oEmbed.result.html)
   }
 
