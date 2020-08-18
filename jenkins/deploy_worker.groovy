@@ -89,35 +89,10 @@ pipeline {
                     ])
             }
         }
-        stage ('Deploy service auth') {
+        
+        stage ('Deploy worker auth') {
             when {
-                environment name: 'SERVICE_NAME', value: 'service-auth'
-            }
-             steps {
-                dir("packages/${env.SERVICE_NAME}/terraform") {
-                    script {
-                        docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
-                            sh "terraform init"
-                            sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
-                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"jwt_secret=${JWT_SECRET}\" -var=\"jwt_refresh_token_secret=${JWT_REFRESH_TOKEN_SECRET}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
-                            sh "terraform apply -auto-approve deploy.plan"
-                        }
-                    }
-                }
-            }
-            post {
-                success {
-                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sunny: *${env.SERVICE_NAME}* version: *${version}* Build succeeded - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
-                }
-                unsuccessful {
-                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sob: *${env.SERVICE_NAME}* version: *${version}* Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
-                }
-            }
-        }
-
-        stage ('Deploy service groups') {
-            when {
-                environment name: 'SERVICE_NAME', value: 'service-groups'
+                environment name: 'SERVICE_NAME', value: 'worker-auth'
             }
              steps {
                 dir("packages/${env.SERVICE_NAME}/terraform") {
@@ -141,9 +116,35 @@ pipeline {
             }
         }
 
-        stage ('Deploy service files') {
+        stage ('Deploy worker ES indexer') {
             when {
-                environment name: 'SERVICE_NAME', value: 'service-files'
+                environment name: 'SERVICE_NAME', value: 'worker-es-indexer'
+            }
+             steps {
+                dir("packages/${env.SERVICE_NAME}/terraform") {
+                    script {
+                        docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
+                            sh "terraform init"
+                            sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
+                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
+                            sh "terraform apply -auto-approve deploy.plan"
+                        }
+                    }
+                }
+            }
+            post {
+                success {
+                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sunny: *${env.SERVICE_NAME}* version: *${version}* Build succeeded - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
+                }
+                unsuccessful {
+                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sob: *${env.SERVICE_NAME}* version: *${version}* Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
+                }
+            }
+        }
+
+        stage ('Deploy worker files') {
+            when {
+                environment name: 'SERVICE_NAME', value: 'worker-files'
             }
              steps {
                 dir("packages/${env.SERVICE_NAME}/terraform") {
@@ -167,9 +168,9 @@ pipeline {
             }
         }
 
-        stage ('Deploy service tags') {
+        stage ('Deploy worker groups') {
             when {
-                environment name: 'SERVICE_NAME', value: 'service-tags'
+                environment name: 'SERVICE_NAME', value: 'worker-groups'
             }
              steps {
                 dir("packages/${env.SERVICE_NAME}/terraform") {
@@ -193,9 +194,9 @@ pipeline {
             }
         }
 
-        stage ('Deploy service posts') {
+        stage ('Deploy worker tags') {
             when {
-                environment name: 'SERVICE_NAME', value: 'service-posts'
+                environment name: 'SERVICE_NAME', value: 'worker-tags'
             }
              steps {
                 dir("packages/${env.SERVICE_NAME}/terraform") {
@@ -219,9 +220,9 @@ pipeline {
             }
         }
 
-        stage ('Deploy service comments') {
+        stage ('Deploy worker posts') {
             when {
-                environment name: 'SERVICE_NAME', value: 'service-comments'
+                environment name: 'SERVICE_NAME', value: 'worker-posts'
             }
              steps {
                 dir("packages/${env.SERVICE_NAME}/terraform") {
@@ -245,9 +246,9 @@ pipeline {
             }
         }
 
-        stage ('Deploy service notifications') {
+        stage ('Deploy worker notifications') {
             when {
-                environment name: 'SERVICE_NAME', value: 'service-notifications'
+                environment name: 'SERVICE_NAME', value: 'worker-notifications'
             }
              steps {
                 dir("packages/${env.SERVICE_NAME}/terraform") {
@@ -255,7 +256,7 @@ pipeline {
                         docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
                             sh "terraform init"
                             sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
-                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
+                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\" -var=\"SENDGRID_API_KEY=${SENDGRID_API_KEY}\"" 
                             sh "terraform apply -auto-approve deploy.plan"
                         }
                     }
@@ -268,80 +269,6 @@ pipeline {
                 unsuccessful {
                     rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sob: *${env.SERVICE_NAME}* version: *${version}* Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
                 }
-            }
-        }
-
-        stage ('Deploy worker') {
-            when {
-                expression {
-                    env.SERVICE_NAME == 'worker-auth' ||
-                    env.SERVICE_NAME == 'worker-es-indexer' ||
-                    env.SERVICE_NAME == 'worker-files' ||
-                    env.SERVICE_NAME == 'worker-groups' ||
-                    env.SERVICE_NAME == 'worker-tags' ||
-                    env.SERVICE_NAME == 'worker-posts' ||
-                    env.SERVICE_NAME == 'worker-notifications'
-                }
-            }
-            script {
-                build job: '(GTMS Backend) Deploy worker', wait: false, parameters: [
-                    string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
-                    string(name: 'version', value: env.VERSION),
-                    string(name: 'SERVICE_NAME', value: env.SERVICE_NAME),
-                    string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
-                ]
-            }
-        }
-
-        stage ('Deploy public gatekeeper') {
-            when {
-                environment name: 'SERVICE_NAME', value: 'gatekeeper-public'
-            }
-             steps {
-                dir("packages/${env.SERVICE_NAME}/terraform") {
-                    script {
-                        docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
-                            sh "terraform init"
-                            sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
-                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"jwt_secret=${JWT_SECRET}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
-                            sh "terraform apply -auto-approve deploy.plan"
-                        }
-                    }
-                }
-            }
-            post {
-                success {
-                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sunny: *${env.SERVICE_NAME}* version: *${version}* Build succeeded - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
-                }
-                unsuccessful {
-                    rocketSend channel: "deployments-${env.DEPLOY_ENVIRONMENT}", message: "[${BUILD_DISPLAY_NAME}] :sob: *${env.SERVICE_NAME}* version: *${version}* Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER}  (<${env.BUILD_URL}|Open>)", rawMessage: true
-                }
-            }
-        }
-
-        stage ('Deploy iframely') {
-            when {
-                environment name: 'SERVICE_NAME', value: 'service-iframely'
-            }
-            script {
-                build job: '(GTMS Backend) Deploy iframely', wait: false, parameters: [
-                    string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
-                    string(name: 'version', value: env.VERSION),
-                    string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
-                ]
-            }
-        }
-
-        stage ('Deploy swagger') {
-            when {
-                environment name: 'SERVICE_NAME', value: 'swagger'
-            }
-            script {
-                build job: '(GTMS Backend) Deploy swagger', wait: false, parameters: [
-                    string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
-                    string(name: 'version', value: env.VERSION),
-                    string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
-                ]
             }
         }
     }
