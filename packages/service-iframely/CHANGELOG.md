@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-iframely@0.1.5...@gtms/service-iframely@0.1.6) (2020-08-18)
+
+
+### Bug Fixes
+
+* master: iframely fixes ([22ccbfd](https://github.com/mariusz-kabala/gtms-backend/commit/22ccbfd3a7a896264301409db6481bf928456077))
+
+
+
+
+
 ## [0.1.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-iframely@0.1.4...@gtms/service-iframely@0.1.5) (2020-08-18)
 
 
