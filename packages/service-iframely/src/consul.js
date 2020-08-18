@@ -39,6 +39,8 @@ module.exports = function() {
       id: CONSUL_ID,
     }
 
+    console.log(consulDetails, CONSUL_ID)
+
     consul.agent.service.register(consulDetails, err => {
       if (err) {
         return reject(err)
