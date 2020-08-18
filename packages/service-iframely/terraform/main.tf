@@ -19,6 +19,7 @@ resource "docker_container" "service-iframely" {
 
   env = [
     "PORT=80",
+    "NODE_TLS_REJECT_UNAUTHORIZED=0",
     "CONSUL_HOST=consul-client",
     "CONSUL_PORT=8500"
   ]
