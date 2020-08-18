@@ -35,7 +35,7 @@ module.exports = function() {
         ttl: '10s',
         deregistercriticalserviceafter: '1m',
       },
-      port,
+      port: PORT,
       id: CONSUL_ID,
     }
 
