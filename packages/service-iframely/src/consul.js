@@ -26,7 +26,7 @@ const consul = Consul({
 module.exports = function() {
   return new Promise((resolve, reject) => {
     const ip = getIPAddress()
-    const CONSUL_ID = `${serviceName}-${ip}-${PORT}-${uuid.v4()}`
+    const CONSUL_ID = `iframely-${ip}-${PORT}-${uuid.v4()}`
     const consulDetails = {
       name: 'iframely',
       tags: ['service'],
