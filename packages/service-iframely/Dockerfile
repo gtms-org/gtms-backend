@@ -4,9 +4,9 @@ WORKDIR /app
 
 RUN git clone https://github.com/itteco/iframely.git
 
-COPY ./src/config.local.js /app/iframely/config.local.js
-COPY ./src/server.js /app/iframely/server.js
-COPY ./src/consul.js /app/iframely/consul.js
+COPY ./packages/service-iframely/src/config.local.js /app/iframely/config.local.js
+COPY ./packages/service-iframely/src/server.js /app/iframely/server.js
+COPY ./packages/service-iframely/src/consul.js /app/iframely/consul.js
 
 FROM node:12-alpine AS runner
 
