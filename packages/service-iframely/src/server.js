@@ -27,9 +27,13 @@ console.log(' - support@iframely.com - if you need help')
 console.log(' - twitter.com/iframely - news & updates')
 console.log(' - github.com/itteco/iframely - star & contribute')
 
-consul().then(() => {
-  console.log('iframely registered in consul')
-})
+consul()
+  .then(() => {
+    console.log('iframely registered in consul')
+  })
+  .catch(err => {
+    console.log(`Consul error: ${err}`)
+  })
 
 if (!CONFIG.DEBUG) {
   const GracefulServer = require('graceful-cluster').GracefulServer
