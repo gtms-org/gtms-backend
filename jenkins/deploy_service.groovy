@@ -283,13 +283,15 @@ pipeline {
                     env.SERVICE_NAME == 'worker-notifications'
                 }
             }
-            script {
-                build job: '(GTMS Backend) Deploy worker', wait: false, parameters: [
-                    string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
-                    string(name: 'version', value: env.VERSION),
-                    string(name: 'SERVICE_NAME', value: env.SERVICE_NAME),
-                    string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
-                ]
+            steps {
+                script {
+                    build job: '(GTMS Backend) Deploy worker', wait: false, parameters: [
+                        string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
+                        string(name: 'version', value: env.VERSION),
+                        string(name: 'SERVICE_NAME', value: env.SERVICE_NAME),
+                        string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
+                    ]
+                }
             }
         }
 
@@ -323,12 +325,14 @@ pipeline {
             when {
                 environment name: 'SERVICE_NAME', value: 'service-iframely'
             }
-            script {
-                build job: '(GTMS Backend) Deploy iframely', wait: false, parameters: [
-                    string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
-                    string(name: 'version', value: env.VERSION),
-                    string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
-                ]
+            steps {
+                script {
+                    build job: '(GTMS Backend) Deploy iframely', wait: false, parameters: [
+                        string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
+                        string(name: 'version', value: env.VERSION),
+                        string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
+                    ]
+                }
             }
         }
 
@@ -336,12 +340,14 @@ pipeline {
             when {
                 environment name: 'SERVICE_NAME', value: 'swagger'
             }
-            script {
-                build job: '(GTMS Backend) Deploy swagger', wait: false, parameters: [
-                    string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
-                    string(name: 'version', value: env.VERSION),
-                    string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
-                ]
+            steps {
+                script {
+                    build job: '(GTMS Backend) Deploy swagger', wait: false, parameters: [
+                        string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
+                        string(name: 'version', value: env.VERSION),
+                        string(name: 'DEPLOY_ENVIRONMENT', value: env.DEPLOY_ENVIRONMENT)
+                    ]
+                }
             }
         }
     }
