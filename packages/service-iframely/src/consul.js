@@ -44,22 +44,19 @@ module.exports = function() {
         return reject(err)
       }
 
-      logger.info(`${serviceName} service registered in consul`)
+      console.log(`${serviceName} service registered in consul`)
 
       setInterval(() => {
         consul.agent.check.pass({ id: `service:${CONSUL_ID}` }, err => {
           if (err) {
-            logger.log({
-              level: 'error',
-              message: `Can not send heartbeat to consul ${err}`,
-            })
+            console.log(`Can not send heartbeat to consul ${err}`)
           }
         })
       }, 5 * 1000)
 
       const shutdown = () =>
         consul.agent.service.deregister({ id: CONSUL_ID }, () => {
-          logger.info(`${serviceName} service deregistered from consul`)
+          console.log(`${serviceName} service deregistered from consul`)
           process.exit()
         })
 
