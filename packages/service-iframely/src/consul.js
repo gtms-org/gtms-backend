@@ -44,7 +44,7 @@ module.exports = function() {
         return reject(err)
       }
 
-      console.log(`${serviceName} service registered in consul`)
+      console.log(`iframely service registered in consul`)
 
       setInterval(() => {
         consul.agent.check.pass({ id: `service:${CONSUL_ID}` }, err => {
@@ -56,7 +56,7 @@ module.exports = function() {
 
       const shutdown = () =>
         consul.agent.service.deregister({ id: CONSUL_ID }, () => {
-          console.log(`${serviceName} service deregistered from consul`)
+          console.log(`iframely service deregistered from consul`)
           process.exit()
         })
 
