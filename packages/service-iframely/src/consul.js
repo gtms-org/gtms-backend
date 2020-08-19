@@ -39,7 +39,10 @@ module.exports = function() {
       id: CONSUL_ID,
     }
 
-    console.log(consulDetails, CONSUL_ID)
+    console.log(consulDetails, CONSUL_ID, {
+      host: CONSUL_HOST,
+      port: CONSUL_PORT,
+    })
 
     consul.agent.service.register(consulDetails, err => {
       if (err) {
