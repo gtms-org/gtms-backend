@@ -35,14 +35,9 @@ module.exports = function() {
         ttl: '10s',
         deregistercriticalserviceafter: '1m',
       },
-      port: PORT,
+      port: parseInt(PORT, 10),
       id: CONSUL_ID,
     }
-
-    console.log(consulDetails, CONSUL_ID, {
-      host: CONSUL_HOST,
-      port: CONSUL_PORT,
-    })
 
     consul.agent.service.register(consulDetails, err => {
       if (err) {

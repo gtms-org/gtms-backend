@@ -32,7 +32,7 @@ consul()
     console.log('iframely registered in consul')
   })
   .catch(err => {
-    console.log(`Consul error: ${err}`, err)
+    console.log(`Consul error: ${err}`)
   })
 
 if (!CONFIG.DEBUG) {
