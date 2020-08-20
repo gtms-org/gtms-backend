@@ -37,7 +37,7 @@ pipeline {
         stage ('Deploy worker') {
             when {
                 expression {
-                    env.SERVICE_NAME == 'worker-auth' ||
+                    return env.SERVICE_NAME == 'worker-auth' ||
                     env.SERVICE_NAME == 'worker-es-indexer' ||
                     env.SERVICE_NAME == 'worker-files' ||
                     env.SERVICE_NAME == 'worker-groups' ||
@@ -61,7 +61,7 @@ pipeline {
         stage ('Deploy service') {
             when {
                 expression {
-                    env.SERVICE_NAME == 'service-auth' ||
+                    return env.SERVICE_NAME == 'service-auth' ||
                     env.SERVICE_NAME == 'service-groups' ||
                     env.SERVICE_NAME == 'service-files' ||
                     env.SERVICE_NAME == 'service-tags' ||
