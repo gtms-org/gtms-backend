@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.2.2...@gtms/lib-consul@0.2.3) (2020-08-20)
+
+
+### Bug Fixes
+
+* master: drop not needed vars from consul lib ([79cf7d4](https://github.com/mariusz-kabala/gtms-backend/commit/79cf7d49b80dc8d135023ff149b78af09703b61d))
+
+
+
+
+
 ## [0.2.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.2.1...@gtms/lib-consul@0.2.2) (2020-07-28)
 
 
