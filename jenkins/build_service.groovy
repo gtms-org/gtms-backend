@@ -79,7 +79,7 @@ pipeline {
             }
             steps {
                 script {
-                    build job: '(GTMS Backend) Deploy service', wait: false, parameters: [
+                    build job: '(GTMS Backend) Deploy', wait: false, parameters: [
                         string(name: 'ghprbActualCommit', value: "${ghprbActualCommit}"),
                         string(name: 'SERVICE_NAME', value: env.serviceName),
                         string(name: 'version', value: env.VERSION),

@@ -17,8 +17,8 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('SCALEWAY_S3_ACCESS_KEY')
         AWS_SECRET_ACCESS_KEY = credentials('SCALEWAY_S3_ACCESS_SECRET_KEY')
     }
-
-    stage ('prepare') {
+    stages {
+        stage ('prepare') {
             steps {
                 script {
                     try {
@@ -89,4 +89,5 @@ pipeline {
                 }
             }
         }
+    }
 }
