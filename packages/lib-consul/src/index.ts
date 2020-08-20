@@ -1,4 +1,3 @@
-import config from 'config'
 import uuid from 'uuid'
 import logger from '@gtms/lib-logger'
 import { consul } from './consul'
@@ -23,7 +22,7 @@ export const registerInConsul = (serviceName: string, port: number) =>
     const ip = getIPAddress()
     const CONSUL_ID = `${serviceName}-${ip}-${port}-${uuid.v4()}`
     const consulDetails = {
-      name: config.get<string>('serviceName'),
+      name: serviceName,
       tags: ['service'],
       address: ip,
       check: {
