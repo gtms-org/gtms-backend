@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.9.2...@gtms/lib-api@0.9.3) (2020-08-21)
+
+
+### Bug Fixes
+
+* debugging iframely ([6dc94c6](https://github.com/mariusz-kabala/gtms-backend/commit/6dc94c6353497048bb48e0a5795e973e43ec31b6))
+
+
+
+
+
 ## [0.9.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.9.1...@gtms/lib-api@0.9.2) (2020-08-21)
 
 
