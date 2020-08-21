@@ -36,6 +36,7 @@
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.0",
+    "string-strip-html": "^5.0.0",
     "uuid": "^3.3.3",
     "winston": "^3.2.1"
   },
@@ -57,6 +58,7 @@
     "@types/node-cron": "^2.0.3",
     "@types/node-fetch": "^2.3.3",
     "@types/set-cookie-parser": "^0.0.6",
+    "@types/string-strip-html": "^4.3.0",
     "@types/uuid": "^3.4.4",
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^2.20.0",

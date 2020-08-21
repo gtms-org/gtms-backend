@@ -65,15 +65,13 @@ export default {
           }
         }
 
-        const oembeds = await findEmbeds(parsed.text)
-        const html = prepareHtml(parsed.text, oembeds)
+        const html = await prepareHtml(parsed.text, true)
 
         PostModel.create({
           group,
           mentioned,
           text: parsed.text,
           html,
-          oembeds,
           lastTags: parsed.lastTags,
           tags: Array.isArray(tags)
             ? tags
@@ -254,13 +252,11 @@ export default {
         })
 
         const parsed = parseText(payload.text)
-        const oembeds = await findEmbeds(parsed.text)
-        const html = prepareHtml(parsed.text, oembeds)
+        const html = await prepareHtml(parsed.text, true)
 
         payload.text = parsed.text
         payload.lastTags = parsed.lastTags
         payload.html = html
-        payload.oembeds = oembeds
 
         PostModel.findOneAndUpdate(query, payload, { new: true })
           .then((post: IPost | null) => {
