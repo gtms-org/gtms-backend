@@ -6,7 +6,7 @@ export interface ISerializedPost {
   id: string
   text: string
   html: string
-  oembeds: IOEmbed[]
+  oembeds?: IOEmbed[]
   tags: string[]
   lastTags: string[]
   owner: string | ISerializedUser

@@ -5,14 +5,14 @@ export interface ISerializedComment {
   id: string
   text: string
   html: string
-  oembeds: IOEmbed[]
+  oembeds?: IOEmbed[]
   subComments: {
     owner: ISerializedUser | string
     createdAt: string
     updatedAt: string
     text: string
     html: string
-    oembeds: IOEmbed[]
+    oembeds?: IOEmbed[]
     tags: string[]
     lastTags: string[]
   }[]

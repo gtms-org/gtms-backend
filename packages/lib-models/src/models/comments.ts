@@ -6,7 +6,7 @@ export interface IComment extends Document {
   post: string
   text: string
   html: string
-  oembeds: IOEmbed[]
+  oembeds?: IOEmbed[]
   subComments: {
     _id: string
     owner: string
@@ -14,7 +14,7 @@ export interface IComment extends Document {
     updatedAt: string
     text: string
     html: string
-    oembeds: IOEmbed[]
+    oembeds?: IOEmbed[]
     tags: string[]
     lastTags: string[]
   }[]

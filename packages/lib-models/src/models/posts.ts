@@ -6,7 +6,7 @@ export interface IPost extends Document {
   group: string
   text: string
   html: string
-  oembeds: IOEmbed[]
+  oembeds?: IOEmbed[]
   tags: string[]
   lastTags: string[]
   followers: string[]

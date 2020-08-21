@@ -9,7 +9,7 @@ export function serializeComment(
         subComments: any
         text: string
         html: string
-        oembeds: IOEmbed[]
+        oembeds?: IOEmbed[]
         tags: string[]
         lastTags: string[]
         owner: string
