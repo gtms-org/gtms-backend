@@ -68,7 +68,10 @@ pipeline {
                     }
 
                     println "GIT branch to process: ${branch}"
+                    
                     manager.addShortText(branch, "white", "navy", "1px", "navy")
+                    manager.addShortText("${env.serviceName}", "white", "green", "1px", "navy")
+                    manager.addShortText("${version}", "white", "navy", "1px", "navy")
                     
                     sh "printenv"
                 }

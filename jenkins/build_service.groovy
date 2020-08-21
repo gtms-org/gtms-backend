@@ -39,6 +39,7 @@ pipeline {
 
                     println "GIT branch to process: ${branch}"
                     manager.addShortText(branch, "white", "navy", "1px", "navy")
+                    manager.addShortText("${env.serviceName}", "white", "green", "1px", "navy")
                     
                     sh "printenv"
                 }
@@ -66,6 +67,8 @@ pipeline {
                     def app = docker.build(props['name'].replace('@', '').replace('-', '').toLowerCase(), "-f packages/${env.serviceName}/Dockerfile .")
 
                     env.VERSION = "v${props['version']}" 
+
+                    manager.addShortText("v${props['version']}", "white", "navy", "1px", "navy")
                     
                     docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
                         app.push("v${props['version']}")
