@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.22.4...@gtms/service-posts@0.22.5) (2020-08-21)
+
+
+### Bug Fixes
+
+* debugging iframely ([b4c86d0](https://github.com/mariusz-kabala/gtms-backend/commit/b4c86d0f71f31047bfe0b857a72c725d661917f5))
+
+
+
+
+
 ## [0.22.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.22.3...@gtms/service-posts@0.22.4) (2020-08-21)
 
 **Note:** Version bump only for package @gtms/service-posts
