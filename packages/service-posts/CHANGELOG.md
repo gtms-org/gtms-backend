@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.21.4...@gtms/service-posts@0.22.0) (2020-08-21)
+
+
+### Features
+
+* GEOT-426: integrate iframely ([#173](https://github.com/mariusz-kabala/gtms-backend/issues/173)) ([910e3d1](https://github.com/mariusz-kabala/gtms-backend/commit/910e3d1edb67437539999013b10f6eb307c90962))
+
+
+
+
+
 ## [0.21.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.21.3...@gtms/service-posts@0.21.4) (2020-08-20)
 
 **Note:** Version bump only for package @gtms/service-posts

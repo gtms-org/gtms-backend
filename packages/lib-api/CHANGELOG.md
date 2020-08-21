@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.8.9...@gtms/lib-api@0.9.0) (2020-08-21)
+
+
+### Features
+
+* GEOT-426: integrate iframely ([#173](https://github.com/mariusz-kabala/gtms-backend/issues/173)) ([910e3d1](https://github.com/mariusz-kabala/gtms-backend/commit/910e3d1edb67437539999013b10f6eb307c90962))
+
+
+
+
+
 ## [0.8.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.8.8...@gtms/lib-api@0.8.9) (2020-08-20)
 
 **Note:** Version bump only for package @gtms/lib-api
