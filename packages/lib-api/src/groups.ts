@@ -21,12 +21,12 @@ export const canAddPost = (
         'x-traceid': traceId,
       },
       method: 'GET',
-    }).then(res => {
+    }).then(async res => {
       if (res.status === 200) {
         return
       }
 
-      throw res.status
+      throw await res.text()
     })
   })
 }

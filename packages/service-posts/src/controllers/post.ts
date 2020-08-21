@@ -206,11 +206,11 @@ export default {
             publishMultiple(res.get('x-traceid'), ...queueMessages)
           })
       })
-      .catch(() => {
+      .catch(err => {
         res.status(403).end()
 
         logger.log({
-          message: `User ${req.user.email} tried to add post to group ${group} but he has no rights to do that`,
+          message: `User ${req.user.email} tried to add post to group ${group} but he has no rights to do that - ${err}`,
           level: 'warn',
           traceId: res.get('x-traceid'),
         })
