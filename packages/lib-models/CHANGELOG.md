@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.23.3...@gtms/lib-models@0.23.4) (2020-08-21)
+
+
+### Bug Fixes
+
+* master: adjust types ([b5d8738](https://github.com/mariusz-kabala/gtms-backend/commit/b5d87380fa2cf9ff21ff80d8155a31ffd03adcc3))
+
+
+
+
+
 ## [0.23.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.23.2...@gtms/lib-models@0.23.3) (2020-08-21)
 
 **Note:** Version bump only for package @gtms/lib-models
