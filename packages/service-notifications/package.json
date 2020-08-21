@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-notifications",
-  "version": "0.10.32",
+  "version": "0.10.33",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "@gtms/client-mongoose": "*",
-    "@gtms/commons": "0.28.2",
+    "@gtms/commons": "0.28.3",
     "@gtms/lib-consul": "0.2.3",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-middlewares": "0.4.46",
-    "@gtms/lib-models": "0.23.5",
+    "@gtms/lib-middlewares": "0.4.47",
+    "@gtms/lib-models": "0.23.6",
     "@gtms/lib-testing": "*"
   },
   "author": "Mariusz Kabała",

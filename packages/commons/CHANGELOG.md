@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.28.2...@gtms/commons@0.28.3) (2020-08-21)
+
+
+### Bug Fixes
+
+* debugging iframely ([15e212b](https://github.com/mariusz-kabala/gtms-backend/commit/15e212b4445997684b30124ebd6e3024f17d261f))
+
+
+
+
+
 ## [0.28.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.28.1...@gtms/commons@0.28.2) (2020-08-21)
 
 
