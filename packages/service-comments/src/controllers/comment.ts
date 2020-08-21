@@ -9,7 +9,6 @@ import {
   ESIndexUpdateType,
   ESIndexUpdateRecord,
   parseText,
-  findEmbeds,
   prepareHtml,
   IOEmbed,
 } from '@gtms/commons'
@@ -20,7 +19,7 @@ function addComment(
     post: string
     text: string
     html: string
-    oembeds: IOEmbed[]
+    oembeds?: IOEmbed[]
     tags?: string[]
     lastTags?: readonly string[]
     owner: string
@@ -61,15 +60,13 @@ export default {
 
     const tags = text.match(/#(\w+)\b/gi)
     const parsed = parseText(text)
-    const oembeds = await findEmbeds(parsed.text)
-    const html = prepareHtml(parsed.text, oembeds)
+    const html = await prepareHtml(parsed.text, true)
 
     // todo: check somehow if user can add
     addComment(
       {
         post,
         html,
-        oembeds,
         text: parsed.text,
         lastTags: parsed.lastTags,
         tags: Array.isArray(tags)
@@ -191,13 +188,11 @@ export default {
         })
 
         const parsed = parseText(payload.text)
-        const oembeds = await findEmbeds(parsed.text)
-        const html = prepareHtml(parsed.text, oembeds)
+        const html = await prepareHtml(parsed.text, true)
 
         payload.text = parsed.text
         payload.lastTags = parsed.lastTags
         payload.html = html
-        payload.oembeds = oembeds
 
         CommentModel.findOneAndUpdate(query, payload, { new: true })
           .then((comment: IComment | null) => {
