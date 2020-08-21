@@ -12,7 +12,7 @@ export async function prepareHtml(
   oEmbeds?: IOEmbed[] | boolean
 ): Promise<string> {
   console.log(stripHtml(text))
-  let html = nl2br(stripHtml(text))
+  let html = nl2br((stripHtml(text) as any).result) // types are wrong :(
 
   if (oEmbeds === true) {
     html = await findAndLoadEmbeds(html)
