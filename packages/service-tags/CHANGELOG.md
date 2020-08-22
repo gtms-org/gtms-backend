@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.40](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.8.39...@gtms/service-tags@0.8.40) (2020-08-22)
+
+**Note:** Version bump only for package @gtms/service-tags
+
+
+
+
+
 ## [0.8.39](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.8.38...@gtms/service-tags@0.8.39) (2020-08-21)
 
 **Note:** Version bump only for package @gtms/service-tags

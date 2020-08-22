@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-tags",
-  "version": "0.8.39",
+  "version": "0.8.40",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@gtms/commons": "0.28.3",
-    "@gtms/lib-api": "0.9.7",
+    "@gtms/lib-api": "0.9.8",
     "@gtms/lib-logger": "*",
     "@gtms/lib-models": "0.23.6"
   },

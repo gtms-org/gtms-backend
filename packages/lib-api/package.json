@@ -1,6 +1,6 @@
 {
   "name": "@gtms/lib-api",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "",
   "main": "src/index.ts",
   "author": "Mariusz Kabała",

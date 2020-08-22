@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.9.7...@gtms/lib-api@0.9.8) (2020-08-22)
+
+
+### Bug Fixes
+
+* remove some logs ([07ae594](https://github.com/mariusz-kabala/gtms-backend/commit/07ae594d892f57f90aa96eca7145dd13b14f2f76))
+
+
+
+
+
 ## [0.9.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-api@0.9.6...@gtms/lib-api@0.9.7) (2020-08-21)
 
 **Note:** Version bump only for package @gtms/lib-api
