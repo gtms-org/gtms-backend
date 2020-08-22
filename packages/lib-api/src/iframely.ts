@@ -75,10 +75,6 @@ export const findAndLoadEmbeds = (text: string): Promise<string> => {
           }))
       )
     ).then(results => {
-      console.log('findAndLoadEmbeds')
-      console.log(text)
-      console.log('----')
-      console.log(results)
       let html = text
 
       for (const result of results) {
