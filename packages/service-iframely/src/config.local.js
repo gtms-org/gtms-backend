@@ -4,8 +4,8 @@
     // Specify a path for custom plugins. Custom plugins will override core plugins.
     // CUSTOM_PLUGINS_PATH: __dirname + '/yourcustom-plugin-folder',
 
-    DEBUG: true,
-    RICH_LOG_ENABLED: true,
+    DEBUG: false,
+    RICH_LOG_ENABLED: false,
 
     // For embeds that require render, baseAppUrl will be used as the host.
     baseAppUrl: 'http://yourdomain.com',
@@ -37,7 +37,7 @@
         },
         */
 
-    port: 80, //can be overridden by PORT env var
+    port: 8061, //can be overridden by PORT env var
     host: '0.0.0.0', // Dockers beware. See https://github.com/itteco/iframely/issues/132#issuecomment-242991246
     //can be overridden by HOST env var
 

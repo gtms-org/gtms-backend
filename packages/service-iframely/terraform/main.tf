@@ -1,7 +1,7 @@
 resource "docker_container" "service-iframely" {
   count = var.instances
   name  = "service-iframely-${var.env}-${count.index}"
-  image = "docker-registry.kabala.tech/gtms/serviceiframely:${var.tag}"
+  image = "rg.nl-ams.scw.cloud/gtms/serviceiframely:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"
