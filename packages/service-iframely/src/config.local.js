@@ -8,7 +8,7 @@
     RICH_LOG_ENABLED: false,
 
     // For embeds that require render, baseAppUrl will be used as the host.
-    baseAppUrl: 'http://yourdomain.com',
+    baseAppUrl: 'https://master.geotags.pl',
     relativeStaticUrl: '/r',
 
     // Or just skip built-in renders altogether

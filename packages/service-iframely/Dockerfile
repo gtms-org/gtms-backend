@@ -8,7 +8,7 @@ COPY ./packages/service-iframely/src/config.local.js /app/iframely/config.local.
 COPY ./packages/service-iframely/src/server.js /app/iframely/server.js
 COPY ./packages/service-iframely/src/consul.js /app/iframely/consul.js
 
-FROM node:12-alpine AS runner
+FROM node:10-alpine AS runner
 
 WORKDIR /app/
 
