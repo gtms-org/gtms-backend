@@ -70,7 +70,7 @@ pipeline {
 
                     manager.addShortText("v${props['version']}", "white", "navy", "1px", "navy")
                     
-                    docker.withRegistry('https://docker-registry.kabala.tech', 'docker-registry-credentials') {
+                    docker.withRegistry('https://rg.nl-ams.scw.cloud/kabalatech', 'docker-registry-scaleway') {
                         app.push("v${props['version']}")
                     }
                 }

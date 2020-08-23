@@ -37,7 +37,7 @@
         },
         */
 
-    port: 8061, //can be overridden by PORT env var
+    port: 80, //can be overridden by PORT env var
     host: '0.0.0.0', // Dockers beware. See https://github.com/itteco/iframely/issues/132#issuecomment-242991246
     //can be overridden by HOST env var
 
@@ -96,7 +96,7 @@
         */
 
     // If there's no response from remote server, the timeout will occur after
-    RESPONSE_TIMEOUT: 5 * 1000, //ms
+    RESPONSE_TIMEOUT: 10 * 1000, //ms
 
     /* From v1.4.0, Iframely supports HTTP/2 by default. Disable it, if you'd rather not.
            Alternatively, you can also disable per origin. See `proxy` option below.
