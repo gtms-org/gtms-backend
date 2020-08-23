@@ -18,4 +18,6 @@ RUN apk add --no-cache git
 
 RUN npm install && npm install consul && npm install uuid
 
+EXPOSE 8061
+
 CMD ["node", "server"]
