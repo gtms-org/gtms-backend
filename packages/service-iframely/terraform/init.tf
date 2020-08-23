@@ -2,7 +2,7 @@ provider "docker" {
     host = "tcp://${var.docker_host}/"
 
     registry_auth {
-    address = "docker-registry.kabala.tech"
+    address = "rg.nl-ams.scw.cloud"
     username = "${var.DOCKER_REGISTRY_USERNAME}"
     password = "${var.DOCKER_REGISTRY_PASSWORD}"
   }
