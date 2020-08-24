@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.40.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.39.15...@gtms/gatekeeper-public@0.40.0) (2020-08-24)
+
+
+### Features
+
+* GEOT-428: expose iframely ([#176](https://github.com/mariusz-kabala/gtms-backend/issues/176)) ([2df293c](https://github.com/mariusz-kabala/gtms-backend/commit/2df293cbc6e496d1cf0de5dded963600803edbb9))
+
+
+
+
+
 ## [0.39.15](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.39.14...@gtms/gatekeeper-public@0.39.15) (2020-08-24)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public

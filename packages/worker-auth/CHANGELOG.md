@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.14](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-auth@0.6.13...@gtms/worker-auth@0.6.14) (2020-08-24)
+
+**Note:** Version bump only for package @gtms/worker-auth
+
+
+
+
+
 ## [0.6.13](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-auth@0.6.12...@gtms/worker-auth@0.6.13) (2020-08-24)
 
 **Note:** Version bump only for package @gtms/worker-auth

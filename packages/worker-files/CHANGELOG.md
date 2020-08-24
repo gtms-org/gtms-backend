@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.44](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.4.43...@gtms/worker-files@0.4.44) (2020-08-24)
+
+**Note:** Version bump only for package @gtms/worker-files
+
+
+
+
+
 ## [0.4.43](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.4.42...@gtms/worker-files@0.4.43) (2020-08-24)
 
 **Note:** Version bump only for package @gtms/worker-files

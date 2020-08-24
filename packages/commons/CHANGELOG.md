@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.28.3...@gtms/commons@0.29.0) (2020-08-24)
+
+
+### Features
+
+* GEOT-428: expose iframely ([#176](https://github.com/mariusz-kabala/gtms-backend/issues/176)) ([2df293c](https://github.com/mariusz-kabala/gtms-backend/commit/2df293cbc6e496d1cf0de5dded963600803edbb9))
+
+
+
+
+
 ## [0.28.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.28.2...@gtms/commons@0.28.3) (2020-08-21)
 
 
