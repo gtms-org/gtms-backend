@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.36](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.5.35...@gtms/worker-tags@0.5.36) (2020-08-24)
+
+**Note:** Version bump only for package @gtms/worker-tags
+
+
+
+
+
 ## [0.5.35](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.5.34...@gtms/worker-tags@0.5.35) (2020-08-21)
 
 **Note:** Version bump only for package @gtms/worker-tags
