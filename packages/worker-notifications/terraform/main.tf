@@ -1,6 +1,6 @@
 resource "docker_container" "worker-notifications" {
   name  = "worker-notifications-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/workernotifications:${var.tag}"
+  image = "${var.DOCKER_REGISTRY}/gtms/workernotifications:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"

@@ -1,6 +1,6 @@
 resource "docker_container" "worker-auth" {
   name  = "worker-auth-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/workerauth:${var.tag}"
+  image = "${var.DOCKER_REGISTRY}/gtms/workerauth:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"

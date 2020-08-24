@@ -1,6 +1,6 @@
 resource "docker_container" "worker-es-indexer" {
   name  = "worker-es-indexer-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/workeresindexer:${var.tag}"
+  image = "${var.DOCKER_REGISTRY}/gtms/workeresindexer:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"

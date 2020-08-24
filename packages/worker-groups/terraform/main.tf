@@ -1,6 +1,6 @@
 resource "docker_container" "worker-groups" {
   name  = "worker-groups-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/workergroups:${var.tag}"
+  image = "${var.DOCKER_REGISTRY}/gtms/workergroups:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"

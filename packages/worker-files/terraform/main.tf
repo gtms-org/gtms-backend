@@ -1,6 +1,6 @@
 resource "docker_container" "worker-files" {
   name  = "worker-files-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/workerfiles:${var.tag}"
+  image = "${var.DOCKER_REGISTRY}/gtms/workerfiles:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"

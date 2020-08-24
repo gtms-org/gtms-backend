@@ -8,7 +8,6 @@ const {
   DB_HOST,
   QUEUE_HOST,
   APP_DOMAIN,
-  USER_PROFILE_SERVICE,
   VERSION,
   PORT,
   CONSUL_HOST,
@@ -27,9 +26,6 @@ module.exports = {
   serviceVersion: VERSION,
   queueHost: QUEUE_HOST,
   appDomain: APP_DOMAIN,
-  services: {
-    userProfile: USER_PROFILE_SERVICE,
-  },
   consulHost: CONSUL_HOST,
   consulPort: CONSUL_PORT,
 }

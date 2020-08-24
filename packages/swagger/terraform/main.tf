@@ -1,6 +1,6 @@
 resource "docker_container" "swagger" {
   name  = "swagger-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/swagger:${var.tag}"
+  image = "${var.DOCKER_REGISTRY}/gtms/swagger:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"

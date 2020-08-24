@@ -1,6 +1,6 @@
 resource "docker_container" "worker-posts" {
   name  = "worker-posts-${var.env}"
-  image = "docker-registry.kabala.tech/gtms/workerposts:${var.tag}"
+  image = "${var.DOCKER_REGISTRY}/gtms/workerposts:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"
