@@ -60,7 +60,10 @@ export default {
 
     const tags = text.match(/#(\w+)\b/gi)
     const parsed = parseText(text)
-    const html = await prepareHtml(parsed.text, true)
+    const html = await prepareHtml(parsed.text, {
+      oEmbeds: true,
+      traceId: res.get('x-traceid'),
+    })
 
     // todo: check somehow if user can add
     addComment(
@@ -188,7 +191,10 @@ export default {
         })
 
         const parsed = parseText(payload.text)
-        const html = await prepareHtml(parsed.text, true)
+        const html = await prepareHtml(parsed.text, {
+          oEmbeds: true,
+          traceId: res.get('x-traceid'),
+        })
 
         payload.text = parsed.text
         payload.lastTags = parsed.lastTags

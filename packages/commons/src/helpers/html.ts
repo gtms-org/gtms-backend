@@ -9,13 +9,16 @@ export function nl2br(text: string) {
 
 export async function prepareHtml(
   text: string,
-  oEmbeds?: IOEmbed[] | boolean
+  data: {
+    oEmbeds?: IOEmbed[] | boolean
+    traceId: string
+  }
 ): Promise<string> {
-  console.log(stripHtml(text))
   let html = nl2br((stripHtml(text) as any).result) // types are wrong :(
+  const { oEmbeds, traceId } = data
 
   if (oEmbeds === true) {
-    html = await findAndLoadEmbeds(html)
+    html = await findAndLoadEmbeds(html, traceId)
   }
 
   if (Array.isArray(oEmbeds)) {

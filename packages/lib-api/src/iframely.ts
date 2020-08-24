@@ -1,5 +1,6 @@
 import fetch from 'node-fetch'
 import { makeUrl } from './commons'
+import logger from '@gtms/lib-logger'
 
 const IFRAMELY_SERVICE = 'iframely'
 
@@ -40,7 +41,10 @@ export const getOembed = (url: string): Promise<IIframelyResponse> => {
 
 const URL_REGEXP = /(https?:\/\/[^\s]+)/g
 
-export const findAndLoadEmbeds = (text: string): Promise<string> => {
+export const findAndLoadEmbeds = (
+  text: string,
+  traceId: string
+): Promise<string> => {
   return new Promise(resolve => {
     const results = text.match(URL_REGEXP)
 
@@ -73,11 +77,24 @@ export const findAndLoadEmbeds = (text: string): Promise<string> => {
             url,
             html,
           }))
+          .catch(err => {
+            logger.log({
+              level: 'error',
+              message: `Iframely error for url: ${url} - ${err}`,
+              traceId,
+            })
+
+            return null
+          })
       )
     ).then(results => {
       let html = text
 
       for (const result of results) {
+        if (result === null) {
+          continue
+        }
+
         html = html.replace(result.url, result.html)
       }
 
