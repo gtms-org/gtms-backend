@@ -14,7 +14,6 @@ import {
   ESIndexUpdateType,
   ESIndexUpdateRecord,
   parseText,
-  findEmbeds,
   prepareHtml,
   IOEmbed,
 } from '@gtms/commons'
@@ -39,11 +38,10 @@ export default {
       traceId: res.get('x-traceid'),
     })
       .then(async () => {
-        console.log('USER CAN ADD A POST')
         const tags = text.match(/#(\w+)\b/gi)
         const mentionedUsernames = text.match(/@(\w+)\b/gi)
         const parsed = parseText(text)
-console.log('parsed text', parsed)
+
         if (
           Array.isArray(mentionedUsernames) &&
           mentionedUsernames.length > 0
@@ -65,9 +63,9 @@ console.log('parsed text', parsed)
             })
           }
         }
-console.log('before prepare HTML')
+
         const html = await prepareHtml(parsed.text, true)
-console.log('after preprare html', html)
+
         PostModel.create({
           group,
           mentioned,

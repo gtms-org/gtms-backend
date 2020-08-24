@@ -5,6 +5,7 @@ import FilesService from './files'
 import PostsService from './posts'
 import CommentsService from './comments'
 import NotificationsService from './notifications'
+import IframelyService from './iframely'
 
 export default [
   AuthService,
@@ -14,4 +15,5 @@ export default [
   PostsService,
   CommentsService,
   NotificationsService,
+  IframelyService,
 ]

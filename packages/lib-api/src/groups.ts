@@ -14,7 +14,6 @@ export const canAddPost = (
     GROUPS_SERVICE,
     `/can-add-post?user=${user}&group=${group}`
   ).then(url => {
-    console.log('GOT URL', url)
     return fetch(url, {
       headers: {
         Accept: 'application/json',
@@ -23,7 +22,6 @@ export const canAddPost = (
       },
       method: 'GET',
     }).then(async res => {
-      console.log('GOT RESPONSE')
       if (res.status === 200) {
         return
       }
