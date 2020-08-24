@@ -64,7 +64,10 @@ export default {
           }
         }
 
-        const html = await prepareHtml(parsed.text, true)
+        const html = await prepareHtml(parsed.text, {
+          oEmbeds: true,
+          traceId: res.get('x-traceid'),
+        })
 
         PostModel.create({
           group,
@@ -251,7 +254,10 @@ export default {
         })
 
         const parsed = parseText(payload.text)
-        const html = await prepareHtml(parsed.text, true)
+        const html = await prepareHtml(parsed.text, {
+          oEmbeds: true,
+          traceId: res.get('x-traceid'),
+        })
 
         payload.text = parsed.text
         payload.lastTags = parsed.lastTags
