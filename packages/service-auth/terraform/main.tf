@@ -1,7 +1,7 @@
 resource "docker_container" "service-auth" {
   count = var.instances
   name  = "service-auth-${var.env}-${count.index}"
-  image = "docker-registry.kabala.tech/gtms/serviceauth:${var.tag}"
+  image = "${var.DOCKER_REGISTRY}/gtms/serviceauth:${var.tag}"
   restart = "always"
   networks_advanced {
       name = "kabala-net"
@@ -24,10 +24,8 @@ resource "docker_container" "service-auth" {
     "QUEUE_HOST=${var.queue_host}",
     "DB_HOST=mongo-${var.env}-db",
     "DB_NAME=${var.db_name}",
-    "USER_PROFILE_SERVICE=missing-for-now",
     "VERSION=${var.tag}",
     "PORT=80",
-    "INTERNAL_GATEKEEPER=http://service-gatekeeper-internal-${var.env}/v1",
     "CONSUL_HOST=consul-client",
     "CONSUL_PORT=8500"
   ]
