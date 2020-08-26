@@ -27,7 +27,7 @@ router.post('/groups/cover', getCreateFileAction(FileTypes.groupCover))
 router.post('/avatar', getCreateFileAction(FileTypes.avatar))
 router.post('/gallery', getCreateFileAction(FileTypes.userGallery))
 router.post('/tags/promoted', getCreateFileAction(FileTypes.groupTagLogo))
-router.post('/post/image', getCreateFileAction(FileTypes.postImage))
+router.post('/posts/image', getCreateFileAction(FileTypes.postImage))
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })

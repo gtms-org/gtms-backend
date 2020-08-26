@@ -16,7 +16,7 @@ export default {
       restricted: true,
     },
     {
-      path: '/group/cover',
+      path: '/groups/cover',
       method: http.POST,
       restricted: true,
     },
@@ -36,7 +36,7 @@ export default {
       restricted: true,
     },
     {
-      path: '/post/image',
+      path: '/posts/image',
       method: http.POST,
       restricted: true,
     },
