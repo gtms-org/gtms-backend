@@ -16,6 +16,11 @@ export default {
       restricted: true,
     },
     {
+      path: '/group/cover',
+      method: http.POST,
+      restricted: true,
+    },
+    {
       path: '/avatar',
       method: http.POST,
       restricted: true,
@@ -27,6 +32,11 @@ export default {
     },
     {
       path: '/tags/promoted',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/post/image',
       method: http.POST,
       restricted: true,
     },

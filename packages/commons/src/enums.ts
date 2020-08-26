@@ -40,8 +40,10 @@ export enum FileTypes {
   avatar = 'avatar',
   groupLogo = 'groupLogo',
   groupBg = 'groupBg',
+  groupCover = 'groupCover',
   userGallery = 'userGallery',
   groupTagLogo = 'groupTagLogo',
+  postImage = 'postImage',
 }
 
 export enum FileStatus {
