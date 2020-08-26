@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.40.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.40.1...@gtms/gatekeeper-public@0.40.2) (2020-08-26)
+
+
+### Bug Fixes
+
+* master: proper endpoints urls ([0999370](https://github.com/mariusz-kabala/gtms-backend/commit/0999370db4698ade77da0a2a492347d139661604))
+
+
+
+
+
 ## [0.40.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.40.0...@gtms/gatekeeper-public@0.40.1) (2020-08-26)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public

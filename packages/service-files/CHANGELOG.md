@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.47](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.5.46...@gtms/service-files@0.5.47) (2020-08-26)
+
+
+### Bug Fixes
+
+* master: proper endpoints urls ([0999370](https://github.com/mariusz-kabala/gtms-backend/commit/0999370db4698ade77da0a2a492347d139661604))
+
+
+
+
+
 ## [0.5.46](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.5.45...@gtms/service-files@0.5.46) (2020-08-26)
 
 **Note:** Version bump only for package @gtms/service-files
