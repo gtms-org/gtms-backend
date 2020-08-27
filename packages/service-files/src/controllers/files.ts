@@ -31,9 +31,9 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
 
     console.log("-- HERE --")
 
-    const userTmpFileCount = await TmpFileModel.countDocuments({
-      owner: req.user.id,
-    })
+    const userTmpFileCount = 10; // await TmpFileModel.countDocuments({
+    //   owner: req.user.id,
+    // })
 
     console.log(`User tmp files counter: ${userTmpFileCount}`)
 
