@@ -4,6 +4,7 @@ export interface ILocation {
   method: http
   path: string
   restricted?: boolean
+  timeout?: number
 }
 
 export interface IServiceConfig {
