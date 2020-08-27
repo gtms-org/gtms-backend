@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.23.8...@gtms/lib-models@0.24.0) (2020-08-27)
+
+
+### Features
+
+* GEOT-431: tmp file upload endpoint ([#180](https://github.com/mariusz-kabala/gtms-backend/issues/180)) ([86e7ee1](https://github.com/mariusz-kabala/gtms-backend/commit/86e7ee1984c7a2ce7f7fabbc26a111ae3f827697))
+
+
+
+
+
 ## [0.23.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.23.7...@gtms/lib-models@0.23.8) (2020-08-26)
 
 **Note:** Version bump only for package @gtms/lib-models
