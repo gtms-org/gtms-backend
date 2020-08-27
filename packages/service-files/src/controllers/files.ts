@@ -29,9 +29,13 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
         .end()
     }
 
+    console.log("-- HERE --")
+
     const userTmpFileCount = await TmpFileModel.find({
       owner: req.user.id,
     }).countDocuments()
+
+    console.log(`User tmp files counter: ${userTmpFileCount}`)
 
     if (userTmpFileCount > 25) {
       logger.log({
@@ -55,7 +59,7 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
       Body: fileToUpload.data,
       ACL: 'public-read',
     }
-
+console.log('preparing upload')
     s3Client.upload(params, async (err: Error | null, data: any) => {
       if (err) {
         logger.log({
@@ -66,6 +70,8 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
 
         return next(err)
       }
+
+      console.log('uploaded')
 
       res.status(201).json({
         url: data.Location,
