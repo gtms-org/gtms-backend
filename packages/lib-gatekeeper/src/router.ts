@@ -50,12 +50,16 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
         middlewares.push(authMiddleware)
       }
 
+      const options = location.timeout
+        ? { ...proxyOptions, timeout: location.timeout }
+        : proxyOptions
+
       switch (location.method) {
         case http.POST:
           serviceRouter.post(
             location.path,
             middlewares,
-            proxy(getServiceHost(provider, location.path), proxyOptions)
+            proxy(getServiceHost(provider, location.path), options)
           )
           break
 
@@ -63,7 +67,7 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
           serviceRouter.get(
             location.path,
             middlewares,
-            proxy(getServiceHost(provider, location.path), proxyOptions)
+            proxy(getServiceHost(provider, location.path), options)
           )
           break
 
@@ -71,7 +75,7 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
           serviceRouter.delete(
             location.path,
             middlewares,
-            proxy(getServiceHost(provider, location.path), proxyOptions)
+            proxy(getServiceHost(provider, location.path), options)
           )
           break
 
@@ -79,7 +83,7 @@ export function initRouter(router: Router, config: IServiceConfig[]) {
           serviceRouter.put(
             location.path,
             middlewares,
-            proxy(getServiceHost(provider, location.path), proxyOptions)
+            proxy(getServiceHost(provider, location.path), options)
           )
           break
 
