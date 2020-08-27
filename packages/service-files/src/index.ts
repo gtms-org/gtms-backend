@@ -3,7 +3,10 @@ import bodyParser from 'body-parser'
 import fileUpload from 'express-fileupload'
 import morgan from 'morgan'
 import { stream } from '@gtms/lib-logger'
-import { getCreateFileAction } from './controllers/files'
+import {
+  getCreateFileAction,
+  getCreateTmpFileAction,
+} from './controllers/files'
 import {
   JWTMiddleware,
   errorMiddleware,
@@ -27,7 +30,7 @@ router.post('/groups/cover', getCreateFileAction(FileTypes.groupCover))
 router.post('/avatar', getCreateFileAction(FileTypes.avatar))
 router.post('/gallery', getCreateFileAction(FileTypes.userGallery))
 router.post('/tags/promoted', getCreateFileAction(FileTypes.groupTagLogo))
-router.post('/posts/image', getCreateFileAction(FileTypes.postImage))
+router.post('/posts/image', getCreateTmpFileAction(FileTypes.postImage))
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
