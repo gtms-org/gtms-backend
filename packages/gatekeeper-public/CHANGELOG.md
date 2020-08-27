@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.41.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.40.2...@gtms/gatekeeper-public@0.41.0) (2020-08-27)
+
+
+### Features
+
+* GEOT-432: allow to setup custom timeout on GK endpoint ([#181](https://github.com/mariusz-kabala/gtms-backend/issues/181)) ([27012fc](https://github.com/mariusz-kabala/gtms-backend/commit/27012fce6a123070f27db84d9b64f6826bb2bead))
+
+
+
+
+
 ## [0.40.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.40.1...@gtms/gatekeeper-public@0.40.2) (2020-08-26)
 
 
