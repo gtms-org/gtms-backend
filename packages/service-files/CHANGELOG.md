@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.6.4...@gtms/service-files@0.6.5) (2020-08-28)
+
+
+### Bug Fixes
+
+* master: enable DB connection in files service ([161b8a1](https://github.com/mariusz-kabala/gtms-backend/commit/161b8a18d9afd3ff3f59f7c5070ac3e8c11c4c86))
+
+
+
+
+
 ## [0.6.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.6.3...@gtms/service-files@0.6.4) (2020-08-28)
 
 
