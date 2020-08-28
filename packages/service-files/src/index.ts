@@ -2,7 +2,8 @@ import express, { Router, Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import fileUpload from 'express-fileupload'
 import morgan from 'morgan'
-import { stream } from '@gtms/lib-logger'
+import mongoose from '@gtms/client-mongoose'
+import logger, { stream } from '@gtms/lib-logger'
 import {
   getCreateFileAction,
   getCreateTmpFileAction,
@@ -17,6 +18,11 @@ import { FileTypes } from '@gtms/commons'
 
 const app = express()
 const router: Router = Router()
+
+mongoose.connection.on('error', err => {
+  logger.error(`${err}`)
+  process.exit(1)
+})
 
 router.get('/managment/heath', (_: Request, res: Response) => {
   res.status(200).json({
