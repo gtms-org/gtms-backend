@@ -29,13 +29,9 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
         .end()
     }
 
-    console.log('-- HERE --')
-
-    const userTmpFileCount = 10 // await TmpFileModel.countDocuments({
-    //   owner: req.user.id,
-    // })
-
-    console.log(`User tmp files counter: ${userTmpFileCount}`)
+    const userTmpFileCount = await TmpFileModel.countDocuments({
+      owner: req.user.id,
+    })
 
     if (userTmpFileCount > 25) {
       logger.log({
@@ -43,6 +39,7 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
         message: `User ${req.user.id} (${req.user.email}) exceeded tmp files limit (25), current number of tmp files for that user - ${userTmpFileCount}`,
         traceId: res.get('x-traceid'),
       })
+
       return res
         .status(400)
         .json({
@@ -59,7 +56,7 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
       Body: fileToUpload.data,
       ACL: 'public-read',
     }
-    console.log('preparing upload')
+
     s3Client.upload(params, async (err: Error | null, data: any) => {
       if (err) {
         logger.log({
@@ -70,8 +67,6 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
 
         return next(err)
       }
-
-      console.log('uploaded')
 
       res.status(201).json({
         url: data.Location,
