@@ -12,10 +12,13 @@ const {
   INTERNAL_GATEKEEPER,
   CONSUL_HOST,
   CONSUL_PORT,
+  DB_HOST,
 } = process.env
 
 module.exports = {
   port: PORT,
+  dbHost: DB_HOST,
+  dbName: 'files',
   serviceName: 'files',
   serviceVersion: VERSION,
   queueHost: QUEUE_HOST,
