@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.6.3...@gtms/service-files@0.6.4) (2020-08-28)
+
+
+### Bug Fixes
+
+* proper documents counting ([e9597f8](https://github.com/mariusz-kabala/gtms-backend/commit/e9597f87edb4cb8d6316b18c250c8194c5475cc1))
+
+
+
+
+
 ## [0.6.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.6.2...@gtms/service-files@0.6.3) (2020-08-27)
 
 
