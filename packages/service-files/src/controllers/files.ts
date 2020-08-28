@@ -29,9 +29,9 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
         .end()
     }
 
-    console.log("-- HERE --")
+    console.log('-- HERE --')
 
-    const userTmpFileCount = 10; // await TmpFileModel.countDocuments({
+    const userTmpFileCount = 10 // await TmpFileModel.countDocuments({
     //   owner: req.user.id,
     // })
 
@@ -59,7 +59,7 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
       Body: fileToUpload.data,
       ACL: 'public-read',
     }
-console.log('preparing upload')
+    console.log('preparing upload')
     s3Client.upload(params, async (err: Error | null, data: any) => {
       if (err) {
         logger.log({
@@ -83,12 +83,21 @@ console.log('preparing upload')
         bucket: params.Bucket,
         url: data.Location,
         relatedRecordType,
-      }).catch(err => {
-        logger.log({
-          message: `Database error: ${err}`,
-          level: 'error',
-        })
       })
+        .then(() => {
+          logger.log({
+            message: `TmpFile record has been created`,
+            level: 'info',
+            traceId: res.get('x-traceid'),
+          })
+        })
+        .catch(err => {
+          logger.log({
+            message: `Database error: ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+        })
     })
   }
 }
