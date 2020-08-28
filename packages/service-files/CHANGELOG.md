@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.6.6...@gtms/service-files@0.6.7) (2020-08-28)
+
+
+### Bug Fixes
+
+* master: enable tmp files db check ([cec395c](https://github.com/mariusz-kabala/gtms-backend/commit/cec395c81a84bed74cb8044ee002223851f2af5f))
+
+
+
+
+
 ## [0.6.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.6.5...@gtms/service-files@0.6.6) (2020-08-28)
 
 
