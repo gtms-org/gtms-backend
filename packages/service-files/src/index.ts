@@ -7,6 +7,7 @@ import logger, { stream } from '@gtms/lib-logger'
 import {
   getCreateFileAction,
   getCreateTmpFileAction,
+  deleteTempFile,
 } from './controllers/files'
 import {
   JWTMiddleware,
@@ -37,6 +38,7 @@ router.post('/avatar', getCreateFileAction(FileTypes.avatar))
 router.post('/gallery', getCreateFileAction(FileTypes.userGallery))
 router.post('/tags/promoted', getCreateFileAction(FileTypes.groupTagLogo))
 router.post('/posts/image', getCreateTmpFileAction(FileTypes.postImage))
+router.delete('/tmp/:id', deleteTempFile)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
