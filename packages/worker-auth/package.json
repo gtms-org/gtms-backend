@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-auth",
-  "version": "0.6.16",
+  "version": "0.6.17",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,12 +10,12 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-queue": "0.7.24",
-    "@gtms/commons": "0.29.1",
+    "@gtms/client-queue": "0.7.25",
+    "@gtms/commons": "0.29.2",
     "@gtms/lib-consul": "0.2.3",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.24.0"
+    "@gtms/lib-models": "0.24.1"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

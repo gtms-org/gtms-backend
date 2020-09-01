@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-files",
-  "version": "0.4.45",
+  "version": "0.4.46",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-queue": "0.7.24",
     "@gtms/client-mongoose": "*",
-    "@gtms/commons": "0.29.1",
+    "@gtms/client-queue": "0.7.25",
+    "@gtms/commons": "0.29.2",
     "@gtms/lib-consul": "0.2.3",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
