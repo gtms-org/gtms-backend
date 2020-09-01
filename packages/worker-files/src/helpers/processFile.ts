@@ -1,4 +1,4 @@
-import { FileOperations, FileTypes } from './enums'
+import { FileOperations, FileTypes } from '../enums'
 import fetch from 'node-fetch'
 import sharp from 'sharp'
 import AWS from 'aws-sdk'

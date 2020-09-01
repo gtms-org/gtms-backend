@@ -2,6 +2,8 @@ variable "env" {}
 
 variable "tag" {}
 
+variable "db_name" {}
+
 variable "queue_host" {}
 
 variable "docker_host" {}

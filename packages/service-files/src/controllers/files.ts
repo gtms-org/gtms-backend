@@ -6,7 +6,7 @@ import AWS from 'aws-sdk'
 import config from 'config'
 import { publishOnChannel } from '@gtms/client-queue'
 import { FILES_QUEUE_MAPPER, IFileQueueMsg } from '@gtms/commons'
-import { TmpFileModel } from '@gtms/lib-models'
+import { TmpFileModel, ITmpFile } from '@gtms/lib-models'
 
 AWS.config.update({
   accessKeyId: config.get<string>('awsAccessKeyId'),
@@ -173,4 +173,39 @@ export function getCreateFileAction(fileType: FileTypes) {
       }
     })
   }
+}
+
+export function deleteTempFile(
+  req: IAuthRequest,
+  res: Response,
+  next: NextFunction
+) {
+  const { id } = req.params
+
+  TmpFileModel.findOneAndDelete({
+    _id: id,
+    owner: req.user.id,
+  })
+    .then((file: ITmpFile | null) => {
+      if (!file) {
+        return res.status(404).end()
+      }
+
+      logger.log({
+        message: `Tmp file with id ${id} has been removed from DB by user ${req.user.email} (${req.user.id})`,
+        level: 'info',
+        traceId: res.get('x-traceid'),
+      })
+
+      return res.status(200).end()
+    })
+    .catch(err => {
+      logger.log({
+        level: 'error',
+        message: `Database error: ${err}`,
+        traceId: res.get('x-traceid'),
+      })
+
+      next(err)
+    })
 }

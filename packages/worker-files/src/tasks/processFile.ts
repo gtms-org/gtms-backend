@@ -12,10 +12,8 @@ import {
   IRetryPolicy,
   getSendMsgToRetryFunc,
   publishOnChannel,
-  onQueueConnectionError,
-  setConnectionErrorsHandlers,
 } from '@gtms/client-queue'
-import { processFile, FileOperation } from './processFile'
+import { processFile, FileOperation } from '../helpers'
 
 const retryPolicy: IRetryPolicy = {
   queue: Queues.createFile,
@@ -155,64 +153,40 @@ function processMsg(msg: amqp.Message) {
   })
 }
 
-let queueConnection: amqp.Connection
+export function initProcessFileTask(ch: amqp.Channel) {
+  const ok = ch.assertQueue(Queues.createFile, { durable: true })
 
-export async function listenToFilesQueue() {
-  await amqp
-    .connect(`amqp://${config.get<string>('queueHost')}`)
-    .then(async conn => {
-      await conn.createChannel().then(ch => {
-        queueConnection = conn
-
-        setConnectionErrorsHandlers(conn)
-
-        const ok = ch.assertQueue(Queues.createFile, { durable: true })
-        ok.then(async () => {
-          await setupRetriesPolicy(ch, retryPolicy)
-          ch.prefetch(1)
-        }).then(() => {
-          logger.log({
-            level: 'info',
-            message: `Starting to consume queue ${Queues.createFile}`,
+  ok.then(async () => {
+    await setupRetriesPolicy(ch, retryPolicy)
+    ch.prefetch(1)
+  }).then(() => {
+    ch.consume(
+      Queues.createFile,
+      msg => {
+        if (msg.fields.redelivered) {
+          return sendMsgToRetry({
+            msg,
+            channel: ch,
+            reasonOfFail:
+              'Message was redelivered, so something wrong happened',
           })
-          ch.consume(
-            Queues.createFile,
-            msg => {
-              if (msg.fields.redelivered) {
-                logger.log({
-                  level: 'info',
-                  message: 'Redelivered message, sending to retry',
-                })
-                return sendMsgToRetry({
-                  msg,
-                  channel: ch,
-                  reasonOfFail:
-                    'Message was redelivered, so something wrong happened',
-                })
-              }
+        }
 
-              processMsg(msg)
-                .catch(err => {
-                  sendMsgToRetry({
-                    msg,
-                    channel: ch,
-                    reasonOfFail: err,
-                  })
-                })
-                .finally(() => {
-                  ch.ack(msg)
-                })
-            },
-            {
-              noAck: false,
-            }
-          )
-        })
-      })
-    })
-    .catch(onQueueConnectionError)
-}
-
-export function closeConnection() {
-  queueConnection && queueConnection.close()
+        processMsg(msg)
+          .catch(err => {
+            sendMsgToRetry({
+              msg,
+              channel: ch,
+              reasonOfFail: err,
+            })
+          })
+          .finally(() => {
+            ch.ack(msg)
+          })
+      },
+      {
+        noAck: false,
+      }
+    )
+  })
 }

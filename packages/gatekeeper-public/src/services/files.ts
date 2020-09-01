@@ -47,5 +47,10 @@ export default {
       restricted: true,
       timeout: 30000, // 30s
     },
+    {
+      path: '/tmp/:id',
+      method: http.DELETE,
+      restricted: true,
+    },
   ],
 }
