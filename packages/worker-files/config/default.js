@@ -3,6 +3,7 @@ require('dotenv').config()
 
 const {
   QUEUE_HOST,
+  DB_HOST,
   VERSION,
   PORT,
   BUCKET_GROUP_LOGO,
@@ -21,6 +22,8 @@ const {
 module.exports = {
   port: PORT,
   queueHost: QUEUE_HOST,
+  dbHost: DB_HOST,
+  dbName: 'files',
   serviceName: 'worker-files',
   serviceVersion: VERSION,
   awsAccessKeyId: AWS_ACCESS_KEY_ID,

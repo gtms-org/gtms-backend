@@ -185,19 +185,27 @@ export function deleteTempFile(
   TmpFileModel.findOneAndDelete({
     _id: id,
     owner: req.user.id,
-  }).then((file: ITmpFile | null) => {
-    if (!file) {
-      return res.status(404).end()
-    }
-
-    logger.log({
-      message: `Tmp file with id ${id} has been removed from DB by user ${req.user.email} (${req.user.id})`,
-      level: 'info',
-      traceId: res.get('x-traceid'),
-    })
-
-    return res.status(200).end()
-  }).catch(err => {
-    
   })
+    .then((file: ITmpFile | null) => {
+      if (!file) {
+        return res.status(404).end()
+      }
+
+      logger.log({
+        message: `Tmp file with id ${id} has been removed from DB by user ${req.user.email} (${req.user.id})`,
+        level: 'info',
+        traceId: res.get('x-traceid'),
+      })
+
+      return res.status(200).end()
+    })
+    .catch(err => {
+      logger.log({
+        level: 'error',
+        message: `Database error: ${err}`,
+        traceId: res.get('x-traceid'),
+      })
+
+      next(err)
+    })
 }

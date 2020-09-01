@@ -7,9 +7,6 @@ import {
   setupRetriesPolicy,
   IRetryPolicy,
   getSendMsgToRetryFunc,
-  publishOnChannel,
-  onQueueConnectionError,
-  setConnectionErrorsHandlers,
 } from '@gtms/client-queue'
 
 AWS.config.update({
@@ -36,18 +33,6 @@ const retryPolicy: IRetryPolicy = {
     {
       name: '1h',
       ttl: 3600000,
-    },
-    {
-      name: '8h',
-      ttl: 28800000,
-    },
-    {
-      name: '24h',
-      ttl: 86400000,
-    },
-    {
-      name: '48h',
-      ttl: 172800000,
     },
   ],
 }
@@ -105,6 +90,44 @@ function processMsg(msg: amqp.Message) {
         })
 
         resolve()
+      }
+    )
+  })
+}
+
+export function initDeleteFileTask(ch: amqp.Channel) {
+  const ok = ch.assertQueue(Queues.deleteFile, { durable: true })
+
+  ok.then(async () => {
+    await setupRetriesPolicy(ch, retryPolicy)
+    ch.prefetch(1)
+  }).then(() => {
+    ch.consume(
+      Queues.deleteFile,
+      msg => {
+        if (msg.fields.redelivered) {
+          return sendMsgToRetry({
+            msg,
+            channel: ch,
+            reasonOfFail:
+              'Message was redelivered, so something wrong happened',
+          })
+        }
+
+        processMsg(msg)
+          .catch(err => {
+            sendMsgToRetry({
+              msg,
+              channel: ch,
+              reasonOfFail: err,
+            })
+          })
+          .finally(() => {
+            ch.ack(msg)
+          })
+      },
+      {
+        noAck: false,
       }
     )
   })

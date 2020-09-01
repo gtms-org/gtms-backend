@@ -18,6 +18,8 @@ resource "docker_container" "worker-files" {
 
   env = [
     "QUEUE_HOST=${var.queue_host}",
+    "DB_HOST=mongo-${var.env}-db",
+    "DB_NAME=${var.db_name}",
     "VERSION=${var.tag}",
     "PORT=80",
     "BUCKET_GROUP_LOGO=${var.BUCKET_GROUP_LOGO}",
