@@ -5,6 +5,7 @@ export enum Queues {
   updateESIndex = 'updateESIndex',
   deleteGroup = 'deleteGroup',
   createFile = 'createFile',
+  deleteFile = 'deleteFile',
   updateGroupFiles = 'updateGroupFiles',
   updateUserFiles = 'updateUserFiles',
   userUpdate = 'userUpdate',

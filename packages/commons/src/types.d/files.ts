@@ -17,3 +17,11 @@ export interface IFileQueueMsg {
     traceId: string
   }
 }
+
+export interface IDeleteFileQueueMsg {
+  data: {
+    bucket: string
+    file: string
+    traceId: string
+  }
+}
