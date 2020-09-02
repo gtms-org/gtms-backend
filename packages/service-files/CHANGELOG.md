@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.6.8...@gtms/service-files@0.7.0) (2020-09-02)
+
+
+### Features
+
+* GEOT-447: send delete file queue message when removing tmp f ([#184](https://github.com/mariusz-kabala/gtms-backend/issues/184)) ([9a2bee8](https://github.com/mariusz-kabala/gtms-backend/commit/9a2bee8e27f32864311c5873f0c22ff3a5de84ee))
+
+
+
+
+
 ## [0.6.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.6.7...@gtms/service-files@0.6.8) (2020-09-01)
 
 **Note:** Version bump only for package @gtms/service-files
