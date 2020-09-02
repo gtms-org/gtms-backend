@@ -73,10 +73,6 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
         return next(err)
       }
 
-      res.status(201).json({
-        url: data.Location,
-      })
-
       TmpFileModel.create({
         owner: req.user.id,
         file: params.Key,
@@ -84,7 +80,12 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
         url: data.Location,
         relatedRecordType,
       })
-        .then(() => {
+        .then((tmpFile: ITmpFile) => {
+          res.status(201).json({
+            url: data.Location,
+            id: tmpFile._id,
+          })
+
           logger.log({
             message: `TmpFile record has been created`,
             level: 'info',
@@ -97,6 +98,8 @@ export function getCreateTmpFileAction(relatedRecordType?: string) {
             level: 'error',
             traceId: res.get('x-traceid'),
           })
+
+          next(err)
         })
     })
   }
