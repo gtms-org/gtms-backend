@@ -5,7 +5,12 @@ import { UploadedFile } from 'express-fileupload'
 import AWS from 'aws-sdk'
 import config from 'config'
 import { publishOnChannel } from '@gtms/client-queue'
-import { FILES_QUEUE_MAPPER, IFileQueueMsg } from '@gtms/commons'
+import {
+  FILES_QUEUE_MAPPER,
+  IFileQueueMsg,
+  IDeleteFileQueueMsg,
+  Queues,
+} from '@gtms/commons'
 import { TmpFileModel, ITmpFile } from '@gtms/lib-models'
 
 AWS.config.update({
@@ -186,7 +191,7 @@ export function deleteTempFile(
     _id: id,
     owner: req.user.id,
   })
-    .then((file: ITmpFile | null) => {
+    .then(async (file: ITmpFile | null) => {
       if (!file) {
         return res.status(404).end()
       }
@@ -197,7 +202,29 @@ export function deleteTempFile(
         traceId: res.get('x-traceid'),
       })
 
-      return res.status(200).end()
+      res.status(200).end()
+
+      try {
+        await publishOnChannel<IDeleteFileQueueMsg>(Queues.deleteFile, {
+          data: {
+            traceId: res.get('x-traceid'),
+            bucket: file.bucket,
+            file: file.file,
+          },
+        })
+
+        logger.log({
+          message: `Delete file message has been sent to queue ${Queues.deleteFile}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+      } catch (err) {
+        logger.log({
+          message: `Can not send delete file message to queue ${Queues.deleteFile} - ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+      }
     })
     .catch(err => {
       logger.log({
