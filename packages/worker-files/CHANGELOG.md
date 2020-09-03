@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.4...@gtms/worker-files@0.5.5) (2020-09-03)
+
+
+### Bug Fixes
+
+* debugging queue ([c50757c](https://github.com/mariusz-kabala/gtms-backend/commit/c50757cbd22172b2678ba4ec8d374564461b755d))
+
+
+
+
+
 ## [0.5.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.3...@gtms/worker-files@0.5.4) (2020-09-03)
 
 
