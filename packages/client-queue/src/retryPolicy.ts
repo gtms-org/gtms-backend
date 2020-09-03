@@ -84,8 +84,6 @@ export function getSendMsgToRetryFunc(policy: IRetryPolicy) {
   }) => {
     const { attempt, content, traceId } = getAttemptAndUpdatedContent(msg)
 
-    channel.ack(msg)
-
     if (attempt > policy.retries.length) {
       logger.log({
         level: 'error',
