@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.28](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-queue@0.7.27...@gtms/client-queue@0.7.28) (2020-09-03)
+
+
+### Bug Fixes
+
+* act policy fix ([62e0a1f](https://github.com/mariusz-kabala/gtms-backend/commit/62e0a1fe27aec9032861ae370213693570d8d8c0))
+
+
+
+
+
 ## [0.7.27](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-queue@0.7.26...@gtms/client-queue@0.7.27) (2020-09-03)
 
 
