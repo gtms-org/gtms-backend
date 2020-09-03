@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.7...@gtms/worker-files@0.5.8) (2020-09-03)
+
+
+### Bug Fixes
+
+* master: cleanup logger ([789c990](https://github.com/mariusz-kabala/gtms-backend/commit/789c990810438a00d450cd9005c12f4c930183e5))
+
+
+
+
+
 ## [0.5.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.6...@gtms/worker-files@0.5.7) (2020-09-03)
 
 **Note:** Version bump only for package @gtms/worker-files
