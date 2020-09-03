@@ -11,6 +11,7 @@ const {
   BUCKET_GROUP_BG,
   BUCKET_USER_GALLERY,
   BUCKET_GROUP_TAG_LOGO,
+  BUCKET_POST_IMAGE,
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
   AWS_REGION,
@@ -38,6 +39,7 @@ module.exports = {
     userGallery: BUCKET_USER_GALLERY,
     groupBg: BUCKET_GROUP_BG,
     groupTagLogo: BUCKET_GROUP_TAG_LOGO,
+    postImage: BUCKET_POST_IMAGE,
   },
   files: {
     groupLogo: [
@@ -329,6 +331,47 @@ module.exports = {
           operation: 'save',
           fileType: 'webp',
           name: '35x35',
+        },
+      ],
+    ],
+    postImage: [
+      [
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: 'origin',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [1300, 1300],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '1300x1300',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '1300x1300',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [200, 200],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '200x200',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '200x200',
         },
       ],
     ],

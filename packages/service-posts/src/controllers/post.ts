@@ -16,6 +16,8 @@ import {
   parseText,
   prepareHtml,
   IOEmbed,
+  FileTypes,
+  FileStatus,
 } from '@gtms/commons'
 import { validateObjectId } from '@gtms/client-mongoose'
 import { canAddPost, getGroup, findUsersByUsernames } from '@gtms/lib-api'
@@ -25,7 +27,7 @@ const MENTIONED_NOTIFICATION_CHUNK = 50 // how many users can be notificed in on
 export default {
   create(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
-      body: { group, text },
+      body: { group, text, files },
     } = req
 
     if (!validateObjectId(group)) {
@@ -203,6 +205,32 @@ export default {
                   },
                 },
               })
+            }
+
+            // publish a message about post's files (images)
+            if (Array.isArray(files) && files.length > 0) {
+              for (const file of files) {
+                queueMessages.push({
+                  queue: Queues.updatePostFiles,
+                  message: {
+                    data: {
+                      relatedRecord: post._id,
+                      status: FileStatus.uploaded,
+                      fileType: FileTypes.postImage,
+                      owner: req.user.id,
+                      files: [
+                        {
+                          url: file.url,
+                        },
+                      ],
+                      traceId: res.get('x-traceid'),
+                      extra: {
+                        tmpFile: file.id,
+                      },
+                    },
+                  },
+                })
+              }
             }
 
             publishMultiple(res.get('x-traceid'), ...queueMessages)
