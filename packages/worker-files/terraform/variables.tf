@@ -34,3 +34,5 @@ variable "BUCKET_USER_GALLERY" {}
 
 variable "BUCKET_GROUP_TAG_LOGO" {}
 
+variable "BUCKET_POST_IMAGE" {}
+
