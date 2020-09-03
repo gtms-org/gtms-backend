@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.24.2...@gtms/lib-models@0.24.3) (2020-09-03)
+
+
+### Bug Fixes
+
+* master: save post files in DB ([a8596f1](https://github.com/mariusz-kabala/gtms-backend/commit/a8596f167630f2586bfc35c47db69358d5c12423))
+
+
+
+
+
 ## [0.24.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.24.1...@gtms/lib-models@0.24.2) (2020-09-03)
 
 **Note:** Version bump only for package @gtms/lib-models

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.40](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.10.39...@gtms/service-notifications@0.10.40) (2020-09-03)
+
+**Note:** Version bump only for package @gtms/service-notifications
+
+
+
+
+
 ## [0.10.39](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.10.38...@gtms/service-notifications@0.10.39) (2020-09-03)
 
 **Note:** Version bump only for package @gtms/service-notifications

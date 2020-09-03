@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-groups",
-  "version": "0.5.42",
+  "version": "0.5.43",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "@gtms/lib-consul": "0.2.3",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.24.2"
+    "@gtms/lib-models": "0.24.3"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

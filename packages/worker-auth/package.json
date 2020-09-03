@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-auth",
-  "version": "0.6.20",
+  "version": "0.6.21",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "@gtms/lib-consul": "0.2.3",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.24.2"
+    "@gtms/lib-models": "0.24.3"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

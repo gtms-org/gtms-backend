@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.1...@gtms/worker-posts@0.3.2) (2020-09-03)
+
+
+### Bug Fixes
+
+* master: save post files in DB ([a8596f1](https://github.com/mariusz-kabala/gtms-backend/commit/a8596f167630f2586bfc35c47db69358d5c12423))
+
+
+
+
+
 ## [0.3.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.0...@gtms/worker-posts@0.3.1) (2020-09-03)
 
 
