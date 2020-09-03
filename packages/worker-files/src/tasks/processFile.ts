@@ -93,11 +93,7 @@ function processMsg(msg: amqp.Message) {
       return resolve()
     }
 
-    const operations = config.get<FileOperation[][] | undefined>(
-      `files.${fileType}`
-    )
-
-    if (!operations) {
+    if (!config.has(`files.${fileType}`)) {
       logger.log({
         level: 'error',
         message: `No configuration for file type ${fileType}; file ${msg.content.toString()} can not be process`,
@@ -106,6 +102,10 @@ function processMsg(msg: amqp.Message) {
 
       return reject(`no configuration`)
     }
+
+    const operations = config.get<FileOperation[][] | undefined>(
+      `files.${fileType}`
+    )
 
     try {
       const result: string[][] = await Promise.all(
