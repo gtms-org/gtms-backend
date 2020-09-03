@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.2.42...@gtms/worker-posts@0.3.0) (2020-09-03)
+
+
+### Features
+
+* handle post image queue message ([b600fda](https://github.com/mariusz-kabala/gtms-backend/commit/b600fda66d7d11d477ba316eaaa6d10277db69f2))
+
+
+
+
+
 ## [0.2.42](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.2.41...@gtms/worker-posts@0.2.42) (2020-09-03)
 
 **Note:** Version bump only for package @gtms/worker-posts
