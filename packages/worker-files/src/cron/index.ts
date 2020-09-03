@@ -1,1 +1,1 @@
-export * from './cleanUpTmpFiles'
+export * from './cleanupTmpFiles'
