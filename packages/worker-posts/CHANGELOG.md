@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.0...@gtms/worker-posts@0.3.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* debugging posts worker ([8d7abed](https://github.com/mariusz-kabala/gtms-backend/commit/8d7abed2378fc275e0bb13fe7c116c3d178aa962))
+
+
+
+
+
 # [0.3.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.2.42...@gtms/worker-posts@0.3.0) (2020-09-03)
 
 
