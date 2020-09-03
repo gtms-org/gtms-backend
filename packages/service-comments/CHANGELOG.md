@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.12.3...@gtms/service-comments@0.12.4) (2020-09-03)
+
+**Note:** Version bump only for package @gtms/service-comments
+
+
+
+
+
 ## [0.12.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-comments@0.12.2...@gtms/service-comments@0.12.3) (2020-09-01)
 
 **Note:** Version bump only for package @gtms/service-comments

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.23.3...@gtms/service-posts@0.24.0) (2020-09-03)
+
+
+### Features
+
+* GEOT-430: process uploaded files ([#185](https://github.com/mariusz-kabala/gtms-backend/issues/185)) ([b7fb608](https://github.com/mariusz-kabala/gtms-backend/commit/b7fb608fdd1bf8a52acce3d9b973043576b9e3bd))
+
+
+
+
+
 ## [0.23.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.23.2...@gtms/service-posts@0.23.3) (2020-09-01)
 
 **Note:** Version bump only for package @gtms/service-posts
