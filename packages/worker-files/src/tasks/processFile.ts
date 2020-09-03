@@ -165,6 +165,9 @@ console.log('INIT ProcessFileTask')
     ch.consume(
       Queues.createFile,
       msg => {
+
+        console.log('on MESSAGE', msg.fields.redelivered)
+
         if (msg.fields.redelivered) {
           return sendMsgToRetry({
             msg,
