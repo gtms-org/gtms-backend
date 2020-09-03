@@ -39,7 +39,7 @@ export function cleanupTmpFiles() {
                   } else {
                     logger.log({
                       message: `Tmp file ${file.file} has been deleted from bucket ${file.bucket}`,
-                      level: 'error',
+                      level: 'info',
                     })
                   }
 

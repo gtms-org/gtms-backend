@@ -155,7 +155,7 @@ function processMsg(msg: amqp.Message) {
 
 export function initProcessFileTask(ch: amqp.Channel) {
   const ok = ch.assertQueue(Queues.createFile, { durable: true })
-
+console.log('INIT ProcessFileTask')
   ok.then(async () => {
     await setupRetriesPolicy(ch, retryPolicy)
     ch.prefetch(1)
