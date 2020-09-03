@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-auth",
-  "version": "0.31.11",
+  "version": "0.31.12",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@gtms/client-mongoose": "0.4.1",
-    "@gtms/client-queue": "0.7.26",
+    "@gtms/client-queue": "0.7.27",
     "@gtms/commons": "0.30.0",
     "@gtms/lib-consul": "0.2.3",
     "@gtms/lib-logger": "*",
