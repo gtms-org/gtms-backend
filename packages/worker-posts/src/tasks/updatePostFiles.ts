@@ -53,7 +53,7 @@ const processMsg = (msg: amqp.Message) => {
 
   //const { data: { status } = {} } = jsonMsg
 
-  console.log(jsonMsg)
+  console.log(msg.content.toString())
 
   return Promise.resolve()
 }
