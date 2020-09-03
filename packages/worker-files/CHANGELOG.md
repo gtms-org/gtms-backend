@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.1...@gtms/worker-files@0.5.2) (2020-09-03)
+
+
+### Bug Fixes
+
+* master: typo fix in import ([cd462a8](https://github.com/mariusz-kabala/gtms-backend/commit/cd462a8ef150701d26255f5e08e18a283d3922ef))
+
+
+
+
+
 ## [0.5.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.0...@gtms/worker-files@0.5.1) (2020-09-03)
 
 
