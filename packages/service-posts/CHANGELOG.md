@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.0...@gtms/service-posts@0.24.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* master: adjust post images queue ([af0899b](https://github.com/mariusz-kabala/gtms-backend/commit/af0899b4bad7c80a47b3839d8c5dd5adf02c48a8))
+
+
+
+
+
 # [0.24.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.23.3...@gtms/service-posts@0.24.0) (2020-09-03)
 
 
