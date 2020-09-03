@@ -211,7 +211,7 @@ export default {
             if (Array.isArray(files) && files.length > 0) {
               for (const file of files) {
                 queueMessages.push({
-                  queue: Queues.updatePostFiles,
+                  queue: Queues.createFile,
                   message: {
                     data: {
                       relatedRecord: post._id,
