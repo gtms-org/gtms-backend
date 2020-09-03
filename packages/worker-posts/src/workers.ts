@@ -1,6 +1,6 @@
 import amqp from 'amqplib'
 import config from 'config'
-import { initNewPostCommentTask } from './tasks'
+import { initNewPostCommentTask, initFilesTask } from './tasks'
 import {
   onQueueConnectionError,
   setConnectionErrorsHandlers,
@@ -18,6 +18,7 @@ export async function startWorkers() {
         queueConnection = conn
 
         initNewPostCommentTask(ch)
+        initFilesTask(ch)
       })
     })
     .catch(onQueueConnectionError)
