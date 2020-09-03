@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate'
-import { ISerializedComment, IOEmbed } from '@gtms/commons'
+import { ISerializedComment, IOEmbed, FileStatus } from '@gtms/commons'
 
 export interface IPost extends Document {
   group: string
@@ -18,6 +18,10 @@ export interface IPost extends Document {
   application: string
   createdAt: string
   updatedAt: string
+  images?: {
+    status: FileStatus
+    files: string[]
+  }[]
 }
 
 const PostSchema = new Schema(
@@ -90,6 +94,14 @@ const PostSchema = new Schema(
       type: [Schema.Types.ObjectId],
       required: false,
       default: [],
+    },
+    images: {
+      type: [
+        {
+          status: String,
+          files: [String],
+        },
+      ],
     },
   },
   {

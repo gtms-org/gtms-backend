@@ -37,25 +37,82 @@ const retryPolicy: IRetryPolicy = {
 const sendMsgToRetry = getSendMsgToRetryFunc(retryPolicy)
 
 const processMsg = (msg: amqp.Message) => {
-  let jsonMsg: IFileQueueMsg
+  return new Promise((resolve, reject) => {
+    let jsonMsg: IFileQueueMsg
 
-  try {
-    jsonMsg = JSON.parse(msg.content.toString())
-  } catch (err) {
-    logger.log({
-      level: 'error',
-      message: `Can not parse ${
-        Queues.updateGroupFiles
-      } queue message: ${msg.content.toString()} / error: ${err}`,
-    })
-    return Promise.reject(`can not parse json`)
-  }
+    try {
+      jsonMsg = JSON.parse(msg.content.toString())
+    } catch (err) {
+      logger.log({
+        level: 'error',
+        message: `Can not parse ${
+          Queues.updateGroupFiles
+        } queue message: ${msg.content.toString()} / error: ${err}`,
+      })
+      return Promise.reject(`can not parse json`)
+    }
 
-  //const { data: { status } = {} } = jsonMsg
+    const {
+      data: { files, traceId, status, relatedRecord, fileType, owner, extra },
+    } = jsonMsg
 
-  console.log(msg.content.toString())
+    if (fileType !== FileTypes.postImage) {
+      logger.log({
+        level: 'error',
+        message: `Not supported file type, message in ${
+          Queues.updatePostFiles
+        } queue will be ignored - ${msg.content.toString()}`,
+        traceId,
+      })
 
-  return Promise.resolve()
+      return reject('not supported FileType')
+    }
+
+    if (status !== FileStatus.ready) {
+      logger.log({
+        level: 'error',
+        message: `File status ${status} is not supported / Queue: ${
+          Queues.updatePostFiles
+        } / Message: ${msg.content.toString()}`,
+        traceId,
+      })
+
+      return reject('not supported FileStatus')
+    }
+
+    PostModel.updateOne(
+      {
+        _id: relatedRecord,
+        owner,
+      },
+      {
+        $push: {
+          images: {
+            status,
+            files: files.map(file => file.url),
+          },
+        },
+      }
+    )
+      .then(() => {
+        logger.log({
+          message: `Post ${relatedRecord} has been updated with an image`,
+          level: 'info',
+          traceId,
+        })
+
+        resolve()
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId,
+        })
+
+        reject('database error')
+      })
+  })
 }
 
 export function initFilesTask(ch: amqp.Channel) {
