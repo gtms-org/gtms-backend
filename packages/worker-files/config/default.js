@@ -375,5 +375,39 @@ module.exports = {
         },
       ],
     ],
+    groupCover: [
+      [
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: 'origin',
+        },
+      ],
+      [
+        {
+          operation: 'resize',
+          size: [685, 300],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '685x300',
+        },
+        {
+          operation: 'save',
+          fileType: 'webp',
+          name: '685x300',
+        },
+      ],
+    ],
+    groupBg: [
+      [
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: 'origin',
+        },
+      ],
+    ],
   },
 }
