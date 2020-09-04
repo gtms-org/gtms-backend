@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.45](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.5.44...@gtms/worker-groups@0.5.45) (2020-09-04)
+
+
+### Bug Fixes
+
+* master: allow to upload group related files ([4569b53](https://github.com/mariusz-kabala/gtms-backend/commit/4569b53c088d0141cbcb68d233afda0e48ab8d15))
+
+
+
+
+
 ## [0.5.44](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.5.43...@gtms/worker-groups@0.5.44) (2020-09-04)
 
 **Note:** Version bump only for package @gtms/worker-groups

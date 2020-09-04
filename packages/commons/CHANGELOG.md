@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.30.1...@gtms/commons@0.30.2) (2020-09-04)
+
+
+### Bug Fixes
+
+* master: allow to upload group related files ([4569b53](https://github.com/mariusz-kabala/gtms-backend/commit/4569b53c088d0141cbcb68d233afda0e48ab8d15))
+
+
+
+
+
 ## [0.30.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.30.0...@gtms/commons@0.30.1) (2020-09-04)
 
 
