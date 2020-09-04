@@ -9,4 +9,5 @@ export const FILES_QUEUE_MAPPER: {
   [FileTypes.userGallery]: Queues.updateUserFiles,
   [FileTypes.groupTagLogo]: Queues.updateGroupTagFiles,
   [FileTypes.postImage]: Queues.updatePostFiles,
+  [FileTypes.groupCover]: Queues.updateGroupFiles,
 }

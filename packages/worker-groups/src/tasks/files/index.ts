@@ -61,6 +61,13 @@ const getUpdatePayload = ({
           files,
         },
       }
+    case FileTypes.groupCover:
+      return {
+        cover: {
+          status,
+          files,
+        },
+      }
     default:
       throw new Error(`File ${fileType} is not supported`)
   }

@@ -46,7 +46,7 @@ const processMsg = (msg: amqp.Message) => {
       logger.log({
         level: 'error',
         message: `Can not parse ${
-          Queues.updateGroupFiles
+          Queues.updatePostFiles
         } queue message: ${msg.content.toString()} / error: ${err}`,
       })
       return Promise.reject(`can not parse json`)
