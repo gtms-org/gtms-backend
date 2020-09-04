@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.30.0...@gtms/commons@0.30.1) (2020-09-04)
+
+
+### Bug Fixes
+
+* master: expose post images in the response ([5898cf4](https://github.com/mariusz-kabala/gtms-backend/commit/5898cf434022e604461f4bf1f8833944c7e32bac))
+
+
+
+
+
 # [0.30.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.29.2...@gtms/commons@0.30.0) (2020-09-03)
 
 
