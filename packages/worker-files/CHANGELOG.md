@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.11...@gtms/worker-files@0.5.12) (2020-09-06)
+
+
+### Bug Fixes
+
+* master: enable group cover file setup ([cbe8180](https://github.com/mariusz-kabala/gtms-backend/commit/cbe8180ac8d3c542716d961372b9759f9dba14c8))
+
+
+
+
+
 ## [0.5.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.10...@gtms/worker-files@0.5.11) (2020-09-04)
 
 
