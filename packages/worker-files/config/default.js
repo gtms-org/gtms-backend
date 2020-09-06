@@ -9,6 +9,7 @@ const {
   BUCKET_GROUP_LOGO,
   BUCKET_AVATAR,
   BUCKET_GROUP_BG,
+  BUCKET_GROUP_COVER,
   BUCKET_USER_GALLERY,
   BUCKET_GROUP_TAG_LOGO,
   BUCKET_POST_IMAGE,
@@ -40,6 +41,7 @@ module.exports = {
     groupBg: BUCKET_GROUP_BG,
     groupTagLogo: BUCKET_GROUP_TAG_LOGO,
     postImage: BUCKET_POST_IMAGE,
+    groupCover: BUCKET_GROUP_COVER,
   },
   files: {
     groupLogo: [
