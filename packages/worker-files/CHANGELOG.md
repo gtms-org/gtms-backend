@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.14](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.13...@gtms/worker-files@0.5.14) (2020-09-08)
+
+
+### Bug Fixes
+
+* master: delete tmp files info from db ([be596fc](https://github.com/mariusz-kabala/gtms-backend/commit/be596fc70ebe193479011dc62089c850f06f5fa2))
+
+
+
+
+
 ## [0.5.13](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.12...@gtms/worker-files@0.5.13) (2020-09-08)
 
 **Note:** Version bump only for package @gtms/worker-files
