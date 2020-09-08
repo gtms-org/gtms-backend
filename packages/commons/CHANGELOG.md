@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.30.2...@gtms/commons@0.30.3) (2020-09-08)
+
+
+### Bug Fixes
+
+* GEOT-457: delete old group s3 files ([#189](https://github.com/mariusz-kabala/gtms-backend/issues/189)) ([539e336](https://github.com/mariusz-kabala/gtms-backend/commit/539e336b13a4014830acae6fd00c130fafd0b08d))
+
+
+
+
+
 ## [0.30.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.30.1...@gtms/commons@0.30.2) (2020-09-04)
 
 
