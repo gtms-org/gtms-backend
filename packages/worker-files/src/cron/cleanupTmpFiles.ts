@@ -15,11 +15,12 @@ const s3Client = new AWS.S3({
 
 export function cleanupTmpFiles() {
   const now = new Date()
-  TmpFileModel.find({
+  const query = {
     createdAt: {
       $lt: new Date(now.getTime() - 3600000), // older than 1h
     },
-  })
+  }
+  TmpFileModel.find(query)
     .then((files: ITmpFile[]) => {
       Promise.all(
         files.map(
@@ -48,12 +49,20 @@ export function cleanupTmpFiles() {
               )
             })
         )
-      ).then(() => {
-        logger.log({
-          level: 'info',
-          message: `Cleanup finished, ${files.length} files have been removed from DB`,
+      )
+        .then(() => TmpFileModel.deleteMany(query))
+        .then(() => {
+          logger.log({
+            level: 'info',
+            message: `Cleanup finished, ${files.length} files have been removed from DB`,
+          })
         })
-      })
+        .catch(err => {
+          logger.log({
+            message: `Database error: ${err}`,
+            level: 'error',
+          })
+        })
     })
     .catch(err => {
       logger.log({
