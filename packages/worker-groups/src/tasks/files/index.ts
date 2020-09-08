@@ -1,12 +1,18 @@
 import amqp from 'amqplib'
 import { GroupModel, IGroup } from '@gtms/lib-models'
 import logger from '@gtms/lib-logger'
-import { Queues, IFileQueueMsg, FileStatus, FileTypes } from '@gtms/commons'
+import {
+  Queues,
+  IFileQueueMsg,
+  FileStatus,
+  FileTypes,
+  getS3InfoFromUrl,
+} from '@gtms/commons'
 import {
   setupRetriesPolicy,
   IRetryPolicy,
   getSendMsgToRetryFunc,
-  publishOnChannel,
+  publishMultiple,
 } from '@gtms/client-queue'
 
 const retryPolicy: IRetryPolicy = {
@@ -37,6 +43,8 @@ const retryPolicy: IRetryPolicy = {
 
 const sendMsgToRetry = getSendMsgToRetryFunc(retryPolicy)
 
+export const FIELDS_WITH_FILES = ['avatar', 'bg', 'cover']
+
 const getUpdatePayload = ({
   files,
   fileType,
@@ -45,7 +53,12 @@ const getUpdatePayload = ({
   files: string[]
   fileType: FileTypes
   status: FileStatus
-}) => {
+}): {
+  [key in 'avatar' | 'bg' | 'cover']?: {
+    files: string[]
+    status: FileStatus
+  }
+} => {
   switch (fileType) {
     case FileTypes.groupLogo:
       return {
@@ -78,15 +91,21 @@ const processNewUpload = (payload: IFileQueueMsg) => {
     const {
       data: { relatedRecord, owner, traceId, files, fileType, status } = {},
     } = payload
+    const update = getUpdatePayload({
+      files: files.map(f => f.url),
+      fileType,
+      status,
+    })
 
     GroupModel.findOneAndUpdate(
       {
         _id: relatedRecord,
         owner,
       },
-      getUpdatePayload({ files: files.map(f => f.url), fileType, status }),
+      update,
       {
         upsert: false,
+        new: false,
       }
     )
       .then(async (group: IGroup | null) => {
@@ -101,14 +120,39 @@ const processNewUpload = (payload: IFileQueueMsg) => {
           return resolve()
         }
 
+        const messagesToPublish: { queue: string; message: any }[] = [
+          {
+            queue: Queues.createFile,
+            message: payload,
+          },
+        ]
+
+        for (let x = 0; x < FIELDS_WITH_FILES.length; x++) {
+          const key = FIELDS_WITH_FILES[x] as 'avatar' | 'bg' | 'cover'
+
+          if (update[key] && Array.isArray(group[key].files)) {
+            for (const url of group[key].files) {
+              const s3Info = getS3InfoFromUrl(url)
+
+              messagesToPublish.push({
+                queue: Queues.deleteFile,
+                message: {
+                  data: {
+                    ...s3Info,
+                    traceId,
+                  },
+                },
+              })
+            }
+          }
+        }
+
         try {
-          await publishOnChannel(Queues.createFile, payload)
+          await publishMultiple(traceId, ...messagesToPublish)
         } catch (err) {
           logger.log({
             level: 'error',
-            message: `Can not publish message to ${
-              Queues.createFile
-            } queue, payload: ${JSON.stringify(payload)}, error: ${err}`,
+            message: `Can not publish queue messages, error: ${err}`,
             traceId,
           })
         }
