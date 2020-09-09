@@ -4,9 +4,16 @@ import {
   IRetryPolicy,
   getSendMsgToRetryFunc,
   publishOnChannel,
+  publishMultiple,
 } from '@gtms/client-queue'
 import { UserModel, IUser } from '@gtms/lib-models'
-import { Queues, IFileQueueMsg, FileStatus, FileTypes } from '@gtms/commons'
+import {
+  Queues,
+  IFileQueueMsg,
+  FileStatus,
+  FileTypes,
+  getS3InfoFromUrl,
+} from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 
 const retryPolicy: IRetryPolicy = {
@@ -169,14 +176,39 @@ const processNewUpload = (payload: IFileQueueMsg) => {
           .then(async () => {
             payload.data.extra = extra
 
+            const messagesToPublish: { queue: string; message: any }[] = [
+              {
+                queue: Queues.createFile,
+                message: payload,
+              },
+            ]
+
+            // delete old avatar files
+            if (
+              Array.isArray(user.avatar?.files) &&
+              fileType === FileTypes.avatar
+            ) {
+              for (const url of user.avatar.files) {
+                const s3Info = getS3InfoFromUrl(url)
+
+                messagesToPublish.push({
+                  queue: Queues.deleteFile,
+                  message: {
+                    data: {
+                      ...s3Info,
+                      traceId,
+                    },
+                  },
+                })
+              }
+            }
+
             try {
-              await publishOnChannel(Queues.createFile, payload)
+              await publishMultiple(traceId, ...messagesToPublish)
             } catch (err) {
               logger.log({
                 level: 'error',
-                message: `Can not publish message to ${
-                  Queues.createFile
-                } queue, payload: ${JSON.stringify(payload)}, error: ${err}`,
+                message: `Can not publish queue messages, error: ${err}`,
                 traceId,
               })
             }
