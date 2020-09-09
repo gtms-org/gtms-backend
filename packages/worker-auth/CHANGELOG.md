@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.25](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-auth@0.6.24...@gtms/worker-auth@0.6.25) (2020-09-09)
+
+
+### Bug Fixes
+
+* master: remove all avatar files when updating ([23fa9dc](https://github.com/mariusz-kabala/gtms-backend/commit/23fa9dc4df433f80a8131b57ec04b661078b0e97))
+
+
+
+
+
 ## [0.6.24](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-auth@0.6.23...@gtms/worker-auth@0.6.24) (2020-09-08)
 
 **Note:** Version bump only for package @gtms/worker-auth
