@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-notifications",
-  "version": "0.4.32",
+  "version": "0.4.33",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "@gtms/lib-consul": "0.2.3",
     "@gtms/lib-http-server": "*",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-models": "0.24.6",
+    "@gtms/lib-models": "0.25.0",
     "@sendgrid/mail": "^6.5.5"
   },
   "author": "Mariusz Kabała",

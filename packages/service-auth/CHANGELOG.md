@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.32.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.31.17...@gtms/service-auth@0.32.0) (2020-09-11)
+
+
+### Features
+
+* GEOT-463: login with google ([#192](https://github.com/mariusz-kabala/gtms-backend/issues/192)) ([51ecdec](https://github.com/mariusz-kabala/gtms-backend/commit/51ecdec4dd30168d2bf7e54a9891acaae6baaf5b))
+
+
+
+
+
 ## [0.31.17](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.31.16...@gtms/service-auth@0.31.17) (2020-09-08)
 
 **Note:** Version bump only for package @gtms/service-auth

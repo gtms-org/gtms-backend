@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.24.6...@gtms/lib-models@0.25.0) (2020-09-11)
+
+
+### Features
+
+* GEOT-463: login with google ([#192](https://github.com/mariusz-kabala/gtms-backend/issues/192)) ([51ecdec](https://github.com/mariusz-kabala/gtms-backend/commit/51ecdec4dd30168d2bf7e54a9891acaae6baaf5b))
+
+
+
+
+
 ## [0.24.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.24.5...@gtms/lib-models@0.24.6) (2020-09-08)
 
 **Note:** Version bump only for package @gtms/lib-models
