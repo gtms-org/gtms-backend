@@ -5,3 +5,4 @@ app_domain = "master.geotags.pl"
 queue_host = "rabbitmq-qa-master"
 db_name = "gtms"
 instances = 3
+GOOGLE_REDIRECT_URL = "https://master.geotags.pl"

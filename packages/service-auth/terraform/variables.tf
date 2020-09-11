@@ -27,3 +27,9 @@ variable "db_name" {}
 variable "instances" {
     default = 1
 }
+
+variable "GOOGLE_CLIENT_ID" {}
+
+variable "GOOGLE_CLIENT_SECRET" {}
+
+variable "GOOGLE_REDIRECT_URL" {}

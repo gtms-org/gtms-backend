@@ -56,6 +56,11 @@ export default {
       restricted: false,
     },
     {
+      path: '/google',
+      method: http.POST,
+      restricted: false,
+    },
+    {
       path: '/activate-account/:code',
       method: http.GET,
       restricted: false,

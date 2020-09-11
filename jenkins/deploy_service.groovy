@@ -28,6 +28,8 @@ pipeline {
                 script {
                     env.JWT_SECRET = credentials('gtms-service-auth-qa-master-jwt-secrect')
                     env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-master-jwt-refresh-token-secrect')
+                    env.GOOGLE_CLIENT_ID = credentials('gtms-qa-master-google-client-id')
+                    env.GOOGLE_CLIENT_SECRECT = credentials('gtms-qa-master-google-client-secrect')
                 }
             }
         }
@@ -39,6 +41,8 @@ pipeline {
                 script {
                     env.JWT_SECRET = credentials('gtms-service-auth-qa-stable-jwt-secrect')
                     env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-stable-jwt-refresh-token-secrect')
+                    env.GOOGLE_CLIENT_ID = 'missing'
+                    env.GOOGLE_CLIENT_SECRECT = 'missing'
                 }
             }
         }
@@ -103,7 +107,7 @@ pipeline {
                         docker.withRegistry('https://rg.nl-ams.scw.cloud/kabalatech', 'docker-registry-scaleway') {
                             sh "terraform init"
                             sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
-                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"jwt_secret=${JWT_SECRET}\" -var=\"jwt_refresh_token_secret=${JWT_REFRESH_TOKEN_SECRET}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\"" 
+                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"jwt_secret=${JWT_SECRET}\" -var=\"jwt_refresh_token_secret=${JWT_REFRESH_TOKEN_SECRET}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\" -var=\"GOOGLE_CLIENT_ID=${env.GOOGLE_CLIENT_ID}\" -var=\"GOOGLE_CLIENT_SECRET=${env.GOOGLE_CLIENT_SECRET}\"" 
                             sh "terraform apply -auto-approve deploy.plan"
                         }
                     }
