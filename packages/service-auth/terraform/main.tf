@@ -27,6 +27,9 @@ resource "docker_container" "service-auth" {
     "VERSION=${var.tag}",
     "PORT=80",
     "CONSUL_HOST=consul-client",
-    "CONSUL_PORT=8500"
+    "CONSUL_PORT=8500",
+    "GOOGLE_CLIENT_ID=${var.GOOGLE_CLIENT_ID}",
+    "GOOGLE_CLIENT_SECRET=${var.GOOGLE_CLIENT_SECRET}",
+    "GOOGLE_REDIRECT_URL=${var.GOOGLE_REDIRECT_URL}"
   ]
 }

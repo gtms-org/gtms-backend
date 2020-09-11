@@ -12,6 +12,9 @@ const {
   PORT,
   CONSUL_HOST,
   CONSUL_PORT,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  GOOGLE_REDIRECT_URL,
 } = process.env
 
 module.exports = {
@@ -28,4 +31,7 @@ module.exports = {
   appDomain: APP_DOMAIN,
   consulHost: CONSUL_HOST,
   consulPort: CONSUL_PORT,
+  googleClientId: GOOGLE_CLIENT_ID,
+  googleClientSecret: GOOGLE_CLIENT_SECRET,
+  googleRedirectUrl: GOOGLE_REDIRECT_URL,
 }

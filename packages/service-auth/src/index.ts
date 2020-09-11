@@ -12,6 +12,7 @@ import {
 import logger, { stream } from '@gtms/lib-logger'
 import usersController from './controllers/users'
 import facebookController from './controllers/facebook'
+import googleController from './controllers/google'
 import activationsController from './controllers/activations'
 import findController from './controllers/find'
 import meController from './controllers/me'
@@ -73,6 +74,8 @@ router.post('/authenticate', usersController.authenticate)
 router.post('/refresh-token', usersController.refreshToken)
 
 router.post('/facebook', facebookController)
+
+router.post('/google', googleController)
 
 router.get('/activate-account/:code', activationsController.activateAccount)
 
