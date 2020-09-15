@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.32.5...@gtms/service-auth@0.32.6) (2020-09-15)
+
+
+### Bug Fixes
+
+* master: google login fixes ([f70423d](https://github.com/mariusz-kabala/gtms-backend/commit/f70423d00d964a1a19dc1e15924f948fca3521d9))
+
+
+
+
+
 ## [0.32.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.32.4...@gtms/service-auth@0.32.5) (2020-09-15)
 
 **Note:** Version bump only for package @gtms/service-auth
