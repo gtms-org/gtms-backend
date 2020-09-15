@@ -246,6 +246,14 @@ export default async function(req: Request, res: Response, next: NextFunction) {
     return res.status(500).end()
   }
 
+  logger.log({
+    level: 'info',
+    message: `Got user account details from google - ${JSON.stringify(
+      gAccount
+    )}`,
+    traceId: res.get('x-traceid'),
+  })
+
   try {
     provider = await GoogleProviderModel.findOne({
       id: gAccount.id,
