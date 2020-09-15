@@ -17,13 +17,30 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('SCALEWAY_S3_ACCESS_KEY')
         AWS_SECRET_ACCESS_KEY = credentials('SCALEWAY_S3_ACCESS_SECRET_KEY')
         SENDGRID_API_KEY = credentials('sendgrid-gtms-qa')
-        JWT_SECRET = credentials('gtms-service-auth-qa-master-jwt-secrect')
-        JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-master-jwt-refresh-token-secrect')
-        GOOGLE_CLIENT_ID = credentials('gtms-qa-master-google-client-id')
-        GOOGLE_CLIENT_SECRET = credentials('gtms-qa-master-google-client-secrect')
     }
 
     stages {
+        stage ('Set qa-master vars') {
+            when {
+                environment name: 'DEPLOY_ENVIRONMENT', value: 'qa-master'
+            }
+            steps {
+                script {
+                    withCredentials([
+                        string(credentialsId: 'gtms-service-auth-qa-master-jwt-secrect', variable: 'JWT_SECRET'),
+                        string(credentialsId: 'gtms-service-auth-qa-master-jwt-refresh-token-secrect', variable: 'JWT_REFRESH_TOKEN_SECRET'),
+                        string(credentialsId: 'gtms-qa-master-google-client-id', variable: 'GOOGLE_CLIENT_ID'),
+                        string(credentialsId: 'gtms-qa-master-google-client-secrect', variable: 'GOOGLE_CLIENT_SECRET')
+                    ]) {
+                        env.JWT_SECRET = JWT_SECRET
+                        env.JWT_REFRESH_TOKEN_SECRET = JWT_REFRESH_TOKEN_SECRET
+                        env.GOOGLE_CLIENT_ID = GOOGLE_CLIENT_ID
+                        env.GOOGLE_CLIENT_SECRET = GOOGLE_CLIENT_SECRET
+                    }
+                    
+                }
+            }
+        }
         stage ('Set qa-stable vars') {
             when {
                 environment name: 'DEPLOY_ENVIRONMENT', value: 'qa-stable'
