@@ -107,7 +107,7 @@ pipeline {
                         docker.withRegistry('https://rg.nl-ams.scw.cloud/kabalatech', 'docker-registry-scaleway') {
                             sh "terraform init"
                             sh "terraform workspace select ${env.DEPLOY_ENVIRONMENT} || terraform workspace new ${env.DEPLOY_ENVIRONMENT}"
-                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"jwt_secret=${JWT_SECRET}\" -var=\"jwt_refresh_token_secret=${JWT_REFRESH_TOKEN_SECRET}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\" -var=\"GOOGLE_CLIENT_ID=${env.GOOGLE_CLIENT_ID}\" -var=\"GOOGLE_CLIENT_SECRET=${env.GOOGLE_CLIENT_SECRET}\"" 
+                            sh "terraform plan -out deploy.plan -var-file=${env.DEPLOY_ENVIRONMENT}.tfvars -var=\"tag=${version}\" -var=\"jwt_secret=${JWT_SECRET}\" -var=\"jwt_refresh_token_secret=${JWT_REFRESH_TOKEN_SECRET}\" -var=\"DOCKER_REGISTRY_USERNAME=${DOCKER_REGISTRY_USERNAME}\" -var=\"DOCKER_REGISTRY_PASSWORD=${DOCKER_REGISTRY_PASSWORD}\" -var=\"GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}\" -var=\"GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}\"" 
                             sh "terraform apply -auto-approve deploy.plan"
                         }
                     }
