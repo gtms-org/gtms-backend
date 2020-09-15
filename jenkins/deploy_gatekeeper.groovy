@@ -25,8 +25,13 @@ pipeline {
             }
             steps {
                 script {
-                    env.JWT_SECRET = credentials('gtms-service-auth-qa-master-jwt-secrect')
-                    env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-master-jwt-refresh-token-secrect')
+                    withCredentials([
+                        string(credentialsId: 'gtms-service-auth-qa-master-jwt-secrect', variable: 'JWT_SECRET'),
+                        string(credentialsId: 'gtms-service-auth-qa-master-jwt-refresh-token-secrect', variable: 'JWT_REFRESH_TOKEN_SECRET')
+                    ]) {
+                        env.JWT_SECRET = JWT_SECRET
+                        env.JWT_REFRESH_TOKEN_SECRET = JWT_REFRESH_TOKEN_SECRET
+                    }
                 }
             }
         }
@@ -37,8 +42,13 @@ pipeline {
             }
             steps {
                 script {
-                    env.JWT_SECRET = credentials('gtms-service-auth-qa-stable-jwt-secrect')
-                    env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-stable-jwt-refresh-token-secrect')
+                    withCredentials([
+                        string(credentialsId: 'gtms-service-auth-qa-stable-jwt-secrect', variable: 'JWT_SECRET'),
+                        string(credentialsId: 'gtms-service-auth-qa-stable-jwt-refresh-token-secrect', variable: 'JWT_REFRESH_TOKEN_SECRET')
+                    ]) {
+                        env.JWT_SECRET = JWT_SECRET
+                        env.JWT_REFRESH_TOKEN_SECRET = JWT_REFRESH_TOKEN_SECRET
+                    }
                 }
             }
         }

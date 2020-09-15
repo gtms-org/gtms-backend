@@ -47,10 +47,16 @@ pipeline {
             }
             steps {
                 script {
-                    env.JWT_SECRET = credentials('gtms-service-auth-qa-stable-jwt-secrect')
-                    env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-stable-jwt-refresh-token-secrect')
-                    env.GOOGLE_CLIENT_ID = 'missing'
-                    env.GOOGLE_CLIENT_SECRET = 'missing'
+                    withCredentials([
+                        string(credentialsId: 'gtms-service-auth-qa-stable-jwt-secrect', variable: 'JWT_SECRET'),
+                        string(credentialsId: 'gtms-service-auth-qa-stable-jwt-refresh-token-secrect', variable: 'JWT_REFRESH_TOKEN_SECRET')
+                    ]) {
+                        env.JWT_SECRET = JWT_SECRET
+                        env.JWT_REFRESH_TOKEN_SECRET = JWT_REFRESH_TOKEN_SECRET
+                        env.GOOGLE_CLIENT_ID = 'missing'
+                        env.GOOGLE_CLIENT_SECRET = 'missing'
+                    }
+                    
                 }
             }
         }
