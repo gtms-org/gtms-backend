@@ -29,7 +29,7 @@ pipeline {
                     env.JWT_SECRET = credentials('gtms-service-auth-qa-master-jwt-secrect')
                     env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-master-jwt-refresh-token-secrect')
                     env.GOOGLE_CLIENT_ID = credentials('gtms-qa-master-google-client-id')
-                    env.GOOGLE_CLIENT_SECRECT = credentials('gtms-qa-master-google-client-secrect')
+                    env.GOOGLE_CLIENT_SECRET = credentials('gtms-qa-master-google-client-secrect')
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
                     env.JWT_SECRET = credentials('gtms-service-auth-qa-stable-jwt-secrect')
                     env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-stable-jwt-refresh-token-secrect')
                     env.GOOGLE_CLIENT_ID = 'missing'
-                    env.GOOGLE_CLIENT_SECRECT = 'missing'
+                    env.GOOGLE_CLIENT_SECRET = 'missing'
                 }
             }
         }
