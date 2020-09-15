@@ -24,16 +24,6 @@ pipeline {
     }
 
     stages {
-        stage ('Set qa-master vars') {
-            when {
-                environment name: 'DEPLOY_ENVIRONMENT', value: 'qa-master'
-            }
-            steps {
-                script {
-                    
-                }
-            }
-        }
         stage ('Set qa-stable vars') {
             when {
                 environment name: 'DEPLOY_ENVIRONMENT', value: 'qa-stable'
