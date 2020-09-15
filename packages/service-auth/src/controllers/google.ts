@@ -31,15 +31,19 @@ interface IGoogleAccount {
 }
 
 async function getAccessTokenFromCode(code: string) {
+  const body = JSON.stringify({
+    client_id: config.get<string>('googleClientId'),
+    client_secret: config.get<string>('googleClientSecret'),
+    redirect_uri: config.get<string>('googleRedirectUrl'),
+    grant_type: 'authorization_code',
+    code,
+  })
+
+  console.log(body)
+
   return await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
-    body: JSON.stringify({
-      client_id: config.get<string>('googleClientId'),
-      client_secret: config.get<string>('googleClientSecret'),
-      redirect_uri: config.get<string>('googleRedirectUrl'),
-      grant_type: 'authorization_code',
-      code,
-    }),
+    body,
   }).then(res => res.json())
 }
 
