@@ -43,8 +43,19 @@ async function getAccessTokenFromCode(code: string) {
   }).then(res => res.json())
 }
 
-async function getGoogleAccountFromCode(code: string): Promise<IGoogleAccount> {
-  const { access_token } = await getAccessTokenFromCode(code)
+async function getGoogleAccountFromCode(
+  code: string,
+  traceId: string
+): Promise<IGoogleAccount> {
+  const res = await getAccessTokenFromCode(code)
+
+  logger.log({
+    traceId,
+    level: 'info',
+    message: `Got auth response from google - ${JSON.stringify(res)}`,
+  })
+
+  const { access_token } = res
 
   const userInfo = await fetch(
     'https://www.googleapis.com/oauth2/v2/userinfo',
@@ -235,7 +246,7 @@ export default async function(req: Request, res: Response, next: NextFunction) {
   let provider: IGoogleProvider | undefined
 
   try {
-    gAccount = await getGoogleAccountFromCode(code)
+    gAccount = await getGoogleAccountFromCode(code, res.get('x-traceid'))
   } catch (err) {
     logger.log({
       level: 'error',
