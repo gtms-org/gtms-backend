@@ -9,6 +9,7 @@ import {
 } from '@gtms/lib-models'
 import authenticate from '../helpers/authenticate'
 import { generateRandomUsername } from '../helpers/generateUsername'
+import sendActivationEmail from '../helpers/sendActivationEmail'
 import serializeCookie from '../helpers/cookies'
 import logger from '@gtms/lib-logger'
 import crypto from 'crypto'
@@ -38,8 +39,6 @@ async function getAccessTokenFromCode(code: string) {
     grant_type: 'authorization_code',
     code,
   })
-
-  console.log(body)
 
   return await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
@@ -143,8 +142,10 @@ async function registerNewGoogleProvider({
   let user = await UserModel.findOne({
     email: gAccount.email,
   })
+  let newAccount = false
 
   if (!user) {
+    newAccount = true
     let username: string
     try {
       username = await generateRandomUsername(
@@ -170,6 +171,8 @@ async function registerNewGoogleProvider({
         countryCode,
         languageCode,
       })
+
+      sendActivationEmail(user, res.get('x-traceid'))
     } catch (err) {
       logger.log({
         message: `Can not create a new user account. Database error - ${err}`,
@@ -188,7 +191,7 @@ async function registerNewGoogleProvider({
   })
     .then((google: IGoogleProvider) => {
       // check if account was activated
-      if (user.isActive !== true) {
+      if (user.isActive !== true && !newAccount) {
         logger.log({
           message: `Account ${req.body.email} is not yet activated, can not login`,
           level: 'info',
