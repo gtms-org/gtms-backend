@@ -157,7 +157,7 @@ async function registerNewGoogleProvider({
       })
     } catch (err) {
       logger.log({
-        message: `Database error - ${err}`,
+        message: `Can not create a new user account. Database error - ${err}`,
         level: 'error',
         traceId: res.get('x-traceid'),
       })
@@ -213,7 +213,7 @@ async function registerNewGoogleProvider({
     })
     .catch(err => {
       logger.log({
-        message: `Database error - ${err}`,
+        message: `Can not create a new google provider record. Database error - ${err}`,
         level: 'error',
         traceId: res.get('x-traceid'),
       })
