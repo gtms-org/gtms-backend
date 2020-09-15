@@ -17,6 +17,10 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('SCALEWAY_S3_ACCESS_KEY')
         AWS_SECRET_ACCESS_KEY = credentials('SCALEWAY_S3_ACCESS_SECRET_KEY')
         SENDGRID_API_KEY = credentials('sendgrid-gtms-qa')
+        JWT_SECRET = credentials('gtms-service-auth-qa-master-jwt-secrect')
+        JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-master-jwt-refresh-token-secrect')
+        GOOGLE_CLIENT_ID = credentials('gtms-qa-master-google-client-id')
+        GOOGLE_CLIENT_SECRET = credentials('gtms-qa-master-google-client-secrect')
     }
 
     stages {
@@ -26,10 +30,7 @@ pipeline {
             }
             steps {
                 script {
-                    env.JWT_SECRET = credentials('gtms-service-auth-qa-master-jwt-secrect')
-                    env.JWT_REFRESH_TOKEN_SECRET = credentials('gtms-service-auth-qa-master-jwt-refresh-token-secrect')
-                    env.GOOGLE_CLIENT_ID = credentials('gtms-qa-master-google-client-id')
-                    env.GOOGLE_CLIENT_SECRET = credentials('gtms-qa-master-google-client-secrect')
+                    
                 }
             }
         }
