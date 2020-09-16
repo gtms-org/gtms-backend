@@ -78,35 +78,20 @@ function updateUserPhoto(
   user: IUser,
   traceId: string
 ) {
-  fetch(gAccount.picture)
-    .then(res => {
-      if (res.status !== 200) {
-        logger.log({
-          level: 'warn',
-          message: 'Can not fetch user profile image from google account',
-          traceId,
-        })
-        return
-      }
-
-      return res.json()
-    })
-    .then(data => {
-      return publishOnChannel<IFileQueueMsg>(Queues.updateUserFiles, {
-        data: {
-          relatedRecord: user._id,
-          status: FileStatus.uploaded,
-          fileType: FileTypes.avatar,
-          owner: user._id,
-          files: [
-            {
-              url: data.data.url,
-            },
-          ],
-          traceId,
+  return publishOnChannel<IFileQueueMsg>(Queues.updateUserFiles, {
+    data: {
+      relatedRecord: user._id,
+      status: FileStatus.uploaded,
+      fileType: FileTypes.avatar,
+      owner: user._id,
+      files: [
+        {
+          url: gAccount.picture,
         },
-      })
-    })
+      ],
+      traceId,
+    },
+  })
     .then(() => {
       logger.log({
         level: 'info',
@@ -117,7 +102,7 @@ function updateUserPhoto(
     .catch(err => {
       logger.log({
         level: 'error',
-        message: `Can not publish user's facebook photo info; error: ${err}`,
+        message: `Can not publish user's google photo info; error: ${err}`,
         traceId,
       })
     })
