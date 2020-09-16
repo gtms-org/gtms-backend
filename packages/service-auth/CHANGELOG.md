@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.32.7...@gtms/service-auth@0.32.8) (2020-09-16)
+
+
+### Bug Fixes
+
+* master: fetching google image ([cf67b12](https://github.com/mariusz-kabala/gtms-backend/commit/cf67b12387a023ab6af213d16a94d63d6ec5e80b))
+
+
+
+
+
 ## [0.32.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.32.6...@gtms/service-auth@0.32.7) (2020-09-16)
 
 **Note:** Version bump only for package @gtms/service-auth
