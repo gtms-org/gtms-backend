@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.43.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.42.1...@gtms/gatekeeper-public@0.43.0) (2020-09-17)
+
+
+### Features
+
+* master: expose abuse service endpoints in GK ([96457eb](https://github.com/mariusz-kabala/gtms-backend/commit/96457eb685b121116ebac543d24a36d96e15f15e))
+
+
+
+
+
 ## [0.42.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.42.0...@gtms/gatekeeper-public@0.42.1) (2020-09-17)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
