@@ -144,4 +144,48 @@ export default {
       }
     )
   },
+  findById(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params
+
+    CommentModel.findById(id)
+      .then((comment: IComment | null) => {
+        if (!comment) {
+          // checking for subComments
+          CommentModel.findOne({
+            subComments: {
+              $elemMatch: {
+                _id: id,
+              },
+            },
+          })
+            .then((comment: IComment | null) => {
+              if (!comment) {
+                return res.status(404).end()
+              }
+
+              return res.status(200).json(serializeComment(comment))
+            })
+            .catch(err => {
+              logger.log({
+                message: `Database error ${err}`,
+                level: 'error',
+                traceId: res.get('x-traceid'),
+              })
+
+              next(err)
+            })
+        }
+
+        return res.status(200).json(serializeComment(comment))
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      })
+  },
 }
