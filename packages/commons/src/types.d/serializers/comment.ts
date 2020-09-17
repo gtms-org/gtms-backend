@@ -3,6 +3,7 @@ import { IOEmbed } from '../oembed'
 
 export interface ISerializedComment {
   id: string
+  post: string
   text: string
   html: string
   oembeds?: IOEmbed[]

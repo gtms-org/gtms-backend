@@ -6,6 +6,7 @@ export function serializeComment(
     | IComment
     | {
         _id: string
+        post: string
         subComments: any
         text: string
         html: string
@@ -20,6 +21,7 @@ export function serializeComment(
 ): ISerializedComment {
   return {
     id: comment._id,
+    post: comment.post,
     text: comment.text,
     html: comment.html,
     oembeds: comment.oembeds,

@@ -3,15 +3,13 @@ import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import logger, { stream } from '@gtms/lib-logger'
 import mongoose from '@gtms/client-mongoose'
-import CommentController from './controllers/comment'
-import FindController from './controllers/find'
-
 import {
   JWTMiddleware,
   errorMiddleware,
   traceIDMiddleware,
   getAppInfoMiddleware,
 } from '@gtms/lib-middlewares'
+import AbuseController from './controllers/abuse'
 
 const app = express()
 const router: Router = Router()
@@ -27,13 +25,7 @@ router.get('/managment/heath', (_: Request, res: Response) => {
   })
 })
 
-// routes
-router.get('/my', FindController.myComments)
-router.get('/post/:id', FindController.postComments)
-router.get('/:id/nested', FindController.subComments)
-router.get('/:id', FindController.findById)
-router.post('/:id', JWTMiddleware, CommentController.update)
-router.post('/', JWTMiddleware, CommentController.create)
+router.post('/', JWTMiddleware, AbuseController.create)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
