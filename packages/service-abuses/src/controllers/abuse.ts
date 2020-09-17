@@ -105,6 +105,7 @@ export default {
         owner: string
         reporter: string
         reason: string
+        substantiation?: string
         text: string
         html: string
         comment?: string
@@ -114,6 +115,7 @@ export default {
         owner: record.owner as string,
         reporter: req.user.id,
         reason: body.reason,
+        substantiation: body.substantiation,
         text: record.text,
         html: record.html,
       }
