@@ -70,7 +70,8 @@ pipeline {
                     env.SERVICE_NAME == 'service-tags' ||
                     env.SERVICE_NAME == 'service-posts' ||
                     env.SERVICE_NAME == 'service-comments' ||
-                    env.SERVICE_NAME == 'service-notifications'
+                    env.SERVICE_NAME == 'service-notifications' ||
+                    env.SERVICE_NAME == 'service-abuses'
                 }
             }
             steps {
