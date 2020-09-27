@@ -214,7 +214,7 @@ export default {
       res.get('x-traceid')
     )
       .then(result => {
-        if (!showGroups) {
+        if (showGroups !== 'true') {
           return res.status(200).json(result)
         }
 
