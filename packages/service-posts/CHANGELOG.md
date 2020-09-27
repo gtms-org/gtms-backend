@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.12](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.11...@gtms/service-posts@0.24.12) (2020-09-27)
+
+
+### Bug Fixes
+
+* master: use query param in the proper way ([ce62de9](https://github.com/mariusz-kabala/gtms-backend/commit/ce62de95d7f10755f3c7f84f9e73c51c19f5f114))
+
+
+
+
+
 ## [0.24.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.10...@gtms/service-posts@0.24.11) (2020-09-27)
 
 
