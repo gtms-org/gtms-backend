@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.10...@gtms/service-posts@0.24.11) (2020-09-27)
+
+
+### Bug Fixes
+
+* master: proper typings ([fd76459](https://github.com/mariusz-kabala/gtms-backend/commit/fd76459a02f535ae48421c30e60ce67077eb0a5d))
+
+
+
+
+
 ## [0.24.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.9...@gtms/service-posts@0.24.10) (2020-09-27)
 
 
