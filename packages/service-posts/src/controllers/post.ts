@@ -383,7 +383,7 @@ export default {
         }
 
         const serializedPost: ISerializedPost & {
-          group?: ISerializedGroup
+          group?: ISerializedGroup | string
         } = serializePost(post)
 
         getGroup(post.group, { traceId: res.get('x-traceid') })
