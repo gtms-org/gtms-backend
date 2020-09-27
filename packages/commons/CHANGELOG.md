@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.31.0...@gtms/commons@0.31.1) (2020-09-27)
+
+
+### Bug Fixes
+
+* master: fetch group details when finding posts by id ([a816abb](https://github.com/mariusz-kabala/gtms-backend/commit/a816abb2eea38e9b660075ac312d4796488dd6ae))
+
+
+
+
+
 # [0.31.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.30.3...@gtms/commons@0.31.0) (2020-09-17)
 
 

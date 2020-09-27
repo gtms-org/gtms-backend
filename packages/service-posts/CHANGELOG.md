@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.9...@gtms/service-posts@0.24.10) (2020-09-27)
+
+
+### Bug Fixes
+
+* master: fetch group details when finding posts by id ([a816abb](https://github.com/mariusz-kabala/gtms-backend/commit/a816abb2eea38e9b660075ac312d4796488dd6ae))
+
+
+
+
+
 ## [0.24.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.8...@gtms/service-posts@0.24.9) (2020-09-17)
 
 **Note:** Version bump only for package @gtms/service-posts
