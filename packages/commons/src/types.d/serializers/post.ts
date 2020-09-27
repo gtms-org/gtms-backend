@@ -1,5 +1,6 @@
 import { ISerializedComment } from './comment'
 import { ISerializedUser } from './user'
+import { ISerializedGroup } from './group'
 import { IOEmbed } from '../oembed'
 import { FileStatus } from '../../enums'
 
@@ -8,6 +9,7 @@ export interface ISerializedPost {
   text: string
   html: string
   oembeds?: IOEmbed[]
+  group: string | ISerializedGroup
   tags: string[]
   lastTags: string[]
   owner: string | ISerializedUser

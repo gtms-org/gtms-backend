@@ -19,6 +19,13 @@ import logger from '@gtms/lib-logger'
 import { validateObjectId } from '@gtms/client-mongoose'
 import { ObjectID } from 'mongodb'
 
+interface IFindPostsResult {
+  docs: ISerializedPost[]
+  limit: number
+  offset: number
+  total: number
+}
+
 function findPosts(
   query: {
     group?: ObjectID
@@ -34,7 +41,7 @@ function findPosts(
     }
   },
   traceId: string
-) {
+): Promise<IFindPostsResult> {
   return new Promise((resolve, reject) => {
     PostModel.paginate(query, params, (err, result) => {
       if (err) {
@@ -74,7 +81,7 @@ function findPosts(
             docs: result.docs.map((post: IPost) =>
               serializePostWithUser(post, usersHash)
             ),
-          })
+          } as IFindPostsResult)
         })
         .catch(err => {
           logger.log({
@@ -176,7 +183,7 @@ export default {
       .catch(() => res.status(500).end())
   },
   findByTag(req: Request, res: Response) {
-    const { tags } = req.query
+    const { tags, showGroups = false } = req.query
     const tagsToFind: string[] = Array.isArray(tags)
       ? tags
           .map(tag => {
@@ -206,7 +213,35 @@ export default {
       },
       res.get('x-traceid')
     )
-      .then(result => res.status(200).json(result))
+      .then(result => {
+        if (!showGroups) {
+          return res.status(200).json(result)
+        }
+
+        findGroupsByIds(getUniqueValues(result.docs, 'group'), {
+          traceId: res.get('x-traceid'),
+        })
+          .then(groups => {
+            const groupsHash = arrayToHash(groups, 'id')
+
+            result.docs = result.docs.map(post => {
+              post.group = groupsHash[post.group as string] ?? null
+
+              return post
+            })
+
+            res.status(200).json(result)
+          })
+          .catch(err => {
+            logger.log({
+              message: `Can not fetch group info ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+
+            res.status(500).end()
+          })
+      })
       .catch(() => res.status(500).end())
   },
   userPosts(req: Request, res: Response, next: NextFunction) {
@@ -299,10 +334,11 @@ export default {
             return res.status(200).json(
               posts.map(post => {
                 const result: ISerializedPost & {
-                  group?: null | ISerializedGroup
+                  group?: null | ISerializedGroup | string
                 } = serializePost(post)
 
-                result.group = groupsHash[post.group] ?? null
+                result.group =
+                  (groupsHash[post.group] as ISerializedGroup) ?? null
 
                 return result
               })

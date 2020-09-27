@@ -13,6 +13,7 @@ export function serializePost(post: IPost): ISerializedPost {
     text: postObj.text,
     html: postObj.html,
     oembeds: postObj.oembeds,
+    group: postObj.group,
     tags: postObj.tags,
     lastTags: postObj.lastTags || [],
     owner: postObj.owner,
