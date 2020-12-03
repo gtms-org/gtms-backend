@@ -40,5 +40,25 @@ export default {
       method: http.POST,
       restricted: true,
     },
+    {
+      path: '/recent',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/recent/group/:id',
+      method: http.GET,
+      restricted: true,
+    },
+    {
+      path: '/favs',
+      method: http.POST,
+      restricted: true,
+    },
+    {
+      path: '/favs/group/:id',
+      method: http.GET,
+      restricted: true,
+    },
   ],
 }

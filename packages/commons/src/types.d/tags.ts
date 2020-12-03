@@ -6,5 +6,6 @@ export interface ITagsUpdateMsg {
     tags: string[]
     traceId: string
     owner: string
+    group?: string
   }
 }

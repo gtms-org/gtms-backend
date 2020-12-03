@@ -84,6 +84,8 @@ export enum RecordType {
   group = 'group',
   post = 'post',
   comment = 'comment',
+  favTag = 'favTag',
+  recentlyViewedTag = 'recentlyViewedTag',
 }
 
 export enum NotificationType {
