@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.8.53...@gtms/service-tags@0.9.0) (2020-12-03)
+
+
+### Features
+
+* GEOT-690: support favs and recenlty viewed tags ([#222](https://github.com/mariusz-kabala/gtms-backend/issues/222)) ([3695c85](https://github.com/mariusz-kabala/gtms-backend/commit/3695c85b13e76caecf63c100e2032a29afb62b1c))
+
+
+
+
+
 ## [0.8.53](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.8.52...@gtms/service-tags@0.8.53) (2020-09-27)
 
 **Note:** Version bump only for package @gtms/service-tags

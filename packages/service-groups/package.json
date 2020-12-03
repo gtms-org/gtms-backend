@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-groups",
-  "version": "0.27.27",
+  "version": "0.27.28",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@gtms/client-mongoose": "0.4.1",
-    "@gtms/client-queue": "0.7.33",
-    "@gtms/commons": "0.31.1",
-    "@gtms/lib-api": "0.11.1",
+    "@gtms/client-queue": "0.7.34",
+    "@gtms/commons": "0.32.0",
+    "@gtms/lib-api": "0.11.2",
     "@gtms/lib-consul": "0.2.3",
     "@gtms/lib-logger": "*",
-    "@gtms/lib-middlewares": "0.4.56",
-    "@gtms/lib-models": "0.26.1",
+    "@gtms/lib-middlewares": "0.4.57",
+    "@gtms/lib-models": "0.27.0",
     "@gtms/lib-testing": "*",
     "@sindresorhus/slugify": "^0.11.0"
   },
