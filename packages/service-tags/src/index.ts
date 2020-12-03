@@ -11,6 +11,8 @@ import {
 } from '@gtms/lib-middlewares'
 import tagsController from './controllers/tags'
 import promotedController from './controllers/promoted'
+import recenltyViewedController from './controllers/recentlyViewed'
+import favsController from './controllers/favs'
 
 const app = express()
 const router: Router = Router()
@@ -33,6 +35,10 @@ router.get('/promoted/group/:id', promotedController.getGroupTags)
 router.post('/promoted/:id', JWTMiddleware, promotedController.update)
 router.delete('/promoted/:id', JWTMiddleware, promotedController.deleteGroupTag)
 router.post('/promoted', JWTMiddleware, promotedController.create)
+router.post('/recent', JWTMiddleware, recenltyViewedController.create)
+router.get('/recent/group/:id', JWTMiddleware, recenltyViewedController.group)
+router.post('/favs', JWTMiddleware, favsController.create)
+router.get('/favs/group/:id', JWTMiddleware, favsController.group)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
