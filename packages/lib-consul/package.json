@@ -12,6 +12,7 @@
     "@types/consul": "^0.23.34"
   },
   "scripts": {
-    "test": "exit 0"
+    "test": "exit 0",
+    "build": "exit 0"
   }
 }

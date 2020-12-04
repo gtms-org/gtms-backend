@@ -6,7 +6,8 @@
   "author": "Mariusz Kabała",
   "license": "ISC",
   "scripts": {
-    "test": "exit 0"
+    "test": "exit 0",
+    "build": "exit 0"
   },
   "dependencies": {
     "@gtms/lib-logger": "0.3.0",

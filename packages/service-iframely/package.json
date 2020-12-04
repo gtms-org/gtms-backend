@@ -3,5 +3,8 @@
   "version": "0.1.20",
   "description": "",
   "author": "Mariusz Kabała",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "build": "exit 0"
+  }
 }

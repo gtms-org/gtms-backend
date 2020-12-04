@@ -1,11 +1,12 @@
 {
-    "name": "@gtms/lib-logger",
-    "version": "0.3.0",
-    "description": "",
-    "main": "src/index.ts",
-    "author": "Mariusz Kabała",
-    "license": "ISC",
-    "scripts": {
-        "test": "exit 0"
-    }
+  "name": "@gtms/lib-logger",
+  "version": "0.3.0",
+  "description": "",
+  "main": "src/index.ts",
+  "author": "Mariusz Kabała",
+  "license": "ISC",
+  "scripts": {
+    "test": "exit 0",
+    "build": "exit 0"
+  }
 }

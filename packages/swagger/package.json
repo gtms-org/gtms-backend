@@ -4,7 +4,7 @@
   "private": true,
   "description": "Swagger API Project",
   "keywords": [],
-  "author": "",
+  "author": "Mariusz Kabała",
   "license": "",
   "main": "app.js",
   "dependencies": {

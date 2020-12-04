@@ -6,6 +6,7 @@
   "author": "Mariusz Kabała",
   "license": "ISC",
   "scripts": {
-    "test": "exit 0"
+    "test": "exit 0",
+    "build": "exit 0"
   }
 }

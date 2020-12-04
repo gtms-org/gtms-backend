@@ -17,6 +17,7 @@
     "@types/jsonwebtoken": "^8.3.7"
   },
   "scripts": {
-    "test": "exit 0"
+    "test": "exit 0",
+    "build": "exit 0"
   }
 }
