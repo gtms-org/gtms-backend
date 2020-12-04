@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.14](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.13...@gtms/service-posts@0.24.14) (2020-12-04)
+
+**Note:** Version bump only for package @gtms/service-posts
+
+
+
+
+
 ## [0.24.13](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.12...@gtms/service-posts@0.24.13) (2020-12-03)
 
 **Note:** Version bump only for package @gtms/service-posts

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-mongoose@0.4.1...@gtms/client-mongoose@0.4.2) (2020-12-04)
+
+
+### Bug Fixes
+
+* master: disable consul for swagger ([572b649](https://github.com/mariusz-kabala/gtms-backend/commit/572b64918bca00c7425f52e196414cbc6bbb3df6))
+
+
+
+
+
 ## [0.4.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-mongoose@0.4.0...@gtms/client-mongoose@0.4.1) (2020-06-26)
 
 

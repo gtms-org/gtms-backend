@@ -1,6 +1,6 @@
 {
   "name": "@gtms/client-mongoose",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "",
   "main": "src/index.ts",
   "author": "Mariusz Kabała",
@@ -10,7 +10,7 @@
     "build": "exit 0"
   },
   "dependencies": {
-    "@gtms/lib-logger": "0.3.0",
-    "@gtms/lib-testing": "0.1.0"
+    "@gtms/lib-logger": "0.3.1",
+    "@gtms/lib-testing": "0.1.1"
   }
 }

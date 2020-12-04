@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.29](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.27.28...@gtms/service-groups@0.27.29) (2020-12-04)
+
+**Note:** Version bump only for package @gtms/service-groups
+
+
+
+
+
 ## [0.27.28](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.27.27...@gtms/service-groups@0.27.28) (2020-12-03)
 
 **Note:** Version bump only for package @gtms/service-groups

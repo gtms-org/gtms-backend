@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.0...@gtms/lib-models@0.27.1) (2020-12-04)
+
+
+### Bug Fixes
+
+* master: disable consul for swagger ([572b649](https://github.com/mariusz-kabala/gtms-backend/commit/572b64918bca00c7425f52e196414cbc6bbb3df6))
+
+
+
+
+
 # [0.27.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.26.1...@gtms/lib-models@0.27.0) (2020-12-03)
 
 

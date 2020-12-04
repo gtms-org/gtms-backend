@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.21](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.27.20...@gtms/swagger@0.27.21) (2020-12-04)
+
+
+### Bug Fixes
+
+* master: disable consul for swagger ([572b649](https://github.com/mariusz-kabala/gtms-backend/commit/572b64918bca00c7425f52e196414cbc6bbb3df6))
+
+
+
+
+
 ## [0.27.20](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.27.19...@gtms/swagger@0.27.20) (2020-12-03)
 
 **Note:** Version bump only for package @gtms/swagger

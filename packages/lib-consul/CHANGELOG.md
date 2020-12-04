@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.2.3...@gtms/lib-consul@0.2.4) (2020-12-04)
+
+
+### Bug Fixes
+
+* master: disable consul for swagger ([572b649](https://github.com/mariusz-kabala/gtms-backend/commit/572b64918bca00c7425f52e196414cbc6bbb3df6))
+
+
+
+
+
 ## [0.2.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-consul@0.2.2...@gtms/lib-consul@0.2.3) (2020-08-20)
 
 

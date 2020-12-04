@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.58](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-middlewares@0.4.57...@gtms/lib-middlewares@0.4.58) (2020-12-04)
+
+
+### Bug Fixes
+
+* master: disable consul for swagger ([572b649](https://github.com/mariusz-kabala/gtms-backend/commit/572b64918bca00c7425f52e196414cbc6bbb3df6))
+
+
+
+
+
 ## [0.4.57](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-middlewares@0.4.56...@gtms/lib-middlewares@0.4.57) (2020-12-03)
 
 **Note:** Version bump only for package @gtms/lib-middlewares
