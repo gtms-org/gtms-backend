@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.11](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.10...@gtms/worker-posts@0.3.11) (2020-12-07)
+
+
+### Bug Fixes
+
+* master: migrate to new registry ([8be65ef](https://github.com/mariusz-kabala/gtms-backend/commit/8be65efd63c6cc5ee541a46264955f0051ea4b7a))
+
+
+
+
+
 ## [0.3.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.9...@gtms/worker-posts@0.3.10) (2020-12-04)
 
 **Note:** Version bump only for package @gtms/worker-posts

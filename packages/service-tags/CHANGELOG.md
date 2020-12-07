@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.9.1...@gtms/service-tags@0.9.2) (2020-12-07)
+
+
+### Bug Fixes
+
+* master: migrate to new registry ([8be65ef](https://github.com/mariusz-kabala/gtms-backend/commit/8be65efd63c6cc5ee541a46264955f0051ea4b7a))
+
+
+
+
+
 ## [0.9.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.9.0...@gtms/service-tags@0.9.1) (2020-12-04)
 
 

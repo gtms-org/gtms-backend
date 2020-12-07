@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.22](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.27.21...@gtms/swagger@0.27.22) (2020-12-07)
+
+
+### Bug Fixes
+
+* master: migrate to new registry ([8be65ef](https://github.com/mariusz-kabala/gtms-backend/commit/8be65efd63c6cc5ee541a46264955f0051ea4b7a))
+
+
+
+
+
 ## [0.27.21](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.27.20...@gtms/swagger@0.27.21) (2020-12-04)
 
 

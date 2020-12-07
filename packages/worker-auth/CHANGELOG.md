@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.31](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-auth@0.6.30...@gtms/worker-auth@0.6.31) (2020-12-07)
+
+
+### Bug Fixes
+
+* master: migrate to new registry ([8be65ef](https://github.com/mariusz-kabala/gtms-backend/commit/8be65efd63c6cc5ee541a46264955f0051ea4b7a))
+
+
+
+
+
 ## [0.6.30](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-auth@0.6.29...@gtms/worker-auth@0.6.30) (2020-12-04)
 
 **Note:** Version bump only for package @gtms/worker-auth

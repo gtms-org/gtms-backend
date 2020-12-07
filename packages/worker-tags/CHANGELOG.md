@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.53](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.5.52...@gtms/worker-tags@0.5.53) (2020-12-07)
+
+
+### Bug Fixes
+
+* master: migrate to new registry ([8be65ef](https://github.com/mariusz-kabala/gtms-backend/commit/8be65efd63c6cc5ee541a46264955f0051ea4b7a))
+
+
+
+
+
 ## [0.5.52](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.5.51...@gtms/worker-tags@0.5.52) (2020-12-04)
 
 **Note:** Version bump only for package @gtms/worker-tags

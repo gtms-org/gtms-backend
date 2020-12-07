@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.49](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.10.48...@gtms/service-notifications@0.10.49) (2020-12-07)
+
+
+### Bug Fixes
+
+* master: migrate to new registry ([8be65ef](https://github.com/mariusz-kabala/gtms-backend/commit/8be65efd63c6cc5ee541a46264955f0051ea4b7a))
+
+
+
+
+
 ## [0.10.48](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.10.47...@gtms/service-notifications@0.10.48) (2020-12-04)
 
 **Note:** Version bump only for package @gtms/service-notifications
