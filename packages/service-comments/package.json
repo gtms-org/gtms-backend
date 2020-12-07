@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-comments",
-  "version": "0.13.4",
+  "version": "0.13.5",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
