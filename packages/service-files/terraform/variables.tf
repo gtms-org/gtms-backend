@@ -9,7 +9,7 @@ variable "docker_host" {}
 variable "db_name" {}
 
 variable "DOCKER_REGISTRY" {
-    default = "rg.nl-ams.scw.cloud"
+    default = "docker-registry.kabala.tech"
 }
 
 variable "DOCKER_REGISTRY_PASSWORD" {}

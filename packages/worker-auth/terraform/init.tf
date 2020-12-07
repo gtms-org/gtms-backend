@@ -9,6 +9,13 @@ provider "docker" {
 }
 
 terraform {
+  required_providers {
+    docker = {
+      source = "kreuzwerker/docker"
+      version = "2.8.0"
+    }
+  }
+
   backend "s3" {
     bucket = "kabalatech-terraform"
     key    = "gtms-worker-auth.tfstate"

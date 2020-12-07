@@ -9,7 +9,7 @@ variable "mount_point" {}
 variable "docker_host" {}
 
 variable "DOCKER_REGISTRY" {
-    default = "rg.nl-ams.scw.cloud"
+    default = "docker-registry.kabala.tech"
 }
 
 variable "DOCKER_REGISTRY_PASSWORD" {}
