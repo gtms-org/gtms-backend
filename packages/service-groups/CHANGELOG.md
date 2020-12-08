@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.32](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.27.31...@gtms/service-groups@0.27.32) (2020-12-08)
+
+
+### Bug Fixes
+
+* GEOT-444: proper response format when no records ([#224](https://github.com/mariusz-kabala/gtms-backend/issues/224)) ([7210bbc](https://github.com/mariusz-kabala/gtms-backend/commit/7210bbc6ba5bf27728584492f045e9cb21a16482))
+
+
+
+
+
 ## [0.27.31](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.27.30...@gtms/service-groups@0.27.31) (2020-12-07)
 
 **Note:** Version bump only for package @gtms/service-groups
