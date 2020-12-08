@@ -98,7 +98,12 @@ async function getGroupInvitations(
         if (invitations.length === 0) {
           return res
             .status(200)
-            .json([])
+            .json({
+              docs: [],
+              offset,
+              total: 0,
+              limit,
+            })
             .end()
         }
 
