@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.1...@gtms/lib-models@0.27.2) (2020-12-09)
+
+
+### Bug Fixes
+
+* master: typo fix in recent tags model ([0f9cc31](https://github.com/mariusz-kabala/gtms-backend/commit/0f9cc315ed093ecc1298ff5402e4988fb774ce08))
+
+
+
+
+
 ## [0.27.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.0...@gtms/lib-models@0.27.1) (2020-12-04)
 
 
