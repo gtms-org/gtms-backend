@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.32.1...@gtms/commons@0.32.2) (2020-12-09)
+
+
+### Bug Fixes
+
+* GEOT-GEOT: return timestamp with recently visited tags ([#228](https://github.com/mariusz-kabala/gtms-backend/issues/228)) ([7d17ab2](https://github.com/mariusz-kabala/gtms-backend/commit/7d17ab2c9187c0a6eb65e070d143f03138c26029))
+
+
+
+
+
 ## [0.32.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.32.0...@gtms/commons@0.32.1) (2020-12-04)
 
 

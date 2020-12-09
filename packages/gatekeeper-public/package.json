@@ -1,6 +1,6 @@
 {
   "name": "@gtms/gatekeeper-public",
-  "version": "0.44.3",
+  "version": "0.44.4",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,10 +10,10 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/commons": "0.32.1",
-    "@gtms/lib-gatekeeper": "0.6.9",
+    "@gtms/commons": "0.32.2",
+    "@gtms/lib-gatekeeper": "0.6.10",
     "@gtms/lib-logger": "0.3.1",
-    "@gtms/lib-middlewares": "0.4.58",
+    "@gtms/lib-middlewares": "0.4.59",
     "@gtms/lib-testing": "0.1.1"
   },
   "author": "Mariusz Kabała",
