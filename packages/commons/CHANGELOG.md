@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.32.3...@gtms/commons@0.32.4) (2020-12-09)
+
+
+### Bug Fixes
+
+* master: jj trigger ([9e9ed21](https://github.com/mariusz-kabala/gtms-backend/commit/9e9ed21295066a458850e37f6d2ee6a6df113e59))
+
+
+
+
+
 ## [0.32.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.32.2...@gtms/commons@0.32.3) (2020-12-09)
 
 
