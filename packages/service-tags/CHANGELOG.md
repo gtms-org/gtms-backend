@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.9.3...@gtms/service-tags@0.9.4) (2020-12-09)
+
+
+### Bug Fixes
+
+* GEOT-690: save tag reference, not name in recent tags collec ([#227](https://github.com/mariusz-kabala/gtms-backend/issues/227)) ([c7f7d33](https://github.com/mariusz-kabala/gtms-backend/commit/c7f7d3386598d424470ea4490bb006596529bd2e))
+
+
+
+
+
 ## [0.9.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.9.2...@gtms/service-tags@0.9.3) (2020-12-07)
 
 **Note:** Version bump only for package @gtms/service-tags
