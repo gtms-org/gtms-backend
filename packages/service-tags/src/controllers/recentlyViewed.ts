@@ -5,6 +5,7 @@ import {
   RecentlyViewedTagModel,
   TagModel,
   ITag,
+  serializeRecentlyViewedTag,
 } from '@gtms/lib-models'
 import { IAuthRequest, Queues, ITagsUpdateMsg, RecordType } from '@gtms/commons'
 import { publishOnChannel } from '@gtms/client-queue'
@@ -109,7 +110,9 @@ export default {
       .limit(15)
       .populate('tag')
       .then((records: IRecentlyViewedTag[]) => {
-        res.status(200).json(records.map(record => record.tag.name))
+        res
+          .status(200)
+          .json(records.map(record => serializeRecentlyViewedTag(record)))
       })
       .catch(err => {
         next(err)
