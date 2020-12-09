@@ -1,17 +1,38 @@
 import { Response, NextFunction } from 'express'
 import logger from '@gtms/lib-logger'
-import { IRecentlyViewedTag, RecentlyViewedTagModel } from '@gtms/lib-models'
+import {
+  IRecentlyViewedTag,
+  RecentlyViewedTagModel,
+  TagModel,
+  ITag,
+} from '@gtms/lib-models'
 import { IAuthRequest, Queues, ITagsUpdateMsg, RecordType } from '@gtms/commons'
 import { publishOnChannel } from '@gtms/client-queue'
 
 export default {
-  create(req: IAuthRequest, res: Response, next: NextFunction) {
+  async create(req: IAuthRequest, res: Response, next: NextFunction) {
     const {
       body: { tag, group },
     } = req
 
+    let tagRecord: ITag | null
+
+    try {
+      tagRecord = await TagModel.findOne({ name: tag })
+    } catch (err) {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId: res.get('x-traceid'),
+      })
+    }
+
+    if (!tagRecord) {
+      return res.status(404).end()
+    }
+
     RecentlyViewedTagModel.create({
-      tag,
+      tag: tagRecord._id,
       group,
       owner: req.user.id,
     })
