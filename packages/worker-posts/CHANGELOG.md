@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.17](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.16...@gtms/worker-posts@0.3.17) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust posts worker terraform config ([2b747d4](https://github.com/mariusz-kabala/gtms-backend/commit/2b747d4abf1002c9a0cae9af6d0a4365ddebf6fb))
+
+
+
+
+
 ## [0.3.16](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.15...@gtms/worker-posts@0.3.16) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/worker-posts
