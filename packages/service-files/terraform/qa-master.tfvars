@@ -1,5 +1,5 @@
 env = "qa-master"
-docker_host = "192.168.0.33:2376"
+docker_host = "tcp://192.168.0.33:2376/"
 queue_host = "rabbitmq-qa-master"
 S3_BUCKET = "gtms-files-qa"
 AWS_ENDPOINT = "s3.nl-ams.scw.cloud"
