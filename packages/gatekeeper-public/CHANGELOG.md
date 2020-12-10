@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.44.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.44.6...@gtms/gatekeeper-public@0.44.7) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: public GK terraform config ([7e05b70](https://github.com/mariusz-kabala/gtms-backend/commit/7e05b70fbc0de0c64a903a5f13756f72b5fb13fd))
+
+
+
+
+
 ## [0.44.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.44.5...@gtms/gatekeeper-public@0.44.6) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/gatekeeper-public
