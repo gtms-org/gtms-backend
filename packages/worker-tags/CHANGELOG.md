@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.59](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.5.58...@gtms/worker-tags@0.5.59) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust tag worker terraform config ([8a12529](https://github.com/mariusz-kabala/gtms-backend/commit/8a12529b72d92ef7e1b1c46253f95c832cb9a2c6))
+
+
+
+
+
 ## [0.5.58](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-tags@0.5.57...@gtms/worker-tags@0.5.58) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/worker-tags
