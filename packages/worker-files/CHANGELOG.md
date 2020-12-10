@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.24](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.23...@gtms/worker-files@0.5.24) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust files worker terraform config ([c4a4597](https://github.com/mariusz-kabala/gtms-backend/commit/c4a459710cdfb74a5c3da549320e09b4397c9916))
+
+
+
+
+
 ## [0.5.23](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.22...@gtms/worker-files@0.5.23) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/worker-files
