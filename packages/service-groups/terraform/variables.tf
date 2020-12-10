@@ -6,8 +6,6 @@ variable "app_domain" {}
 
 variable "queue_host" {}
 
-variable "mount_point" {}
-
 variable "docker_host" {}
 
 variable "DOCKER_REGISTRY" {
