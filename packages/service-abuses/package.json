@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-abuses",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",

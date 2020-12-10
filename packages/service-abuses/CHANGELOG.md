@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-abuses@0.1.9...@gtms/service-abuses@0.1.10) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust terraform config ([41815f3](https://github.com/mariusz-kabala/gtms-backend/commit/41815f3d97726080623a8eafaa3ee43f6a57c91a))
+
+
+
+
+
 ## [0.1.9](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-abuses@0.1.8...@gtms/service-abuses@0.1.9) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/service-abuses
