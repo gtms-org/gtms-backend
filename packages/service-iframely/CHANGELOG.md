@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.25](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-iframely@0.1.24...@gtms/service-iframely@0.1.25) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust iframely terraform config ([5e3f47a](https://github.com/mariusz-kabala/gtms-backend/commit/5e3f47a82d71251001293c62f4048f47679aceb8))
+
+
+
+
+
 ## [0.1.24](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-iframely@0.1.23...@gtms/service-iframely@0.1.24) (2020-12-10)
 
 
