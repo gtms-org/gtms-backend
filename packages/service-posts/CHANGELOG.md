@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.21](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.20...@gtms/service-posts@0.24.21) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust posts service terraform config ([3640c7d](https://github.com/mariusz-kabala/gtms-backend/commit/3640c7d9004cb60b3f31c7fecd7cf2f4ee2dfff0))
+
+
+
+
+
 ## [0.24.20](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.19...@gtms/service-posts@0.24.20) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/service-posts
