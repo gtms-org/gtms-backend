@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.58](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.5.57...@gtms/worker-groups@0.5.58) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust groups worker terraform config ([441582f](https://github.com/mariusz-kabala/gtms-backend/commit/441582f5e4d494613a55bcc356fae1567c302cd5))
+
+
+
+
+
 ## [0.5.57](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-groups@0.5.56...@gtms/worker-groups@0.5.57) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/worker-groups
