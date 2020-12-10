@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.37](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.27.36...@gtms/service-groups@0.27.37) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust groups service terraform config ([9ba1061](https://github.com/mariusz-kabala/gtms-backend/commit/9ba10612918a1a4a5833df668b5c4924159df038))
+
+
+
+
+
 ## [0.27.36](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.27.35...@gtms/service-groups@0.27.36) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/service-groups
