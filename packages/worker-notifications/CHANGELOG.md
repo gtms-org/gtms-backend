@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.44](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.4.43...@gtms/worker-notifications@0.4.44) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust notification worker terraform config ([ab0f59f](https://github.com/mariusz-kabala/gtms-backend/commit/ab0f59fc105ee2f1e8ae8af0db5a0f6dcbc52c91))
+
+
+
+
+
 ## [0.4.43](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-notifications@0.4.42...@gtms/worker-notifications@0.4.43) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/worker-notifications
