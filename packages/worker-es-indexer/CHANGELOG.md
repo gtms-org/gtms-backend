@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.53](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-es-indexer@0.5.52...@gtms/worker-es-indexer@0.5.53) (2020-12-10)
+
+
+### Bug Fixes
+
+* master: adjust es-indexer worker terraform config ([2d8f2d9](https://github.com/mariusz-kabala/gtms-backend/commit/2d8f2d9f507fc73f133bbfc3417549ffaef2be3c))
+
+
+
+
+
 ## [0.5.52](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-es-indexer@0.5.51...@gtms/worker-es-indexer@0.5.52) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/worker-es-indexer
