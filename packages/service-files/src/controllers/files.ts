@@ -1,4 +1,5 @@
 import { FileTypes, FileStatus, IAuthRequest } from '@gtms/commons'
+import { validateObjectId } from '@gtms/client-mongoose'
 import { Response, NextFunction } from 'express'
 import logger from '@gtms/lib-logger'
 import { UploadedFile } from 'express-fileupload'
@@ -114,7 +115,7 @@ export function getCreateFileAction(fileType: FileTypes) {
     }
     const { body } = req
 
-    if (!body.relatedRecord) {
+    if (!body.relatedRecord || !validateObjectId(body.relatedRecord)) {
       return res
         .status(400)
         .json({
@@ -189,6 +190,10 @@ export function deleteTempFile(
   next: NextFunction
 ) {
   const { id } = req.params
+
+  if (!validateObjectId(id)) {
+    return res.status(400).end()
+  }
 
   TmpFileModel.findOneAndDelete({
     _id: id,
