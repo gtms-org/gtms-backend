@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.7.18...@gtms/service-files@0.8.0) (2020-12-11)
+
+
+### Features
+
+* GEOT-707: allow to upload tmp files for promoted tags ([#232](https://github.com/mariusz-kabala/gtms-backend/issues/232)) ([040a970](https://github.com/mariusz-kabala/gtms-backend/commit/040a970f246660e3e6f77ed285551cceaa5024ac))
+
+
+
+
+
 ## [0.7.18](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.7.17...@gtms/service-files@0.7.18) (2020-12-11)
 
 

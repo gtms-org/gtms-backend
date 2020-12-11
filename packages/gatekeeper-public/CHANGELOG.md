@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.45.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.44.7...@gtms/gatekeeper-public@0.45.0) (2020-12-11)
+
+
+### Features
+
+* GEOT-707: allow to upload tmp files for promoted tags ([#232](https://github.com/mariusz-kabala/gtms-backend/issues/232)) ([040a970](https://github.com/mariusz-kabala/gtms-backend/commit/040a970f246660e3e6f77ed285551cceaa5024ac))
+
+
+
+
+
 ## [0.44.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.44.6...@gtms/gatekeeper-public@0.44.7) (2020-12-10)
 
 
