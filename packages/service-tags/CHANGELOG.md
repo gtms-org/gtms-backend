@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.9.8...@gtms/service-tags@0.10.0) (2020-12-11)
+
+
+### Features
+
+* GEOT-707: support processing of tmp files ([#234](https://github.com/mariusz-kabala/gtms-backend/issues/234)) ([5a1b532](https://github.com/mariusz-kabala/gtms-backend/commit/5a1b5323366702774446c19c2d50bc1af5798147))
+
+
+
+
+
 ## [0.9.8](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.9.7...@gtms/service-tags@0.9.8) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/service-tags
