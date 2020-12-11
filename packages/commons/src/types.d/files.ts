@@ -18,6 +18,17 @@ export interface IFileQueueMsg {
   }
 }
 
+export interface ITmpFileQueueMsg {
+  data: {
+    fileType: FileTypes
+    relatedRecord: string
+    files: string[] // array of _ids
+    extra?: any
+    owner: string
+    traceId: string
+  }
+}
+
 export interface IDeleteFileQueueMsg {
   data: {
     bucket: string

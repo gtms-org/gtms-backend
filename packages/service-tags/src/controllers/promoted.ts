@@ -6,6 +6,8 @@ import {
   Queues,
   IUpdateGroupTagsMsq,
   GroupUpdateTypes,
+  ITmpFileQueueMsg,
+  FileTypes,
 } from '@gtms/commons'
 import {
   GroupTagModel,
@@ -110,6 +112,8 @@ export default {
           })
             .then((groupTag: IGroupTag) => {
               res.status(201).json(serializeGroupTag(groupTag))
+
+              return groupTag
             })
             .catch(err => {
               next(err)
@@ -119,6 +123,28 @@ export default {
                 level: 'error',
                 traceId: res.get('x-traceid'),
               })
+            })
+            .then((groupTag: IGroupTag) => {
+              if (!body.file) {
+                return
+              }
+              try {
+                publishOnChannel<ITmpFileQueueMsg>(Queues.createFileFromTmp, {
+                  data: {
+                    fileType: FileTypes.groupTagLogo,
+                    relatedRecord: groupTag._id,
+                    files: [body.file],
+                    owner: req.user.id,
+                    traceId: res.get('x-traceid'),
+                  },
+                })
+              } catch (err) {
+                logger.log({
+                  message: `Can not send info about created promoted tag logo file to the queue - ${Queues.createFileFromTmp} - ${err}`,
+                  level: 'error',
+                  traceId: res.get('x-traceid'),
+                })
+              }
             })
             .then(async () => {
               try {

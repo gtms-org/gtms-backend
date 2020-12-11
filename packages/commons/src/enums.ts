@@ -6,6 +6,7 @@ export enum Queues {
   deleteGroup = 'deleteGroup',
   createFile = 'createFile',
   deleteFile = 'deleteFile',
+  createFileFromTmp = 'createFileFromTmp',
   updateGroupFiles = 'updateGroupFiles',
   updateUserFiles = 'updateUserFiles',
   updatePostFiles = 'updatePostFiles',

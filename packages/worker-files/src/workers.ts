@@ -1,6 +1,10 @@
 import amqp from 'amqplib'
 import config from 'config'
-import { initDeleteFileTask, initProcessFileTask } from './tasks'
+import {
+  initDeleteFileTask,
+  initProcessFileTask,
+  initProcessTmpFileTask,
+} from './tasks'
 import {
   onQueueConnectionError,
   setConnectionErrorsHandlers,
@@ -20,6 +24,7 @@ export async function startWorkers() {
         // maybe use promises here, and log a msg when all tasks are initialized?
         initDeleteFileTask(ch)
         initProcessFileTask(ch)
+        initProcessTmpFileTask(ch)
       })
     })
     .catch(onQueueConnectionError)
