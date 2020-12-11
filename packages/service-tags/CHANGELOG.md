@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.10.0...@gtms/service-tags@0.10.1) (2020-12-11)
+
+
+### Bug Fixes
+
+* master: typo fix ([ef80bab](https://github.com/mariusz-kabala/gtms-backend/commit/ef80babb028d6f7c2b41d5ae8c87f16c31848c3d))
+
+
+
+
+
 # [0.10.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.9.8...@gtms/service-tags@0.10.0) (2020-12-11)
 
 
