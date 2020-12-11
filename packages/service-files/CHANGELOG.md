@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.18](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.7.17...@gtms/service-files@0.7.18) (2020-12-11)
+
+
+### Bug Fixes
+
+* GEOT-707: validate related record when uploading a file ([#230](https://github.com/mariusz-kabala/gtms-backend/issues/230)) ([34c609c](https://github.com/mariusz-kabala/gtms-backend/commit/34c609cf0f8f89b32111d377350ee25d904fb538))
+
+
+
+
+
 ## [0.7.17](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-files@0.7.16...@gtms/service-files@0.7.17) (2020-12-10)
 
 
