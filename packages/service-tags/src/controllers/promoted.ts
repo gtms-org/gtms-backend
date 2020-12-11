@@ -125,7 +125,7 @@ export default {
           if (body.file) {
             newGrouptagPayload.logo = {
               status: FileStatus.uploaded,
-              files: [body.files.url],
+              files: [body.file.url],
             }
           }
 
