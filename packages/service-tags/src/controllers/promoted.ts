@@ -6,12 +6,16 @@ import {
   Queues,
   IUpdateGroupTagsMsq,
   GroupUpdateTypes,
+  FileStatus,
+  IFileQueueMsg,
+  FileTypes,
 } from '@gtms/commons'
 import {
   GroupTagModel,
   IGroupTag,
   TagModel,
   serializeGroupTag,
+  ITag,
 } from '@gtms/lib-models'
 import logger from '@gtms/lib-logger'
 import { hasGroupAdminRights } from '@gtms/lib-api'
@@ -102,14 +106,34 @@ export default {
             })
           }
 
-          GroupTagModel.create({
+          const newGrouptagPayload: {
+            tag: ITag
+            description: string
+            group: string
+            order: number
+            logo?: {
+              status: FileStatus
+              files: string[]
+            }
+          } = {
             tag,
             description: body.description,
             group: body.group,
             order: body.order || 0,
-          })
+          }
+
+          if (body.file) {
+            newGrouptagPayload.logo = {
+              status: FileStatus.uploaded,
+              files: [body.files.url],
+            }
+          }
+
+          GroupTagModel.create(newGrouptagPayload)
             .then((groupTag: IGroupTag) => {
               res.status(201).json(serializeGroupTag(groupTag))
+
+              return groupTag
             })
             .catch(err => {
               next(err)
@@ -119,6 +143,38 @@ export default {
                 level: 'error',
                 traceId: res.get('x-traceid'),
               })
+            })
+            .then((groupTag: IGroupTag) => {
+              try {
+                publishOnChannel<IFileQueueMsg>(Queues.createFile, {
+                  data: {
+                    relatedRecord: groupTag._id,
+                    status: FileStatus.uploaded,
+                    fileType: FileTypes.groupTagLogo,
+                    owner: req.user.id,
+                    files: [
+                      {
+                        url: body.file.url,
+                      },
+                    ],
+                    traceId: res.get('x-traceid'),
+                    extra: {
+                      tmpFile: body.file.id,
+                    },
+                  },
+                })
+                logger.log({
+                  message: `Info about group tag logo file has been sent to queue ${Queues.createFile}`,
+                  level: 'info',
+                  traceId: res.get('x-traceid'),
+                })
+              } catch (err) {
+                logger.log({
+                  message: `Can not send info about group tag logo file to the queue ${Queues.createFile} error - ${err}`,
+                  level: 'error',
+                  traceId: res.get('x-traceid'),
+                })
+              }
             })
             .then(async () => {
               try {
