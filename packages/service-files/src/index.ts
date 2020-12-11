@@ -37,6 +37,10 @@ router.post('/groups/cover', getCreateFileAction(FileTypes.groupCover))
 router.post('/avatar', getCreateFileAction(FileTypes.avatar))
 router.post('/gallery', getCreateFileAction(FileTypes.userGallery))
 router.post('/tags/promoted', getCreateFileAction(FileTypes.groupTagLogo))
+router.post(
+  '/tmp/tags/promoted',
+  getCreateTmpFileAction(FileTypes.groupTagLogo)
+)
 router.post('/posts/image', getCreateTmpFileAction(FileTypes.postImage))
 router.delete('/tmp/:id', deleteTempFile)
 

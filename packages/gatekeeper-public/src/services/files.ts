@@ -48,6 +48,12 @@ export default {
       timeout: 30000, // 30s
     },
     {
+      path: '/tmp/tags/promoted',
+      method: http.POST,
+      restricted: true,
+      timeout: 30000, // 30s
+    },
+    {
       path: '/tmp/:id',
       method: http.DELETE,
       restricted: true,
