@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.18](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.17...@gtms/worker-posts@0.3.18) (2020-12-12)
+
+
+### Bug Fixes
+
+* GEOT-688: add html field to last comments array ([#235](https://github.com/mariusz-kabala/gtms-backend/issues/235)) ([2a35de9](https://github.com/mariusz-kabala/gtms-backend/commit/2a35de9f7256f011a50d698d06ba12209708fd9b))
+
+
+
+
+
 ## [0.3.17](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-posts@0.3.16...@gtms/worker-posts@0.3.17) (2020-12-10)
 
 
