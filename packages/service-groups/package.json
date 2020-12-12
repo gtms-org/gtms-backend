@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-groups",
-  "version": "0.27.37",
+  "version": "0.27.38",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "@gtms/lib-consul": "0.2.4",
     "@gtms/lib-logger": "0.3.1",
     "@gtms/lib-middlewares": "0.4.61",
-    "@gtms/lib-models": "0.27.5",
+    "@gtms/lib-models": "0.27.6",
     "@gtms/lib-testing": "0.1.1",
     "@sindresorhus/slugify": "^0.11.0"
   },

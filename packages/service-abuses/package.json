@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-abuses",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
@@ -12,7 +12,7 @@
     "@gtms/commons": "0.32.4",
     "@gtms/lib-api": "0.11.6",
     "@gtms/lib-logger": "0.3.1",
-    "@gtms/lib-models": "0.27.5"
+    "@gtms/lib-models": "0.27.6"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

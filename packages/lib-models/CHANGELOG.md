@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.5...@gtms/lib-models@0.27.6) (2020-12-12)
+
+
+### Bug Fixes
+
+* master: add html to the first comments in posts model ([3a8d946](https://github.com/mariusz-kabala/gtms-backend/commit/3a8d9464c49393297c9afc27c79504a0c01dd392))
+
+
+
+
+
 ## [0.27.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.4...@gtms/lib-models@0.27.5) (2020-12-09)
 
 **Note:** Version bump only for package @gtms/lib-models
