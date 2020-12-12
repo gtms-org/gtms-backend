@@ -64,6 +64,7 @@ const PostSchema = new Schema(
       {
         id: String,
         text: String,
+        html: String,
         tags: [String],
         owner: String,
         createdAt: Date,
