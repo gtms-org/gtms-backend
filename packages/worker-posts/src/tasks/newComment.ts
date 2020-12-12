@@ -70,6 +70,7 @@ const processMsg = (msg: amqp.Message) => {
             {
               id: comment.id,
               text: comment.text,
+              html: comment.html,
               tags: comment.tags,
               owner: comment.owner,
               createdAt: comment.createdAt,
