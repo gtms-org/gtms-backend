@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.25](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.24...@gtms/worker-files@0.5.25) (2020-12-14)
+
+
+### Bug Fixes
+
+* master: change group bg file resize config ([588a937](https://github.com/mariusz-kabala/gtms-backend/commit/588a937f0b995114a404ba2cddfb0b664c4fb2b1))
+
+
+
+
+
 ## [0.5.24](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/worker-files@0.5.23...@gtms/worker-files@0.5.24) (2020-12-10)
 
 
