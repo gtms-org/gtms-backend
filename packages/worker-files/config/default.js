@@ -418,7 +418,7 @@ module.exports = {
         {
           operation: 'save',
           fileType: 'jpg',
-          name: '685x300',
+          name: 'mini',
         },
       ],
     ],
