@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.10.2...@gtms/service-tags@0.10.3) (2020-12-14)
+
+
+### Bug Fixes
+
+* GEOT-703: save related promoted tag with fav ([#237](https://github.com/mariusz-kabala/gtms-backend/issues/237)) ([a1fde8c](https://github.com/mariusz-kabala/gtms-backend/commit/a1fde8cd9cb8a79598a94e220d769d34915a8e07))
+
+
+
+
+
 ## [0.10.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.10.1...@gtms/service-tags@0.10.2) (2020-12-12)
 
 **Note:** Version bump only for package @gtms/service-tags

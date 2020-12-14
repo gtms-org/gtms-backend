@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.6...@gtms/lib-models@0.27.7) (2020-12-14)
+
+
+### Bug Fixes
+
+* GEOT-703: save related promoted tag with fav ([#237](https://github.com/mariusz-kabala/gtms-backend/issues/237)) ([a1fde8c](https://github.com/mariusz-kabala/gtms-backend/commit/a1fde8cd9cb8a79598a94e220d769d34915a8e07))
+
+
+
+
+
 ## [0.27.6](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.5...@gtms/lib-models@0.27.6) (2020-12-12)
 
 
