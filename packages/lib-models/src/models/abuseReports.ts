@@ -75,6 +75,11 @@ const AbuseReportSchema = new Schema(
       type: String,
       index: true,
       required: false,
+      enum: [
+        AbuseReportStatus.new,
+        AbuseReportStatus.confirmed,
+        AbuseReportStatus.rejected,
+      ],
       default: AbuseReportStatus.new,
     },
     substantiation: {

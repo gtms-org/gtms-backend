@@ -1,19 +1,35 @@
 import mongoose, { Document, Schema } from 'mongoose'
 import { ITag } from './tags'
+import { IGroupTag } from './groupTags'
 
+export enum FavTagType {
+  tag = 'tag',
+  groupTag = 'groupTag',
+}
 export interface IFavTag extends Document {
-  tag: ITag
+  tag?: ITag
+  groupTag?: IGroupTag
   owner: string
   group: string
+  type: FavTagType
 }
 
 const FavTagSchema = new Schema(
   {
     tag: {
       type: Schema.Types.ObjectId,
+      required: false,
+      ref: 'Tag',
+    },
+    groupTag: {
+      type: Schema.Types.ObjectId,
+      required: false,
+      ref: 'GroupTag',
+    },
+    type: {
+      type: String,
       required: true,
-      index: true,
-      ref: 'tag',
+      enum: [FavTagType.groupTag, FavTagType.tag],
     },
     owner: {
       type: String,

@@ -14,7 +14,6 @@ const RecentlyViewedTagSchema = new Schema(
     tag: {
       type: Schema.Types.ObjectId,
       required: true,
-      index: true,
       ref: 'Tag',
     },
     owner: {
