@@ -410,6 +410,17 @@ module.exports = {
           name: 'origin',
         },
       ],
+      [
+        {
+          operation: 'resize',
+          size: [640, 480],
+        },
+        {
+          operation: 'save',
+          fileType: 'jpg',
+          name: '685x300',
+        },
+      ],
     ],
   },
 }
