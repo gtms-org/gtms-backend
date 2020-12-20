@@ -1,5 +1,5 @@
-import mongoose from 'mongoose'
+const re = /^[a-fA-F0-9]{24}$/
 
 export function validateObjectId(toCheck: any) {
-  return mongoose.Types.ObjectId.isValid(toCheck)
+  return typeof toCheck === 'string' && re.test(toCheck)
 }
