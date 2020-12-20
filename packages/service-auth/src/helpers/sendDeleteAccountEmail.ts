@@ -9,9 +9,9 @@ export default async function(
   user: { id: string; email: string },
   traceId: string
 ): Promise<void> {
-  const deleteURL = `${config.get<string>('appDomain')}/delete-account/${
-    activationCode.code
-  }`
+  const deleteURL = `https://${config.get<string>(
+    'appDomain'
+  )}/delete-account/${activationCode.code}`
 
   try {
     await publishOnChannel<ISendEmailMsg>(Queues.sendEmail, {

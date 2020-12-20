@@ -9,7 +9,7 @@ export default function(user: IUser, traceId: string): void {
     owner: user,
   })
     .then((activationCode: IActivationCode) => {
-      const activationURL = `${config.get<string>(
+      const activationURL = `https://${config.get<string>(
         'appDomain'
       )}/reset-password/${activationCode.code}`
 
