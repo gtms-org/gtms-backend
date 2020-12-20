@@ -10,10 +10,14 @@ import logger from '@gtms/lib-logger'
 import { NotificationModel, INotification } from '@gtms/lib-models'
 import { findUsersByIds, findGroupsByIds, findPostsByIds } from '@gtms/lib-api'
 
+type INotyficationList = {
+  [name in keyof typeof RecordType]: string[]
+}
+
 function prepareResponse(notifications: INotification[], traceId: string) {
   return new Promise((resolve, reject) => {
     const recordsToFetch = notifications.reduce(
-      (all, notification) => {
+      (all: INotyficationList, notification) => {
         if (
           !all[notification.relatedRecordType].includes(
             notification.relatedRecordId
@@ -48,6 +52,8 @@ function prepareResponse(notifications: INotification[], traceId: string) {
         [RecordType.group]: [],
         [RecordType.post]: [],
         [RecordType.comment]: [],
+        [RecordType.favTag]: [],
+        [RecordType.recentlyViewedTag]: [],
       }
     )
 
