@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.24](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.32.23...@gtms/service-auth@0.32.24) (2020-12-20)
+
+
+### Bug Fixes
+
+* GEOT-718: add https to email sent from auth service ([#241](https://github.com/mariusz-kabala/gtms-backend/issues/241)) ([49b25ff](https://github.com/mariusz-kabala/gtms-backend/commit/49b25ff738fe43f81b1b2a2e48ab10b5cd8a7e3d))
+
+
+
+
+
 ## [0.32.23](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.32.22...@gtms/service-auth@0.32.23) (2020-12-20)
 
 **Note:** Version bump only for package @gtms/service-auth
