@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.41](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.27.40...@gtms/service-groups@0.27.41) (2020-12-20)
+
+
+### Bug Fixes
+
+* GEOT-726: better logs when group not found ([#239](https://github.com/mariusz-kabala/gtms-backend/issues/239)) ([1831392](https://github.com/mariusz-kabala/gtms-backend/commit/1831392d19de0c4c9c7c20f8533f293acb97a2c4))
+
+
+
+
+
 ## [0.27.40](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-groups@0.27.39...@gtms/service-groups@0.27.40) (2020-12-20)
 
 **Note:** Version bump only for package @gtms/service-groups
