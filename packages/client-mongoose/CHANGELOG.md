@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-mongoose@0.4.2...@gtms/client-mongoose@0.4.3) (2020-12-20)
+
+
+### Bug Fixes
+
+* GEOT-726: change objectid validation func ([#240](https://github.com/mariusz-kabala/gtms-backend/issues/240)) ([8eee8ea](https://github.com/mariusz-kabala/gtms-backend/commit/8eee8ead0d5e602706b428cac0debe443e886b29))
+
+
+
+
+
 ## [0.4.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/client-mongoose@0.4.1...@gtms/client-mongoose@0.4.2) (2020-12-04)
 
 

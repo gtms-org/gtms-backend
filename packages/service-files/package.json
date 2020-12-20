@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-files",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-mongoose": "0.4.2",
+    "@gtms/client-mongoose": "0.4.3",
     "@gtms/client-queue": "0.7.39",
     "@gtms/commons": "0.33.0",
     "@gtms/lib-consul": "0.2.4",

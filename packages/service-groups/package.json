@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-groups",
-  "version": "0.27.41",
+  "version": "0.27.42",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-mongoose": "0.4.2",
+    "@gtms/client-mongoose": "0.4.3",
     "@gtms/client-queue": "0.7.39",
     "@gtms/commons": "0.33.0",
     "@gtms/lib-api": "0.11.7",
