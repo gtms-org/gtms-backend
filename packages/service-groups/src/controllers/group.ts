@@ -117,11 +117,11 @@ export default {
     const { slug } = req.params
 
     let group: IGroup | null
+    let query
 
     try {
-      group = await GroupModel.findOne(
-        validateObjectId(slug) ? { _id: slug } : { slug }
-      )
+      query = validateObjectId(slug) ? { _id: slug } : { slug }
+      group = await GroupModel.findOne(query)
     } catch (err) {
       logger.log({
         message: `Database error ${err}`,
@@ -133,6 +133,11 @@ export default {
     }
 
     if (!group) {
+      logger.log({
+        level: 'warn',
+        message: `Can not find a group - query: ${JSON.stringify(query)}`,
+        traceId: res.get('x-traceid'),
+      })
       return res.status(404).end()
     }
 
