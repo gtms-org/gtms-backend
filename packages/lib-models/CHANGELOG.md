@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.7...@gtms/lib-models@0.28.0) (2020-12-20)
+
+
+### Features
+
+* master: add new notification type - newPostInFavTag ([782b590](https://github.com/mariusz-kabala/gtms-backend/commit/782b590b626f7977c9ef899b5dd4995a6e9ba0aa))
+
+
+
+
+
 ## [0.27.7](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.6...@gtms/lib-models@0.27.7) (2020-12-14)
 
 

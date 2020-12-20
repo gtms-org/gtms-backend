@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.33.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.32.4...@gtms/commons@0.33.0) (2020-12-20)
+
+
+### Features
+
+* master: add new notification type - newPostInFavTag ([782b590](https://github.com/mariusz-kabala/gtms-backend/commit/782b590b626f7977c9ef899b5dd4995a6e9ba0aa))
+
+
+
+
+
 ## [0.32.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.32.3...@gtms/commons@0.32.4) (2020-12-09)
 
 
