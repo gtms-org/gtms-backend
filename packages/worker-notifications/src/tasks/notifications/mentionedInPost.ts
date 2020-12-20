@@ -2,7 +2,9 @@ import { INotification, RecordType } from '@gtms/commons'
 import logger from '@gtms/lib-logger'
 import { NotificationModel } from '@gtms/lib-models'
 
-export function handleMentionedInPostNotification(msg: INotification) {
+export function handleMentionedInPostNotification(
+  msg: INotification
+): Promise<void> {
   return new Promise((resolve, reject) => {
     const {
       relatedRecordType,

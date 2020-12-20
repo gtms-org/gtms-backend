@@ -96,4 +96,5 @@ export enum NotificationType {
   newComment = 'newComment',
   newAnswerToComment = 'newAnswerToComment',
   mentionedInPost = 'mentionedInPost',
+  newPostInFavTag = 'newPostInFavTag',
 }

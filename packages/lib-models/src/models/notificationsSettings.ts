@@ -10,6 +10,7 @@ export interface INotificationsSettings extends Document {
   newPostInAdminnedGroup: boolean
   newMembershipRequestInAdminnedGroup: boolean
   newMemberInAdminnedGroup: boolean
+  newPostInFavTag: boolean
   groups: string[]
   users: string[]
 }
@@ -51,6 +52,11 @@ const NotificationsSettingsSchema = new Schema({
     default: true,
   },
   newMemberInAdminnedGroup: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  newPostInFavTag: {
     type: Boolean,
     required: false,
     default: true,
