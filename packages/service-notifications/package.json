@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-notifications",
-  "version": "0.10.56",
+  "version": "0.10.57",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

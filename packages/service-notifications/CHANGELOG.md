@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.57](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.10.56...@gtms/service-notifications@0.10.57) (2020-12-20)
+
+
+### Bug Fixes
+
+* master: typings fixes in notifications ([2a71bc7](https://github.com/mariusz-kabala/gtms-backend/commit/2a71bc77d69144219aa6db17a2f7e5f5caf5f861))
+
+
+
+
+
 ## [0.10.56](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-notifications@0.10.55...@gtms/service-notifications@0.10.56) (2020-12-14)
 
 **Note:** Version bump only for package @gtms/service-notifications
