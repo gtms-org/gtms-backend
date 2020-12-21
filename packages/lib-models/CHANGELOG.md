@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.28.0...@gtms/lib-models@0.29.0) (2020-12-21)
+
+
+### Features
+
+* master: add serializer for fav tag ([ff8036e](https://github.com/mariusz-kabala/gtms-backend/commit/ff8036ef7e91b6d6bae36580b1fbf79e35bdea85))
+
+
+
+
+
 # [0.28.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.27.7...@gtms/lib-models@0.28.0) (2020-12-20)
 
 
