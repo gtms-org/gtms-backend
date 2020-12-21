@@ -36,7 +36,7 @@ export default {
       body: { tag, group, type },
     } = req
 
-    if ([FavTagType.tag, FavTagType.groupTag].includes(type)) {
+    if (![FavTagType.tag, FavTagType.groupTag].includes(type)) {
       logger.log({
         message: `Invalid fav tag type provided - ${type}`,
         level: 'warn',
