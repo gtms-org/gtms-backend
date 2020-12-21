@@ -8,6 +8,7 @@ import {
   ITag,
   IGroupTag,
   IFavTag,
+  serializeFavTag,
 } from '@gtms/lib-models'
 import { IAuthRequest, Queues, ITagsUpdateMsg, RecordType } from '@gtms/commons'
 import { publishOnChannel } from '@gtms/client-queue'
@@ -114,7 +115,7 @@ export default {
       .populate('tag')
       .populate('groupTag')
       .then((records: IFavTag[]) => {
-        res.status(200).json(records.map(record => record.tag.name))
+        res.status(200).json(records.map(record => serializeFavTag(record)))
       })
       .catch(err => {
         next(err)

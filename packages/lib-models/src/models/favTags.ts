@@ -12,6 +12,8 @@ export interface IFavTag extends Document {
   owner: string
   group: string
   type: FavTagType
+  createdAt: string
+  updatedAt: string
 }
 
 const FavTagSchema = new Schema(
