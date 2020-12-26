@@ -114,6 +114,7 @@ export default {
       })
       .populate('tag')
       .populate('groupTag')
+      .populate('groupTag.tag')
       .then((records: IFavTag[]) => {
         res.status(200).json(records.map(record => serializeFavTag(record)))
       })
