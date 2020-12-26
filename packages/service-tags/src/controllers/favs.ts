@@ -72,7 +72,10 @@ export default {
       [relatedRecordType]: relatedRecord._id,
     })
       .then((fav: IFavTag) => {
-        res.status(201).end()
+        res
+          .status(201)
+          .json(serializeFavTag(fav))
+          .end()
 
         logger.log({
           message: `User ${req.user.email} (id: ${req.user.id}) added tag ${fav.tag} in group ${fav.group} to favs`,
