@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.11.2...@gtms/service-tags@0.12.0) (2020-12-26)
+
+
+### Features
+
+* master: add remove from favs endpoint ([f5e2bcc](https://github.com/mariusz-kabala/gtms-backend/commit/f5e2bcc78f42080a554a0af7fca25dc46f3a387a))
+
+
+
+
+
 ## [0.11.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.11.1...@gtms/service-tags@0.11.2) (2020-12-26)
 
 
