@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.11.0...@gtms/service-tags@0.11.1) (2020-12-26)
+
+
+### Bug Fixes
+
+* master: populate groupTag.tag ([5d9845c](https://github.com/mariusz-kabala/gtms-backend/commit/5d9845c89b33fe1be58f15626502686e3d7fa435))
+
+
+
+
+
 # [0.11.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-tags@0.10.5...@gtms/service-tags@0.11.0) (2020-12-21)
 
 
