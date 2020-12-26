@@ -114,7 +114,7 @@ export default {
       })
       .populate('tag')
       .populate('groupTag')
-      .populate('groupTag.tag')
+      .populate({ path: 'groupTag', populate: { path: 'tag' } })
       .then((records: IFavTag[]) => {
         res.status(200).json(records.map(record => serializeFavTag(record)))
       })
