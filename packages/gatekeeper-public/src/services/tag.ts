@@ -60,5 +60,10 @@ export default {
       method: http.GET,
       restricted: true,
     },
+    {
+      path: '/favs/:id',
+      method: http.DELETE,
+      restricted: true,
+    },
   ],
 }

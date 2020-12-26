@@ -128,4 +128,26 @@ export default {
         })
       })
   },
+  remove(req: IAuthRequest, res: Response, next: NextFunction) {
+    const { id } = req.params
+
+    FavTagModel.deleteOne({
+      _id: id,
+    })
+      .then(result => {
+        if (result.deletedCount > 0) {
+          return res.status(200).end()
+        }
+
+        res.status(404).end()
+      })
+      .catch(err => {
+        next(err)
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+      })
+  },
 }

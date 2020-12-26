@@ -39,6 +39,7 @@ router.post('/recent', JWTMiddleware, recenltyViewedController.create)
 router.get('/recent/group/:id', JWTMiddleware, recenltyViewedController.group)
 router.post('/favs', JWTMiddleware, favsController.create)
 router.get('/favs/group/:id', JWTMiddleware, favsController.group)
+router.delete('/favs/:id', JWTMiddleware, favsController.remove)
 
 router.all('*', (_: Request, res: Response) => {
   res.status(404).json({ status: 'not found' })
