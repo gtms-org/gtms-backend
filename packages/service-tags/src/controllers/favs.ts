@@ -133,6 +133,7 @@ export default {
 
     FavTagModel.deleteOne({
       _id: id,
+      owner: req.user.id,
     })
       .then(result => {
         if (result.deletedCount > 0) {
