@@ -5,7 +5,7 @@ import { ISerializedGroupTag } from '@gtms/commons'
 export function serializeGroupTag(groupTag: IGroupTag): ISerializedGroupTag {
   return {
     id: groupTag._id,
-    tag: (groupTag.tag as ITag).name,
+    tag: groupTag.tag ? (groupTag.tag as ITag).name : undefined,
     description: groupTag.description,
     order: groupTag.order,
     logo: groupTag.logo,
