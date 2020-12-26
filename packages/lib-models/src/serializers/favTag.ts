@@ -11,7 +11,9 @@ export function serializeFavTag(favTag: IFavTag): ISerializedFavTag {
         group: favTag.group,
         createdAt: favTag.createdAt,
         updatedAt: favTag.updatedAt,
-        groupTag: serializeGroupTag(favTag.groupTag),
+        groupTag: favTag.groupTag
+          ? serializeGroupTag(favTag.groupTag)
+          : undefined,
       }
 
     case FavTagType.tag:
