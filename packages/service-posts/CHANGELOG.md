@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.28...@gtms/service-posts@0.25.0) (2020-12-29)
+
+
+### Features
+
+* GEOT-746: add posts details endpoint ([#242](https://github.com/mariusz-kabala/gtms-backend/issues/242)) ([d424b29](https://github.com/mariusz-kabala/gtms-backend/commit/d424b29b06678d7a29c877dee5b6d586fdaa8e8d))
+
+
+
+
+
 ## [0.24.28](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.24.27...@gtms/service-posts@0.24.28) (2020-12-26)
 
 **Note:** Version bump only for package @gtms/service-posts

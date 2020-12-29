@@ -1,6 +1,6 @@
 {
   "name": "@gtms/service-posts",
-  "version": "0.24.28",
+  "version": "0.25.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

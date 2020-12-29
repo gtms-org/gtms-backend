@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.47.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.46.0...@gtms/gatekeeper-public@0.47.0) (2020-12-29)
+
+
+### Features
+
+* GEOT-746: add posts details endpoint ([#242](https://github.com/mariusz-kabala/gtms-backend/issues/242)) ([d424b29](https://github.com/mariusz-kabala/gtms-backend/commit/d424b29b06678d7a29c877dee5b6d586fdaa8e8d))
+
+
+
+
+
 # [0.46.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.45.2...@gtms/gatekeeper-public@0.46.0) (2020-12-26)
 
 
