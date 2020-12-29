@@ -26,6 +26,11 @@ export default {
       restricted: true,
     },
     {
+      path: '/my/details',
+      method: http.GET,
+      restricted: true,
+    },
+    {
       path: '/find',
       method: http.GET,
       restricted: false,
