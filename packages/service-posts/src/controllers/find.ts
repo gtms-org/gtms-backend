@@ -275,6 +275,69 @@ export default {
       }
     )
   },
+  myPostsDetails(req: IAuthRequest, res: Response, next: NextFunction) {
+    PostModel.aggregate([
+      {
+        $match: { owner: new ObjectID(req.user.id) },
+      },
+      {
+        $group: {
+          _id: '$group',
+          count: { $sum: 1 },
+        },
+      },
+    ])
+      .then(result => {
+        if (result.length === 0) {
+          return res
+            .status(200)
+            .json([])
+            .end()
+        }
+
+        findGroupsByIds(
+          result.map(r => r._id),
+          {
+            traceId: res.get('x-traceid'),
+          }
+        )
+          .then(groups => {
+            const counters = result.reduce((all, r) => {
+              all[r._id] = r.count
+
+              return all
+            }, {})
+
+            return res
+              .status(200)
+              .json(
+                groups.map(group => ({
+                  ...group,
+                  count: counters[group.id],
+                }))
+              )
+              .end()
+          })
+          .catch(err => {
+            logger.log({
+              message: `Can not fetch group info ${err}`,
+              level: 'error',
+              traceId: res.get('x-traceid'),
+            })
+
+            res.status(500).end()
+          })
+      })
+      .catch(err => {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        next(err)
+      })
+  },
   myPosts(req: IAuthRequest, res: Response, next: NextFunction) {
     const { limit, offset } = getPaginationParams(req)
 

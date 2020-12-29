@@ -9,12 +9,13 @@ const {
   APP_DOMAIN,
   CONSUL_HOST,
   CONSUL_PORT,
+  DB_NAME,
 } = process.env
 
 module.exports = {
   port: PORT,
   dbHost: DB_HOST,
-  dbName: 'posts',
+  dbName: DB_NAME,
   serviceName: 'posts',
   serviceVersion: VERSION,
   queueHost: QUEUE_HOST,
