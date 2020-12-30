@@ -26,18 +26,16 @@ export function serializePost(post: IPost): ISerializedPost {
   }
 }
 
-export function serializePostWithUser(
-  post: IPost,
+export function addUserToSerializePost(
+  post: ISerializedPost,
   members: { [id: string]: ISerializedUser }
 ) {
-  const result: ISerializedPost = serializePost(post)
-
-  if (members[post.owner]) {
-    result.owner = members[post.owner]
+  if (members[post.owner as string]) {
+    post.owner = members[post.owner as string]
   }
 
-  if (Array.isArray(result.firstComments)) {
-    result.firstComments = result.firstComments.map(
+  if (Array.isArray(post.firstComments)) {
+    post.firstComments = post.firstComments.map(
       (comment: ISerializedComment) => {
         if (members[`${comment.owner}`]) {
           return {
@@ -51,5 +49,12 @@ export function serializePostWithUser(
     )
   }
 
-  return result
+  return post
+}
+
+export function serializePostWithUser(
+  post: IPost,
+  members: { [id: string]: ISerializedUser }
+) {
+  return addUserToSerializePost(serializePost(post), members)
 }

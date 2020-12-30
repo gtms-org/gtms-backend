@@ -5,6 +5,7 @@ import {
   IPost,
   serializePost,
   serializePostWithUser,
+  addUserToSerializePost,
 } from '@gtms/lib-models'
 import {
   IAuthRequest,
@@ -22,8 +23,35 @@ import { ObjectID } from 'mongodb'
 interface IFindPostsResult {
   docs: ISerializedPost[]
   limit: number
-  offset: number
+  offset?: number
   total: number
+}
+
+async function fetchPostsOwners(docs: IPost[], traceId: string) {
+  const users = await findUsersByIds(
+    docs.reduce((all: string[], post) => {
+      if (!all.includes(`${post.owner}`)) {
+        all.push(`${post.owner}`)
+      }
+
+      if (Array.isArray(post.firstComments)) {
+        for (const comment of post.firstComments) {
+          if (!all.includes(`${comment.owner}`)) {
+            all.push(`${comment.owner}`)
+          }
+        }
+      }
+
+      return all
+    }, []),
+    {
+      traceId,
+    }
+  )
+
+  const usersHash = arrayToHash(users, 'id')
+
+  return docs.map((post: IPost) => serializePostWithUser(post, usersHash))
 }
 
 function findPosts(
@@ -53,35 +81,12 @@ function findPosts(
         return reject()
       }
 
-      findUsersByIds(
-        result.docs.reduce((all: string[], post) => {
-          if (!all.includes(`${post.owner}`)) {
-            all.push(`${post.owner}`)
-          }
-
-          if (Array.isArray(post.firstComments)) {
-            for (const comment of post.firstComments) {
-              if (!all.includes(`${comment.owner}`)) {
-                all.push(`${comment.owner}`)
-              }
-            }
-          }
-
-          return all
-        }, []),
-        {
-          traceId,
-        }
-      )
-        .then(users => {
-          const usersHash = arrayToHash(users, 'id')
-
+      fetchPostsOwners(result.docs, traceId)
+        .then(docs => {
           resolve({
             ...result,
-            docs: result.docs.map((post: IPost) =>
-              serializePostWithUser(post, usersHash)
-            ),
-          } as IFindPostsResult)
+            docs,
+          })
         })
         .catch(err => {
           logger.log({
@@ -247,6 +252,7 @@ export default {
   userPosts(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params
     const { limit, offset } = getPaginationParams(req)
+    const traceId = res.get('x-traceid')
 
     PostModel.paginate(
       { owner: new ObjectID(id) },
@@ -262,16 +268,28 @@ export default {
           logger.log({
             message: `Database error ${err}`,
             level: 'error',
-            traceId: res.get('x-traceid'),
+            traceId,
           })
 
           return next(err)
         }
 
-        res.status(200).json({
-          ...result,
-          docs: result.docs.map((post: IPost) => serializePost(post)),
-        })
+        fetchPostsOwners(result.docs, traceId)
+          .then(docs => {
+            res.status(200).json({
+              ...result,
+              docs,
+            })
+          })
+          .catch(err => {
+            logger.log({
+              message: `Can not fetch user info ${err}`,
+              level: 'error',
+              traceId,
+            })
+
+            res.status(500).end()
+          })
       }
     )
   },
@@ -340,6 +358,7 @@ export default {
   },
   myPosts(req: IAuthRequest, res: Response, next: NextFunction) {
     const { limit, offset } = getPaginationParams(req)
+    const traceId = res.get('x-traceid')
 
     PostModel.paginate(
       { owner: new ObjectID(req.user.id) },
@@ -361,10 +380,22 @@ export default {
           return next(err)
         }
 
-        res.status(200).json({
-          ...result,
-          docs: result.docs.map((post: IPost) => serializePost(post)),
-        })
+        fetchPostsOwners(result.docs, traceId)
+          .then(docs => {
+            res.status(200).json({
+              ...result,
+              docs,
+            })
+          })
+          .catch(err => {
+            logger.log({
+              message: `Can not fetch user info ${err}`,
+              level: 'error',
+              traceId,
+            })
+
+            res.status(500).end()
+          })
       }
     )
   },
