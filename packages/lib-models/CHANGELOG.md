@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.29.2...@gtms/lib-models@0.29.3) (2020-12-30)
+
+
+### Bug Fixes
+
+* GEOT-746: return post owner details in my posts and user pos ([#243](https://github.com/mariusz-kabala/gtms-backend/issues/243)) ([4b523c2](https://github.com/mariusz-kabala/gtms-backend/commit/4b523c2b90bb62e1423bf6cfd54b0a0b8157569f))
+
+
+
+
+
 ## [0.29.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.29.1...@gtms/lib-models@0.29.2) (2020-12-26)
 
 
