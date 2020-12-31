@@ -22,7 +22,7 @@ export default {
     },
     {
       path: '/my',
-      method: http.GET,
+      method: http.POST,
       restricted: true,
     },
     {

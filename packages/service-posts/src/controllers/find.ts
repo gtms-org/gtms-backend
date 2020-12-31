@@ -5,11 +5,11 @@ import {
   IPost,
   serializePost,
   serializePostWithUser,
-  addUserToSerializePost,
 } from '@gtms/lib-models'
 import {
   IAuthRequest,
   getPaginationParams,
+  getPaginationParamsFromPostReq,
   getUniqueValues,
   arrayToHash,
   ISerializedGroup,
@@ -357,11 +357,25 @@ export default {
       })
   },
   myPosts(req: IAuthRequest, res: Response, next: NextFunction) {
-    const { limit, offset } = getPaginationParams(req)
+    const { limit, offset } = getPaginationParamsFromPostReq(req)
+    const { groups } = req.body
     const traceId = res.get('x-traceid')
 
+    const query: {
+      owner: ObjectID
+      group?: {
+        $in: string[]
+      }
+    } = { owner: new ObjectID(req.user.id) }
+
+    if (Array.isArray(groups) && groups.length > 0) {
+      query.group = {
+        $in: groups,
+      }
+    }
+
     PostModel.paginate(
-      { owner: new ObjectID(req.user.id) },
+      query,
       {
         offset,
         limit,
@@ -380,16 +394,26 @@ export default {
           return next(err)
         }
 
-        fetchPostsOwners(result.docs, traceId)
-          .then(docs => {
+        Promise.all([
+          findGroupsByIds(getUniqueValues(result.docs, 'group'), {
+            traceId: res.get('x-traceid'),
+          }),
+          fetchPostsOwners(result.docs, traceId),
+        ])
+          .then(([groups, docs]) => {
+            const groupsHash = arrayToHash(groups, 'id')
+
             res.status(200).json({
               ...result,
-              docs,
+              docs: docs.map(post => ({
+                ...post,
+                group: groupsHash[post.group as string] ?? null,
+              })),
             })
           })
           .catch(err => {
             logger.log({
-              message: `Can not fetch user info ${err}`,
+              message: `Internal API call failed - ${err}`,
               level: 'error',
               traceId,
             })

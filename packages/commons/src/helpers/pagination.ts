@@ -1,11 +1,8 @@
 import { Request } from 'express'
 
-export function getPaginationParams(
-  req: Request
-): { limit: number; offset: number } {
-  let limit = parseInt((req.query.limit || 25) as string, 10)
-  let offset = parseInt((req.query.offset || 0) as string, 10)
+type Pagination = { limit: number; offset: number }
 
+function validatePaginationParams(limit: any, offset: any): Pagination {
   if (!Number.isInteger(limit)) {
     limit = 25
   }
@@ -22,4 +19,18 @@ export function getPaginationParams(
     limit,
     offset,
   }
+}
+
+export function getPaginationParams(req: Request): Pagination {
+  const limit = parseInt(req.query.limit || '25', 10)
+  const offset = parseInt(req.query.offset || '0', 10)
+
+  return validatePaginationParams(limit, offset)
+}
+
+export function getPaginationParamsFromPostReq(req: Request): Pagination {
+  const limit = parseInt(req.body.limit || '25', 10)
+  const offset = parseInt(req.body.limit || '0', 10)
+
+  return validatePaginationParams(limit, offset)
 }
