@@ -358,7 +358,7 @@ export default {
   },
   myPosts(req: IAuthRequest, res: Response, next: NextFunction) {
     const { limit, offset } = getPaginationParamsFromPostReq(req)
-    const { groups } = req.body
+    const { groups, tags } = req.body
     const traceId = res.get('x-traceid')
 
     const query: {
@@ -366,11 +366,20 @@ export default {
       group?: {
         $in: string[]
       }
+      tags?: {
+        $all: string[]
+      }
     } = { owner: new ObjectID(req.user.id) }
 
     if (Array.isArray(groups) && groups.length > 0) {
       query.group = {
         $in: groups,
+      }
+    }
+
+    if (Array.isArray(tags) && tags.length > 0) {
+      query.tags = {
+        $all: tags,
       }
     }
 
