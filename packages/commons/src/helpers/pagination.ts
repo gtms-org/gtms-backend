@@ -30,7 +30,7 @@ export function getPaginationParams(req: Request): Pagination {
 
 export function getPaginationParamsFromPostReq(req: Request): Pagination {
   const limit = parseInt(req.body.limit || '25', 10)
-  const offset = parseInt(req.body.limit || '0', 10)
+  const offset = parseInt(req.body.offset || '0', 10)
 
   return validatePaginationParams(limit, offset)
 }
