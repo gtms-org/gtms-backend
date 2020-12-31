@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.25.3...@gtms/service-posts@0.25.4) (2020-12-31)
+
+
+### Bug Fixes
+
+* master: support search by tag on my posts endpoint ([385b111](https://github.com/mariusz-kabala/gtms-backend/commit/385b111625ea2036c5c2a6a57b6a26eb27df30c6))
+
+
+
+
+
 ## [0.25.3](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.25.2...@gtms/service-posts@0.25.3) (2020-12-31)
 
 
