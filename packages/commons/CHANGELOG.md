@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.34.2](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.34.1...@gtms/commons@0.34.2) (2020-12-31)
+
+
+### Bug Fixes
+
+* master: typos fixes ([5dbc9ff](https://github.com/mariusz-kabala/gtms-backend/commit/5dbc9ffc91553e49a242935a9e20aebfe2c8fd61))
+
+
+
+
+
 ## [0.34.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/commons@0.34.0...@gtms/commons@0.34.1) (2020-12-31)
 
 

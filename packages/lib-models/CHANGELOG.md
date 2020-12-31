@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.5](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.29.4...@gtms/lib-models@0.29.5) (2020-12-31)
+
+**Note:** Version bump only for package @gtms/lib-models
+
+
+
+
+
 ## [0.29.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-models@0.29.3...@gtms/lib-models@0.29.4) (2020-12-31)
 
 **Note:** Version bump only for package @gtms/lib-models
