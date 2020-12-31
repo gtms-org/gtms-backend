@@ -1,6 +1,6 @@
 {
   "name": "@gtms/worker-posts",
-  "version": "0.3.25",
+  "version": "0.3.26",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -10,12 +10,12 @@
     "start": "node dist"
   },
   "dependencies": {
-    "@gtms/client-queue": "0.7.40",
-    "@gtms/commons": "0.34.0",
+    "@gtms/client-queue": "0.7.41",
+    "@gtms/commons": "0.34.1",
     "@gtms/lib-consul": "0.2.4",
     "@gtms/lib-http-server": "0.1.1",
     "@gtms/lib-logger": "0.3.1",
-    "@gtms/lib-models": "0.29.3"
+    "@gtms/lib-models": "0.29.4"
   },
   "author": "Mariusz Kabała",
   "license": "ISC"

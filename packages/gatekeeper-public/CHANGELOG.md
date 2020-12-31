@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.47.1](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.47.0...@gtms/gatekeeper-public@0.47.1) (2020-12-31)
+
+
+### Bug Fixes
+
+* GEOT-753: allow to search using my posts endpoint ([#244](https://github.com/mariusz-kabala/gtms-backend/issues/244)) ([d5b4755](https://github.com/mariusz-kabala/gtms-backend/commit/d5b4755e995bd4f9ce848ce9e6e72fe0be8a33b1))
+
+
+
+
+
 # [0.47.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/gatekeeper-public@0.46.0...@gtms/gatekeeper-public@0.47.0) (2020-12-29)
 
 

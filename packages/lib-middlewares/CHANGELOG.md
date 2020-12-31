@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.64](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-middlewares@0.4.63...@gtms/lib-middlewares@0.4.64) (2020-12-31)
+
+**Note:** Version bump only for package @gtms/lib-middlewares
+
+
+
+
+
 ## [0.4.63](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/lib-middlewares@0.4.62...@gtms/lib-middlewares@0.4.63) (2020-12-21)
 
 **Note:** Version bump only for package @gtms/lib-middlewares
