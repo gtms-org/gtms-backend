@@ -17,6 +17,11 @@ export default {
     },
     {
       path: '/user/:id',
+      method: http.POST,
+      restricted: false,
+    },
+    {
+      path: '/user/:id/details',
       method: http.GET,
       restricted: false,
     },

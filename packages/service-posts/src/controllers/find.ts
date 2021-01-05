@@ -101,6 +101,165 @@ function findPosts(
   })
 }
 
+function handleUserDetails({
+  req,
+  res,
+  next,
+  userId,
+}: {
+  userId: string
+  req: Request
+  res: Response
+  next: NextFunction
+}) {
+  PostModel.aggregate([
+    {
+      $match: { owner: new ObjectID(userId) },
+    },
+    {
+      $group: {
+        _id: '$group',
+        count: { $sum: 1 },
+      },
+    },
+  ])
+    .then(result => {
+      if (result.length === 0) {
+        return res
+          .status(200)
+          .json([])
+          .end()
+      }
+
+      findGroupsByIds(
+        result.map(r => r._id),
+        {
+          traceId: res.get('x-traceid'),
+        }
+      )
+        .then(groups => {
+          const counters = result.reduce((all, r) => {
+            all[r._id] = r.count
+
+            return all
+          }, {})
+
+          return res
+            .status(200)
+            .json(
+              groups.map(group => ({
+                ...group,
+                count: counters[group.id],
+              }))
+            )
+            .end()
+        })
+        .catch(err => {
+          logger.log({
+            message: `Can not fetch group info ${err}`,
+            level: 'error',
+            traceId: res.get('x-traceid'),
+          })
+
+          res.status(500).end()
+        })
+    })
+    .catch(err => {
+      logger.log({
+        message: `Database error ${err}`,
+        level: 'error',
+        traceId: res.get('x-traceid'),
+      })
+
+      next(err)
+    })
+}
+
+function handleUserPostsReq({
+  req,
+  res,
+  next,
+  query,
+}: {
+  req: Request
+  res: Response
+  next: NextFunction
+  query: {
+    owner: ObjectID
+    group?: {
+      $in: string[]
+    }
+    tags?: {
+      $all: string[]
+    }
+  }
+}) {
+  const { limit, offset } = getPaginationParamsFromPostReq(req)
+  const { groups, tags } = req.body
+  const traceId = res.get('x-traceid')
+
+  if (Array.isArray(groups) && groups.length > 0) {
+    query.group = {
+      $in: groups,
+    }
+  }
+
+  if (Array.isArray(tags) && tags.length > 0) {
+    query.tags = {
+      $all: tags,
+    }
+  }
+
+  PostModel.paginate(
+    query,
+    {
+      offset,
+      limit,
+      sort: {
+        createdAt: 'desc',
+      },
+    },
+    (err, result) => {
+      if (err) {
+        logger.log({
+          message: `Database error ${err}`,
+          level: 'error',
+          traceId: res.get('x-traceid'),
+        })
+
+        return next(err)
+      }
+
+      Promise.all([
+        findGroupsByIds(getUniqueValues(result.docs, 'group'), {
+          traceId: res.get('x-traceid'),
+        }),
+        fetchPostsOwners(result.docs, traceId),
+      ])
+        .then(([groups, docs]) => {
+          const groupsHash = arrayToHash(groups, 'id')
+
+          res.status(200).json({
+            ...result,
+            docs: docs.map(post => ({
+              ...post,
+              group: groupsHash[post.group as string] ?? null,
+            })),
+          })
+        })
+        .catch(err => {
+          logger.log({
+            message: `Internal API call failed - ${err}`,
+            level: 'error',
+            traceId,
+          })
+
+          res.status(500).end()
+        })
+    }
+  )
+}
+
 export default {
   groupPosts(req: Request, res: Response) {
     const { id } = req.params
@@ -251,186 +410,39 @@ export default {
   },
   userPosts(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params
-    const { limit, offset } = getPaginationParams(req)
-    const traceId = res.get('x-traceid')
+    const query = {
+      owner: new ObjectID(id),
+    }
 
-    PostModel.paginate(
-      { owner: new ObjectID(id) },
-      {
-        offset,
-        limit,
-        sort: {
-          createdAt: 'desc',
-        },
-      },
-      (err, result) => {
-        if (err) {
-          logger.log({
-            message: `Database error ${err}`,
-            level: 'error',
-            traceId,
-          })
+    return handleUserPostsReq({ req, res, next, query })
+  },
+  userDetails(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params
 
-          return next(err)
-        }
-
-        fetchPostsOwners(result.docs, traceId)
-          .then(docs => {
-            res.status(200).json({
-              ...result,
-              docs,
-            })
-          })
-          .catch(err => {
-            logger.log({
-              message: `Can not fetch user info ${err}`,
-              level: 'error',
-              traceId,
-            })
-
-            res.status(500).end()
-          })
-      }
-    )
+    return handleUserDetails({
+      req,
+      res,
+      next,
+      userId: id,
+    })
   },
   myPostsDetails(req: IAuthRequest, res: Response, next: NextFunction) {
-    PostModel.aggregate([
-      {
-        $match: { owner: new ObjectID(req.user.id) },
-      },
-      {
-        $group: {
-          _id: '$group',
-          count: { $sum: 1 },
-        },
-      },
-    ])
-      .then(result => {
-        if (result.length === 0) {
-          return res
-            .status(200)
-            .json([])
-            .end()
-        }
-
-        findGroupsByIds(
-          result.map(r => r._id),
-          {
-            traceId: res.get('x-traceid'),
-          }
-        )
-          .then(groups => {
-            const counters = result.reduce((all, r) => {
-              all[r._id] = r.count
-
-              return all
-            }, {})
-
-            return res
-              .status(200)
-              .json(
-                groups.map(group => ({
-                  ...group,
-                  count: counters[group.id],
-                }))
-              )
-              .end()
-          })
-          .catch(err => {
-            logger.log({
-              message: `Can not fetch group info ${err}`,
-              level: 'error',
-              traceId: res.get('x-traceid'),
-            })
-
-            res.status(500).end()
-          })
-      })
-      .catch(err => {
-        logger.log({
-          message: `Database error ${err}`,
-          level: 'error',
-          traceId: res.get('x-traceid'),
-        })
-
-        next(err)
-      })
+    return handleUserDetails({
+      req,
+      res,
+      next,
+      userId: req.user.id,
+    })
   },
   myPosts(req: IAuthRequest, res: Response, next: NextFunction) {
-    const { limit, offset } = getPaginationParamsFromPostReq(req)
-    const { groups, tags } = req.body
-    const traceId = res.get('x-traceid')
+    const query = { owner: new ObjectID(req.user.id) }
 
-    const query: {
-      owner: ObjectID
-      group?: {
-        $in: string[]
-      }
-      tags?: {
-        $all: string[]
-      }
-    } = { owner: new ObjectID(req.user.id) }
-
-    if (Array.isArray(groups) && groups.length > 0) {
-      query.group = {
-        $in: groups,
-      }
-    }
-
-    if (Array.isArray(tags) && tags.length > 0) {
-      query.tags = {
-        $all: tags,
-      }
-    }
-
-    PostModel.paginate(
+    return handleUserPostsReq({
+      req,
+      res,
+      next,
       query,
-      {
-        offset,
-        limit,
-        sort: {
-          createdAt: 'desc',
-        },
-      },
-      (err, result) => {
-        if (err) {
-          logger.log({
-            message: `Database error ${err}`,
-            level: 'error',
-            traceId: res.get('x-traceid'),
-          })
-
-          return next(err)
-        }
-
-        Promise.all([
-          findGroupsByIds(getUniqueValues(result.docs, 'group'), {
-            traceId: res.get('x-traceid'),
-          }),
-          fetchPostsOwners(result.docs, traceId),
-        ])
-          .then(([groups, docs]) => {
-            const groupsHash = arrayToHash(groups, 'id')
-
-            res.status(200).json({
-              ...result,
-              docs: docs.map(post => ({
-                ...post,
-                group: groupsHash[post.group as string] ?? null,
-              })),
-            })
-          })
-          .catch(err => {
-            logger.log({
-              message: `Internal API call failed - ${err}`,
-              level: 'error',
-              traceId,
-            })
-
-            res.status(500).end()
-          })
-      }
-    )
+    })
   },
   findByIds(req: Request, res: Response, next: NextFunction) {
     const {
