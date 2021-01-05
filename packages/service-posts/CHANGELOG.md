@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.25.4...@gtms/service-posts@0.26.0) (2021-01-05)
+
+
+### Features
+
+* GEOT-767: allow to search in user posts endpoint, expose use ([#245](https://github.com/mariusz-kabala/gtms-backend/issues/245)) ([01facd8](https://github.com/mariusz-kabala/gtms-backend/commit/01facd8734d504f1e623c6e2a449bd5c5a86571f))
+
+
+
+
+
 ## [0.25.4](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-posts@0.25.3...@gtms/service-posts@0.25.4) (2020-12-31)
 
 
