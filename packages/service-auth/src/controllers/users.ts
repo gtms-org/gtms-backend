@@ -6,6 +6,7 @@ import {
   IRefreshToken,
   serializeUser,
 } from '@gtms/lib-models'
+import { validateObjectId } from '@gtms/client-mongoose'
 import { Request, Response, NextFunction } from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
@@ -228,7 +229,7 @@ export default {
     const { id } = req.params
     const { basic = false } = req.query
 
-    UserModel.findById(id)
+    UserModel.findOne(validateObjectId(id) ? { _id: id } : { username: id })
       .then(async (user: IUser | null) => {
         if (!user) {
           return res.status(404).end()
