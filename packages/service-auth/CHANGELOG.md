@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.31](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.32.30...@gtms/service-auth@0.32.31) (2021-01-10)
+
+
+### Bug Fixes
+
+* master: support also username as a param in get user endpo ([055df07](https://github.com/mariusz-kabala/gtms-backend/commit/055df07b72abffe2d33af111ed0d67d1994229a4))
+
+
+
+
+
 ## [0.32.30](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/service-auth@0.32.29...@gtms/service-auth@0.32.30) (2020-12-31)
 
 **Note:** Version bump only for package @gtms/service-auth
