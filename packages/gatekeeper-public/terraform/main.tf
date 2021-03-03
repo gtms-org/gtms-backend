@@ -12,23 +12,23 @@ resource "docker_container" "gatekeeper-public" {
   }
 
   labels {
-    label = "traefik.backend"
-    value = "gatekeeper-public-${var.env}"
+    label = "traefik.http.routers.GTMSPublicAPI-${var.env}.rule"
+    value = "Host(`${var.app_domain}`) && PathPrefix(`/api`)"
   }
 
   labels {
-    label = "traefik.frontend.rule"
-    value = "PathPrefixStrip:/api;Host:${var.app_domain}"
-  }
-
-  labels {
-    label = "traefik.protocol"
-    value = "http"
-  }
-
-  labels {
-    label = "traefik.port"
+    label = "traefik.http.services.GTMSPublicAPI-${var.env}.loadbalancer.server.port"
     value = "80"
+  }
+
+  labels {
+    label = "traefik.http.routers.GTMSPublicAPI-${var.env}.middlewares"
+    value = "GTMSPublicAPI-${var.env}-stripprefix"
+  }
+
+  labels {
+    label = "traefik.http.middlewares.GTMSPublicAPI-${var.env}-stripprefix.stripprefix.prefixes"
+    value = "/api"
   }
 
   labels {
