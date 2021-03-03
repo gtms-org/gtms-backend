@@ -22,6 +22,16 @@ resource "docker_container" "swagger" {
   }
 
   labels {
+    label = "traefik.http.routers.GTMSSwagger-${var.env}.tls"
+    value = "true"
+  }
+
+  labels {
+    label = "traefik.http.routers.GTMSSwagger-${var.env}.tls.certresolver"
+    value = "myresolver"
+  }
+
+  labels {
     label = "gtms"
     value = "qa-master"
   }

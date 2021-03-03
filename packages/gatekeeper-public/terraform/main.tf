@@ -17,6 +17,16 @@ resource "docker_container" "gatekeeper-public" {
   }
 
   labels {
+    label = "traefik.http.routers.GTMSPublicAPI-${var.env}.tls"
+    value = "true"
+  }
+
+  labels {
+    label = "traefik.http.routers.GTMSPublicAPI-${var.env}.tls.certresolver"
+    value = "myresolver"
+  }
+
+  labels {
     label = "traefik.http.services.GTMSPublicAPI-${var.env}.loadbalancer.server.port"
     value = "80"
   }
