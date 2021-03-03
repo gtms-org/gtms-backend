@@ -12,22 +12,12 @@ resource "docker_container" "swagger" {
   }
 
   labels {
-    label = "traefik.backend"
-    value = "swagger-${var.env}"
+    label = "traefik.http.routers.GTMSSwagger-${var.env}.rule"
+    value = "Host(`${var.app_domain}`) && PathPrefix(`/docs`)"
   }
 
   labels {
-    label = "traefik.frontend.rule"
-    value = "PathPrefix:/docs;Host:${var.app_domain}"
-  }
-
-  labels {
-    label = "traefik.protocol"
-    value = "http"
-  }
-
-  labels {
-    label = "traefik.port"
+    label = "traefik.http.services.GTMSSwagger-${var.env}.loadbalancer.server.port"
     value = "80"
   }
 
