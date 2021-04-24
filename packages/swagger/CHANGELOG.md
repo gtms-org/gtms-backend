@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.27.31...@gtms/swagger@0.28.0) (2021-04-24)
+
+
+### Features
+
+* GEOT-803: add option to return owner info with post details ([#275](https://github.com/mariusz-kabala/gtms-backend/issues/275)) ([7c222e9](https://github.com/mariusz-kabala/gtms-backend/commit/7c222e9ec39e7dd6fe01b9f641aac3e76792794d))
+
+
+
+
+
 ## [0.27.31](https://github.com/mariusz-kabala/gtms-backend/compare/@gtms/swagger@0.27.30...@gtms/swagger@0.27.31) (2020-12-31)
 
 **Note:** Version bump only for package @gtms/swagger
