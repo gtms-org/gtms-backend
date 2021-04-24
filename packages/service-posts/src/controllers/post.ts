@@ -20,7 +20,12 @@ import {
   FileStatus,
 } from '@gtms/commons'
 import { validateObjectId } from '@gtms/client-mongoose'
-import { canAddPost, getGroup, findUsersByUsernames } from '@gtms/lib-api'
+import {
+  canAddPost,
+  getGroup,
+  findUsersByUsernames,
+  getUser,
+} from '@gtms/lib-api'
 
 const MENTIONED_NOTIFICATION_CHUNK = 50 // how many users can be notificed in one queue msg
 
@@ -370,7 +375,7 @@ export default {
   },
   show(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params
-    const { group = false } = req.query
+    const { group = false, owner = false } = req.query
 
     PostModel.findById(id)
       .then((post: IPost | null) => {
@@ -378,7 +383,7 @@ export default {
           return res.status(404).end()
         }
 
-        if (!group) {
+        if (!group && !owner) {
           return res.status(200).json(serializePost(post))
         }
 
@@ -386,21 +391,38 @@ export default {
           group?: ISerializedGroup | string
         } = serializePost(post)
 
-        getGroup(post.group, { traceId: res.get('x-traceid') })
-          .then(group => {
+        const options = { traceId: res.get('x-traceid') }
+
+        Promise.all([
+          group
+            ? getGroup(post.group, options).catch(err => {
+                logger.log({
+                  level: 'error',
+                  message: `Can not fetch info about post's group, returning without it - ${err}`,
+                  traceId: res.get('x-traceid'),
+                })
+              })
+            : Promise.resolve(null),
+          owner
+            ? getUser(post.owner, options).catch(err => {
+                logger.log({
+                  level: 'error',
+                  message: `Can not fetch info about post's owner, returning without it - ${err}`,
+                  traceId: res.get('x-traceid'),
+                })
+              })
+            : Promise.resolve(null),
+        ]).then(([group, owner]) => {
+          if (group) {
             serializedPost.group = group
+          }
 
-            res.status(200).json(serializedPost)
-          })
-          .catch(err => {
-            res.status(200).json(serializedPost)
+          if (owner) {
+            serializedPost.owner = owner
+          }
 
-            logger.log({
-              level: 'error',
-              message: `Can not fetch info about post's group, returning without it - ${err}`,
-              traceId: res.get('x-traceid'),
-            })
-          })
+          res.status(200).json(serializedPost)
+        })
       })
       .catch(err => {
         next(err)

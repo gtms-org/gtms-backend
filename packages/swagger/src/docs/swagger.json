@@ -3151,6 +3151,13 @@
             "required": false,
             "type": "boolean",
             "description": "Defines if together with post info about group should be returned"
+          },
+          {
+            "in": "query",
+            "name": "owner",
+            "required": false,
+            "type": "boolean",
+            "description": "Defines if together with post info about owner should be returned"
           }
         ],
         "responses": {
@@ -3166,6 +3173,9 @@
                   "properties": {
                     "group": {
                       "$ref": "#/definitions/Group"
+                    },
+                    "owner": {
+                      "$ref": "#/definitions/User"
                     }
                   }
                 }
