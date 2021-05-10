@@ -75,7 +75,7 @@
     "mongodb-memory-server": "^6.2.4",
     "node-mongodb-fixtures": "^3.2.2",
     "nodemon": "^2.0.2",
-    "prettier": "^1.19.1",
+    "prettier": "^2.3.0",
     "set-cookie-parser": "^2.4.3",
     "source-map-support": "^0.5.16",
     "supertest": "^4.0.2",
